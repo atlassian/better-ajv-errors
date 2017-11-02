@@ -1,0 +1,26 @@
+{
+  "type": "doc",
+  "version": 1,
+  "content": [
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "inlineMacro",
+          "attrs": {
+            "macroId": "gjbk",
+            "name": "mymacro",
+            "placeholderUrl": "https://",
+            "params": {}
+          }
+        },
+        {
+          "type": "rawHtmlBlob",
+          "attrs": {
+            "html": "<p>Leand<strong>ro</strong></p>"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Required prints correctly for missing required prop 1`] = `
+Array [
+  "[31m[1mREQUIRED[22m[39m[31m should have required property 'id'[39m
+",
+  "[32m- Extra[39m
+[31m+ Missing[39m
+
+[32m- Object {}[39m
+[31m+ Object {[39m
+[31m+   \\"id\\": \\"required\\",[39m
+[31m+ }[39m",
+]
+`;

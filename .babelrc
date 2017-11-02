@@ -1,0 +1,50 @@
+{
+  "env": {
+    "modern": {
+      "presets": [
+        [
+          "env",
+          {
+            "targets": {
+              "node": "8"
+            },
+            "loose": true
+          }
+        ]
+      ],
+      "plugins": [["transform-object-rest-spread", { "useBuiltIns": true }]],
+      "ignore": ["__tests__", "_fixtures__", "node_modules"]
+    },
+    "legacy": {
+      "presets": [
+        [
+          "env",
+          {
+            "targets": {
+              "node": "4"
+            },
+            "loose": true
+          }
+        ]
+      ],
+      "plugins": [
+        ["transform-object-rest-spread", { "useBuiltIns": true }],
+        "transform-runtime"
+      ],
+      "ignore": ["__tests__", "_fixtures__", "node_modules"]
+    },
+    "test": {
+      "presets": [
+        [
+          "env",
+          {
+            "targets": {
+              "node": "current"
+            }
+          }
+        ]
+      ],
+      "plugins": [["transform-object-rest-spread", { "useBuiltIns": true }]]
+    }
+  }
+}
