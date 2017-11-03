@@ -1,14 +1,13 @@
 {
   "name": "better-avj-errors",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "index.js",
   "author": "Rifat Nabi <to.rifat@gmail.com>",
   "license": "MIT",
-  "files": ["lib"],
+  "files": ["lib", "index.js"],
   "dependencies": {
     "chalk": "^2.3.0",
     "jest-diff": "^21.2.1",
-    "jest-fixtures": "^0.6.0",
     "jsonpointer": "^4.0.1",
     "leven": "^2.1.0"
   },
@@ -21,6 +20,7 @@
     "babel-preset-env": "^1.6.1",
     "flow-bin": "^0.57.3",
     "jest": "^21.2.1",
+    "jest-fixtures": "^0.6.0",
     "prettier": "^1.7.4"
   },
   "peerDependencies": {
