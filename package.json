@@ -1,13 +1,11 @@
 {
   "name": "better-avj-errors",
-  "version": "0.2.0",
+  "version": "0.3.0",
+  "description": "JSON Schema validation for Human",
   "main": "index.js",
   "author": "Rifat Nabi <to.rifat@gmail.com>",
   "license": "MIT",
-  "files": [
-    "lib",
-    "index.js"
-  ],
+  "files": ["lib", "index.js"],
   "dependencies": {
     "chalk": "^2.3.0",
     "jsonpointer": "^4.0.1",
@@ -39,9 +37,7 @@
     "test": "node node_modules/.bin/jest"
   },
   "jest": {
-    "testMatch": [
-      "<rootDir>/src/**/__tests__/*.js"
-    ]
+    "testMatch": ["<rootDir>/src/**/__tests__/*.js"]
   },
   "prettier": {
     "singleQuote": true,
