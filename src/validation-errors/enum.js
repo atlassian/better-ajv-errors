@@ -1,7 +1,7 @@
 import chalk from 'chalk';
-import jestDiff from 'jest-diff';
-import pointer from 'jsonpointer';
 import leven from 'leven';
+import pointer from 'jsonpointer';
+import printJson from '../json/print';
 
 import BaseValidationError from './base';
 
@@ -16,23 +16,19 @@ export default class EnumValidationError extends BaseValidationError {
     const bestMatch = allowedValues
       .map(value => ({
         value,
-        weight: leven(value, currentValue),
+        weight: leven(value, currentValue.toString()),
       }))
       .sort(
         (x, y) => (x.weight > y.weight ? 1 : x.weight < y.weight ? -1 : 0)
       )[0];
 
-    const expected = JSON.parse(JSON.stringify(data));
-    if (allowedValues.length === 1 || bestMatch.weight < 5) {
-      output.push(chalk`{green Did you mean {bold ${bestMatch.value}}?}\n`);
-      pointer.set(expected, `${dataPath}`, bestMatch.value);
-    } else {
-      pointer.set(expected, `${dataPath}`, '');
-    }
-
     return output.concat(
-      jestDiff(expected, data, {
-        expand: false,
+      printJson(data, dataPath)(() => {
+        if (allowedValues.length === 1 || bestMatch.weight < 5) {
+          return chalk`☝🏽  Did you mean {bold ${bestMatch.value}} here?`;
+        } else {
+          return chalk`☝🏽  Unexpected value here`;
+        }
       })
     );
   }

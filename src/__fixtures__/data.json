@@ -8,6 +8,7 @@
         {
           "type": "inlineMacro",
           "attrs": {
+            "macroBodyHtml": 2,
             "macroId": "gjbk",
             "name": "mymacro",
             "placeholderUrl": "https://",

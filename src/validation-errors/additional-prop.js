@@ -1,6 +1,5 @@
 import chalk from 'chalk';
-import jestDiff from 'jest-diff';
-import pointer from 'jsonpointer';
+import printJson from '../json/print';
 
 import BaseValidationError from './base';
 
@@ -10,19 +9,26 @@ export default class AdditionalPropValidationError extends BaseValidationError {
     const { message, dataPath, params } = this.options;
     output.push(chalk`{red {bold ADDTIONAL PROPERTY} ${message}}\n`);
 
-    const expected = JSON.parse(JSON.stringify(data));
-    pointer.set(
-      expected,
-      `${dataPath}/${params.additionalProperty}`,
-      undefined
-    );
-
     return output.concat(
-      jestDiff(data, expected, {
-        expand: false,
-        aAnnotation: 'Extra',
-        bAnnotation: 'Missing',
+      printJson(data, `${dataPath}/${params.additionalProperty}`)(() => {
+        return chalk`😲  {bold ${params.additionalProperty}} is not expected here!`;
       })
     );
+    return [];
+
+    // const expected = JSON.parse(JSON.stringify(data));
+    // pointer.set(
+    //   expected,
+    //   `${dataPath}/${params.additionalProperty}`,
+    //   undefined
+    // );
+    //
+    // return output.concat(
+    //   jestDiff(data, expected, {
+    //     expand: false,
+    //     aAnnotation: 'Extra',
+    //     bAnnotation: 'Missing',
+    //   })
+    // );
   }
 }

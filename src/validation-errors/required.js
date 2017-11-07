@@ -1,6 +1,5 @@
 import chalk from 'chalk';
-import jestDiff from 'jest-diff';
-import pointer from 'jsonpointer';
+import printJson from '../json/print';
 
 import BaseValidationError from './base';
 
@@ -9,18 +8,10 @@ export default class RequiredValidationError extends BaseValidationError {
     const output = [];
     const { message, dataPath, params } = this.options;
     output.push(chalk`{red {bold REQUIRED} ${message}}\n`);
-    const expected = JSON.parse(JSON.stringify(data));
-    /**
-     * JSON Pointers version doesn't differentiate between normal and object
-     * props like `params` vs `.params`
-     */
-    pointer.set(expected, `${dataPath}/${params.missingProperty}`, 'required');
 
     return output.concat(
-      jestDiff(data, expected, {
-        expand: false,
-        aAnnotation: 'Extra',
-        bAnnotation: 'Missing',
+      printJson(data, dataPath)(() => {
+        return chalk`☹️  {bold ${params.missingProperty}} is missing here!`;
       })
     );
   }
