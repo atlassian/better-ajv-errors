@@ -10,7 +10,7 @@ export default class AdditionalPropValidationError extends BaseValidationError {
     output.push(chalk`{red {bold ADDTIONAL PROPERTY} ${message}}\n`);
 
     return output.concat(
-      printJson(data, `${dataPath}/${params.additionalProperty}`)(() => {
+      printJson(data, `${dataPath}/${params.additionalProperty}`, { indent: this.indent })(() => {
         return chalk`😲  {bold ${params.additionalProperty}} is not expected here!`;
       })
     );

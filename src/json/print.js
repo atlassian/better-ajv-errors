@@ -9,9 +9,10 @@ export default (obj, dataPath, options = {}) => annotate => {
     annotationColor = 'cyan',
     gutterChar = '│',
     annotationGutterChar = '〉',
+    indent = 2,
   } = options;
 
-  const jsonString = JSON.stringify(obj, null, 2);
+  const jsonString = JSON.stringify(obj, null, indent);
   const lines = jsonString.split('\n');
   const gutterWidth = lines.length.toString().length;
   const annotationGutter = `${''.padStart(gutterWidth)}${annotationGutterChar}`;

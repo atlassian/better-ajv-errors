@@ -23,7 +23,7 @@ export default class EnumValidationError extends BaseValidationError {
       )[0];
 
     return output.concat(
-      printJson(data, dataPath)(() => {
+      printJson(data, dataPath, { indent: this.indent })(() => {
         if (allowedValues.length === 1 || bestMatch.weight < 5) {
           return chalk`☝🏽  Did you mean {bold ${bestMatch.value}} here?`;
         } else {

@@ -70,7 +70,7 @@ export function filterRedundantErrors(root, parent, key) {
   );
 }
 
-export function createErrorInstances(root) {
+export function createErrorInstances(root, indent) {
   const errors = getErrors(root);
   if (errors.length && errors.every(isEnumError)) {
     const allowedValues = concatAll([])(
@@ -81,29 +81,29 @@ export function createErrorInstances(root) {
       new EnumValidationError({
         ...error,
         params: { allowedValues },
-      }),
+      }, indent),
     ];
   } else {
     return concatAll(
       errors.reduce((ret, error) => {
         switch (error.keyword) {
           case 'additionalProperties':
-            return ret.concat(new AdditionalPropValidationError(error));
+            return ret.concat(new AdditionalPropValidationError(error, indent));
           case 'required':
-            return ret.concat(new RequiredValidationError(error));
+            return ret.concat(new RequiredValidationError(error, indent));
           default:
-            return ret.concat(new DefaultValidationError(error));
+            return ret.concat(new DefaultValidationError(error, indent));
         }
       }, [])
     )(getChildren(root).map(createErrorInstances));
   }
 }
 
-export default ajvErrors => {
+export default (ajvErrors, indent) => {
   const tree = makeTree(ajvErrors);
   // debug(JSON.stringify(tree));
   filterRedundantErrors(tree);
-  const errors = createErrorInstances(tree);
+  const errors = createErrorInstances(tree, indent);
   if (!errors) {
     debug(JSON.stringify(tree));
   }

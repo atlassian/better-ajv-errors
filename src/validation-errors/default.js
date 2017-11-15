@@ -9,7 +9,7 @@ export default class DefaultValidationError extends BaseValidationError {
     output.push(chalk`{red {bold ${keyword}} ${message}}\n`);
 
     return output.concat(
-      printJson(data, dataPath)(() => {
+      printJson(data, dataPath, { indent: this.indent })(() => {
         return chalk`☝🏽  ${keyword} ${message}`;
       })
     );

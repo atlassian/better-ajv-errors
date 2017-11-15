@@ -10,7 +10,7 @@ export default class RequiredValidationError extends BaseValidationError {
     output.push(chalk`{red {bold REQUIRED} ${message}}\n`);
 
     return output.concat(
-      printJson(data, dataPath)(() => {
+      printJson(data, dataPath, { indent: this.indent })(() => {
         return chalk`☹️  {bold ${params.missingProperty}} is missing here!`;
       })
     );

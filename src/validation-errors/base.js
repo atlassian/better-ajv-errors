@@ -1,6 +1,7 @@
 export default class BaseValidationError {
-  constructor(options = {}) {
+  constructor(options = {}, indent) {
     this.options = options;
+    this.inden = indent;
   }
 
   print(schema, data) {
