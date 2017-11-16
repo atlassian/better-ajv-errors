@@ -1,14 +1,21 @@
 import prettify from './helpers';
 import { log } from './debug';
 
-export default (options = { schema, mode = 'print', indent = 2 }) => {
-  return (data, errors) => {
-    prettify(errors, options.indent).forEach(customError => {
-      const text = customError.print(schema, data).join('\n');
+export default (options = { schema, mode, indent }) => {
+  const {
+    schema,
+    mode = 'print',
+    indent = 2,
+  } = options;
 
-      if (options.mode === 'print') {
-        log(text);
-      }
-    });
+  return (data, errors) => {
+    const customErrorToText = (error) => error.print(schema, data).join('\n');
+    const customErrors = prettify(errors, indent).map(customErrorToText);
+
+    if (mode === 'print') {
+      log(customErrors.join());
+    } else {
+      return customErrors;
+    }
   };
 };

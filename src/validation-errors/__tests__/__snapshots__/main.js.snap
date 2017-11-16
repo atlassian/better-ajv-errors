@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main should support "indent" option 1`] = `
+Array [
+  "[31m[1mREQUIRED[22m[39m[31m should have required property 'id'[39m
+
+[31m1│ {}[39m
+[36m 〉[39m
+[36m 〉 ☹️  [1mid[22m is missing here![39m
+[36m 〉[39m",
+]
+`;
