@@ -1,12 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Main should support "indent" option 1`] = `
+exports[`Main should support return option for additionalProperties errors 1`] = `
 Array [
-  "[31m[1mREQUIRED[22m[39m[31m should have required property 'id'[39m
+  Object {
+    "column": 1,
+    "error": "Property baz is not expected to be here",
+    "line": 0,
+  },
+]
+`;
 
-[31m1│ {}[39m
-[36m 〉[39m
-[36m 〉 ☹️  [1mid[22m is missing here![39m
-[36m 〉[39m",
+exports[`Main should support return option for default errors 1`] = `
+Array [
+  Object {
+    "column": 3,
+    "error": "/id: type should be number",
+    "line": 1,
+  },
+]
+`;
+
+exports[`Main should support return option for enum errors 1`] = `
+Array [
+  Object {
+    "column": 3,
+    "error": "/id should be equal to one of the allowed values: foo, bar",
+    "line": 1,
+    "suggestion": "Did you mean bar?",
+  },
+]
+`;
+
+exports[`Main should support return option for required errors 1`] = `
+Array [
+  Object {
+    "column": 1,
+    "error": "Required property id is missing",
+    "line": 0,
+  },
 ]
 `;

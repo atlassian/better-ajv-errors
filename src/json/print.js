@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import parse from './parse';
+import findErrorPosition from './find-error-position';
 
 export default (obj, dataPath, options = {}) => annotate => {
   const {
@@ -12,21 +12,13 @@ export default (obj, dataPath, options = {}) => annotate => {
     indent = 2,
   } = options;
 
-  const jsonString = JSON.stringify(obj, null, indent);
-  const lines = jsonString.split('\n');
-  const gutterWidth = lines.length.toString().length;
-  const annotationGutter = `${''.padStart(gutterWidth)}${annotationGutterChar}`;
-
-  // console.log(JSON.stringify(parse(jsonString), null, 2));
-  // TODO: Handle json pointer escape notation and better error handling
   try {
-    const { meta: { line, column } } = dataPath
-      .split('/')
-      .slice(1)
-      .reduce(
-        (obj, pointer) => obj.value[pointer] || obj.value.value[pointer],
-        parse(jsonString)
-      );
+    const { line, column } = findErrorPosition(obj, dataPath, indent);
+
+    const jsonString = JSON.stringify(obj, null, indent);
+    const lines = jsonString.split('\n');
+    const gutterWidth = lines.length.toString().length;
+    const annotationGutter = `${''.padStart(gutterWidth)}${annotationGutterChar}`;
 
     const min = Math.max(line - delta, 0);
     const max = Math.min(line + delta, lines.length - 1);

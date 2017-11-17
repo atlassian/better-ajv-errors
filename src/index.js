@@ -10,12 +10,13 @@ export default (options = { schema, mode, indent }) => {
 
   return (data, errors) => {
     const customErrorToText = (error) => error.print(schema, data).join('\n');
-    const customErrors = prettify(errors, indent).map(customErrorToText);
+    const customErrorToStructure = (error) => error.getError(schema, data);
+    const customErrors = prettify(errors, indent);
 
     if (mode === 'print') {
-      log(customErrors.join());
+      log(customErrors.map(customErrorToText).join());
     } else {
-      return customErrors;
+      return customErrors.map(customErrorToStructure);
     }
   };
 };

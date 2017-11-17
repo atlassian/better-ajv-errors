@@ -9,4 +9,10 @@ export default class BaseValidationError {
       `Implement the 'print' method inside ${this.constructor.name}!`
     );
   }
+
+  getError(schema, data) {
+    throw new Error(
+      `Implement the 'getError' method inside ${this.constructor.name}!`
+    );
+  }
 }

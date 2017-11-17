@@ -100,7 +100,7 @@ export function createErrorInstances(root, indent) {
 }
 
 export default (ajvErrors, indent) => {
-  const tree = makeTree(ajvErrors);
+  const tree = makeTree(ajvErrors || []);
   // debug(JSON.stringify(tree));
   filterRedundantErrors(tree);
   const errors = createErrorInstances(tree, indent);

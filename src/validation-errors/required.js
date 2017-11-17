@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 import printJson from '../json/print';
-
+import findErrorPosition from '../json/find-error-position';
 import BaseValidationError from './base';
 
 export default class RequiredValidationError extends BaseValidationError {
@@ -14,5 +14,16 @@ export default class RequiredValidationError extends BaseValidationError {
         return chalk`☹️  {bold ${params.missingProperty}} is missing here!`;
       })
     );
+  }
+
+  getError(schema, data) {
+    const { message, dataPath, params } = this.options;
+    const { line, column } = findErrorPosition(data, dataPath, this.indent);
+
+    return {
+      line,
+      column,
+      error: `Required property ${params.missingProperty} is missing`,
+    }
   }
 }
