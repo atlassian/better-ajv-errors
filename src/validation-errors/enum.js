@@ -16,7 +16,7 @@ export default class EnumValidationError extends BaseValidationError {
 
     return output.concat(
       printJson(data, dataPath, { indent: this.indent })(() => {
-        if (bestMatch) {
+        if (bestMatch !== null) {
           return chalk`☝🏽  Did you mean {bold ${bestMatch}} here?`;
         } else {
           return chalk`☝🏽  Unexpected value here`;
@@ -37,7 +37,7 @@ export default class EnumValidationError extends BaseValidationError {
       error: `${dataPath} ${message}: ${params.allowedValues.join(', ')}`,
     };
 
-    if (bestMatch) {
+    if (bestMatch !== null) {
       output.suggestion = `Did you mean ${bestMatch}?`;
     }
 
