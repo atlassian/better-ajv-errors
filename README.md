@@ -1,9 +1,11 @@
 # better-avj-errors
 JSON Schema validation for Human
 
-Main goal of this library is to provide relevant error message like the following:
+Main goal of this library is to provide relevant error messages like the following:
 
 ![Enum Validation Error](https://user-images.githubusercontent.com/208544/32481143-2b4a529a-c3e6-11e7-9797-bb65e9886bce.png)
+
+You can also use it in "return" mode when library returns structured errors.
 
 ## Installation
 ```bash
@@ -12,7 +14,11 @@ $ # Or
 $ npm i better-avj-errors
 ```
 
+Also make sure that you installed [ajv](https://www.npmjs.com/package/ajv) package to validate data against JSON schemas.
+
 ## Usage
+
+You need to validate data first with ajv. Then you can pass `validate.errors` object into `better-ajv-errors`.
 
 ```js
 import Ajv from 'ajv';
@@ -29,9 +35,37 @@ const data = ...;
 
 const validate = ajv.compile(schema);
 const valid = validate(data);
+```
+
+### "Print" mode
+
+```js
+// ...validate data first
 const print = betterAjvErrors({ schema, mode: 'print', indent: 2 });
 
 if (!valid) {
   print(data, validate.errors);
+}
+```
+
+### "Return" mode
+
+```js
+// ...validate data first
+const getHumanErrors = betterAjvErrors({ schema, mode: 'return', indent: 2 });
+
+if (!valid) {
+  const errors = getHumanErrors(data, validate.errors);
+
+  /*
+  errors is array: [
+    {
+      "error": "You're using invalid field FOO",
+      "line": 14,
+      "column": 75,
+      "suggestion": "Maybe you meant BAR?"
+    }
+  ]
+  */
 }
 ```
