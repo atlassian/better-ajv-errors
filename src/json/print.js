@@ -13,9 +13,9 @@ export default (obj, dataPath, options = {}) => annotate => {
   } = options;
 
   try {
-    const { line, column } = findErrorPosition(obj, dataPath, indent);
-
     const jsonString = JSON.stringify(obj, null, indent);
+    const { line, column } = findErrorPosition(jsonString, dataPath);
+
     const lines = jsonString.split('\n');
     const gutterWidth = lines.length.toString().length;
     const annotationGutter = `${''.padStart(gutterWidth)}${annotationGutterChar}`;

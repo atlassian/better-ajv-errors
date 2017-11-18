@@ -95,7 +95,9 @@ export function createErrorInstances(root, indent) {
             return ret.concat(new DefaultValidationError(error, indent));
         }
       }, [])
-    )(getChildren(root).map(createErrorInstances));
+    )(getChildren(root).map((child) => {
+      return createErrorInstances(child, indent);
+    }));
   }
 }
 

@@ -34,7 +34,8 @@ export default class AdditionalPropValidationError extends BaseValidationError {
 
   getError(schema, data) {
     const { keyword, message, dataPath, params } = this.options;
-    const { line, column } = findErrorPosition(data, dataPath, this.indent);
+    const jsonString = JSON.stringify(data, null, this.indent);
+    const { line, column } = findErrorPosition(jsonString, dataPath);
 
     return {
       line,

@@ -1,8 +1,6 @@
 import parse from './parse';
 
-export default function findErrorPosition(data, dataPath, indent = 2) {
-  const jsonString = JSON.stringify(data, null, indent);
-
+export default function findErrorPosition(jsonString, dataPath) {
   // console.log(JSON.stringify(parse(jsonString), null, 2));
   // TODO: Handle json pointer escape notation and better error handling
   const { meta: { line, column } } = dataPath
