@@ -5,7 +5,8 @@
   "main": "index.js",
   "author": "Rifat Nabi <to.rifat@gmail.com>",
   "license": "MIT",
-  "files": ["lib", "index.js"],
+  "typings": "typings.d.ts",
+  "files": ["lib", "index.js", "typings.d.ts"],
   "dependencies": {
     "chalk": "^2.3.0",
     "jsonpointer": "^4.0.1",
