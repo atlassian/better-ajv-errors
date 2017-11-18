@@ -18,7 +18,9 @@ export default (obj, dataPath, options = {}) => annotate => {
 
     const lines = jsonString.split('\n');
     const gutterWidth = lines.length.toString().length;
-    const annotationGutter = `${''.padStart(gutterWidth)}${annotationGutterChar}`;
+    const annotationGutter = `${''.padStart(
+      gutterWidth
+    )}${annotationGutterChar}`;
 
     const min = Math.max(line - delta, 0);
     const max = Math.min(line + delta, lines.length - 1);

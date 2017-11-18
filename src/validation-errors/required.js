@@ -25,6 +25,6 @@ export default class RequiredValidationError extends BaseValidationError {
       line,
       column,
       error: `Required property ${params.missingProperty} is missing`,
-    }
+    };
   }
 }

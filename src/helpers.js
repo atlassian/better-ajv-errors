@@ -78,10 +78,13 @@ export function createErrorInstances(root, indent) {
     );
     const error = errors[0];
     return [
-      new EnumValidationError({
-        ...error,
-        params: { allowedValues },
-      }, indent),
+      new EnumValidationError(
+        {
+          ...error,
+          params: { allowedValues },
+        },
+        indent
+      ),
     ];
   } else {
     return concatAll(
@@ -95,9 +98,11 @@ export function createErrorInstances(root, indent) {
             return ret.concat(new DefaultValidationError(error, indent));
         }
       }, [])
-    )(getChildren(root).map((child) => {
-      return createErrorInstances(child, indent);
-    }));
+    )(
+      getChildren(root).map(child => {
+        return createErrorInstances(child, indent);
+      })
+    );
   }
 }
 
