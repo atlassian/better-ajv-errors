@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main should support return option for additionalProperties errors 1`] = `
+Array [
+  Object {
+    "column": 1,
+    "error": "Property baz is not expected to be here",
+    "line": 0,
+  },
+]
+`;
+
+exports[`Main should support return option for default errors 1`] = `
+Array [
+  Object {
+    "column": 3,
+    "error": "/id: type should be number",
+    "line": 1,
+  },
+]
+`;
+
+exports[`Main should support return option for enum errors 1`] = `
+Array [
+  Object {
+    "column": 3,
+    "error": "/id should be equal to one of the allowed values: foo, bar",
+    "line": 1,
+    "suggestion": "Did you mean bar?",
+  },
+]
+`;
+
+exports[`Main should support return option for required errors 1`] = `
+Array [
+  Object {
+    "column": 1,
+    "error": "Required property id is missing",
+    "line": 0,
+  },
+]
+`;

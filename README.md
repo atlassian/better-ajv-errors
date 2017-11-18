@@ -29,8 +29,9 @@ const data = ...;
 
 const validate = ajv.compile(schema);
 const valid = validate(data);
+const print = betterAjvErrors({ schema, mode: 'print', indent: 2 });
 
 if (!valid) {
-  betterAjvErrors(schema, data, validate.errors);
+  print(data, validate.errors);
 }
 ```

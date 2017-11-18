@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 import printJson from '../json/print';
-
+import findErrorPosition from '../json/find-error-position';
 import BaseValidationError from './base';
 
 export default class AdditionalPropValidationError extends BaseValidationError {
@@ -10,8 +10,10 @@ export default class AdditionalPropValidationError extends BaseValidationError {
     output.push(chalk`{red {bold ADDTIONAL PROPERTY} ${message}}\n`);
 
     return output.concat(
-      printJson(data, `${dataPath}/${params.additionalProperty}`)(() => {
-        return chalk`😲  {bold ${params.additionalProperty}} is not expected here!`;
+      printJson(data, `${dataPath}/${params.additionalProperty}`, {
+        indent: this.indent,
+      })(() => {
+        return chalk`😲  {bold ${params.additionalProperty}} is not expected to be here!`;
       })
     );
     return [];
@@ -30,5 +32,17 @@ export default class AdditionalPropValidationError extends BaseValidationError {
     //     bAnnotation: 'Missing',
     //   })
     // );
+  }
+
+  getError(schema, data) {
+    const { keyword, message, dataPath, params } = this.options;
+    const jsonString = JSON.stringify(data, null, this.indent);
+    const { line, column } = findErrorPosition(jsonString, dataPath);
+
+    return {
+      line,
+      column,
+      error: `Property ${params.additionalProperty} is not expected to be here`,
+    };
   }
 }
