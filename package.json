@@ -1,6 +1,6 @@
 {
   "name": "better-ajv-errors",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "JSON Schema validation for Human",
   "main": "index.js",
   "author": "Rifat Nabi <to.rifat@gmail.com>",
@@ -10,7 +10,11 @@
   ],
   "license": "MIT",
   "typings": "typings.d.ts",
-  "files": ["lib", "index.js", "typings.d.ts"],
+  "files": [
+    "lib",
+    "index.js",
+    "typings.d.ts"
+  ],
   "dependencies": {
     "chalk": "^2.3.0",
     "jsonpointer": "^4.0.1",
