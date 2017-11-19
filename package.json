@@ -1,9 +1,13 @@
 {
-  "name": "better-avj-errors",
+  "name": "better-ajv-errors",
   "version": "0.3.0",
   "description": "JSON Schema validation for Human",
   "main": "index.js",
   "author": "Rifat Nabi <to.rifat@gmail.com>",
+  "maintainers": [
+    "Rifat Nabi <to.rifat@gmail.com>",
+    "Dmitrii Sorin <info@staypositive.ru>"
+  ],
   "license": "MIT",
   "typings": "typings.d.ts",
   "files": ["lib", "index.js", "typings.d.ts"],

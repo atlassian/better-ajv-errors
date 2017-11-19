@@ -1,4 +1,4 @@
-# better-avj-errors
+# better-ajv-errors
 JSON Schema validation for Human
 
 Main goal of this library is to provide relevant error messages like the following:
@@ -9,9 +9,9 @@ You can also use it in "return" mode when library returns structured errors.
 
 ## Installation
 ```bash
-$ yarn add better-avj-errors
+$ yarn add better-ajv-errors
 $ # Or
-$ npm i better-avj-errors
+$ npm i better-ajv-errors
 ```
 
 Also make sure that you installed [ajv](https://www.npmjs.com/package/ajv) package to validate data against JSON schemas.
@@ -23,8 +23,8 @@ You need to validate data first with ajv. Then you can pass `validate.errors` ob
 ```js
 import Ajv from 'ajv';
 // const Ajv = require('ajv');
-import betterAjvErrors from 'better-avj-errors';
-// const betterAjvErrors = require('better-avj-errors');
+import betterAjvErrors from 'better-ajv-errors';
+// const betterAjvErrors = require('better-ajv-errors');
 
 // You need to pass `jsonPointers: true`
 const ajv = new Ajv({ jsonPointers: true });
