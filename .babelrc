@@ -12,7 +12,10 @@
           }
         ]
       ],
-      "plugins": [["transform-object-rest-spread", { "useBuiltIns": true }]],
+      "plugins": [
+        ["transform-object-rest-spread", { "useBuiltIns": true }],
+        "add-module-exports"
+      ],
       "ignore": ["__tests__", "_fixtures__", "node_modules"]
     },
     "legacy": {
@@ -29,7 +32,8 @@
       ],
       "plugins": [
         ["transform-object-rest-spread", { "useBuiltIns": true }],
-        "transform-runtime"
+        "transform-runtime",
+        "add-module-exports"
       ],
       "ignore": ["__tests__", "_fixtures__", "node_modules"]
     },
