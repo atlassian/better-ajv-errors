@@ -5,7 +5,8 @@
   "main": "index.js",
   "author": "Rifat Nabi <to.rifat@gmail.com>",
   "license": "MIT",
-  "files": ["lib", "index.js"],
+  "typings": "typings.d.ts",
+  "files": ["lib", "index.js", "typings.d.ts"],
   "dependencies": {
     "chalk": "^2.3.0",
     "jsonpointer": "^4.0.1",
@@ -15,6 +16,7 @@
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-jest": "^21.2.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",
@@ -37,7 +39,9 @@
     "test": "node node_modules/.bin/jest"
   },
   "jest": {
-    "testMatch": ["<rootDir>/src/**/__tests__/*.js"]
+    "testMatch": [
+      "<rootDir>/src/**/__tests__/*.js"
+    ]
   },
   "prettier": {
     "singleQuote": true,
