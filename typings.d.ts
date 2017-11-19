@@ -20,7 +20,7 @@ declare namespace betterAjvErrors {
   }
 
   export interface IBetterAjvErrors {
-    (options: debug.IInputOptions): betterAjvErrors.IPrintErrors;
+    (options: betterAjvErrors.IInputOptions): betterAjvErrors.IPrintErrors;
   }
 
   export interface IPrintErrors {
