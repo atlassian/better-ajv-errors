@@ -1,8 +1,14 @@
 {
   "name": "better-ajv-errors",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "JSON Schema validation for Human",
+  "repository": "torifat/better-ajv-errors",
   "main": "index.js",
+  "keywords": [
+    "json-schema",
+    "ajv",
+    "ajv-errors"
+  ],
   "author": "Rifat Nabi <to.rifat@gmail.com>",
   "maintainers": [
     "Rifat Nabi <to.rifat@gmail.com>",
