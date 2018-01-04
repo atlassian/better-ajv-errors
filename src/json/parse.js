@@ -4,6 +4,9 @@ let column;
 let at; // The index of the current character
 let ch; // The current character
 
+export const META_SYMBOL = Symbol('meta');
+export const VALUE_SYMBOL = Symbol('value');
+
 const escapee = {
   '"': '"',
   '\\': '\\',
@@ -196,8 +199,8 @@ const object = function() {
 
   let key;
   const obj = {};
-  obj.meta = { line, column };
-  obj.value = {};
+  obj[META_SYMBOL] = { line, column };
+  obj[VALUE_SYMBOL] = {};
 
   if (ch === '{') {
     next('{');
@@ -214,9 +217,9 @@ const object = function() {
       if (Object.hasOwnProperty.call(obj, key)) {
         error("Duplicate key '" + key + "'");
       }
-      obj.value[key] = {};
-      obj.value[key].meta = { line, column: c };
-      obj.value[key].value = value();
+      obj[VALUE_SYMBOL][key] = {};
+      obj[VALUE_SYMBOL][key][META_SYMBOL] = { line, column: c };
+      obj[VALUE_SYMBOL][key][VALUE_SYMBOL] = value();
       white();
       if (ch === '}') {
         next('}');
