@@ -1,7 +1,6 @@
 import chalk from 'chalk';
-import printJson from '../json/print';
+import { print as printJson, getMetaFromPath } from '../json';
 import BaseValidationError from './base';
-import findErrorPosition from '../json/find-error-position';
 
 export default class DefaultValidationError extends BaseValidationError {
   print(schema, data) {
@@ -19,7 +18,7 @@ export default class DefaultValidationError extends BaseValidationError {
   getError(schema, data) {
     const { keyword, message, dataPath, params } = this.options;
     const jsonString = JSON.stringify(data, null, this.indent);
-    const { line, column } = findErrorPosition(jsonString, dataPath);
+    const { line, column } = getMetaFromPath(jsonString, dataPath);
 
     return {
       line,

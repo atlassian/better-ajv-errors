@@ -1,6 +1,5 @@
 import chalk from 'chalk';
-import printJson from '../json/print';
-import findErrorPosition from '../json/find-error-position';
+import { print as printJson, getMetaFromPath } from '../json';
 import BaseValidationError from './base';
 
 export default class AdditionalPropValidationError extends BaseValidationError {
@@ -17,27 +16,12 @@ export default class AdditionalPropValidationError extends BaseValidationError {
       })
     );
     return [];
-
-    // const expected = JSON.parse(JSON.stringify(data));
-    // pointer.set(
-    //   expected,
-    //   `${dataPath}/${params.additionalProperty}`,
-    //   undefined
-    // );
-    //
-    // return output.concat(
-    //   jestDiff(data, expected, {
-    //     expand: false,
-    //     aAnnotation: 'Extra',
-    //     bAnnotation: 'Missing',
-    //   })
-    // );
   }
 
   getError(schema, data) {
     const { keyword, message, dataPath, params } = this.options;
     const jsonString = JSON.stringify(data, null, this.indent);
-    const { line, column } = findErrorPosition(jsonString, dataPath);
+    const { line, column } = getMetaFromPath(jsonString, dataPath);
 
     return {
       line,

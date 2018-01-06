@@ -4,8 +4,11 @@ let column;
 let at; // The index of the current character
 let ch; // The current character
 
-export const META_SYMBOL = Symbol('meta');
-export const VALUE_SYMBOL = Symbol('value');
+const META = Symbol('meta');
+const VALUE = Symbol('value');
+
+export const getValue = (obj, key) => obj[VALUE][key] || obj[VALUE][VALUE][key];
+export const getMeta = obj => obj[META];
 
 const escapee = {
   '"': '"',
@@ -21,7 +24,6 @@ let text;
 
 const error = function(m) {
   // Call error when something is wrong.
-
   throw {
     name: 'SyntaxError',
     message: m,
@@ -199,8 +201,8 @@ const object = function() {
 
   let key;
   const obj = {};
-  obj[META_SYMBOL] = { line, column };
-  obj[VALUE_SYMBOL] = {};
+  obj[META] = { line, column };
+  obj[VALUE] = {};
 
   if (ch === '{') {
     next('{');
@@ -217,9 +219,9 @@ const object = function() {
       if (Object.hasOwnProperty.call(obj, key)) {
         error("Duplicate key '" + key + "'");
       }
-      obj[VALUE_SYMBOL][key] = {};
-      obj[VALUE_SYMBOL][key][META_SYMBOL] = { line, column: c };
-      obj[VALUE_SYMBOL][key][VALUE_SYMBOL] = value();
+      obj[VALUE][key] = {};
+      obj[VALUE][key][META] = { line, column: c };
+      obj[VALUE][key][VALUE] = value();
       white();
       if (ch === '}') {
         next('}');

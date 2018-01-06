@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import findErrorPosition from './find-error-position';
+import { getMetaFromPath } from './';
 
 export default (obj, dataPath, options = {}) => annotate => {
   const {
@@ -14,7 +14,7 @@ export default (obj, dataPath, options = {}) => annotate => {
 
   try {
     const jsonString = JSON.stringify(obj, null, indent);
-    const { line, column } = findErrorPosition(jsonString, dataPath);
+    const { line, column } = getMetaFromPath(jsonString, dataPath);
 
     const lines = jsonString.split('\n');
     const gutterWidth = lines.length.toString().length;
