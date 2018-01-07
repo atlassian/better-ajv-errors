@@ -1,0 +1,154 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`JSON can work on JSON with Array 1`] = `
+Object {
+  Symbol(meta): Object {
+    "column": 1,
+    "line": 0,
+  },
+  Symbol(value): Object {
+    "arr": Object {
+      Symbol(meta): Object {
+        "column": 3,
+        "line": 2,
+      },
+      Symbol(value): Array [
+        1,
+        Object {
+          Symbol(meta): Object {
+            "column": 5,
+            "line": 4,
+          },
+          Symbol(value): Object {
+            "foo": Object {
+              Symbol(meta): Object {
+                "column": 7,
+                "line": 5,
+              },
+              Symbol(value): "bar",
+            },
+          },
+        },
+        3,
+      ],
+    },
+    "foo": Object {
+      Symbol(meta): Object {
+        "column": 3,
+        "line": 1,
+      },
+      Symbol(value): "bar",
+    },
+  },
+}
+`;
+
+exports[`JSON can work on JSON with Array 2`] = `
+Object {
+  "column": 7,
+  "line": 5,
+}
+`;
+
+exports[`JSON can work on JSON with a key named meta 1`] = `
+Object {
+  Symbol(meta): Object {
+    "column": 1,
+    "line": 0,
+  },
+  Symbol(value): Object {
+    "foo": Object {
+      Symbol(meta): Object {
+        "column": 3,
+        "line": 1,
+      },
+      Symbol(value): "bar",
+    },
+    "meta": Object {
+      Symbol(meta): Object {
+        "column": 3,
+        "line": 2,
+      },
+      Symbol(value): Object {
+        Symbol(meta): Object {
+          "column": 11,
+          "line": 2,
+        },
+        Symbol(value): Object {
+          "isMeta": Object {
+            Symbol(meta): Object {
+              "column": 5,
+              "line": 3,
+            },
+            Symbol(value): true,
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`JSON can work on JSON with a key named meta 2`] = `
+Object {
+  "column": 5,
+  "line": 3,
+}
+`;
+
+exports[`JSON can work on JSON with a key named value 1`] = `
+Object {
+  Symbol(meta): Object {
+    "column": 1,
+    "line": 0,
+  },
+  Symbol(value): Object {
+    "foo": Object {
+      Symbol(meta): Object {
+        "column": 3,
+        "line": 1,
+      },
+      Symbol(value): "bar",
+    },
+    "value": Object {
+      Symbol(meta): Object {
+        "column": 3,
+        "line": 2,
+      },
+      Symbol(value): 20,
+    },
+  },
+}
+`;
+
+exports[`JSON can work on JSON with a key named value 2`] = `
+Object {
+  "column": 3,
+  "line": 2,
+}
+`;
+
+exports[`JSON can work on simple JSON 1`] = `
+Object {
+  Symbol(meta): Object {
+    "column": 1,
+    "line": 0,
+  },
+  Symbol(value): Object {
+    "foo": Object {
+      Symbol(meta): Object {
+        "column": 3,
+        "line": 1,
+      },
+      Symbol(value): "bar",
+    },
+  },
+}
+`;
+
+exports[`JSON can work on simple JSON 2`] = `
+Object {
+  "column": 3,
+  "line": 1,
+}
+`;

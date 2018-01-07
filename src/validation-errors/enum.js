@@ -1,8 +1,7 @@
 import chalk from 'chalk';
 import leven from 'leven';
 import pointer from 'jsonpointer';
-import printJson from '../json/print';
-import findErrorPosition from '../json/find-error-position';
+import { print as printJson, getMetaFromPath } from '../json';
 import BaseValidationError from './base';
 
 export default class EnumValidationError extends BaseValidationError {
@@ -28,7 +27,7 @@ export default class EnumValidationError extends BaseValidationError {
   getError(schema, data) {
     const { keyword, message, dataPath, params } = this.options;
     const jsonString = JSON.stringify(data, null, this.indent);
-    const { line, column } = findErrorPosition(jsonString, dataPath);
+    const { line, column } = getMetaFromPath(jsonString, dataPath);
     const bestMatch = this.findBestMatch(data);
 
     const output = {
