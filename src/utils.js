@@ -3,6 +3,7 @@ const not = fn => x => !fn(x);
 
 const isXError = x => error => error.keyword === x;
 
+export const isRequiredError = isXError('required');
 export const isAnyOfError = isXError('anyOf');
 export const isEnumError = isXError('enum');
 
