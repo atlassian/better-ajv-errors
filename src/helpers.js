@@ -4,6 +4,7 @@ import {
   getSiblings,
   isAnyOfError,
   isEnumError,
+  isRequiredError,
   concatAll,
   notUndefined,
 } from './utils';
@@ -39,9 +40,21 @@ export function makeTree(ajvErrors = []) {
 
 export function filterRedundantErrors(root, parent, key) {
   /**
+   * If there is a `required` error then we can just skip everythig else.
+   * And, also `required` should have more priority than `anyOf`. @see #8
+   */
+  getErrors(root).forEach(error => {
+    if (isRequiredError(error)) {
+      root.errors = [error];
+      root.children = {};
+    }
+  });
+
+  /**
    * If there is an `anyOf` error that means we have more meaningful errors
    * inside children. So we will just remove all errors from this level.
    */
+  // TODO: Need to check children too. There might be no children :(
   if (getErrors(root).some(isAnyOfError)) {
     root.errors = undefined;
   }
@@ -108,7 +121,6 @@ export function createErrorInstances(root, indent) {
 
 export default (ajvErrors, indent) => {
   const tree = makeTree(ajvErrors || []);
-  // debug(JSON.stringify(tree));
   filterRedundantErrors(tree);
   const errors = createErrorInstances(tree, indent);
   if (!errors) {

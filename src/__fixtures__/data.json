@@ -1,24 +1,16 @@
 {
-  "type": "doc",
   "version": 1,
+  "type": "doc",
   "content": [
     {
-      "type": "paragraph",
+      "type": "paragraph2",
       "content": [
         {
-          "type": "inlineMacro",
+          "type": "media",
           "attrs": {
-            "macroBodyHtml": 2,
-            "macroId": "gjbk",
-            "name": "mymacro",
-            "placeholderUrl": "https://",
-            "params": {}
-          }
-        },
-        {
-          "type": "rawHtmlBlob",
-          "attrs": {
-            "html": "<p>Leand<strong>ro</strong></p>"
+            "type": "file",
+            "id": "1234",
+            "collection": "SampleCollection"
           }
         }
       ]
