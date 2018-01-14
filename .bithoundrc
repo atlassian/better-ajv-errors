@@ -1,0 +1,8 @@
+{
+  "ignore": [
+    "typings.d.ts"
+  ],
+  "dependencies": {
+    "mute": [ "ajv" ]
+  }
+}
