@@ -16,13 +16,13 @@ import {
 } from './validation-errors';
 import { debug } from './debug';
 
-const JSON_POINTERS_REGEX = /\/\w+(\/\d+)?/g;
+const JSON_POINTERS_REGEX = /\/[\w_-]+(\/\d+)?/g;
 
 // Make a tree of errors from ajv errors array
 export function makeTree(ajvErrors = []) {
   const root = { children: {} };
   ajvErrors.forEach(ajvError => {
-    const { dataPath, keyword } = ajvError;
+    const { dataPath } = ajvError;
 
     // `dataPath === ''` is root
     const paths = dataPath === '' ? [''] : dataPath.match(JSON_POINTERS_REGEX);
@@ -56,7 +56,7 @@ export function filterRedundantErrors(root, parent, key) {
    */
   // TODO: Need to check children too. There might be no children :(
   if (getErrors(root).some(isAnyOfError)) {
-    root.errors = undefined;
+    delete root.errors;
   }
 
   /**
@@ -74,7 +74,7 @@ export function filterRedundantErrors(root, parent, key) {
         .filter(notUndefined)
         .some(getErrors)
     ) {
-      parent.children[key] = undefined;
+      delete parent.children[key];
     }
   }
 
