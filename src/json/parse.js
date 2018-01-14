@@ -255,7 +255,7 @@ value = function() {
 
 // Return the json_parse function. It will have access to all of the above
 // functions and variables.
-export default (source, reviver) => {
+export default source => {
   let result;
 
   text = source;

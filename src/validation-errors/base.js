@@ -4,13 +4,13 @@ export default class BaseValidationError {
     this.indent = indent;
   }
 
-  print(schema, data) {
+  print() {
     throw new Error(
       `Implement the 'print' method inside ${this.constructor.name}!`
     );
   }
 
-  getError(schema, data) {
+  getError() {
     throw new Error(
       `Implement the 'getError' method inside ${this.constructor.name}!`
     );
