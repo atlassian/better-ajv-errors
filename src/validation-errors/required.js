@@ -16,7 +16,7 @@ export default class RequiredValidationError extends BaseValidationError {
   }
 
   getError(schema, data) {
-    const { message, dataPath, params } = this.options;
+    const { dataPath, params } = this.options;
     const jsonString = JSON.stringify(data, null, this.indent);
     const { line, column } = getMetaFromPath(jsonString, dataPath);
 

@@ -12,14 +12,15 @@ export default class AdditionalPropValidationError extends BaseValidationError {
       printJson(data, `${dataPath}/${params.additionalProperty}`, {
         indent: this.indent,
       })(() => {
-        return chalk`😲  {bold ${params.additionalProperty}} is not expected to be here!`;
+        return chalk`😲  {bold ${
+          params.additionalProperty
+        }} is not expected to be here!`;
       })
     );
-    return [];
   }
 
   getError(schema, data) {
-    const { keyword, message, dataPath, params } = this.options;
+    const { dataPath, params } = this.options;
     const jsonString = JSON.stringify(data, null, this.indent);
     const { line, column } = getMetaFromPath(jsonString, dataPath);
 
