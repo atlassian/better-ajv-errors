@@ -4,6 +4,7 @@ var ver = process.versions.node;
 var majorVer = parseInt(ver.split('.')[0], 10);
 
 if (majorVer < 4) {
+  // eslint-disable-next-line no-console
   console.error(
     'Node version ' +
       ver +
