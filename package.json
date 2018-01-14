@@ -4,7 +4,11 @@
   "description": "JSON Schema validation for Human",
   "repository": "torifat/better-ajv-errors",
   "main": "index.js",
-  "keywords": ["json-schema", "ajv", "ajv-errors"],
+  "keywords": [
+    "json-schema",
+    "ajv",
+    "ajv-errors"
+  ],
   "author": "Rifat Nabi <to.rifat@gmail.com>",
   "maintainers": [
     "Rifat Nabi <to.rifat@gmail.com>",
@@ -12,7 +16,11 @@
   ],
   "license": "MIT",
   "typings": "typings.d.ts",
-  "files": ["lib", "index.js", "typings.d.ts"],
+  "files": [
+    "lib",
+    "index.js",
+    "typings.d.ts"
+  ],
   "dependencies": {
     "chalk": "^2.3.0",
     "jsonpointer": "^4.0.1",
@@ -21,7 +29,7 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
-    "babel-jest": "^21.2.0",
+    "babel-jest": "^22.0.6",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-runtime": "^6.23.0",
@@ -30,9 +38,9 @@
     "eslint": "^4.15.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-jest": "^21.6.2",
-    "flow-bin": "^0.57.3",
+    "flow-bin": "^0.63.1",
     "husky": "^0.14.3",
-    "jest": "^21.2.1",
+    "jest": "^22.0.6",
     "jest-fixtures": "^0.6.0",
     "lint-staged": "^6.0.0",
     "prettier": "^1.7.4"
@@ -53,10 +61,16 @@
     "precommit": "lint-staged"
   },
   "jest": {
-    "testMatch": ["<rootDir>/src/**/__tests__/*.js"]
+    "testMatch": [
+      "<rootDir>/src/**/__tests__/*.js"
+    ]
   },
   "lint-staged": {
-    "*.js": ["eslint --fix", "prettier --write", "git add"]
+    "*.js": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
   },
   "prettier": {
     "singleQuote": true,
