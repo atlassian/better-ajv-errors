@@ -4,23 +4,16 @@
   "description": "JSON Schema validation for Human",
   "repository": "torifat/better-ajv-errors",
   "main": "index.js",
-  "keywords": [
-    "json-schema",
-    "ajv",
-    "ajv-errors"
-  ],
+  "keywords": ["json-schema", "ajv", "ajv-errors"],
   "author": "Rifat Nabi <to.rifat@gmail.com>",
   "maintainers": [
     "Rifat Nabi <to.rifat@gmail.com>",
-    "Dmitrii Sorin <info@staypositive.ru>"
+    "Dmitrii Sorin <info@staypositive.ru>",
+    "Tong Li"
   ],
   "license": "MIT",
   "typings": "typings.d.ts",
-  "files": [
-    "lib",
-    "index.js",
-    "typings.d.ts"
-  ],
+  "files": ["lib", "index.js", "typings.d.ts"],
   "dependencies": {
     "chalk": "^2.3.0",
     "jsonpointer": "^4.0.1",
@@ -61,16 +54,10 @@
     "precommit": "lint-staged"
   },
   "jest": {
-    "testMatch": [
-      "<rootDir>/src/**/__tests__/*.js"
-    ]
+    "testMatch": ["<rootDir>/src/**/__tests__/*.js"]
   },
   "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "prettier --write",
-      "git add"
-    ]
+    "*.js": ["eslint --fix", "prettier --write", "git add"]
   },
   "prettier": {
     "singleQuote": true,
