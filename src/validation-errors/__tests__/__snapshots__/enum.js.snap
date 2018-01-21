@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Enum prints correctly for empty value 1`] = `
+Array [
+  "[31m[1mENUM[22m[39m[31m should be equal to one of the allowed values[39m",
+  "[31m(foo, bar)[39m
+",
+  "[90m1│ {[39m",
+  "[31m2│   \\"id\\": \\"\\"[39m",
+  "[36m 〉[39m",
+  "[36m 〉   ☝🏽  Unexpected value, should be equal to one of the allowed values[39m",
+  "[36m 〉[39m",
+  "[90m3│ }[39m",
+]
+`;
+
+exports[`Enum prints correctly for enum prop 1`] = `
+Array [
+  "[31m[1mENUM[22m[39m[31m should be equal to one of the allowed values[39m",
+  "[31m(foo, bar)[39m
+",
+  "[90m1│ {[39m",
+  "[31m2│   \\"id\\": \\"baz\\"[39m",
+  "[36m 〉[39m",
+  "[36m 〉   ☝🏽  Did you mean [1mbar[22m here?[39m",
+  "[36m 〉[39m",
+  "[90m3│ }[39m",
+]
+`;
+
+exports[`Enum prints correctly for no levenshtein match 1`] = `
+Array [
+  "[31m[1mENUM[22m[39m[31m should be equal to one of the allowed values[39m",
+  "[31m(one, two)[39m
+",
+  "[90m1│ {[39m",
+  "[31m2│   \\"id\\": \\"baz\\"[39m",
+  "[36m 〉[39m",
+  "[36m 〉   ☝🏽  Unexpected value, should be equal to one of the allowed values[39m",
+  "[36m 〉[39m",
+  "[90m3│ }[39m",
+]
+`;

@@ -18,7 +18,7 @@ export default class EnumValidationError extends BaseValidationError {
         if (bestMatch !== null) {
           return chalk`☝🏽  Did you mean {bold ${bestMatch}} here?`;
         } else {
-          return chalk`☝🏽  Unexpected value here`;
+          return chalk`☝🏽  Unexpected value, should be equal to one of the allowed values`;
         }
       })
     );
@@ -47,6 +47,10 @@ export default class EnumValidationError extends BaseValidationError {
     const { dataPath, params: { allowedValues } } = this.options;
     const currentValue = pointer.get(data, dataPath);
 
+    if (!currentValue) {
+      return null;
+    }
+
     const bestMatch = allowedValues
       .map(value => ({
         value,
@@ -56,7 +60,8 @@ export default class EnumValidationError extends BaseValidationError {
         (x, y) => (x.weight > y.weight ? 1 : x.weight < y.weight ? -1 : 0)
       )[0];
 
-    return allowedValues.length === 1 || bestMatch.weight < 5
+    return allowedValues.length === 1 ||
+      bestMatch.weight < bestMatch.value.length
       ? bestMatch.value
       : null;
   }
