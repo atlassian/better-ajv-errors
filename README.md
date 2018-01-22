@@ -4,7 +4,7 @@ JSON Schema validation for Human
 
 [![npm](https://img.shields.io/npm/v/better-ajv-errors.svg?style=flat-square)](https://www.npmjs.com/package/better-ajv-errors)
 [![CircleCI](https://img.shields.io/circleci/project/github/torifat/better-ajv-errors.svg?style=flat-square)](https://circleci.com/gh/torifat/better-ajv-errors)
-[![Codecov](https://img.shields.io/codecov/c/github/torifat/better-ajv-errors.svg.svg?style=flat-square)](https://codecov.io/gh/torifat/better-ajv-errors)
+[![Codecov](https://img.shields.io/codecov/c/github/torifat/better-ajv-errors.svg?style=flat-square)](https://codecov.io/gh/torifat/better-ajv-errors)
 [![bitHound](https://img.shields.io/bithound/dependencies/github/torifat/better-ajv-errors.svg?style=flat-square)](https://www.bithound.io/github/torifat/better-ajv-errors)
 
 Main goal of this library is to provide relevant error messages like the following:
