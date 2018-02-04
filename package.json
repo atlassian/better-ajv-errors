@@ -23,7 +23,9 @@
     "typings.d.ts"
   ],
   "dependencies": {
+    "@babel/code-frame": "^7.0.0-beta.39",
     "chalk": "^2.3.0",
+    "json-to-ast": "^2.0.2",
     "jsonpointer": "^4.0.1",
     "leven": "^2.1.0"
   },

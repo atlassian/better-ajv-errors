@@ -1,34 +1,31 @@
 import chalk from 'chalk';
 import leven from 'leven';
 import pointer from 'jsonpointer';
-import { print as printJson, getMetaFromPath } from '../json';
 import BaseValidationError from './base';
 
 export default class EnumValidationError extends BaseValidationError {
-  print(schema, data) {
-    const output = [];
-    const { message, dataPath, params: { allowedValues } } = this.options;
-    const bestMatch = this.findBestMatch(data);
+  print() {
+    const { message, params: { allowedValues } } = this.options;
+    const bestMatch = this.findBestMatch();
 
-    output.push(chalk`{red {bold ENUM} ${message}}`);
-    output.push(chalk`{red (${allowedValues.join(', ')})}\n`);
+    const output = [
+      chalk`{red {bold ENUM} ${message}}`,
+      chalk`{red (${allowedValues.join(', ')})}\n`,
+    ];
 
     return output.concat(
-      printJson(data, dataPath, { indent: this.indent })(() => {
-        if (bestMatch !== null) {
-          return chalk`☝🏽  Did you mean {bold ${bestMatch}} here?`;
-        } else {
-          return chalk`☝🏽  Unexpected value, should be equal to one of the allowed values`;
-        }
-      })
+      this.getCodeFrame(
+        bestMatch !== null
+          ? chalk`👈🏽  Did you mean {green ${bestMatch}} here?`
+          : chalk`☝🏽  Unexpected value, should be equal to one of the allowed values`
+      )
     );
   }
 
-  getError(schema, data) {
+  getError() {
     const { message, dataPath, params } = this.options;
-    const jsonString = JSON.stringify(data, null, this.indent);
-    const { line, column } = getMetaFromPath(jsonString, dataPath);
-    const bestMatch = this.findBestMatch(data);
+    const { line, column } = this.getLocation();
+    const bestMatch = this.findBestMatch();
 
     const output = {
       line,
@@ -43,9 +40,9 @@ export default class EnumValidationError extends BaseValidationError {
     return output;
   }
 
-  findBestMatch(data) {
+  findBestMatch() {
     const { dataPath, params: { allowedValues } } = this.options;
-    const currentValue = pointer.get(data, dataPath);
+    const currentValue = pointer.get(this.data, dataPath);
 
     if (!currentValue) {
       return null;
