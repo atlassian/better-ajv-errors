@@ -3,7 +3,7 @@ import { getMetaFromPath } from '../json';
 
 export default class BaseValidationError {
   constructor(
-    options = { isIdentifierLocation: false, isSkipEndLocation: false },
+    options = { isIdentifierLocation: false },
     { data, schema, jsonAst, jsonRaw }
   ) {
     this.options = options;

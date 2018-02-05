@@ -2,9 +2,9 @@ import chalk from 'chalk';
 import BaseValidationError from './base';
 
 export default class RequiredValidationError extends BaseValidationError {
-  constructor(...args) {
-    super(...args);
-    this.options.isSkipEndLocation = true;
+  getLocation(dataPath = this.options.dataPath) {
+    const { start } = super.getLocation(dataPath);
+    return { start };
   }
 
   print() {
@@ -13,18 +13,16 @@ export default class RequiredValidationError extends BaseValidationError {
 
     return output.concat(
       this.getCodeFrame(
-        chalk`☹️  {green ${params.missingProperty}} is missing here!`
+        chalk`☹️  {magentaBright ${params.missingProperty}} is missing here!`
       )
     );
   }
 
   getError() {
     const { params } = this.options;
-    const { line, column } = this.getLocation();
 
     return {
-      line,
-      column,
+      ...this.getLocation(),
       error: `Required property ${params.missingProperty} is missing`,
     };
   }

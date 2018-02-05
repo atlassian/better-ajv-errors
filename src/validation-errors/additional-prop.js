@@ -13,7 +13,7 @@ export default class AdditionalPropValidationError extends BaseValidationError {
 
     return output.concat(
       this.getCodeFrame(
-        chalk`😲  {green ${
+        chalk`😲  {magentaBright ${
           params.additionalProperty
         }} is not expected to be here!`,
         `${dataPath}/${params.additionalProperty}`
@@ -23,13 +23,9 @@ export default class AdditionalPropValidationError extends BaseValidationError {
 
   getError() {
     const { params, dataPath } = this.options;
-    const { line, column } = this.getLocation(
-      `${dataPath}/${params.additionalProperty}`
-    );
 
     return {
-      line,
-      column,
+      ...this.getLocation(`${dataPath}/${params.additionalProperty}`),
       error: `Property ${params.additionalProperty} is not expected to be here`,
     };
   }

@@ -3,9 +3,18 @@
 exports[`Main should support return option for additionalProperties errors 1`] = `
 Array [
   Object {
-    "column": 1,
+    "end": Object {
+      "column": 8,
+      "line": 4,
+      "offset": 37,
+    },
     "error": "Property baz is not expected to be here",
-    "line": 0,
+    "source": null,
+    "start": Object {
+      "column": 3,
+      "line": 4,
+      "offset": 32,
+    },
   },
 ]
 `;
@@ -13,9 +22,18 @@ Array [
 exports[`Main should support return option for default errors 1`] = `
 Array [
   Object {
-    "column": 3,
+    "end": Object {
+      "column": 4,
+      "line": 6,
+      "offset": 49,
+    },
     "error": "/id: type should be number",
-    "line": 1,
+    "source": null,
+    "start": Object {
+      "column": 9,
+      "line": 2,
+      "offset": 10,
+    },
   },
 ]
 `;
@@ -23,9 +41,18 @@ Array [
 exports[`Main should support return option for enum errors 1`] = `
 Array [
   Object {
-    "column": 3,
+    "end": Object {
+      "column": 14,
+      "line": 2,
+      "offset": 15,
+    },
     "error": "/id should be equal to one of the allowed values: foo, bar",
-    "line": 1,
+    "source": null,
+    "start": Object {
+      "column": 9,
+      "line": 2,
+      "offset": 10,
+    },
     "suggestion": "Did you mean bar?",
   },
 ]
@@ -34,9 +61,12 @@ Array [
 exports[`Main should support return option for required errors 1`] = `
 Array [
   Object {
-    "column": 1,
     "error": "Required property id is missing",
-    "line": 0,
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
   },
 ]
 `;

@@ -16,20 +16,18 @@ export default class EnumValidationError extends BaseValidationError {
     return output.concat(
       this.getCodeFrame(
         bestMatch !== null
-          ? chalk`👈🏽  Did you mean {green ${bestMatch}} here?`
-          : chalk`☝🏽  Unexpected value, should be equal to one of the allowed values`
+          ? chalk`👈🏽  Did you mean {magentaBright ${bestMatch}} here?`
+          : chalk`👈🏽  Unexpected value, should be equal to one of the allowed values`
       )
     );
   }
 
   getError() {
     const { message, dataPath, params } = this.options;
-    const { line, column } = this.getLocation();
     const bestMatch = this.findBestMatch();
 
     const output = {
-      line,
-      column,
+      ...this.getLocation(),
       error: `${dataPath} ${message}: ${params.allowedValues.join(', ')}`,
     };
 
