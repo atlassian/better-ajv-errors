@@ -14,7 +14,6 @@ import {
   EnumValidationError,
   DefaultValidationError,
 } from './validation-errors';
-import { debug } from './debug';
 
 const JSON_POINTERS_REGEX = /\/[\w_-]+(\/\d+)?/g;
 
@@ -124,9 +123,5 @@ export function createErrorInstances(root, options) {
 export default (ajvErrors, options) => {
   const tree = makeTree(ajvErrors || []);
   filterRedundantErrors(tree);
-  const errors = createErrorInstances(tree, options);
-  if (!errors) {
-    debug(JSON.stringify(tree));
-  }
-  return errors;
+  return createErrorInstances(tree, options);
 };
