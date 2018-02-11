@@ -7,23 +7,23 @@ export as namespace betterAjvErrors;
 
 declare namespace betterAjvErrors {
   export interface IInputOptions {
-    schema: any;
-    mode?: 'print' | 'return';
-    indent?: number;
+    format?: 'cli' | 'js';
+    indent?: number | null;
   }
 
   export interface IOutputError {
+    start: { line: number; column: number; offset: number };
+    end?: { line: number; column: number; offset: number };
     error: string;
-    line: number;
-    column: number;
     suggestion?: string;
   }
 
   export interface IBetterAjvErrors {
-    (options: betterAjvErrors.IInputOptions): betterAjvErrors.IPrintErrors;
-  }
-
-  export interface IPrintErrors {
-    (data: any, errors: ErrorObject[]): betterAjvErrors.IOutputError[] | void;
+    (
+      schema: any,
+      data: any,
+      errors: ErrorObject[],
+      options: betterAjvErrors.IInputOptions
+    ): betterAjvErrors.IOutputError[] | void;
   }
 }

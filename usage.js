@@ -12,8 +12,12 @@ const ajv = new Ajv({ jsonPointers: true });
 const validate = ajv.compile(schema);
 const valid = validate(data);
 
-const print = betterAjvErrors({ schema, mode: 'print', indent: 2 });
+const output = betterAjvErrors(schema, data, validate.errors, {
+  indent: 2,
+  format: 'js',
+});
 
 if (!valid) {
-  print(data, validate.errors);
+  // eslint-disable-next-line no-console
+  console.log(output);
 }

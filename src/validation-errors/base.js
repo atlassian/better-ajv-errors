@@ -20,7 +20,10 @@ export default class BaseValidationError {
       dataPath,
       isIdentifierLocation
     );
-    return isSkipEndLocation ? { ...loc, end: undefined } : loc;
+    return {
+      start: loc.start,
+      end: isSkipEndLocation ? undefined : loc.end,
+    };
   }
 
   getCodeFrame(message, dataPath = this.options.dataPath) {

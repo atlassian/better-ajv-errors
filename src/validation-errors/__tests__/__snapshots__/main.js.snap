@@ -1,64 +1,61 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Main should support return option for additionalProperties errors 1`] = `
+exports[`Main should support js output format for additionalProperties errors 1`] = `
 Array [
   Object {
     "end": Object {
-      "column": 8,
-      "line": 4,
-      "offset": 37,
+      "column": 27,
+      "line": 1,
+      "offset": 26,
     },
     "error": "Property baz is not expected to be here",
-    "source": null,
     "start": Object {
-      "column": 3,
-      "line": 4,
-      "offset": 32,
+      "column": 22,
+      "line": 1,
+      "offset": 21,
     },
   },
 ]
 `;
 
-exports[`Main should support return option for default errors 1`] = `
+exports[`Main should support js output format for default errors 1`] = `
 Array [
   Object {
     "end": Object {
-      "column": 4,
-      "line": 6,
-      "offset": 49,
+      "column": 25,
+      "line": 1,
+      "offset": 24,
     },
     "error": "/id: type should be number",
-    "source": null,
     "start": Object {
-      "column": 9,
-      "line": 2,
-      "offset": 10,
+      "column": 7,
+      "line": 1,
+      "offset": 6,
     },
   },
 ]
 `;
 
-exports[`Main should support return option for enum errors 1`] = `
+exports[`Main should support js output format for enum errors 1`] = `
 Array [
   Object {
     "end": Object {
-      "column": 14,
-      "line": 2,
-      "offset": 15,
+      "column": 12,
+      "line": 1,
+      "offset": 11,
     },
     "error": "/id should be equal to one of the allowed values: foo, bar",
-    "source": null,
     "start": Object {
-      "column": 9,
-      "line": 2,
-      "offset": 10,
+      "column": 7,
+      "line": 1,
+      "offset": 6,
     },
     "suggestion": "Did you mean bar?",
   },
 ]
 `;
 
-exports[`Main should support return option for required errors 1`] = `
+exports[`Main should support js output format for required errors 1`] = `
 Array [
   Object {
     "error": "Required property id is missing",
