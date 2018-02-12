@@ -1,5 +1,7 @@
 # better-ajv-errors
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/torifat/better-ajv-errors.svg)](https://greenkeeper.io/)
+
 JSON Schema validation for Human
 
 [![npm](https://img.shields.io/npm/v/better-ajv-errors.svg?style=flat-square)](https://www.npmjs.com/package/better-ajv-errors)
