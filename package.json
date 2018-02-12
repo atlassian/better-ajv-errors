@@ -24,7 +24,7 @@
   ],
   "dependencies": {
     "@babel/code-frame": "^7.0.0-beta.39",
-    "chalk": "^2.3.0",
+    "chalk": "^2.3.1",
     "json-to-ast": "^2.0.2",
     "jsonpointer": "^4.0.1",
     "leven": "^2.1.0"
@@ -32,20 +32,20 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
-    "babel-jest": "^22.1.0",
+    "babel-jest": "^22.2.2",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",
     "codecov": "^3.0.0",
-    "eslint": "^4.16.0",
+    "eslint": "^4.17.0",
     "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-jest": "^21.7.0",
-    "flow-bin": "^0.63.1",
+    "eslint-plugin-jest": "^21.8.0",
+    "flow-bin": "^0.65.0",
     "husky": "^0.14.3",
-    "jest": "^22.1.4",
+    "jest": "^22.2.2",
     "jest-fixtures": "^0.6.0",
-    "lint-staged": "^6.0.1",
+    "lint-staged": "^6.1.0",
     "prettier": "^1.7.4"
   },
   "peerDependencies": {
