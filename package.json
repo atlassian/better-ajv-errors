@@ -39,7 +39,7 @@
     "eslint": "^4.16.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-jest": "^21.7.0",
-    "flow-bin": "^0.63.1",
+    "flow-bin": "^0.65.0",
     "husky": "^0.14.3",
     "jest": "^22.1.4",
     "jest-fixtures": "^0.6.0",
