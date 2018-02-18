@@ -4,9 +4,7 @@ exports[`Required prints correctly for missing required prop 1`] = `
 Array [
   "[31m[1mREQUIRED[22m[39m[31m should have required property 'id'[39m
 ",
-  "[31m1│ {}[39m",
-  "[36m 〉[39m",
-  "[36m 〉 ☹️  [1mid[22m is missing here![39m",
-  "[36m 〉[39m",
+  "[0m[31m[1m>[22m[39m[90m 1 | [39m{}[0m
+[0m [90m   | [39m[31m[1m^[22m[39m [31m[1m☹️  [95mid[31m is missing here![22m[39m[0m",
 ]
 `;

@@ -14,7 +14,6 @@ import {
   EnumValidationError,
   DefaultValidationError,
 } from './validation-errors';
-import { debug } from './debug';
 
 const JSON_POINTERS_REGEX = /\/[\w_-]+(\/\d+)?/g;
 
@@ -83,7 +82,7 @@ export function filterRedundantErrors(root, parent, key) {
   );
 }
 
-export function createErrorInstances(root, indent) {
+export function createErrorInstances(root, options) {
   const errors = getErrors(root);
   if (errors.length && errors.every(isEnumError)) {
     const allowedValues = concatAll([])(
@@ -96,7 +95,7 @@ export function createErrorInstances(root, indent) {
           ...error,
           params: { allowedValues },
         },
-        indent
+        options
       ),
     ];
   } else {
@@ -104,27 +103,25 @@ export function createErrorInstances(root, indent) {
       errors.reduce((ret, error) => {
         switch (error.keyword) {
           case 'additionalProperties':
-            return ret.concat(new AdditionalPropValidationError(error, indent));
+            return ret.concat(
+              new AdditionalPropValidationError(error, options)
+            );
           case 'required':
-            return ret.concat(new RequiredValidationError(error, indent));
+            return ret.concat(new RequiredValidationError(error, options));
           default:
-            return ret.concat(new DefaultValidationError(error, indent));
+            return ret.concat(new DefaultValidationError(error, options));
         }
       }, [])
     )(
       getChildren(root).map(child => {
-        return createErrorInstances(child, indent);
+        return createErrorInstances(child, options);
       })
     );
   }
 }
 
-export default (ajvErrors, indent) => {
+export default (ajvErrors, options) => {
   const tree = makeTree(ajvErrors || []);
   filterRedundantErrors(tree);
-  const errors = createErrorInstances(tree, indent);
-  if (!errors) {
-    debug(JSON.stringify(tree));
-  }
-  return errors;
+  return createErrorInstances(tree, options);
 };

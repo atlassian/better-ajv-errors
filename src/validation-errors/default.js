@@ -1,28 +1,21 @@
 import chalk from 'chalk';
-import { print as printJson, getMetaFromPath } from '../json';
 import BaseValidationError from './base';
 
 export default class DefaultValidationError extends BaseValidationError {
-  print(schema, data) {
-    const output = [];
-    const { keyword, message, dataPath } = this.options;
-    output.push(chalk`{red {bold ${keyword}} ${message}}\n`);
+  print() {
+    const { keyword, message } = this.options;
+    const output = [chalk`{red {bold ${keyword.toUpperCase()}} ${message}}\n`];
 
     return output.concat(
-      printJson(data, dataPath, { indent: this.indent })(() => {
-        return chalk`☝🏽  ${keyword} ${message}`;
-      })
+      this.getCodeFrame(chalk`👈🏽  {magentaBright ${keyword}} ${message}`)
     );
   }
 
-  getError(schema, data) {
+  getError() {
     const { keyword, message, dataPath } = this.options;
-    const jsonString = JSON.stringify(data, null, this.indent);
-    const { line, column } = getMetaFromPath(jsonString, dataPath);
 
     return {
-      line,
-      column,
+      ...this.getLocation(),
       error: `${dataPath}: ${keyword} ${message}`,
     };
   }
