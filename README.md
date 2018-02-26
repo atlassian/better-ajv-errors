@@ -27,7 +27,7 @@ First, you need to validate your payload with `ajv`. If it's invalid then you ca
 
 ```js
 import Ajv from 'ajv';
-import * as betterAjvErrors from 'better-ajv-errors';
+import betterAjvErrors from 'better-ajv-errors';
 // const Ajv = require('ajv');
 // const betterAjvErrors = require('better-ajv-errors');
 
