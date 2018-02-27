@@ -2,7 +2,7 @@ import { ErrorObject } from 'ajv';
 
 declare var betterAjvErrors: betterAjvErrors.IBetterAjvErrors;
 
-export = betterAjvErrors;
+export default betterAjvErrors;
 export as namespace betterAjvErrors;
 
 declare namespace betterAjvErrors {
