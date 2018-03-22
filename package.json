@@ -15,7 +15,7 @@
     "Dmitrii Sorin <info@staypositive.ru>",
     "Tong Li"
   ],
-  "license": "MIT",
+  "license": "Apache-2.0",
   "typings": "typings.d.ts",
   "files": [
     "lib",
