@@ -22,8 +22,8 @@ declare namespace betterAjvErrors {
     (
       schema: any,
       data: any,
-      errors: ErrorObject[] | null | undefined,
-      options: betterAjvErrors.IInputOptions | undefined
+      errors?: ErrorObject[] | null,
+      options?: betterAjvErrors.IInputOptions
     ): betterAjvErrors.IOutputError[] | void;
   }
 }
