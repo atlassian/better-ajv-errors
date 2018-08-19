@@ -3,7 +3,7 @@
     "modern": {
       "presets": [
         [
-          "env",
+          "@babel/env",
           {
             "targets": {
               "node": "8"
@@ -13,7 +13,7 @@
         ]
       ],
       "plugins": [
-        ["transform-object-rest-spread", { "useBuiltIns": true }],
+        ["@babel/syntax-object-rest-spread"],
         "add-module-exports"
       ],
       "ignore": ["__tests__", "_fixtures__", "node_modules"]
@@ -21,7 +21,7 @@
     "legacy": {
       "presets": [
         [
-          "env",
+          "@babel/env",
           {
             "targets": {
               "node": "4"
@@ -31,8 +31,8 @@
         ]
       ],
       "plugins": [
-        ["transform-object-rest-spread", { "useBuiltIns": true }],
-        "transform-runtime",
+        ["@babel/syntax-object-rest-spread"],
+        "@babel/transform-runtime",
         "add-module-exports"
       ],
       "ignore": ["__tests__", "_fixtures__", "node_modules"]
@@ -40,7 +40,7 @@
     "test": {
       "presets": [
         [
-          "env",
+          "@babel/env",
           {
             "targets": {
               "node": "current"
@@ -48,7 +48,7 @@
           }
         ]
       ],
-      "plugins": [["transform-object-rest-spread", { "useBuiltIns": true }]]
+      "plugins": [["@babel/syntax-object-rest-spread"]]
     }
   }
 }
