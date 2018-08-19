@@ -16,7 +16,7 @@
         ["@babel/syntax-object-rest-spread"],
         "add-module-exports"
       ],
-      "ignore": ["__tests__", "_fixtures__", "node_modules"]
+      "ignore": ["**/__tests__", "**/__fixtures__", "node_modules"]
     },
     "legacy": {
       "presets": [
@@ -35,7 +35,7 @@
         "@babel/transform-runtime",
         "add-module-exports"
       ],
-      "ignore": ["__tests__", "_fixtures__", "node_modules"]
+      "ignore": ["**/__tests__", "**/__fixtures__", "node_modules"]
     },
     "test": {
       "presets": [
