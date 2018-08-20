@@ -1,6 +1,6 @@
 {
   "name": "better-ajv-errors",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "JSON Schema validation for Human",
   "repository": "torifat/better-ajv-errors",
   "main": "index.js",
