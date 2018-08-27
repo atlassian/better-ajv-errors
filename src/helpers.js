@@ -52,10 +52,14 @@ export function filterRedundantErrors(root, parent, key) {
   /**
    * If there is an `anyOf` error that means we have more meaningful errors
    * inside children. So we will just remove all errors from this level.
+   *
+   * If there are no children, then we don't delete the errors since we should
+   * have at least one error to report.
    */
-  // TODO: Need to check children too. There might be no children :(
   if (getErrors(root).some(isAnyOfError)) {
-    delete root.errors;
+    if (Object.keys(root.children).length > 0) {
+      delete root.errors;
+    }
   }
 
   /**
