@@ -177,28 +177,6 @@ describe('filterRedundantErrors', () => {
     };
 
     filterRedundantErrors(tree);
-    expect(tree).toEqual({
-      children: {
-        '/object': {
-          children: {
-            '/type': {
-              children: {},
-              errors: [
-                {
-                  keyword: 'type',
-                },
-                {
-                  keyword: 'type',
-                },
-                {
-                  keyword: 'anyOf',
-                },
-              ],
-            },
-          },
-          errors: [],
-        },
-      },
-    });
+    expect(tree).toMatchSnapshot();
   });
 });

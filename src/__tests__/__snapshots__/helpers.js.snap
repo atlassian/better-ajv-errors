@@ -56,6 +56,32 @@ Object {
 }
 `;
 
+exports[`filterRedundantErrors should not remove anyOf errors if there are no children 1`] = `
+Object {
+  "children": Object {
+    "/object": Object {
+      "children": Object {
+        "/type": Object {
+          "children": Object {},
+          "errors": Array [
+            Object {
+              "keyword": "type",
+            },
+            Object {
+              "keyword": "type",
+            },
+            Object {
+              "keyword": "anyOf",
+            },
+          ],
+        },
+      },
+      "errors": Array [],
+    },
+  },
+}
+`;
+
 exports[`filterRedundantErrors should prioritize required 1`] = `
 Object {
   "children": Object {
