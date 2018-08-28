@@ -150,4 +150,33 @@ describe('filterRedundantErrors', () => {
     filterRedundantErrors(tree);
     expect(tree).toMatchSnapshot();
   });
+
+  it('should not remove anyOf errors if there are no children', async () => {
+    const tree = {
+      children: {
+        '/object': {
+          children: {
+            '/type': {
+              children: {},
+              errors: [
+                {
+                  keyword: 'type',
+                },
+                {
+                  keyword: 'type',
+                },
+                {
+                  keyword: 'anyOf',
+                },
+              ],
+            },
+          },
+          errors: [],
+        },
+      },
+    };
+
+    filterRedundantErrors(tree);
+    expect(tree).toMatchSnapshot();
+  });
 });
