@@ -8,12 +8,13 @@
             "targets": {
               "node": "8"
             },
+            "useBuiltIns": "usage",
             "loose": true
           }
         ]
       ],
       "plugins": [
-        ["@babel/syntax-object-rest-spread"],
+        "@babel/syntax-object-rest-spread",
         "add-module-exports"
       ],
       "ignore": ["**/__tests__", "**/__fixtures__", "node_modules"]
@@ -26,12 +27,13 @@
             "targets": {
               "node": "4"
             },
+            "useBuiltIns": "usage",
             "loose": true
           }
         ]
       ],
       "plugins": [
-        ["@babel/syntax-object-rest-spread"],
+        "@babel/syntax-object-rest-spread",
         "@babel/transform-runtime",
         "add-module-exports"
       ],
@@ -48,7 +50,7 @@
           }
         ]
       ],
-      "plugins": [["@babel/syntax-object-rest-spread"]]
+      "plugins": ["@babel/syntax-object-rest-spread"]
     }
   }
 }
