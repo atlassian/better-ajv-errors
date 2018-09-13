@@ -8,15 +8,12 @@
             "targets": {
               "node": "8"
             },
-            "useBuiltIns": "usage",
+            "useBuiltIns": false,
             "loose": true
           }
         ]
       ],
-      "plugins": [
-        "@babel/syntax-object-rest-spread",
-        "add-module-exports"
-      ],
+      "plugins": ["@babel/syntax-object-rest-spread", "add-module-exports"],
       "ignore": ["**/__tests__", "**/__fixtures__", "node_modules"]
     },
     "legacy": {
