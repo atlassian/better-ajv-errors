@@ -19,11 +19,11 @@ export default class RequiredValidationError extends BaseValidationError {
   }
 
   getError() {
-    const { params } = this.options;
+    const { message, dataPath, params } = this.options;
 
     return {
       ...this.getLocation(),
-      error: `Required property ${params.missingProperty} is missing`,
+      error: `${dataPath} ${message}`,
     };
   }
 }
