@@ -26,6 +26,7 @@
     "@babel/code-frame": "^7.0.0",
     "@babel/runtime": "^7.0.0",
     "chalk": "^2.4.1",
+    "core-js": "^2.5.7",
     "json-to-ast": "^2.0.3",
     "jsonpointer": "^4.0.1",
     "leven": "^2.1.0"
