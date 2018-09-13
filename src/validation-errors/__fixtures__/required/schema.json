@@ -1,11 +1,14 @@
 {
   "type": "object",
   "properties": {
-    "id": {
-      "type": "number"
+    "nested": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number"
+        }
+      },
+      "required": ["id"]
     }
-  },
-  "required": [
-    "id"
-  ]
+  }
 }

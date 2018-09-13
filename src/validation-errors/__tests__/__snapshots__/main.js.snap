@@ -58,11 +58,11 @@ Array [
 exports[`Main should support js output format for required errors 1`] = `
 Array [
   Object {
-    "error": "Required property id is missing",
+    "error": "/nested should have required property 'id'",
     "start": Object {
-      "column": 1,
+      "column": 11,
       "line": 1,
-      "offset": 0,
+      "offset": 10,
     },
   },
 ]

@@ -11,7 +11,7 @@ describe('Required', () => {
     const error = new RequiredValidationError(
       {
         keyword: 'required',
-        dataPath: '',
+        dataPath: '/nested',
         schemaPath: '#/required',
         params: { missingProperty: 'id' },
         message: `should have required property 'id'`,
