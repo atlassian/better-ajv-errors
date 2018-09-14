@@ -4,6 +4,7 @@ exports[`Integration Test -  shows better error for 'link-without-attrs.json 1`]
 Array [
   Object {
     "error": "/content/0:paragraph/content/0:text/marks/0:link should have required property 'attrs'",
+    "path": "/content/0/content/0/marks/0",
     "start": Object {
       "column": 106,
       "line": 1,

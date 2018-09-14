@@ -34,6 +34,7 @@ export default class EnumValidationError extends BaseValidationError {
       error: `${this.getDecoratedPath(
         dataPath
       )} ${message}: ${params.allowedValues.join(', ')}`,
+      path: dataPath,
     };
 
     if (bestMatch !== null) {
