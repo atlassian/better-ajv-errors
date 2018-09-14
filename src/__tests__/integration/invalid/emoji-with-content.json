@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "type": "doc",
+  "content": [
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "emoji",
+          "attrs": {
+            "id": "1fd"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "type": "doc",
+  "content": [
+    {
+      "type": "bodiedExtension",
+      "attrs": {
+        "extensionType": "com.atlassian.confluence.macro"
+      },
+      "content": [
+        {
+          "type": "paragraph",
+          "content": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "type": "doc",
+  "content": [
+    {
+      "type": "panel",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "foo"
+            }
+          ]
+        }
+      ],
+      "attrs": {
+        "panelType": "info"
+      },
+      "marks": []
+    }
+  ]
+}

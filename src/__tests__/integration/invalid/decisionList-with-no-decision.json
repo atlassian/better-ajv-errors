@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "type": "doc",
+  "content": [
+    {
+      "type": "decisionList",
+      "attrs": {
+        "order": 1
+      },
+      "content": []
+    }
+  ]
+}

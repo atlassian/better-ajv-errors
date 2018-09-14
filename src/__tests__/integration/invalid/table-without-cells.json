@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "type": "doc",
+  "content": [
+    {
+      "type": "table",
+      "content": [
+        {
+          "type": "tableRow",
+          "content": null
+        }
+      ]
+    }
+  ]
+}

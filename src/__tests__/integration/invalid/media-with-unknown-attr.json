@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "type": "doc",
+  "content": [
+    {
+      "type": "mediaGroup",
+      "content": [
+        {
+          "type": "media",
+          "attrs": {
+            "type": "file",
+            "id": "1234",
+            "foo": "bar"
+          }
+        }
+      ]
+    }
+  ]
+}

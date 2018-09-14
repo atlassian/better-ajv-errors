@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "type": "doc",
+  "content": [
+    {
+      "type": "orderedList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "blockquote",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "foo"
+                    }
+                  ]
+                }
+              ],
+              "attrs": {}
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

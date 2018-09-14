@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "type": "doc",
+  "content": [
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "mention",
+          "attrs": {
+            "id": "test-id",
+            "text": "Test User",
+            "eyeColor": "brown"
+          }
+        }
+      ]
+    }
+  ]
+}

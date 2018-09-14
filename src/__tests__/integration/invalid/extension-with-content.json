@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "type": "doc",
+  "content": [
+    {
+      "type": "extension",
+      "attrs": {
+        "extensionType": "com.atlassian.confluence.macro",
+        "extensionKey": "gallery"
+      },
+      "content": [
+        {
+          "type": "paragraph",
+          "content": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "type": "doc",
+  "content": [
+    {
+      "type": "taskList",
+      "attrs": {
+        "order": 1
+      },
+      "content": []
+    }
+  ]
+}

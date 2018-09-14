@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "type": "doc",
+  "content": [
+    {
+      "type": "taskList",
+      "attrs": {
+        "localId": "test-list-id"
+      },
+      "content": [
+        {
+          "type": "taskItem",
+          "attrs": {
+            "localId": "test-id",
+            "state": "NOPE"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Nope"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

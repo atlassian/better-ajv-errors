@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "type": "doc",
+  "content": [
+    {
+      "type": "extension",
+      "attrs": {
+        "extensionKey": "gallery"
+      }
+    }
+  ]
+}

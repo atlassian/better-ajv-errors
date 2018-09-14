@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "type": "doc",
+  "content": [
+    {
+      "type": "codeBlock",
+      "content": [],
+      "attrs": {
+        "foo": "bar"
+      }
+    }
+  ]
+}

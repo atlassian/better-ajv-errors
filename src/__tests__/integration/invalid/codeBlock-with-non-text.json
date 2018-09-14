@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "type": "doc",
+  "content": [
+    {
+      "type": "codeBlock",
+      "content": [
+        {
+          "type": "rule"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "type": "doc",
+  "content": [
+    {
+      "type": "orderedList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": []
+        }
+      ]
+    }
+  ]
+}

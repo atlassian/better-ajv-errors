@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "type": "doc",
+  "content": [
+    {
+      "type": "decisionList",
+      "attrs": {
+        "order": 1,
+        "localId": "test-list-id"
+      },
+      "content": [
+        {
+          "type": "decisionItem",
+          "attrs": {
+            "localId": "test-id",
+            "state": "DECIDED"
+          },
+          "content": []
+        }
+      ]
+    }
+  ]
+}

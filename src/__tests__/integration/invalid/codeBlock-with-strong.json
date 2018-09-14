@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "type": "doc",
+  "content": [
+    {
+      "type": "codeBlock",
+      "content": [
+        {
+          "type": "text",
+          "marks": [
+            {
+              "type": "strong"
+            }
+          ],
+          "text": "foo"
+        }
+      ]
+    }
+  ]
+}

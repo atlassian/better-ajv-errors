@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "type": "doc",
+  "content": [
+    {
+      "type": "table",
+      "content": [
+        {
+          "type": "tableRow",
+          "content": [
+            {
+              "type": "tableHeader",
+              "attrs": {
+                "colspan": 1,
+                "rowspan": 1,
+                "background": null
+              },
+              "content": [
+                {
+                  "type": "table",
+                  "content": [
+                    {
+                      "type": "tableRow",
+                      "content": [
+                        {
+                          "type": "tableCell",
+                          "attrs": {
+                            "colspan": 1,
+                            "rowspan": 1,
+                            "background": null
+                          },
+                          "content": [
+                            {
+                              "type": "paragraph",
+                              "content": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

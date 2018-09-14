@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "type": "doc",
+  "content": [
+    {
+      "type": "panel",
+      "content": [
+        {
+          "type": "codeBlock",
+          "content": [],
+          "attrs": {
+            "language": "javascript"
+          },
+          "marks": []
+        }
+      ],
+      "attrs": {
+        "panelType": "tip"
+      }
+    }
+  ]
+}
