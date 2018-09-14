@@ -16,7 +16,7 @@ export default class DefaultValidationError extends BaseValidationError {
 
     return {
       ...this.getLocation(),
-      error: `${dataPath}: ${keyword} ${message}`,
+      error: `${this.getDecoratedPath(dataPath)}: ${keyword} ${message}`,
     };
   }
 }

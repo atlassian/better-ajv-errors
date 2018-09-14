@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Integration Test -  shows better error for 'link-without-attrs.json 1`] = `
+Array [
+  Object {
+    "error": "/content/0:paragraph/content/0:text/marks/0:link should have required property 'attrs'",
+    "start": Object {
+      "column": 106,
+      "line": 1,
+      "offset": 105,
+    },
+  },
+]
+`;

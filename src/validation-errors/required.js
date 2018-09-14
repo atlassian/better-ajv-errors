@@ -19,11 +19,11 @@ export default class RequiredValidationError extends BaseValidationError {
   }
 
   getError() {
-    const { message, dataPath, params } = this.options;
+    const { message, dataPath } = this.options;
 
     return {
       ...this.getLocation(),
-      error: `${dataPath} ${message}`,
+      error: `${this.getDecoratedPath(dataPath)} ${message}`,
     };
   }
 }
