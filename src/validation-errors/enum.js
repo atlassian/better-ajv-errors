@@ -5,7 +5,10 @@ import BaseValidationError from './base';
 
 export default class EnumValidationError extends BaseValidationError {
   print() {
-    const { message, params: { allowedValues } } = this.options;
+    const {
+      message,
+      params: { allowedValues },
+    } = this.options;
     const bestMatch = this.findBestMatch();
 
     const output = [
@@ -28,7 +31,10 @@ export default class EnumValidationError extends BaseValidationError {
 
     const output = {
       ...this.getLocation(),
-      error: `${dataPath} ${message}: ${params.allowedValues.join(', ')}`,
+      error: `${this.getDecoratedPath(
+        dataPath
+      )} ${message}: ${params.allowedValues.join(', ')}`,
+      path: dataPath,
     };
 
     if (bestMatch !== null) {
@@ -39,7 +45,10 @@ export default class EnumValidationError extends BaseValidationError {
   }
 
   findBestMatch() {
-    const { dataPath, params: { allowedValues } } = this.options;
+    const {
+      dataPath,
+      params: { allowedValues },
+    } = this.options;
     const currentValue = pointer.get(this.data, dataPath);
 
     if (!currentValue) {

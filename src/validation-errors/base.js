@@ -1,5 +1,5 @@
 import { codeFrameColumns } from '@babel/code-frame';
-import { getMetaFromPath } from '../json';
+import { getMetaFromPath, getDecoratedDataPath } from '../json';
 
 export default class BaseValidationError {
   constructor(
@@ -24,6 +24,11 @@ export default class BaseValidationError {
       start: loc.start,
       end: isSkipEndLocation ? undefined : loc.end,
     };
+  }
+
+  getDecoratedPath(dataPath = this.options.dataPath) {
+    const decoratedPath = getDecoratedDataPath(this.jsonAst, dataPath);
+    return decoratedPath;
   }
 
   getCodeFrame(message, dataPath = this.options.dataPath) {
