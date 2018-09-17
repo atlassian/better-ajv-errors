@@ -1,4 +1,4 @@
-export default function getMetaFromPath(jsonAst, dataPath) {
+export default function getDecoratedDataPath(jsonAst, dataPath) {
   // TODO: Handle json pointer escape notation and better error handling
   const pointers = dataPath.split('/').slice(1);
   let decoratedPath = '';

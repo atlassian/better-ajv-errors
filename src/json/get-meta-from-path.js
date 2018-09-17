@@ -6,11 +6,9 @@ export default function getMetaFromPath(
   // TODO: Handle json pointer escape notation and better error handling
   const pointers = dataPath.split('/').slice(1);
   const lastPointerIndex = pointers.length - 1;
-  let decoratedPath = '';
   return pointers.reduce((obj, pointer, idx) => {
     switch (obj.type) {
       case 'Object': {
-        decoratedPath += `/${pointer}`;
         const filtered = obj.children.filter(
           child => child.key.value === pointer
         );
@@ -21,21 +19,10 @@ export default function getMetaFromPath(
         return isIdentifierLocation && idx === lastPointerIndex ? key : value;
       }
       case 'Array':
-        decoratedPath += `/${pointer}(${getTypeName(obj.children[pointer])})`;
         return obj.children[pointer];
       default:
         // eslint-disable-next-line no-console
         console.log(obj);
     }
   }, jsonAst);
-}
-
-function getTypeName(obj) {
-  const type = obj.children.filter(child => child.key.value === 'type');
-
-  if (!type.length) {
-    return '';
-  }
-
-  return (type[0].value && type[0].value.value) || '';
 }
