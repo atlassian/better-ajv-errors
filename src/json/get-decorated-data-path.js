@@ -26,6 +26,9 @@ export default function getDecoratedDataPath(jsonAst, dataPath) {
 }
 
 function getTypeName(obj) {
+  if (!obj.children) {
+    return '';
+  }
   const type = obj.children.filter(child => child.key.value === 'type');
 
   if (!type.length) {
