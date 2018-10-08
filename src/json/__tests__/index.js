@@ -36,4 +36,10 @@ describe('JSON', () => {
     expect(getMetaFromPath(jsonAst, '/arr/1/foo')).toMatchSnapshot();
     expect(getMetaFromPath(jsonAst, '/arr/1/foo', true)).toMatchSnapshot();
   });
+
+  it('can work on JSON with Array with empty children', async () => {
+    const rawJson = await loadScenario(4);
+    const jsonAst = parse(rawJson, { loc: true });
+    expect(getMetaFromPath(jsonAst, '/arr/3')).toMatchSnapshot();
+  });
 });
