@@ -42,25 +42,7 @@ Object {
 }
 `;
 
-exports[`JSON can work on JSON with Array with empty children 1`] = `
-Object {
-  "children": Array [],
-  "loc": Object {
-    "end": Object {
-      "column": 7,
-      "line": 9,
-      "offset": 81,
-    },
-    "source": null,
-    "start": Object {
-      "column": 5,
-      "line": 9,
-      "offset": 79,
-    },
-  },
-  "type": "Object",
-}
-`;
+exports[`JSON can work on JSON with Array with empty children 1`] = `"/arr/4"`;
 
 exports[`JSON can work on JSON with a key named meta 1`] = `
 Object {
