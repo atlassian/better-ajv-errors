@@ -2,7 +2,7 @@ export default function getDecoratedDataPath(jsonAst, dataPath) {
   // TODO: Handle json pointer escape notation and better error handling
   const pointers = dataPath.split('/').slice(1);
   let decoratedPath = '';
-  pointers.reduce((obj, pointer, idx) => {
+  pointers.reduce((obj, pointer) => {
     switch (obj.type) {
       case 'Object': {
         decoratedPath += `/${pointer}`;
@@ -26,6 +26,9 @@ export default function getDecoratedDataPath(jsonAst, dataPath) {
 }
 
 function getTypeName(obj) {
+  if (!obj || !obj.children) {
+    return '';
+  }
   const type = obj.children.filter(child => child.key.value === 'type');
 
   if (!type.length) {

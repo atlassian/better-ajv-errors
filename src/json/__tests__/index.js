@@ -1,7 +1,7 @@
 import { readFileSync } from 'fs';
 import parse from 'json-to-ast';
 import { getFixturePath } from 'jest-fixtures';
-import { getMetaFromPath } from '../';
+import { getMetaFromPath, getDecoratedDataPath } from '../';
 
 async function loadScenario(n) {
   const fixturePath = await getFixturePath(__dirname, `scenario-${n}.json`);
@@ -35,5 +35,11 @@ describe('JSON', () => {
     const jsonAst = parse(rawJson, { loc: true });
     expect(getMetaFromPath(jsonAst, '/arr/1/foo')).toMatchSnapshot();
     expect(getMetaFromPath(jsonAst, '/arr/1/foo', true)).toMatchSnapshot();
+  });
+
+  it('can work on JSON with Array with empty children', async () => {
+    const rawJson = await loadScenario(4);
+    const jsonAst = parse(rawJson, { loc: true });
+    expect(getDecoratedDataPath(jsonAst, '/arr/4')).toMatchSnapshot();
   });
 });

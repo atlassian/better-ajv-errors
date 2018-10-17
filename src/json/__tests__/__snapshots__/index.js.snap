@@ -42,6 +42,8 @@ Object {
 }
 `;
 
+exports[`JSON can work on JSON with Array with empty children 1`] = `"/arr/4"`;
+
 exports[`JSON can work on JSON with a key named meta 1`] = `
 Object {
   "loc": Object {

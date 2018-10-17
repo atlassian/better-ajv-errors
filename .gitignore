@@ -3,3 +3,4 @@
 /coverage/
 *.log
 .vscode
+package-lock.json
