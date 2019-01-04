@@ -3,8 +3,15 @@ export default function getMetaFromPath(
   dataPath,
   isIdentifierLocation
 ) {
-  // TODO: Handle json pointer escape notation and better error handling
+  // TODO: Better error handling
   const pointers = dataPath.split('/').slice(1);
+  for (const index in pointers) {
+    pointers[index] = pointers[index]
+      .split('~1')
+      .join('/')
+      .split('~0')
+      .join('~');
+  }
   const lastPointerIndex = pointers.length - 1;
   return pointers.reduce((obj, pointer, idx) => {
     switch (obj.type) {
