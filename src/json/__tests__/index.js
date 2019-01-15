@@ -57,5 +57,21 @@ describe('JSON', () => {
     });
     const jsonAst = parse(rawJsonWithArrayItem, { loc: true });
     expect(getDecoratedDataPath(jsonAst, '/arr/3')).toMatchSnapshot();
+  })
+
+  it('can work with unescaped JSON pointers with ~1', async () => {
+    const rawJson = await loadScenario(5);
+    const jsonAst = parse(rawJson, { loc: true });
+    expect(
+      getMetaFromPath(jsonAst, '/foo/~1some~1path/value')
+    ).toMatchSnapshot();
+  });
+
+  it('can work with unescaped JSON pointers with ~0', async () => {
+    const rawJson = await loadScenario(5);
+    const jsonAst = parse(rawJson, { loc: true });
+    expect(
+      getMetaFromPath(jsonAst, '/foo/~0some~0path/value')
+    ).toMatchSnapshot();
   });
 });
