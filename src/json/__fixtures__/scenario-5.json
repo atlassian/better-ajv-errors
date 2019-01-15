@@ -1,0 +1,10 @@
+{
+  "foo": {
+    "/some/path": {
+      "value": 1
+    },
+    "~some~path": {
+      "value": 2
+    }
+  }
+}

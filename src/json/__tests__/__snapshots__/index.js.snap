@@ -169,3 +169,46 @@ Object {
   "value": "foo",
 }
 `;
+
+exports[`JSON can work with unescaped JSON pointers with ~0 1`] = `
+Object {
+  "loc": Object {
+    "end": Object {
+      "column": 17,
+      "line": 7,
+      "offset": 93,
+    },
+    "source": null,
+    "start": Object {
+      "column": 16,
+      "line": 7,
+      "offset": 92,
+    },
+  },
+  "raw": "2",
+  "type": "Literal",
+  "value": 2,
+}
+`;
+
+exports[`JSON can work with unescaped JSON pointers with ~1 1`] = `
+Object {
+  "loc": Object {
+    "end": Object {
+      "column": 17,
+      "line": 4,
+      "offset": 49,
+    },
+    "source": null,
+    "start": Object {
+      "column": 16,
+      "line": 4,
+      "offset": 48,
+    },
+  },
+  "raw": "1",
+  "type": "Literal",
+  "value": 1,
+}
+`;
+
