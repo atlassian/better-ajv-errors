@@ -42,4 +42,20 @@ describe('JSON', () => {
     const jsonAst = parse(rawJson, { loc: true });
     expect(getDecoratedDataPath(jsonAst, '/arr/4')).toMatchSnapshot();
   });
+
+  it('should not throw error when children is array', async () => {
+    const rawJsonWithArrayItem = JSON.stringify({
+      foo: 'bar',
+      arr: [
+        1,
+        {
+          foo: 'bar',
+        },
+        3,
+        ['anArray'],
+      ],
+    });
+    const jsonAst = parse(rawJsonWithArrayItem, { loc: true });
+    expect(getDecoratedDataPath(jsonAst, '/arr/3')).toMatchSnapshot();
+  });
 });

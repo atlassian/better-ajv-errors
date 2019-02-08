@@ -169,3 +169,5 @@ Object {
   "value": "foo",
 }
 `;
+
+exports[`JSON should not throw error when children is array 1`] = `"/arr/3"`;
