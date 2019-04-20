@@ -57,11 +57,10 @@
   },
   "scripts": {
     "clean": "rm -rf lib",
-    "prebuild": "yarn clean",
-    "build": "yarn build:modern && yarn build:legacy",
+    "build": "yarn run clean && yarn build:modern && yarn build:legacy",
     "build:modern": "BABEL_ENV=modern babel src -d lib/modern/",
     "build:legacy": "BABEL_ENV=legacy babel src -d lib/legacy",
-    "prepublish": "yarn build",
+    "prepare": "yarn build",
     "format": "prettier --write src/*.js src/**/*.js",
     "test": "jest",
     "test-ci": "jest --coverage && codecov",
