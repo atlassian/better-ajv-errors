@@ -26,27 +26,27 @@
     "@babel/code-frame": "^7.0.0",
     "@babel/runtime": "^7.0.0",
     "chalk": "^2.4.1",
-    "core-js": "^2.5.7",
+    "core-js": "^3.2.1",
     "json-to-ast": "^2.0.3",
     "jsonpointer": "^4.0.1",
-    "leven": "^2.1.0"
+    "leven": "^3.1.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
-    "@babel/core": "7.0.1",
+    "@babel/core": "7.6.0",
     "@babel/plugin-syntax-object-rest-spread": "^7.0.0",
     "@babel/plugin-transform-runtime": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-flow": "7.0.0",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^23.6.0",
+    "babel-jest": "^24.9.0",
     "babel-plugin-add-module-exports": "^1.0.0",
-    "eslint": "^5.5.0",
-    "eslint-config-prettier": "^3.0.1",
-    "eslint-plugin-jest": "^21.22.0",
-    "flow-bin": "^0.80.0",
-    "husky": "^0.14.3",
-    "jest": "^23.6.0",
+    "eslint": "^6.3.0",
+    "eslint-config-prettier": "^6.2.0",
+    "eslint-plugin-jest": "^22.17.0",
+    "flow-bin": "^0.107.0",
+    "husky": "^3.0.5",
+    "jest": "^24.9.0",
     "jest-fixtures": "^0.6.0",
     "prettier": "^1.14.2",
     "pretty-quick": "^1.6.0"
@@ -62,8 +62,7 @@
     "prepare": "yarn build",
     "format": "prettier --write src/*.js src/**/*.js",
     "test": "jest",
-    "test-ci": "jest --coverage --colors",
-    "precommit": "pretty-quick --staged"
+    "test-ci": "jest --coverage --colors"
   },
   "jest": {
     "testMatch": [
