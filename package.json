@@ -41,7 +41,6 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
     "babel-plugin-add-module-exports": "^1.0.0",
-    "codecov": "^3.1.0",
     "eslint": "^5.5.0",
     "eslint-config-prettier": "^3.0.1",
     "eslint-plugin-jest": "^21.22.0",
@@ -63,7 +62,7 @@
     "prepare": "yarn build",
     "format": "prettier --write src/*.js src/**/*.js",
     "test": "jest",
-    "test-ci": "jest --coverage && codecov",
+    "test-ci": "jest --coverage --colors",
     "precommit": "pretty-quick --staged"
   },
   "jest": {
