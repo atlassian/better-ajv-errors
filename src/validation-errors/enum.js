@@ -60,8 +60,8 @@ export default class EnumValidationError extends BaseValidationError {
         value,
         weight: leven(value, currentValue.toString()),
       }))
-      .sort(
-        (x, y) => (x.weight > y.weight ? 1 : x.weight < y.weight ? -1 : 0)
+      .sort((x, y) =>
+        x.weight > y.weight ? 1 : x.weight < y.weight ? -1 : 0
       )[0];
 
     return allowedValues.length === 1 ||

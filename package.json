@@ -44,6 +44,7 @@
     "eslint": "^6.3.0",
     "eslint-config-prettier": "^6.2.0",
     "eslint-plugin-jest": "^22.17.0",
+    "eslint-plugin-prettier": "^3.1.0",
     "flow-bin": "^0.107.0",
     "husky": "^3.0.5",
     "jest": "^24.9.0",
@@ -59,7 +60,7 @@
     "build": "yarn run clean && yarn build:modern && yarn build:legacy",
     "build:modern": "BABEL_ENV=modern babel src -d lib/modern/",
     "build:legacy": "BABEL_ENV=legacy babel src -d lib/legacy",
-    "prepare": "yarn build",
+    "prepublishOnly": "yarn build",
     "format": "prettier --write src/*.js src/**/*.js",
     "test": "jest",
     "test-ci": "jest --coverage --colors"
@@ -68,9 +69,5 @@
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.js"
     ]
-  },
-  "prettier": {
-    "singleQuote": true,
-    "trailingComma": "es5"
   }
 }
