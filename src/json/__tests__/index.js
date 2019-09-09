@@ -57,7 +57,7 @@ describe('JSON', () => {
     });
     const jsonAst = parse(rawJsonWithArrayItem, { loc: true });
     expect(getDecoratedDataPath(jsonAst, '/arr/3')).toMatchSnapshot();
-  })
+  });
 
   it('can work with unescaped JSON pointers with ~1', async () => {
     const rawJson = await loadScenario(5);
