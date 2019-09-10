@@ -70,7 +70,7 @@ export function filterRedundantErrors(root, parent, key) {
    * Need explicit `root.errors` check because `[].every(fn) === true`
    * https://en.wikipedia.org/wiki/Vacuous_truth#Vacuous_truths_in_mathematics
    */
-  if (root.errors && getErrors(root).every(isEnumError)) {
+  if (root.errors && root.errors.length && getErrors(root).every(isEnumError)) {
     if (
       getSiblings(parent)(root)
         // Remove any reference which becomes `undefined` later

@@ -3,7 +3,7 @@ const Ajv = require('ajv');
 const schema = require('./src/__fixtures__/schema.json');
 const data = require('./src/__fixtures__/data.json');
 
-const betterAjvErrors = require('./src');
+const betterAjvErrors = require('./lib/modern');
 
 // options can be passed, e.g. {allErrors: true}
 // const ajv = new Ajv({ allErrors: true, async: 'es7', jsonPointers: true });
@@ -14,7 +14,7 @@ const valid = validate(data);
 
 const output = betterAjvErrors(schema, data, validate.errors, {
   indent: 2,
-  format: 'js',
+  // format: 'js',
 });
 
 if (!valid) {
