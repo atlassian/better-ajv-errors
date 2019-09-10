@@ -1,6 +1,3 @@
-require('dotenv').config();
-const { getInfo } = require('@changesets/get-github-info');
-
 const changesetOptions = {
   // If true, we will automatically commit the changeset when the command is run
   commit: false,
@@ -20,15 +17,10 @@ const getReleaseLine = async (changeset, type) => {
   const [firstLine, ...futureLines] = changeset.summary
     .split('\n')
     .map(l => l.trimRight());
-  // getInfo exposes the GH username and PR number if you want them directly
-  // but it also exposes a set of links for the commit, PR and GH username
-  let { user, pull, links } = await getInfo({
-    repo: process.env.GITHUB_REPOSITORY,
-    commit: changeset.commit,
-  });
-  return `- ${links.commit}${links.pull === null ? '' : ` ${links.pull}`}${
-    links.user === null ? '' : ` Thanks ${links.user}!`
-  }: ${firstLine}\n${futureLines.map(l => `  ${l}`).join('\n')}`;
+
+  return `- ${changeset.commit}: ${firstLine}\n${futureLines
+    .map(l => `  ${l}`)
+    .join('\n')}`;
 };
 
 // This function takes information about what dependencies we are updating in the package.
