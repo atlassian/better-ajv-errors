@@ -1,15 +1,8 @@
+import { getPointers } from './utils';
+
 export default function getDecoratedDataPath(jsonAst, dataPath) {
-  // TODO: Better error handling
-  const pointers = dataPath.split('/').slice(1);
-  for (const index in pointers) {
-    pointers[index] = pointers[index]
-      .split('~1')
-      .join('/')
-      .split('~0')
-      .join('~');
-  }
   let decoratedPath = '';
-  pointers.reduce((obj, pointer) => {
+  getPointers(dataPath).reduce((obj, pointer) => {
     switch (obj.type) {
       case 'Object': {
         decoratedPath += `/${pointer}`;

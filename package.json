@@ -59,11 +59,12 @@
     "ajv": "4.11.8 - 6"
   },
   "scripts": {
-    "clean": "rm -rf lib",
-    "build": "yarn run clean && yarn build:modern && yarn build:legacy",
+    "prebuild": "rm -rf lib",
+    "build": "yarn build:modern && yarn build:legacy",
     "build:modern": "BABEL_ENV=modern babel src -d lib/modern/",
     "build:legacy": "BABEL_ENV=legacy babel src -d lib/legacy",
-    "prepublishOnly": "yarn build",
+    "prerelease": "yarn build",
+    "release": "changeset release",
     "format": "prettier --write src/*.js src/**/*.js",
     "test": "jest",
     "test-ci": "jest --coverage --colors"

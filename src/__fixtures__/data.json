@@ -1,19 +1,20 @@
 {
-  "version": 1,
   "type": "doc",
   "content": [
     {
-      "type": "paragarph",
+      "type": "table",
       "content": [
         {
-          "type": "media",
-          "attrs": {
-            "type": "file",
-            "id": "1234",
-            "collection": "SampleCollection"
-          }
+          "type": "tableRow",
+          "content": [
+            {
+              "type": "tableCell",
+              "content": []
+            }
+          ]
         }
       ]
     }
-  ]
+  ],
+  "version": 1
 }

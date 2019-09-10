@@ -25,10 +25,8 @@ jobs:
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Build
-        run: yarn build
-
       - name: Publish to npm
+        if: github.repository == 'atlassian/better-ajv-errors'
         uses: changesets/action@master
         with:
           # The --otp=1 is to get around a bug in changesets
