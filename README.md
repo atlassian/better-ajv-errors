@@ -4,7 +4,9 @@
 
 Main goal of this library is to provide relevant error messages like the following:
 
-<img width="539" alt="Enum Validation Error" src="https://user-images.githubusercontent.com/208544/36072188-6f559ed4-0f6f-11e8-9a23-0c0477ca7f58.png">
+<p align="center">
+  <img src="screenshot.svg">
+</p>
 
 ## Installation
 
@@ -77,7 +79,10 @@ Default: `cli`
 Values: `cli` `js`
 
 Use default `cli` output format if you want to **print** beautiful validation errors like following:
-<img width="539" alt="Enum Validation Error" src="https://user-images.githubusercontent.com/208544/36072188-6f559ed4-0f6f-11e8-9a23-0c0477ca7f58.png">
+
+<p align="center">
+  <img src="screenshot.svg">
+</p>
 
 Or, use `js` if you are planning to use this with some API. Your output will look like following:
 

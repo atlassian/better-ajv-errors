@@ -1,20 +1,15 @@
 {
   "type": "doc",
+  "version": 1,
   "content": [
     {
-      "type": "table",
+      "type": "paragarph",
       "content": [
         {
-          "type": "tableRow",
-          "content": [
-            {
-              "type": "tableCell",
-              "content": []
-            }
-          ]
+          "type": "text",
+          "text": "hello?"
         }
       ]
     }
-  ],
-  "version": 1
+  ]
 }
