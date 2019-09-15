@@ -80,9 +80,7 @@ Values: `cli` `js`
 
 Use default `cli` output format if you want to **print** beautiful validation errors like following:
 
-<p align="center">
-  <img src="screenshot.svg">
-</p>
+<img width="620" src="screenshot.svg">
 
 Or, use `js` if you are planning to use this with some API. Your output will look like following:
 
