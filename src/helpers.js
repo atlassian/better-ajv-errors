@@ -89,9 +89,10 @@ export function filterRedundantErrors(root, parent, key) {
 export function createErrorInstances(root, options) {
   const errors = getErrors(root);
   if (errors.length && errors.every(isEnumError)) {
-    const allowedValues = concatAll([])(
-      errors.map(e => e.params.allowedValues)
+    const uniqueValues = new Set(
+      concatAll([])(errors.map(e => e.params.allowedValues))
     );
+    const allowedValues = [...uniqueValues];
     const error = errors[0];
     return [
       new EnumValidationError(
@@ -116,11 +117,7 @@ export function createErrorInstances(root, options) {
             return ret.concat(new DefaultValidationError(error, options));
         }
       }, [])
-    )(
-      getChildren(root).map(child => {
-        return createErrorInstances(child, options);
-      })
-    );
+    )(getChildren(root).map(child => createErrorInstances(child, options)));
   }
 }
 
