@@ -22,6 +22,18 @@
     "index.js",
     "typings.d.ts"
   ],
+  "scripts": {
+    "prebuild": "rm -rf lib",
+    "build": "yarn build:modern && yarn build:legacy",
+    "build:modern": "BABEL_ENV=modern babel src -d lib/modern/",
+    "build:legacy": "BABEL_ENV=legacy babel src -d lib/legacy",
+    "prerelease": "yarn build",
+    "release": "changeset release",
+    "format": "prettier --write src/*.js src/**/*.js .changeset/*.js",
+    "test": "jest",
+    "test-ci": "jest --coverage --colors",
+    "screenshot": "svg-term --command='node screenshot' --out=screenshot.svg --padding=5 --width=80 --height=13 --at=1000 --no-cursor --term iterm2 --profile='deep' --window"
+  },
   "dependencies": {
     "@babel/code-frame": "^7.0.0",
     "@babel/runtime": "^7.0.0",
@@ -52,21 +64,11 @@
     "jest": "^24.9.0",
     "jest-fixtures": "^0.6.0",
     "prettier": "^1.14.2",
-    "pretty-quick": "^1.6.0"
+    "pretty-quick": "^1.6.0",
+    "svg-term-cli": "^2.1.1"
   },
   "peerDependencies": {
     "ajv": "4.11.8 - 6"
-  },
-  "scripts": {
-    "prebuild": "rm -rf lib",
-    "build": "yarn build:modern && yarn build:legacy",
-    "build:modern": "BABEL_ENV=modern babel src -d lib/modern/",
-    "build:legacy": "BABEL_ENV=legacy babel src -d lib/legacy",
-    "prerelease": "yarn build",
-    "release": "changeset release",
-    "format": "prettier --write src/*.js src/**/*.js .changeset/*.js",
-    "test": "jest",
-    "test-ci": "jest --coverage --colors"
   },
   "jest": {
     "testMatch": [

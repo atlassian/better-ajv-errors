@@ -1,3 +1,4 @@
+// iTerm2 Theme: https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/deep.itermcolors
 const Ajv = require('ajv');
 
 const schema = require('./src/__fixtures__/schema.json');
