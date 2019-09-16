@@ -1,11 +1,14 @@
-# better-ajv-errors
+<h1 align="center">
+  <img width="570" src="media/logo.png" alt="better-ajv-errors">
+  <br>
+</h1>
 
 > JSON Schema validation for Human 👨‍🎤
 
 Main goal of this library is to provide relevant error messages like the following:
 
 <p align="center">
-  <img src="screenshot.svg">
+  <img src="media/screenshot.svg">
 </p>
 
 ## Installation
@@ -80,7 +83,7 @@ Values: `cli` `js`
 
 Use default `cli` output format if you want to **print** beautiful validation errors like following:
 
-<img width="620" src="screenshot.svg">
+<img width="620" src="media/screenshot.svg">
 
 Or, use `js` if you are planning to use this with some API. Your output will look like following:
 
