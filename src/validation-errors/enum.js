@@ -49,7 +49,9 @@ export default class EnumValidationError extends BaseValidationError {
       dataPath,
       params: { allowedValues },
     } = this.options;
-    const currentValue = pointer.get(this.data, dataPath);
+
+    const currentValue =
+      dataPath === '' ? this.data : pointer.get(this.data, dataPath);
 
     if (!currentValue) {
       return null;
