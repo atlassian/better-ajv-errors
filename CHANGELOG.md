@@ -1,5 +1,11 @@
 # better-ajv-errors
 
+## 0.6.7
+
+### Patch Changes
+
+- 234c01d: Handle primitive values in EnumValidationError
+
 ## 0.6.6
 
 ### Patch Changes
