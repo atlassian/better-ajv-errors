@@ -36,13 +36,16 @@ export default class BaseValidationError {
     const formattedDataPath = dataPath
       ? chalk`\n\n    {yellow @} {grey ${dataPath}}`
       : '';
-
-    return (
-      codeFrameColumns(this.jsonRaw, this.getLocation(dataPath), {
+    const codeFrame = codeFrameColumns(
+      this.jsonRaw,
+      this.getLocation(dataPath),
+      {
         highlightCode: true,
         message,
-      }) + formattedDataPath
+      }
     );
+
+    return codeFrame + formattedDataPath;
   }
 
   print() {
