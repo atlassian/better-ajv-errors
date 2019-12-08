@@ -1,5 +1,11 @@
 # better-ajv-errors
 
+## 0.6.8
+
+### Patch Changes
+
+- d46525e: Drop legacy build and it's runtime dependencies
+
 ## 0.6.7
 
 ### Patch Changes
