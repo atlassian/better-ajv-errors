@@ -1,8 +1,8 @@
 {
-  "name": "better-ajv-errors",
+  "name": "@sidvind/better-ajv-errors",
   "version": "0.6.7",
   "description": "JSON Schema validation for Human",
-  "repository": "atlassian/better-ajv-errors",
+  "repository": "ext/better-ajv-errors",
   "main": "index.js",
   "keywords": [
     "json-schema",
@@ -17,6 +17,9 @@
   ],
   "license": "Apache-2.0",
   "typings": "typings.d.ts",
+  "engines": {
+    "node": ">= 8.0"
+  },
   "files": [
     "lib",
     "index.js",
@@ -24,9 +27,7 @@
   ],
   "scripts": {
     "prebuild": "rm -rf lib",
-    "build": "yarn build:modern && yarn build:legacy",
-    "build:modern": "BABEL_ENV=modern babel src -d lib/modern/",
-    "build:legacy": "BABEL_ENV=legacy babel src -d lib/legacy",
+    "build": "BABEL_ENV=modern babel src -d lib/modern/",
     "prerelease": "yarn build",
     "release": "changeset release",
     "format": "prettier --write src/*.js src/**/*.js .changeset/*.js",
@@ -36,9 +37,7 @@
   },
   "dependencies": {
     "@babel/code-frame": "^7.0.0",
-    "@babel/runtime": "^7.0.0",
     "chalk": "^2.4.1",
-    "core-js": "^3.2.1",
     "json-to-ast": "^2.0.3",
     "jsonpointer": "^4.0.1",
     "leven": "^3.1.0"

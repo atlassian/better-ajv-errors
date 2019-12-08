@@ -11,6 +11,16 @@ Main goal of this library is to provide relevant error messages like the followi
   <img src="media/screenshot.svg">
 </p>
 
+## Fork
+
+This fork removes the legacy build and thus drops dependencies such as `core-js`
+and `@babel/runtime` which is not needed on modern installations.
+
+- Node 8 and later supports the modern build and according to the release plan
+  node 8 is EOL at 2019-12-31.
+- Earlier versions is already EOL and not supported. Anyone using it should
+  update instead.
+
 ## Installation
 
 ```bash
