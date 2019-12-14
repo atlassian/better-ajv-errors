@@ -1,5 +1,11 @@
 # better-ajv-errors
 
+## 0.6.10
+
+### Patch Changes
+
+- 97d5a40: Correct TypeScript type definition
+
 ## 0.6.9
 
 ### Patch Changes
