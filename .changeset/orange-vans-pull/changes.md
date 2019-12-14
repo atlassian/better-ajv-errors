@@ -1,0 +1,1 @@
+Correct TypeScript type definition
