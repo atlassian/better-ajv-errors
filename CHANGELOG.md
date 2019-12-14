@@ -1,5 +1,11 @@
 # better-ajv-errors
 
+## 0.6.9
+
+### Patch Changes
+
+- 75f4f86: fix build
+
 ## 0.6.8
 
 ### Patch Changes
