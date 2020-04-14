@@ -39,17 +39,6 @@ export function makeTree(ajvErrors = []) {
 
 export function filterRedundantErrors(root, parent, key) {
   /**
-   * If there is a `required` error then we can just skip everythig else.
-   * And, also `required` should have more priority than `anyOf`. @see #8
-   */
-  getErrors(root).forEach(error => {
-    if (isRequiredError(error)) {
-      root.errors = [error];
-      root.children = {};
-    }
-  });
-
-  /**
    * If there is an `anyOf` error that means we have more meaningful errors
    * inside children. So we will just remove all errors from this level.
    *
