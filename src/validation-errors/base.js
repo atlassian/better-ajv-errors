@@ -38,12 +38,6 @@ export default class BaseValidationError {
     });
   }
 
-  print() {
-    throw new Error(
-      `Implement the 'print' method inside ${this.constructor.name}!`
-    );
-  }
-
   getError() {
     throw new Error(
       `Implement the 'getError' method inside ${this.constructor.name}!`

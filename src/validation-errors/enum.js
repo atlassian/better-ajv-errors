@@ -1,30 +1,8 @@
-import chalk from 'chalk';
 import leven from 'leven';
 import pointer from 'jsonpointer';
 import BaseValidationError from './base';
 
 export default class EnumValidationError extends BaseValidationError {
-  print() {
-    const {
-      message,
-      params: { allowedValues },
-    } = this.options;
-    const bestMatch = this.findBestMatch();
-
-    const output = [
-      chalk`{red {bold ENUM} ${message}}`,
-      chalk`{red (${allowedValues.join(', ')})}\n`,
-    ];
-
-    return output.concat(
-      this.getCodeFrame(
-        bestMatch !== null
-          ? chalk`👈🏽  Did you mean {magentaBright ${bestMatch}} here?`
-          : chalk`👈🏽  Unexpected value, should be equal to one of the allowed values`
-      )
-    );
-  }
-
   getError() {
     const { message, dataPath, params } = this.options;
     const bestMatch = this.findBestMatch();

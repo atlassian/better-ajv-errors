@@ -18,7 +18,5 @@ describe('Required', () => {
       },
       { data, schema, jsonRaw, jsonAst }
     );
-
-    expect(error.print()).toMatchSnapshot();
   });
 });
