@@ -5,3 +5,4 @@
 .vscode
 .env
 package-lock.json
+dist

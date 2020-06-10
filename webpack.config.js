@@ -7,5 +7,5 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     library: 'better-ajv-errors',
     libraryTarget: 'commonjs2',
-  },
+  }
 };

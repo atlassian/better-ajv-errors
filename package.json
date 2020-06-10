@@ -1,9 +1,9 @@
 {
   "name": "better-ajv-errors",
-  "version": "0.6.7",
+  "version": "0.6.7-graphext01",
   "description": "JSON Schema validation for Human",
   "repository": "atlassian/better-ajv-errors",
-  "main": "index.js",
+  "main": "dist/index.js",
   "keywords": [
     "json-schema",
     "ajv",
@@ -16,27 +16,19 @@
     "Tong Li"
   ],
   "license": "Apache-2.0",
-  "typings": "typings.d.ts",
   "files": [
-    "lib",
-    "index.js",
-    "typings.d.ts"
+    "dist/index.js"
   ],
   "scripts": {
-    "prebuild": "rm -rf lib",
+    "prebuild": "rm -rf dist",
     "build": "yarn webpack",
-    "build:modern": "BABEL_ENV=modern babel src -d lib/modern/",
-    "build:legacy": "BABEL_ENV=legacy babel src -d lib/legacy",
     "prerelease": "yarn build",
-    "release": "changeset release",
     "format": "prettier --write src/*.js src/**/*.js .changeset/*.js",
     "test": "jest",
     "test-ci": "jest --coverage --colors",
     "screenshot": "svg-term --command='node screenshot' --out=media/screenshot.svg --padding=5 --width=80 --height=13 --at=1000 --no-cursor --term iterm2 --profile='deep' --window"
   },
   "dependencies": {
-    "@babel/code-frame": "^7.0.0",
-    "@babel/runtime": "^7.0.0",
     "core-js": "^3.2.1",
     "json-to-ast": "^2.0.3",
     "jsonpointer": "^4.0.1",
