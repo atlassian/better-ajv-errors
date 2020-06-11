@@ -22,9 +22,7 @@ export default class DefaultValidationError extends BaseValidationError {
 
     const output = {
       ...this.getLocation(),
-      error: `${this.getDecoratedPath(
-        dataPath
-      )} ${message}: ${params.allowedValues.join(', ')}`,
+      error: `${this.getDecoratedPath(dataPath)} ${message}`,
       path: dataPath,
       suggestion: `Allowed values are: ${params.allowedValues.join(', ')}`,
     };
