@@ -15,6 +15,7 @@ Array [
       "line": 1,
       "offset": 21,
     },
+    "suggestion": "Did you mean 'bar'? Allowed values are: foo, bar",
   },
 ]
 `;
