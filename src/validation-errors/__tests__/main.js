@@ -11,8 +11,9 @@ describe('Main', () => {
     const valid = validate(data);
     expect(valid).toBeFalsy();
 
-    const res = betterAjvErrors(schema, data, validate.errors, {
-      format: 'js',
+    const res = betterAjvErrors(schema, validate.errors, {
+      propertyPath: [],
+      targetValue: data,
     });
     expect(res).toMatchSnapshot();
   });
@@ -25,8 +26,9 @@ describe('Main', () => {
     const valid = validate(data);
     expect(valid).toBeFalsy();
 
-    const res = betterAjvErrors(schema, data, validate.errors, {
-      format: 'js',
+    const res = betterAjvErrors(schema, validate.errors, {
+      propertyPath: [],
+      targetValue: data,
     });
     expect(res).toMatchSnapshot();
   });
@@ -34,7 +36,7 @@ describe('Main', () => {
   it('should support js output format for additionalProperties errors', async () => {
     const [schema, data] = await getSchemaAndData(
       'additionalProperties',
-      __dirname
+      __dirname,
     );
 
     const ajv = new Ajv({ jsonPointers: true });
@@ -42,8 +44,9 @@ describe('Main', () => {
     const valid = validate(data);
     expect(valid).toBeFalsy();
 
-    const res = betterAjvErrors(schema, data, validate.errors, {
-      format: 'js',
+    const res = betterAjvErrors(schema, validate.errors, {
+      propertyPath: [],
+      targetValue: data,
     });
     expect(res).toMatchSnapshot();
   });
@@ -56,8 +59,9 @@ describe('Main', () => {
     const valid = validate(data);
     expect(valid).toBeFalsy();
 
-    const res = betterAjvErrors(schema, data, validate.errors, {
-      format: 'js',
+    const res = betterAjvErrors(schema, validate.errors, {
+      propertyPath: [],
+      targetValue: data,
     });
     expect(res).toMatchSnapshot();
   });

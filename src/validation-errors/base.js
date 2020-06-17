@@ -1,52 +1,47 @@
-import { codeFrameColumns } from '@babel/code-frame';
-import { getMetaFromPath, getDecoratedDataPath } from '../json';
+import { capitalize, getLastSegment } from './utils';
+import pointer from 'jsonpointer';
 
 export default class BaseValidationError {
   constructor(
     options = { isIdentifierLocation: false },
-    { data, schema, jsonAst, jsonRaw }
+    { data, schema, propPath },
   ) {
     this.options = options;
     this.data = data;
     this.schema = schema;
-    this.jsonAst = jsonAst;
-    this.jsonRaw = jsonRaw;
-  }
-
-  getLocation(dataPath = this.options.dataPath) {
-    const { isIdentifierLocation, isSkipEndLocation } = this.options;
-    const { loc } = getMetaFromPath(
-      this.jsonAst,
-      dataPath,
-      isIdentifierLocation
-    );
-    return {
-      start: loc.start,
-      end: isSkipEndLocation ? undefined : loc.end,
-    };
-  }
-
-  getDecoratedPath(dataPath = this.options.dataPath) {
-    const decoratedPath = getDecoratedDataPath(this.jsonAst, dataPath);
-    return decoratedPath;
-  }
-
-  getCodeFrame(message, dataPath = this.options.dataPath) {
-    return codeFrameColumns(this.jsonRaw, this.getLocation(dataPath), {
-      highlightCode: true,
-      message,
-    });
-  }
-
-  print() {
-    throw new Error(
-      `Implement the 'print' method inside ${this.constructor.name}!`
-    );
+    this.propPath = propPath;
   }
 
   getError() {
     throw new Error(
-      `Implement the 'getError' method inside ${this.constructor.name}!`
+      `Implement the 'getError' method inside ${this.constructor.name}!`,
     );
+  }
+
+  getPrettyPropertyName(dataPath) {
+    const propName = this.getPropertyName(dataPath);
+
+    if (propName === null) {
+      return capitalize(typeof this.getPropertyValue(dataPath));
+    }
+
+    return `\`${propName}\` property`;
+  }
+
+  getPropertyName(path) {
+    const propName = getLastSegment(path);
+    if (propName !== null) {
+      return propName;
+    }
+
+    if (this.propPath.length === 0) {
+      return null;
+    }
+
+    return this.propPath[this.propPath.length - 1];
+  }
+
+  getPropertyValue(path) {
+    return path === '' ? this.data : pointer.get(this.data, path);
   }
 }

@@ -1,24 +1,13 @@
-import parse from 'json-to-ast';
 import prettify from './helpers';
 
-export default (schema, data, errors, options = {}) => {
-  const { format = 'cli', indent = null } = options;
+const customErrorToStructure = error => error.getError();
 
-  const jsonRaw = JSON.stringify(data, null, indent);
-  const jsonAst = parse(jsonRaw, { loc: true });
-
-  const customErrorToText = error => error.print().join('\n');
-  const customErrorToStructure = error => error.getError();
+export default (schema, errors, { propertyPath, targetValue }) => {
   const customErrors = prettify(errors, {
-    data,
+    data: targetValue,
     schema,
-    jsonAst,
-    jsonRaw,
+    propPath: propertyPath,
   });
 
-  if (format === 'cli') {
-    return customErrors.map(customErrorToText).join('\n\n');
-  } else {
-    return customErrors.map(customErrorToStructure);
-  }
+  return customErrors.map(customErrorToStructure);
 };

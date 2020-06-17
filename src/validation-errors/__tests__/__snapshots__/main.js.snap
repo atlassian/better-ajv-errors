@@ -3,18 +3,8 @@
 exports[`Main should support js output format for additionalProperties errors 1`] = `
 Array [
   Object {
-    "end": Object {
-      "column": 27,
-      "line": 1,
-      "offset": 26,
-    },
-    "error": " Property baz is not expected to be here",
+    "error": "Property \`baz\` is not expected to be here",
     "path": "",
-    "start": Object {
-      "column": 22,
-      "line": 1,
-      "offset": 21,
-    },
   },
 ]
 `;
@@ -22,18 +12,8 @@ Array [
 exports[`Main should support js output format for default errors 1`] = `
 Array [
   Object {
-    "end": Object {
-      "column": 25,
-      "line": 1,
-      "offset": 24,
-    },
-    "error": "/id: type should be number",
+    "error": "\`id\` property type should be number",
     "path": "/id",
-    "start": Object {
-      "column": 7,
-      "line": 1,
-      "offset": 6,
-    },
   },
 ]
 `;
@@ -41,18 +21,8 @@ Array [
 exports[`Main should support js output format for enum errors 1`] = `
 Array [
   Object {
-    "end": Object {
-      "column": 12,
-      "line": 1,
-      "offset": 11,
-    },
-    "error": "/id should be equal to one of the allowed values: foo, bar",
+    "error": "\`id\` property should be equal to one of the allowed values: foo, bar",
     "path": "/id",
-    "start": Object {
-      "column": 7,
-      "line": 1,
-      "offset": 6,
-    },
     "suggestion": "Did you mean bar?",
   },
 ]
@@ -61,13 +31,8 @@ Array [
 exports[`Main should support js output format for required errors 1`] = `
 Array [
   Object {
-    "error": "/nested should have required property 'id'",
+    "error": "\`nested\` property should have required property \`id\`",
     "path": "/nested",
-    "start": Object {
-      "column": 11,
-      "line": 1,
-      "offset": 10,
-    },
   },
 ]
 `;

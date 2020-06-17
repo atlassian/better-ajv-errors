@@ -13,7 +13,8 @@ import {
   RequiredValidationError,
   EnumValidationError,
   DefaultValidationError,
-} from './validation-errors';
+  TypeValidationError,
+} from './validation-errors/index';
 
 const JSON_POINTERS_REGEX = /\/[\w_-]+(\/\d+)?/g;
 
@@ -82,7 +83,7 @@ export function filterRedundantErrors(root, parent, key) {
   }
 
   Object.entries(root.children).forEach(([key, child]) =>
-    filterRedundantErrors(child, root, key)
+    filterRedundantErrors(child, root, key),
   );
 }
 
@@ -90,7 +91,7 @@ export function createErrorInstances(root, options) {
   const errors = getErrors(root);
   if (errors.length && errors.every(isEnumError)) {
     const uniqueValues = new Set(
-      concatAll([])(errors.map(e => e.params.allowedValues))
+      concatAll([])(errors.map(e => e.params.allowedValues)),
     );
     const allowedValues = [...uniqueValues];
     const error = errors[0];
@@ -100,7 +101,7 @@ export function createErrorInstances(root, options) {
           ...error,
           params: { allowedValues },
         },
-        options
+        options,
       ),
     ];
   } else {
@@ -109,14 +110,16 @@ export function createErrorInstances(root, options) {
         switch (error.keyword) {
           case 'additionalProperties':
             return ret.concat(
-              new AdditionalPropValidationError(error, options)
+              new AdditionalPropValidationError(error, options),
             );
           case 'required':
             return ret.concat(new RequiredValidationError(error, options));
+          case 'type':
+            return ret.concat(new TypeValidationError(error, options));
           default:
             return ret.concat(new DefaultValidationError(error, options));
         }
-      }, [])
+      }, []),
     )(getChildren(root).map(child => createErrorInstances(child, options)));
   }
 }

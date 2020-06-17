@@ -4,9 +4,6 @@
     "foo": { "type": "string" },
     "bar": { "type": "number" }
   },
-  "required": [
-    "foo",
-    "bar"
-  ],
+  "required": ["foo", "bar"],
   "additionalProperties": false
 }

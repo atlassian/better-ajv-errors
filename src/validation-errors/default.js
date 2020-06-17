@@ -1,22 +1,14 @@
-import chalk from 'chalk';
 import BaseValidationError from './base';
+import { cleanAjvMessage } from './utils';
 
 export default class DefaultValidationError extends BaseValidationError {
-  print() {
-    const { keyword, message } = this.options;
-    const output = [chalk`{red {bold ${keyword.toUpperCase()}} ${message}}\n`];
-
-    return output.concat(
-      this.getCodeFrame(chalk`👈🏽  {magentaBright ${keyword}} ${message}`)
-    );
-  }
-
   getError() {
-    const { keyword, message, dataPath } = this.options;
+    const { message, dataPath } = this.options;
 
     return {
-      ...this.getLocation(),
-      error: `${this.getDecoratedPath(dataPath)}: ${keyword} ${message}`,
+      error: `${this.getPrettyPropertyName(dataPath)} ${cleanAjvMessage(
+        message,
+      )}`,
       path: dataPath,
     };
   }

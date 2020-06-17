@@ -1,43 +1,5 @@
 {
   "env": {
-    "modern": {
-      "presets": [
-        [
-          "@babel/env",
-          {
-            "targets": {
-              "node": "8"
-            },
-            "useBuiltIns": "usage",
-            "corejs": 3,
-            "loose": true
-          }
-        ]
-      ],
-      "plugins": ["@babel/syntax-object-rest-spread", "add-module-exports"],
-      "ignore": ["**/__tests__", "**/__fixtures__", "node_modules"]
-    },
-    "legacy": {
-      "presets": [
-        [
-          "@babel/env",
-          {
-            "targets": {
-              "node": "4"
-            },
-            "useBuiltIns": "usage",
-            "corejs": 3,
-            "loose": true
-          }
-        ]
-      ],
-      "plugins": [
-        "@babel/syntax-object-rest-spread",
-        "@babel/transform-runtime",
-        "add-module-exports"
-      ],
-      "ignore": ["**/__tests__", "**/__fixtures__", "node_modules"]
-    },
     "test": {
       "presets": [
         [
@@ -48,8 +10,7 @@
             }
           }
         ]
-      ],
-      "plugins": ["@babel/syntax-object-rest-spread"]
+      ]
     }
   }
 }

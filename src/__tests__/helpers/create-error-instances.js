@@ -20,15 +20,13 @@ describe('createErrorInstances', () => {
           },
         ],
       },
-      {}
+      {},
     );
 
     expect(errors).toMatchInlineSnapshot(`
       Array [
         EnumValidationError {
           "data": undefined,
-          "jsonAst": undefined,
-          "jsonRaw": undefined,
           "options": Object {
             "keyword": "enum",
             "params": Object {
@@ -40,6 +38,7 @@ describe('createErrorInstances', () => {
               ],
             },
           },
+          "propPath": undefined,
           "schema": undefined,
         },
       ]
