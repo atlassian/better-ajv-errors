@@ -45,7 +45,7 @@ export default class EnumValidationError extends BaseValidationError {
       .sort((x, y) => (x.weight > y.weight ? 1 : x.weight < y.weight ? -1 : 0));
 
     if (matches.length === 0) {
-      return;
+      return null;
     }
 
     const bestMatch = matches[0];
