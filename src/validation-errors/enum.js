@@ -3,6 +3,14 @@ import leven from 'leven';
 import pointer from 'jsonpointer';
 import BaseValidationError from './base';
 
+function printAllowedValues(allowedValues) {
+  return allowedValues
+    .map(value =>
+      value === null || value === undefined ? String(value) : value
+    )
+    .join(', ');
+}
+
 export default class EnumValidationError extends BaseValidationError {
   print() {
     const {
@@ -13,7 +21,7 @@ export default class EnumValidationError extends BaseValidationError {
 
     const output = [
       chalk`{red {bold ENUM} ${message}}`,
-      chalk`{red (${allowedValues.join(', ')})}\n`,
+      chalk`{red (${printAllowedValues(allowedValues)})}\n`,
     ];
 
     return output.concat(
@@ -33,7 +41,7 @@ export default class EnumValidationError extends BaseValidationError {
       ...this.getLocation(),
       error: `${this.getDecoratedPath(
         dataPath
-      )} ${message}: ${params.allowedValues.join(', ')}`,
+      )} ${message}: ${printAllowedValues(params.allowedValues)}`,
       path: dataPath,
     };
 
@@ -53,18 +61,23 @@ export default class EnumValidationError extends BaseValidationError {
     const currentValue =
       dataPath === '' ? this.data : pointer.get(this.data, dataPath);
 
-    if (!currentValue) {
+    if (typeof currentValue !== 'string') {
       return null;
     }
 
-    const bestMatch = allowedValues
+    const matches = allowedValues
+      .filter(value => typeof value === 'string')
       .map(value => ({
         value,
         weight: leven(value, currentValue.toString()),
       }))
-      .sort((x, y) =>
-        x.weight > y.weight ? 1 : x.weight < y.weight ? -1 : 0
-      )[0];
+      .sort((x, y) => (x.weight > y.weight ? 1 : x.weight < y.weight ? -1 : 0));
+
+    if (matches.length === 0) {
+      return;
+    }
+
+    const bestMatch = matches[0];
 
     return allowedValues.length === 1 ||
       bestMatch.weight < bestMatch.value.length
