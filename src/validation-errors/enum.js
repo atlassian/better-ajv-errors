@@ -9,7 +9,7 @@ export default class EnumValidationError extends BaseValidationError {
     const output = {
       error: `${this.getPrettyPropertyName(
         dataPath,
-      )} ${message}: ${params.allowedValues.join(', ')}`,
+      )} ${message}: ${params.allowedValues.map(JSON.stringify).join(', ')}`,
       path: dataPath,
     };
 
@@ -28,18 +28,23 @@ export default class EnumValidationError extends BaseValidationError {
 
     const currentValue = this.getPropertyValue(dataPath);
 
-    if (!currentValue) {
+    if (typeof currentValue !== 'string') {
       return null;
     }
 
-    const bestMatch = allowedValues
+    const matches = allowedValues
+      .filter(value => typeof value === 'string')
       .map(value => ({
         value,
         weight: leven(value, currentValue.toString()),
       }))
-      .sort((x, y) =>
-        x.weight > y.weight ? 1 : x.weight < y.weight ? -1 : 0,
-      )[0];
+      .sort((x, y) => (x.weight > y.weight ? 1 : x.weight < y.weight ? -1 : 0));
+
+    if (matches.length === 0) {
+      return;
+    }
+
+    const bestMatch = matches[0];
 
     return allowedValues.length === 1 ||
       bestMatch.weight < bestMatch.value.length
