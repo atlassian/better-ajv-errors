@@ -9,12 +9,16 @@ export default class EnumValidationError extends BaseValidationError {
     const output = {
       error: `${this.getPrettyPropertyName(
         dataPath,
-      )} ${message}: ${params.allowedValues.map(JSON.stringify).join(', ')}`,
+      )} ${message}: ${params.allowedValues
+        .map(value =>
+          typeof value === 'string' ? `\`${value}\`` : JSON.stringify(value),
+        )
+        .join(', ')}`,
       path: dataPath,
     };
 
     if (bestMatch !== null) {
-      output.suggestion = `Did you mean ${bestMatch}?`;
+      output.suggestion = `Did you mean \`${bestMatch}\`?`;
     }
 
     return output;

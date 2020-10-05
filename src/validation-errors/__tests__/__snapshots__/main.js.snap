@@ -21,9 +21,9 @@ Array [
 exports[`Main should support js output format for enum errors 1`] = `
 Array [
   Object {
-    "error": "\`id\` property should be equal to one of the allowed values: \\"foo\\", \\"bar\\"",
+    "error": "\`id\` property should be equal to one of the allowed values: \`foo\`, \`bar\`",
     "path": "/id",
-    "suggestion": "Did you mean bar?",
+    "suggestion": "Did you mean \`bar\`?",
   },
 ]
 `;

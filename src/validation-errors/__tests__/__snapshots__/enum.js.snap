@@ -2,51 +2,51 @@
 
 exports[`Enum when value is a primitive prints correctly for empty value 1`] = `
 Object {
-  "error": "String should be equal to one of the allowed values: \\"foo\\", \\"bar\\"",
+  "error": "String should be equal to one of the allowed values: \`foo\`, \`bar\`",
   "path": "",
 }
 `;
 
 exports[`Enum when value is a primitive prints correctly for enum prop 1`] = `
 Object {
-  "error": "String should be equal to one of the allowed values: \\"foo\\", \\"bar\\"",
+  "error": "String should be equal to one of the allowed values: \`foo\`, \`bar\`",
   "path": "",
-  "suggestion": "Did you mean bar?",
+  "suggestion": "Did you mean \`bar\`?",
 }
 `;
 
 exports[`Enum when value is a primitive prints correctly for no levenshtein match 1`] = `
 Object {
-  "error": "String should be equal to one of the allowed values: \\"one\\", \\"two\\"",
+  "error": "String should be equal to one of the allowed values: \`one\`, \`two\`",
   "path": "",
 }
 `;
 
 exports[`Enum when value is an object prints correctly for allowedValues containing null 1`] = `
 Object {
-  "error": "\`id\` property should be equal to one of the allowed values: \\"one\\", \\"two\\", null",
+  "error": "\`id\` property should be equal to one of the allowed values: \`one\`, \`two\`, null",
   "path": "/id",
 }
 `;
 
 exports[`Enum when value is an object prints correctly for empty value 1`] = `
 Object {
-  "error": "\`id\` property should be equal to one of the allowed values: \\"foo\\", \\"bar\\"",
+  "error": "\`id\` property should be equal to one of the allowed values: \`foo\`, \`bar\`",
   "path": "/id",
 }
 `;
 
 exports[`Enum when value is an object prints correctly for enum prop 1`] = `
 Object {
-  "error": "\`id\` property should be equal to one of the allowed values: \\"foo\\", \\"bar\\"",
+  "error": "\`id\` property should be equal to one of the allowed values: \`foo\`, \`bar\`",
   "path": "/id",
-  "suggestion": "Did you mean bar?",
+  "suggestion": "Did you mean \`bar\`?",
 }
 `;
 
 exports[`Enum when value is an object prints correctly for no levenshtein match 1`] = `
 Object {
-  "error": "\`id\` property should be equal to one of the allowed values: \\"one\\", \\"two\\"",
+  "error": "\`id\` property should be equal to one of the allowed values: \`one\`, \`two\`",
   "path": "/id",
 }
 `;
