@@ -73,5 +73,10 @@
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.js"
     ]
+  },
+  "renovate": {
+    "extends": [
+      "@html-validate"
+    ]
   }
 }
