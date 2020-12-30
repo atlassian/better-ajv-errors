@@ -2,6 +2,7 @@
 /node_modules/
 /coverage/
 *.log
+*.tgz
 .vscode
 .env
 package-lock.json

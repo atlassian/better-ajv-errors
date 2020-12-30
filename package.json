@@ -23,7 +23,8 @@
   "files": [
     "lib",
     "index.js",
-    "typings.d.ts"
+    "typings.d.ts",
+    "!**/__tests__"
   ],
   "scripts": {
     "prebuild": "rm -rf lib",
