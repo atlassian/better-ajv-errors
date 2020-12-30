@@ -2,9 +2,9 @@ import parse from 'json-to-ast';
 import prettify from './helpers';
 
 export default (schema, data, errors, options = {}) => {
-  const { format = 'cli', indent = null } = options;
+  const { format = 'cli', indent = null, json = null } = options;
 
-  const jsonRaw = JSON.stringify(data, null, indent);
+  const jsonRaw = json || JSON.stringify(data, null, indent);
   const jsonAst = parse(jsonRaw, { loc: true });
 
   const customErrorToText = error => error.print().join('\n');

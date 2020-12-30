@@ -9,6 +9,9 @@ declare namespace betterAjvErrors {
   export interface IInputOptions {
     format?: 'cli' | 'js';
     indent?: number | null;
+
+    /** Raw JSON used when highlighting error location */
+    json?: string | null;
   }
 
   export interface IOutputError {
