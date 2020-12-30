@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main should output proper error for enumeration 1`] = `
+"[31m[1mENUM[22m[39m[31m should be equal to one of the allowed values[39m
+[31m(foo, bar)[39m
+
+[0m [90m 1 | [39m{[0m
+[0m[31m[1m>[22m[39m[90m 2 | [39m  [32m\\"id\\"[39m[33m:[39m [32m\\"baz\\"[39m[0m
+[0m [90m   | [39m        [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean [95mbar[31m here?[22m[39m[0m
+[0m [90m 3 | [39m}[0m"
+`;
+
+exports[`Main should output proper error for enumeration in anyOf 1`] = `
+"[31m[1mENUM[22m[39m[31m should be equal to one of the allowed values[39m
+[31m(foo, bar)[39m
+
+[0m [90m 1 | [39m{[0m
+[0m[31m[1m>[22m[39m[90m 2 | [39m  [32m\\"id\\"[39m[33m:[39m [32m\\"baz\\"[39m[0m
+[0m [90m   | [39m        [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean [95mbar[31m here?[22m[39m[0m
+[0m [90m 3 | [39m}[0m
+
+[31m[1mTYPE[22m[39m[31m should be array[39m
+
+[0m [90m 1 | [39m{[0m
+[0m[31m[1m>[22m[39m[90m 2 | [39m  [32m\\"id\\"[39m[33m:[39m [32m\\"baz\\"[39m[0m
+[0m [90m   | [39m        [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  [95mtype[31m should be array[22m[39m[0m
+[0m [90m 3 | [39m}[0m
+
+[31m[1mANYOF[22m[39m[31m should match some schema in anyOf[39m
+
+[0m [90m 1 | [39m{[0m
+[0m[31m[1m>[22m[39m[90m 2 | [39m  [32m\\"id\\"[39m[33m:[39m [32m\\"baz\\"[39m[0m
+[0m [90m   | [39m        [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  [95manyOf[31m should match some schema in anyOf[22m[39m[0m
+[0m [90m 3 | [39m}[0m"
+`;

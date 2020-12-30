@@ -111,6 +111,8 @@ export function createErrorInstances(root, options) {
             return ret.concat(
               new AdditionalPropValidationError(error, options)
             );
+          case 'enum':
+            return ret.concat(new EnumValidationError(error, options));
           case 'required':
             return ret.concat(new RequiredValidationError(error, options));
           default:
