@@ -77,7 +77,8 @@
   },
   "renovate": {
     "extends": [
-      "@html-validate"
+      "@html-validate",
+      "@html-validate/github"
     ]
   }
 }
