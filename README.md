@@ -114,4 +114,14 @@ Or, use `js` if you are planning to use this with some API. Your output will loo
 Type: `number` `null`  
 Default: `null`
 
-If you have an unindented JSON payload and you want the error output indented
+If you have an unindented JSON payload and you want the error output indented.
+
+This option have no effect when using the `json` option.
+
+##### json
+
+Type: `string` `null`  
+Default: `null`
+
+Raw JSON payload used when formatting codeframe.
+Gives accurate line and column listings.
