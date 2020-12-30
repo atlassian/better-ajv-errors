@@ -21,6 +21,12 @@ and `@babel/runtime` which is not needed on modern installations.
 - Earlier versions is already EOL and not supported. Anyone using it should
   update instead.
 
+The following PRs from upstream are merged:
+
+- [PR-67: fix(typings): Correct TypeScript type definition](https://github.com/atlassian/better-ajv-errors/pull/67)
+- [PR-70: Drop legacy build and dependecy on polyfills](https://github.com/atlassian/better-ajv-errors/pull/70)
+- [PR-84: feat: support `json` option to get accurate line/column listings](https://github.com/atlassian/better-ajv-errors/pull/84)
+
 ## Installation
 
 ```bash
