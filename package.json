@@ -24,7 +24,8 @@
     "lib",
     "index.js",
     "typings.d.ts",
-    "!**/__tests__"
+    "!**/__tests__",
+    "!lib/modern/test-helpers.js"
   ],
   "scripts": {
     "prebuild": "rm -rf lib",
