@@ -1,0 +1,1 @@
+fix enumeration in anyOf
