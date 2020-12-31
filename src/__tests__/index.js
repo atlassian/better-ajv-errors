@@ -1,22 +1,10 @@
-import { readFileSync } from 'fs';
 import Ajv from 'ajv';
-import { getFixturePath } from 'jest-fixtures';
+import { getSchemaAndData } from '../test-helpers';
 import betterAjvErrors from '../';
-
-let schema;
-let rawData;
-let data;
-
-beforeEach(async () => {
-  const schemaPath = await getFixturePath(__dirname, 'default', 'schema.json');
-  const dataPath = await getFixturePath(__dirname, 'default', 'data.json');
-  schema = JSON.parse(readFileSync(schemaPath, 'utf8'));
-  rawData = readFileSync(dataPath, 'utf8');
-  data = JSON.parse(rawData);
-});
 
 describe('Main', () => {
   it('should output error with reconstructed codeframe', async () => {
+    const [schema, data] = await getSchemaAndData('default', __dirname);
     const ajv = new Ajv({ jsonPointers: true });
     const validate = ajv.compile(schema);
     const valid = validate(data);
@@ -30,6 +18,7 @@ describe('Main', () => {
   });
 
   it('should output error with codeframe', async () => {
+    const [schema, data, json] = await getSchemaAndData('default', __dirname);
     const ajv = new Ajv({ jsonPointers: true });
     const validate = ajv.compile(schema);
     const valid = validate(data);
@@ -37,7 +26,7 @@ describe('Main', () => {
 
     const res = betterAjvErrors(schema, data, validate.errors, {
       format: 'cli',
-      json: rawData,
+      json,
     });
     expect(res).toMatchSnapshot();
   });
