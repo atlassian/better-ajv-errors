@@ -21,15 +21,15 @@
     "node": ">= 10.0"
   },
   "files": [
-    "lib",
+    "dist",
     "index.js",
     "typings.d.ts",
     "!**/__tests__",
-    "!lib/modern/test-helpers.js"
+    "!dist/test-helpers.js"
   ],
   "scripts": {
-    "prebuild": "rm -rf lib",
-    "build": "babel src -d lib/modern/",
+    "prebuild": "rm -rf dist",
+    "build": "babel src -d dist/",
     "prerelease": "yarn build",
     "release": "changeset release",
     "format": "prettier --write src/*.js src/**/*.js .changeset/*.js",
