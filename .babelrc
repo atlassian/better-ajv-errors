@@ -4,10 +4,9 @@
       "@babel/env",
       {
         "targets": {
-          "node": "8"
+          "node": "10"
         }
       }
     ]
-  ],
-  "plugins": ["@babel/syntax-object-rest-spread"]
+  ]
 }
