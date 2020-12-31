@@ -26,9 +26,9 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Run Tests
-        run:
-          - yarn flow
-          - yarn test-ci
+        run: |
+          yarn flow
+          yarn test-ci
 
       - name: Upload coverage to Codecov
         run: bash <(curl -s https://codecov.io/bash) -C $GITHUB_SHA -B ${GITHUB_REF#refs/heads/} -Z
