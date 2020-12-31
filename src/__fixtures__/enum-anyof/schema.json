@@ -1,0 +1,14 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "anyOf": [
+        { "enum": ["foo", "bar"] },
+        {
+          "type": "array",
+          "items": { "enum": ["foo", "bar"] }
+        }
+      ]
+    }
+  }
+}
