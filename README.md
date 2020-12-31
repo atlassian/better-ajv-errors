@@ -26,6 +26,7 @@ The following PRs from upstream are merged:
 - [PR-67: fix(typings): Correct TypeScript type definition](https://github.com/atlassian/better-ajv-errors/pull/67)
 - [PR-70: Drop legacy build and dependecy on polyfills](https://github.com/atlassian/better-ajv-errors/pull/70)
 - [PR-84: feat: support `json` option to get accurate line/column listings](https://github.com/atlassian/better-ajv-errors/pull/84)
+- [PR-85: fix: enumeration in anyOf](https://github.com/atlassian/better-ajv-errors/pull/85)
 
 ## Installation
 
