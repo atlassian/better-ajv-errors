@@ -1,5 +1,11 @@
 # better-ajv-errors
 
+## 0.7.0
+
+### Minor Changes
+
+- 4e6e4c7: Support json option to get accurate line/column listings
+
 ## 0.6.7
 
 ### Patch Changes
