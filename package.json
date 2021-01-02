@@ -55,7 +55,7 @@
     "eslint-plugin-jest": "22.21.0",
     "eslint-plugin-prettier": "3.3.0",
     "flow-bin": "0.107.0",
-    "husky": "3.1.0",
+    "husky": "4.3.6",
     "jest": "24.9.0",
     "jest-fixtures": "0.6.0",
     "prettier": "1.19.1",
