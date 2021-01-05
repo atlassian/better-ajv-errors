@@ -1,51 +1,6 @@
 import { filterRedundantErrors } from '../../helpers';
 
 describe('filterRedundantErrors', () => {
-  it('should prioritize required', async () => {
-    const tree = {
-      children: {
-        a: {
-          children: {
-            b: {
-              children: {},
-              errors: [
-                {
-                  keyword: 'required',
-                },
-              ],
-            },
-          },
-          errors: [
-            {
-              keyword: 'required',
-            },
-            {
-              keyword: 'anyOf',
-            },
-            {
-              keyword: 'enum',
-            },
-          ],
-        },
-      },
-    };
-    filterRedundantErrors(tree);
-    expect(tree).toMatchInlineSnapshot(`
-      Object {
-        "children": Object {
-          "a": Object {
-            "children": Object {},
-            "errors": Array [
-              Object {
-                "keyword": "required",
-              },
-            ],
-          },
-        },
-      }
-    `);
-  });
-
   it('should handle anyOf', async () => {
     const tree = {
       children: {
