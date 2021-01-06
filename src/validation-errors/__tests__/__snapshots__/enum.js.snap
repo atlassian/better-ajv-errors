@@ -30,6 +30,18 @@ Array [
 ]
 `;
 
+exports[`Enum when value is an object prints correctly for allowedValues containing null 1`] = `
+Array [
+  "[31m[1mENUM[22m[39m[31m should be equal to one of the allowed values[39m",
+  "[31m(one, two, null)[39m
+",
+  "[0m [90m 1 | [39m{[0m
+[0m[31m[1m>[22m[39m[90m 2 | [39m  [32m\\"id\\"[39m[33m:[39m [32m\\"baz\\"[39m[0m
+[0m [90m   | [39m        [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Unexpected value, should be equal to one of the allowed values[22m[39m[0m
+[0m [90m 3 | [39m}[0m",
+]
+`;
+
 exports[`Enum when value is an object prints correctly for empty value 1`] = `
 Array [
   "[31m[1mENUM[22m[39m[31m should be equal to one of the allowed values[39m",

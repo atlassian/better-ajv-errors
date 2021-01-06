@@ -55,6 +55,21 @@ describe('Enum', () => {
 
       expect(error.print(schema, { id: '' })).toMatchSnapshot();
     });
+
+    it('prints correctly for allowedValues containing null', () => {
+      const error = new EnumValidationError(
+        {
+          keyword: 'enum',
+          dataPath: '/id',
+          schemaPath: '#/enum',
+          params: { allowedValues: ['one', 'two', null] },
+          message: `should be equal to one of the allowed values`,
+        },
+        { data, schema, jsonRaw, jsonAst }
+      );
+
+      expect(error.print()).toMatchSnapshot();
+    });
   });
 
   describe('when value is a primitive', () => {
