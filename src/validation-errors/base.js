@@ -1,5 +1,6 @@
 import { codeFrameColumns } from '@babel/code-frame';
 import { getMetaFromPath, getDecoratedDataPath } from '../json';
+import chalk from 'chalk';
 
 export default class BaseValidationError {
   constructor(
@@ -32,10 +33,19 @@ export default class BaseValidationError {
   }
 
   getCodeFrame(message, dataPath = this.options.dataPath) {
-    return codeFrameColumns(this.jsonRaw, this.getLocation(dataPath), {
-      highlightCode: true,
-      message,
-    });
+    const formattedDataPath = dataPath
+      ? chalk`\n\n    {yellow @} {grey ${dataPath}}`
+      : '';
+    const codeFrame = codeFrameColumns(
+      this.jsonRaw,
+      this.getLocation(dataPath),
+      {
+        highlightCode: true,
+        message,
+      }
+    );
+
+    return codeFrame + formattedDataPath;
   }
 
   print() {
