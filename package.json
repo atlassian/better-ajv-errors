@@ -63,7 +63,7 @@
     "svg-term-cli": "2.1.1"
   },
   "peerDependencies": {
-    "ajv": "4.11.8 - 6"
+    "ajv": "4.11.8 - 7"
   },
   "jest": {
     "testMatch": [
