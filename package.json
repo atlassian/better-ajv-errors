@@ -1,6 +1,6 @@
 {
   "name": "@sidvind/better-ajv-errors",
-  "version": "0.6.10",
+  "version": "0.7.0",
   "description": "JSON Schema validation for Human",
   "repository": "ext/better-ajv-errors",
   "main": "index.js",
