@@ -1,4 +1,4 @@
 {
-  "releases": [{ "name": "better-ajv-errors", "type": "patch" }],
+  "releases": [{ "name": "@sidvind/better-ajv-errors", "type": "patch" }],
   "dependents": []
 }
