@@ -1,5 +1,17 @@
 # better-ajv-errors
 
+## 0.8.0
+
+### Minor Changes
+
+- 54c05fc: Support json option to get accurate line/column listings
+
+  - 54c05fc: Require Node 10
+
+### Patch Changes
+
+- 54c05fc: fix enumeration in anyOf
+
 ## 0.7.0
 
 ### Minor Changes
