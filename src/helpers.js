@@ -21,7 +21,8 @@ const JSON_POINTERS_REGEX = /\/[\w_-]+(\/\d+)?/g;
 export function makeTree(ajvErrors = []) {
   const root = { children: {} };
   ajvErrors.forEach(ajvError => {
-    const { dataPath } = ajvError;
+    let { dataPath } = ajvError;
+    if (dataPath === undefined) dataPath = ajvError.instancePath;
 
     // `dataPath === ''` is root
     const paths = dataPath === '' ? [''] : dataPath.match(JSON_POINTERS_REGEX);
