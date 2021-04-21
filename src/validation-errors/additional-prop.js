@@ -6,11 +6,11 @@ export default class AdditionalPropValidationError extends BaseValidationError {
   }
 
   getError() {
-    const { params, dataPath } = this.options;
+    const { params, instancePath } = this.options;
 
     return {
       error: `Property \`${params.additionalProperty}\` is not expected to be here`,
-      path: dataPath,
+      path: instancePath,
     };
   }
 }

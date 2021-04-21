@@ -2,7 +2,7 @@
 
 exports[`Required prints correctly for missing required prop 1`] = `
 Object {
-  "error": "\`nested\` property should have required property \`id\`",
+  "error": "\`nested\` property must have required property \`id\`",
   "path": "/nested",
 }
 `;

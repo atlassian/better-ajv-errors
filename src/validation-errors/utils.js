@@ -1,7 +1,7 @@
-export function getLastSegment(dataPath) {
-  const index = dataPath.lastIndexOf('/');
+export function getLastSegment(instancePath) {
+  const index = instancePath.lastIndexOf('/');
   if (index !== -1) {
-    return dataPath.slice(index + 1);
+    return instancePath.slice(index + 1);
   }
 
   return null;

@@ -9,15 +9,15 @@ describe('makeTree', () => {
     `);
   });
 
-  it('works on root dataPath', async () => {
-    expect(makeTree([{ dataPath: '' }])).toMatchInlineSnapshot(`
+  it('works on root instancePath', async () => {
+    expect(makeTree([{ instancePath: '' }])).toMatchInlineSnapshot(`
       Object {
         "children": Object {
           "": Object {
             "children": Object {},
             "errors": Array [
               Object {
-                "dataPath": "",
+                "instancePath": "",
               },
             ],
           },
@@ -26,8 +26,8 @@ describe('makeTree', () => {
     `);
   });
 
-  it('works on nested dataPath', async () => {
-    expect(makeTree([{ dataPath: '/root/child' }])).toMatchInlineSnapshot(`
+  it('works on nested instancePath', async () => {
+    expect(makeTree([{ instancePath: '/root/child' }])).toMatchInlineSnapshot(`
       Object {
         "children": Object {
           "/root": Object {
@@ -36,7 +36,7 @@ describe('makeTree', () => {
                 "children": Object {},
                 "errors": Array [
                   Object {
-                    "dataPath": "/root/child",
+                    "instancePath": "/root/child",
                   },
                 ],
               },
@@ -48,9 +48,12 @@ describe('makeTree', () => {
     `);
   });
 
-  it('works on array dataPath', async () => {
+  it('works on array instancePath', async () => {
     expect(
-      makeTree([{ dataPath: '/root/child/0' }, { dataPath: '/root/child/1' }]),
+      makeTree([
+        { instancePath: '/root/child/0' },
+        { instancePath: '/root/child/1' },
+      ]),
     ).toMatchInlineSnapshot(`
       Object {
         "children": Object {
@@ -60,7 +63,7 @@ describe('makeTree', () => {
                 "children": Object {},
                 "errors": Array [
                   Object {
-                    "dataPath": "/root/child/0",
+                    "instancePath": "/root/child/0",
                   },
                 ],
               },
@@ -68,7 +71,7 @@ describe('makeTree', () => {
                 "children": Object {},
                 "errors": Array [
                   Object {
-                    "dataPath": "/root/child/1",
+                    "instancePath": "/root/child/1",
                   },
                 ],
               },
@@ -80,11 +83,11 @@ describe('makeTree', () => {
     `);
   });
 
-  it('works on array item dataPath', async () => {
+  it('works on array item instancePath', async () => {
     expect(
       makeTree([
-        { dataPath: '/root/child/0/grand-child' },
-        { dataPath: '/root/child/1/grand-child' },
+        { instancePath: '/root/child/0/grand-child' },
+        { instancePath: '/root/child/1/grand-child' },
       ]),
     ).toMatchInlineSnapshot(`
       Object {
@@ -97,7 +100,7 @@ describe('makeTree', () => {
                     "children": Object {},
                     "errors": Array [
                       Object {
-                        "dataPath": "/root/child/0/grand-child",
+                        "instancePath": "/root/child/0/grand-child",
                       },
                     ],
                   },
@@ -110,7 +113,7 @@ describe('makeTree', () => {
                     "children": Object {},
                     "errors": Array [
                       Object {
-                        "dataPath": "/root/child/1/grand-child",
+                        "instancePath": "/root/child/1/grand-child",
                       },
                     ],
                   },

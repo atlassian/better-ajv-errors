@@ -3,18 +3,18 @@ import BaseValidationError from './base';
 
 export default class EnumValidationError extends BaseValidationError {
   getError() {
-    const { message, dataPath, params } = this.options;
+    const { message, instancePath, params } = this.options;
     const bestMatch = this.findBestMatch();
 
     const output = {
       error: `${this.getPrettyPropertyName(
-        dataPath,
+        instancePath,
       )} ${message}: ${params.allowedValues
         .map(value =>
           typeof value === 'string' ? `\`${value}\`` : JSON.stringify(value),
         )
         .join(', ')}`,
-      path: dataPath,
+      path: instancePath,
     };
 
     if (bestMatch !== null) {
@@ -26,11 +26,11 @@ export default class EnumValidationError extends BaseValidationError {
 
   findBestMatch() {
     const {
-      dataPath,
+      instancePath,
       params: { allowedValues },
     } = this.options;
 
-    const currentValue = this.getPropertyValue(dataPath);
+    const currentValue = this.getPropertyValue(instancePath);
 
     if (typeof currentValue !== 'string') {
       return null;

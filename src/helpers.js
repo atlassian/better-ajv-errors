@@ -4,7 +4,6 @@ import {
   getSiblings,
   isAnyOfError,
   isEnumError,
-  isRequiredError,
   concatAll,
   notUndefined,
 } from './utils';
@@ -22,10 +21,11 @@ const JSON_POINTERS_REGEX = /\/[\w_-]+(\/\d+)?/g;
 export function makeTree(ajvErrors = []) {
   const root = { children: {} };
   ajvErrors.forEach(ajvError => {
-    const { dataPath } = ajvError;
+    const { instancePath } = ajvError;
 
-    // `dataPath === ''` is root
-    const paths = dataPath === '' ? [''] : dataPath.match(JSON_POINTERS_REGEX);
+    // `instancePath === ''` is root
+    const paths =
+      instancePath === '' ? [''] : instancePath.match(JSON_POINTERS_REGEX);
     paths &&
       paths.reduce((obj, path, i) => {
         obj.children[path] = obj.children[path] || { children: {}, errors: [] };

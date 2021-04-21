@@ -3,13 +3,13 @@ import { cleanAjvMessage } from './utils';
 
 export default class DefaultValidationError extends BaseValidationError {
   getError() {
-    const { message, dataPath } = this.options;
+    const { message, instancePath } = this.options;
 
     return {
-      error: `${this.getPrettyPropertyName(dataPath)} ${cleanAjvMessage(
+      error: `${this.getPrettyPropertyName(instancePath)} ${cleanAjvMessage(
         message,
       )}`,
-      path: dataPath,
+      path: instancePath,
     };
   }
 }
