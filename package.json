@@ -1,6 +1,6 @@
 {
   "name": "@stoplight/better-ajv-errors",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "JSON Schema validation for Human",
   "repository": "stoplightio/better-ajv-errors",
   "main": "dist/index.js",
@@ -28,7 +28,7 @@
   ],
   "scripts": {
     "prebuild": "rm -rf dist",
-    "build": "rollup --format=cjs -d dist -- src/index.js",
+    "build": "rollup --external=jsonpointer --external=level --format=cjs -d dist -- src/index.js",
     "prepublish": "yarn test && yarn build",
     "format": "prettier --write src/*.js src/**/*.js",
     "test": "jest",

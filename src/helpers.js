@@ -14,6 +14,7 @@ import {
   DefaultValidationError,
   TypeValidationError,
 } from './validation-errors/index';
+import ErrorMessageError from './validation-errors/error-message';
 
 const JSON_POINTERS_REGEX = /\/[\w_-]+(\/\d+)?/g;
 
@@ -105,6 +106,8 @@ export function createErrorInstances(root, options) {
             return ret.concat(new RequiredValidationError(error, options));
           case 'type':
             return ret.concat(new TypeValidationError(error, options));
+          case 'errorMessage':
+            return ret.concat(new ErrorMessageError(error, options));
           default:
             return ret.concat(new DefaultValidationError(error, options));
         }
