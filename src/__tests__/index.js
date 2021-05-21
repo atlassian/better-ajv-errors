@@ -3,6 +3,7 @@ import Ajv4 from 'ajv4';
 import Ajv5 from 'ajv5';
 import Ajv6 from 'ajv6';
 import Ajv7 from 'ajv7';
+import Ajv8 from 'ajv8';
 import { getSchemaAndData } from '../test-helpers';
 import betterAjvErrors from '../';
 
@@ -19,11 +20,15 @@ function ajv6() {
 }
 
 function ajv7() {
-  return new Ajv7({ strict: false });
+  return new Ajv7();
+}
+
+function ajv8() {
+  return new Ajv8();
 }
 
 function latest() {
-  return new Ajv({ strict: false });
+  return new Ajv();
 }
 
 describe.each([
@@ -31,6 +36,7 @@ describe.each([
   ['AJV v5', ajv5],
   ['AJV v6', ajv6],
   ['AJV v7', ajv7],
+  ['AJV v8', ajv8],
   ['AJV latest', latest],
 ])('%s', (_, getAjvInstance) => {
   it('should output error with reconstructed codeframe', async () => {

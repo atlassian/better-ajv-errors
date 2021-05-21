@@ -21,6 +21,10 @@ and `@babel/runtime` which is not needed on modern installations.
 - Earlier versions is already EOL and not supported. Anyone using it should
   update instead.
 
+Additional features:
+
+- AJV 8 support
+
 The following PRs from upstream are merged:
 
 - [PR-67: fix(typings): Correct TypeScript type definition](https://github.com/atlassian/better-ajv-errors/pull/67)
