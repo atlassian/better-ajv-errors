@@ -6,7 +6,7 @@ describe('Main', () => {
   it('should support js output format for default errors', async () => {
     const [schema, data] = await getSchemaAndData('default', __dirname);
 
-    const ajv = new Ajv({ jsonPointers: true });
+    const ajv = new Ajv();
     const validate = ajv.compile(schema);
     const valid = validate(data);
     expect(valid).toBeFalsy();
@@ -20,7 +20,7 @@ describe('Main', () => {
   it('should support js output format for required errors', async () => {
     const [schema, data] = await getSchemaAndData('required', __dirname);
 
-    const ajv = new Ajv({ jsonPointers: true });
+    const ajv = new Ajv();
     const validate = ajv.compile(schema);
     const valid = validate(data);
     expect(valid).toBeFalsy();
@@ -37,7 +37,7 @@ describe('Main', () => {
       __dirname
     );
 
-    const ajv = new Ajv({ jsonPointers: true });
+    const ajv = new Ajv();
     const validate = ajv.compile(schema);
     const valid = validate(data);
     expect(valid).toBeFalsy();
@@ -51,7 +51,7 @@ describe('Main', () => {
   it('should support js output format for enum errors', async () => {
     const [schema, data] = await getSchemaAndData('enum', __dirname);
 
-    const ajv = new Ajv({ jsonPointers: true });
+    const ajv = new Ajv();
     const validate = ajv.compile(schema);
     const valid = validate(data);
     expect(valid).toBeFalsy();
