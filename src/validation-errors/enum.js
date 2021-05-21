@@ -26,15 +26,14 @@ export default class EnumValidationError extends BaseValidationError {
   }
 
   getError() {
-    const { message, dataPath, params } = this.options;
+    const { message, params } = this.options;
     const bestMatch = this.findBestMatch();
+    const allowedValues = params.allowedValues.join(', ');
 
     const output = {
       ...this.getLocation(),
-      error: `${this.getDecoratedPath(
-        dataPath
-      )} ${message}: ${params.allowedValues.join(', ')}`,
-      path: dataPath,
+      error: `${this.getDecoratedPath()} ${message}: ${allowedValues}`,
+      path: this.instancePath,
     };
 
     if (bestMatch !== null) {
@@ -46,12 +45,13 @@ export default class EnumValidationError extends BaseValidationError {
 
   findBestMatch() {
     const {
-      dataPath,
       params: { allowedValues },
     } = this.options;
 
     const currentValue =
-      dataPath === '' ? this.data : pointer.get(this.data, dataPath);
+      this.instancePath === ''
+        ? this.data
+        : pointer.get(this.data, this.instancePath);
 
     if (!currentValue) {
       return null;
