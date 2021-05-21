@@ -33,7 +33,7 @@
     "prepare": "husky install",
     "prerelease": "yarn build",
     "release": "changeset release",
-    "format": "prettier --write src/*.js src/**/*.js .changeset/*.js",
+    "format": "prettier --write src .changeset",
     "test": "jest",
     "test-ci": "jest --coverage --colors",
     "screenshot": "svg-term --command='node screenshot' --out=media/screenshot.svg --padding=5 --width=80 --height=13 --at=1000 --no-cursor --term iterm2 --profile='deep' --window"
@@ -59,7 +59,7 @@
     "husky": "6.0.0",
     "jest": "26.6.3",
     "jest-fixtures": "0.6.0",
-    "prettier": "2.2.1",
+    "prettier": "2.3.0",
     "pretty-quick": "3.1.0",
     "svg-term-cli": "2.1.1"
   },

@@ -26,10 +26,14 @@ export const getErrors = (node /*: Node*/) => (node && node.errors) || [];
 export const getChildren = (node /*: Node*/) /*: $ReadOnlyArray<Node>*/ =>
   (node && getValues(node.children)) || [];
 
-export const getSiblings = (parent /*: Node*/) => (
-  node /*: Node*/
-) /*: $ReadOnlyArray<Node>*/ => getChildren(parent).filter(not(eq(node)));
+export const getSiblings =
+  (parent /*: Node*/) => (node /*: Node*/) /*: $ReadOnlyArray<Node>*/ =>
+    getChildren(parent).filter(not(eq(node)));
 
-export const concatAll = /*::<T>*/ (xs /*: $ReadOnlyArray<T>*/) => (
-  ys /*: $ReadOnlyArray<T>*/
-) /*: $ReadOnlyArray<T>*/ => ys.reduce((zs, z) => zs.concat(z), xs);
+export const concatAll =
+  /*::<T>*/
+
+
+    (xs /*: $ReadOnlyArray<T>*/) =>
+    (ys /*: $ReadOnlyArray<T>*/) /*: $ReadOnlyArray<T>*/ =>
+      ys.reduce((zs, z) => zs.concat(z), xs);
