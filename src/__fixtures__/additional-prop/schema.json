@@ -1,0 +1,9 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "foo": {
+      "type": "boolean"
+    }
+  }
+}
