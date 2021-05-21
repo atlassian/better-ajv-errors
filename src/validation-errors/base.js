@@ -42,7 +42,9 @@ export default class BaseValidationError {
    * @return {string}
    */
   get instancePath() {
-    return this.options.dataPath;
+    return typeof this.options.instancePath !== 'undefined'
+      ? this.options.instancePath
+      : this.options.dataPath;
   }
 
   print() {

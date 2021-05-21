@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AJV latest should output error with codeframe 1`] = `
-"[31m[1mENUM[22m[39m[31m should be equal to one of the allowed values[39m
+"[31m[1mENUM[22m[39m[31m must be equal to one of the allowed values[39m
 [31m(paragraph, codeBlock, blockquote)[39m
 
 [0m [90m 2 |[39m   [32m\\"type\\"[39m[33m:[39m [32m\\"doc\\"[39m[33m,[39m[0m
@@ -13,7 +13,7 @@ exports[`AJV latest should output error with codeframe 1`] = `
 `;
 
 exports[`AJV latest should output error with reconstructed codeframe 1`] = `
-"[31m[1mENUM[22m[39m[31m should be equal to one of the allowed values[39m
+"[31m[1mENUM[22m[39m[31m must be equal to one of the allowed values[39m
 [31m(paragraph, codeBlock, blockquote)[39m
 
 [0m [90m 4 |[39m   [32m\\"content\\"[39m[33m:[39m [[0m
@@ -26,7 +26,7 @@ exports[`AJV latest should output error with reconstructed codeframe 1`] = `
 `;
 
 exports[`AJV latest should output proper error for enumeration 1`] = `
-"[31m[1mENUM[22m[39m[31m should be equal to one of the allowed values[39m
+"[31m[1mENUM[22m[39m[31m must be equal to one of the allowed values[39m
 [31m(foo, bar)[39m
 
 [0m [90m 1 |[39m {[0m
@@ -36,7 +36,7 @@ exports[`AJV latest should output proper error for enumeration 1`] = `
 `;
 
 exports[`AJV latest should output proper error for enumeration in anyOf 1`] = `
-"[31m[1mENUM[22m[39m[31m should be equal to one of the allowed values[39m
+"[31m[1mENUM[22m[39m[31m must be equal to one of the allowed values[39m
 [31m(foo, bar)[39m
 
 [0m [90m 1 |[39m {[0m
@@ -44,18 +44,18 @@ exports[`AJV latest should output proper error for enumeration in anyOf 1`] = `
 [0m [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean [95mbar[31m here?[22m[39m[0m
 [0m [90m 3 |[39m }[0m
 
-[31m[1mTYPE[22m[39m[31m should be array[39m
+[31m[1mTYPE[22m[39m[31m must be array[39m
 
 [0m [90m 1 |[39m {[0m
 [0m[31m[1m>[22m[39m[90m 2 |[39m   [32m\\"id\\"[39m[33m:[39m [32m\\"baz\\"[39m[0m
-[0m [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  [95mtype[31m should be array[22m[39m[0m
+[0m [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  [95mtype[31m must be array[22m[39m[0m
 [0m [90m 3 |[39m }[0m
 
-[31m[1mANYOF[22m[39m[31m should match some schema in anyOf[39m
+[31m[1mANYOF[22m[39m[31m must match a schema in anyOf[39m
 
 [0m [90m 1 |[39m {[0m
 [0m[31m[1m>[22m[39m[90m 2 |[39m   [32m\\"id\\"[39m[33m:[39m [32m\\"baz\\"[39m[0m
-[0m [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  [95manyOf[31m should match some schema in anyOf[22m[39m[0m
+[0m [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  [95manyOf[31m must match a schema in anyOf[22m[39m[0m
 [0m [90m 3 |[39m }[0m"
 `;
 
@@ -292,5 +292,64 @@ exports[`AJV v7 should output proper error for enumeration in anyOf 1`] = `
 [0m [90m 1 |[39m {[0m
 [0m[31m[1m>[22m[39m[90m 2 |[39m   [32m\\"id\\"[39m[33m:[39m [32m\\"baz\\"[39m[0m
 [0m [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  [95manyOf[31m should match some schema in anyOf[22m[39m[0m
+[0m [90m 3 |[39m }[0m"
+`;
+
+exports[`AJV v8 should output error with codeframe 1`] = `
+"[31m[1mENUM[22m[39m[31m must be equal to one of the allowed values[39m
+[31m(paragraph, codeBlock, blockquote)[39m
+
+[0m [90m 2 |[39m   [32m\\"type\\"[39m[33m:[39m [32m\\"doc\\"[39m[33m,[39m[0m
+[0m [90m 3 |[39m   [32m\\"version\\"[39m[33m:[39m [35m1[39m[33m,[39m[0m
+[0m[31m[1m>[22m[39m[90m 4 |[39m   [32m\\"content\\"[39m[33m:[39m [{ [32m\\"type\\"[39m[33m:[39m [32m\\"paragarph\\"[39m }][0m
+[0m [90m   |[39m                         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean [95mparagraph[31m here?[22m[39m[0m
+[0m [90m 5 |[39m }[0m
+[0m [90m 6 |[39m[0m"
+`;
+
+exports[`AJV v8 should output error with reconstructed codeframe 1`] = `
+"[31m[1mENUM[22m[39m[31m must be equal to one of the allowed values[39m
+[31m(paragraph, codeBlock, blockquote)[39m
+
+[0m [90m 4 |[39m   [32m\\"content\\"[39m[33m:[39m [[0m
+[0m [90m 5 |[39m     {[0m
+[0m[31m[1m>[22m[39m[90m 6 |[39m       [32m\\"type\\"[39m[33m:[39m [32m\\"paragarph\\"[39m[0m
+[0m [90m   |[39m               [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean [95mparagraph[31m here?[22m[39m[0m
+[0m [90m 7 |[39m     }[0m
+[0m [90m 8 |[39m   ][0m
+[0m [90m 9 |[39m }[0m"
+`;
+
+exports[`AJV v8 should output proper error for enumeration 1`] = `
+"[31m[1mENUM[22m[39m[31m must be equal to one of the allowed values[39m
+[31m(foo, bar)[39m
+
+[0m [90m 1 |[39m {[0m
+[0m[31m[1m>[22m[39m[90m 2 |[39m   [32m\\"id\\"[39m[33m:[39m [32m\\"baz\\"[39m[0m
+[0m [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean [95mbar[31m here?[22m[39m[0m
+[0m [90m 3 |[39m }[0m"
+`;
+
+exports[`AJV v8 should output proper error for enumeration in anyOf 1`] = `
+"[31m[1mENUM[22m[39m[31m must be equal to one of the allowed values[39m
+[31m(foo, bar)[39m
+
+[0m [90m 1 |[39m {[0m
+[0m[31m[1m>[22m[39m[90m 2 |[39m   [32m\\"id\\"[39m[33m:[39m [32m\\"baz\\"[39m[0m
+[0m [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean [95mbar[31m here?[22m[39m[0m
+[0m [90m 3 |[39m }[0m
+
+[31m[1mTYPE[22m[39m[31m must be array[39m
+
+[0m [90m 1 |[39m {[0m
+[0m[31m[1m>[22m[39m[90m 2 |[39m   [32m\\"id\\"[39m[33m:[39m [32m\\"baz\\"[39m[0m
+[0m [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  [95mtype[31m must be array[22m[39m[0m
+[0m [90m 3 |[39m }[0m
+
+[31m[1mANYOF[22m[39m[31m must match a schema in anyOf[39m
+
+[0m [90m 1 |[39m {[0m
+[0m[31m[1m>[22m[39m[90m 2 |[39m   [32m\\"id\\"[39m[33m:[39m [32m\\"baz\\"[39m[0m
+[0m [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  [95manyOf[31m must match a schema in anyOf[22m[39m[0m
 [0m [90m 3 |[39m }[0m"
 `;
