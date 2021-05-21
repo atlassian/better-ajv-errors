@@ -1,5 +1,11 @@
 # better-ajv-errors
 
+## 0.9.0
+
+### Minor Changes
+
+- a7d4fd9: ajv 8 support
+
 ## 0.8.0
 
 ### Minor Changes
