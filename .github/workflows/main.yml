@@ -19,16 +19,15 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Install Yarn
-        run: curl -o- -L https://yarnpkg.com/install.sh | bash
-
       - name: Install Dependencies
-        run: yarn install --frozen-lockfile
+        run: npm install
 
       - name: Run Tests
         run: |
           yarn flow
           yarn test-ci
+        env:
+          CI: true
 
       - name: Upload coverage to Codecov
         run: bash <(curl -s https://codecov.io/bash) -C $GITHUB_SHA -B ${GITHUB_REF#refs/heads/} -Z
@@ -46,11 +45,8 @@ jobs:
         with:
           node-version: 10.x
 
-      - name: Install Yarn
-        run: curl -o- -L https://yarnpkg.com/install.sh | bash
-
       - name: Install Dependencies
-        run: yarn install --frozen-lockfile
+        run: npm install
 
       - name: Run ESLint
         run: yarn eslint .
