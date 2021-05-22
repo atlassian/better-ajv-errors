@@ -55,7 +55,7 @@
     "ajv5": "npm:ajv@5.5.2",
     "ajv6": "npm:ajv@6.12.6",
     "ajv7": "npm:ajv@7.2.4",
-    "ajv8": "npm:ajv@8.0.0",
+    "ajv8": "npm:ajv@8.5.0",
     "babel-jest": "26.6.3",
     "eslint": "7.26.0",
     "eslint-config-prettier": "8.3.0",
