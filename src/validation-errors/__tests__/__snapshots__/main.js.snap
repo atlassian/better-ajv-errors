@@ -27,7 +27,7 @@ Array [
       "line": 1,
       "offset": 24,
     },
-    "error": "/id: type should be number",
+    "error": "/id: type must be number",
     "path": "/id",
     "start": Object {
       "column": 7,
@@ -46,7 +46,7 @@ Array [
       "line": 1,
       "offset": 11,
     },
-    "error": "/id should be equal to one of the allowed values: foo, bar",
+    "error": "/id must be equal to one of the allowed values: foo, bar",
     "path": "/id",
     "start": Object {
       "column": 7,
@@ -61,7 +61,7 @@ Array [
 exports[`Main should support js output format for required errors 1`] = `
 Array [
   Object {
-    "error": "/nested should have required property 'id'",
+    "error": "/nested must have required property 'id'",
     "path": "/nested",
     "start": Object {
       "column": 11,

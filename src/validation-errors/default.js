@@ -12,12 +12,12 @@ export default class DefaultValidationError extends BaseValidationError {
   }
 
   getError() {
-    const { keyword, message, dataPath } = this.options;
+    const { keyword, message } = this.options;
 
     return {
       ...this.getLocation(),
-      error: `${this.getDecoratedPath(dataPath)}: ${keyword} ${message}`,
-      path: dataPath,
+      error: `${this.getDecoratedPath()}: ${keyword} ${message}`,
+      path: this.instancePath,
     };
   }
 }
