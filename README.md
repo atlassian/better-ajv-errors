@@ -36,8 +36,6 @@ The following PRs has been merged upstream:
 ## Installation
 
 ```bash
-$ yarn add better-ajv-errors
-$ # Or
 $ npm i better-ajv-errors
 ```
 

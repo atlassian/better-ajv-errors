@@ -9,7 +9,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x, 14.x, 15.x]
+        node-version: [10.x, 12.x, 14.x, 16.x]
 
     steps:
       - uses: actions/checkout@v2
@@ -20,33 +20,40 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Install Dependencies
-        run: npm install
-
-      - name: Run Tests
         run: |
-          yarn flow
-          yarn test-ci
-        env:
-          CI: true
+          npm install -g npm@latest
+          npm ci
 
-      - name: Upload coverage to Codecov
-        run: bash <(curl -s https://codecov.io/bash) -C $GITHUB_SHA -B ${GITHUB_REF#refs/heads/} -Z
-        if: matrix.node-version == '12.x' && github.repository == 'torifat/better-ajv-errors'
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      - name: Build
+        run: |
+          npm run build
+          npm pack
+          npx npm-pkg-lint
+
+      - name: Jest
+        run: npm test
+
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
   lint:
     name: Lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
 
-      - name: Use Node.js 10.x
+      - name: Use Node.js 16.x
         uses: actions/setup-node@v2
         with:
-          node-version: 10.x
+          node-version: 16.x
 
       - name: Install Dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Run ESLint
-        run: yarn eslint .
+      - name: ESLint
+        run: npm run eslint
+
+      - name: Prettier
+        run: npm run prettier:check
