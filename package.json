@@ -31,9 +31,9 @@
     "prebuild": "rm -rf dist",
     "build": "babel src -d dist/",
     "prepare": "husky install",
-    "prerelease": "yarn build",
+    "prerelease": "npm run build",
     "release": "changeset release",
-    "format": "prettier --write src .changeset",
+    "format": "prettier --write .",
     "test": "jest",
     "test-ci": "jest --coverage --colors",
     "screenshot": "svg-term --command='node screenshot' --out=media/screenshot.svg --padding=5 --width=80 --height=13 --at=1000 --no-cursor --term iterm2 --profile='deep' --window"
