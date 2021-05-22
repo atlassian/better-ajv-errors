@@ -1,0 +1,4 @@
+{
+  "releases": [{ "name": "better-ajv-errors", "type": "minor" }],
+  "dependents": []
+}
