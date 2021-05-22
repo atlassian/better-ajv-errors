@@ -2,7 +2,9 @@
   "name": "@sidvind/better-ajv-errors",
   "version": "0.9.0",
   "description": "JSON Schema validation for Human",
-  "repository": "ext/better-ajv-errors",
+  "repository": "https://github.com/ext/better-ajv-errors.git",
+  "homepage": "https://github.com/ext/better-ajv-errors",
+  "bugs": "https://github.com/ext/better-ajv-errors/issues",
   "main": "index.js",
   "keywords": [
     "json-schema",
@@ -32,10 +34,11 @@
     "build": "babel src -d dist/",
     "prepare": "husky install",
     "prerelease": "npm run build",
+    "eslint": "eslint src",
     "release": "changeset release",
-    "format": "prettier --write .",
-    "test": "jest",
-    "test-ci": "jest --coverage --colors",
+    "prettier:check": "prettier --check .",
+    "prettier:write": "prettier --write .",
+    "test": "jest --colors",
     "screenshot": "svg-term --command='node screenshot' --out=media/screenshot.svg --padding=5 --width=80 --height=13 --at=1000 --no-cursor --term iterm2 --profile='deep' --window"
   },
   "dependencies": {
@@ -74,11 +77,26 @@
     "ajv": "4.11.8 - 8"
   },
   "jest": {
-    "testMatch": [
-      "<rootDir>/src/**/__tests__/**/*.js"
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.[jt]s",
+      "!**/__tests__/",
+      "!**/*.d.ts",
+      "!**/index.[jt]s"
+    ],
+    "coverageReporters": [
+      "text",
+      "text-summary",
+      "html",
+      "json",
+      "lcov"
     ],
     "snapshotSerializers": [
       "pretty-format/build/plugins/ConvertAnsi"
+		],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "<rootDir>/dist/"
     ]
   },
   "renovate": {
