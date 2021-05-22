@@ -1,355 +1,355 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AJV latest should output error with codeframe 1`] = `
-"[31m[1mENUM[22m[39m[31m must be equal to one of the allowed values[39m
-[31m(paragraph, codeBlock, blockquote)[39m
+"<red><bold>ENUM</></><red> must be equal to one of the allowed values</>
+<red>(paragraph, codeBlock, blockquote)</>
 
-[0m [90m 2 |[39m   [32m\\"type\\"[39m[33m:[39m [32m\\"doc\\"[39m[33m,[39m[0m
-[0m [90m 3 |[39m   [32m\\"version\\"[39m[33m:[39m [35m1[39m[33m,[39m[0m
-[0m[31m[1m>[22m[39m[90m 4 |[39m   [32m\\"content\\"[39m[33m:[39m [{ [32m\\"type\\"[39m[33m:[39m [32m\\"paragarph\\"[39m }][0m
-[0m [90m   |[39m                         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean [95mparagraph[31m here?[22m[39m[0m
-[0m [90m 5 |[39m }[0m
-[0m [90m 6 |[39m[0m"
+</> <gray> 2 |</>   <green>\\"type\\"</><yellow>:</> <green>\\"doc\\"</><yellow>,</></>
+</> <gray> 3 |</>   <green>\\"version\\"</><yellow>:</> 1</><yellow>,</></>
+</><red><bold>></></><gray> 4 |</>   <green>\\"content\\"</><yellow>:</> [{ <green>\\"type\\"</><yellow>:</> <green>\\"paragarph\\"</> }]</>
+</> <gray>   |</>                         <red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></> <red><bold>👈🏽  Did you mean paragraph<red> here?</></></>
+</> <gray> 5 |</> }</>
+</> <gray> 6 |</></>"
 `;
 
 exports[`AJV latest should output error with reconstructed codeframe 1`] = `
-"[31m[1mENUM[22m[39m[31m must be equal to one of the allowed values[39m
-[31m(paragraph, codeBlock, blockquote)[39m
+"<red><bold>ENUM</></><red> must be equal to one of the allowed values</>
+<red>(paragraph, codeBlock, blockquote)</>
 
-[0m [90m 4 |[39m   [32m\\"content\\"[39m[33m:[39m [[0m
-[0m [90m 5 |[39m     {[0m
-[0m[31m[1m>[22m[39m[90m 6 |[39m       [32m\\"type\\"[39m[33m:[39m [32m\\"paragarph\\"[39m[0m
-[0m [90m   |[39m               [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean [95mparagraph[31m here?[22m[39m[0m
-[0m [90m 7 |[39m     }[0m
-[0m [90m 8 |[39m   ][0m
-[0m [90m 9 |[39m }[0m"
+</> <gray> 4 |</>   <green>\\"content\\"</><yellow>:</> [</>
+</> <gray> 5 |</>     {</>
+</><red><bold>></></><gray> 6 |</>       <green>\\"type\\"</><yellow>:</> <green>\\"paragarph\\"</></>
+</> <gray>   |</>               <red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></> <red><bold>👈🏽  Did you mean paragraph<red> here?</></></>
+</> <gray> 7 |</>     }</>
+</> <gray> 8 |</>   ]</>
+</> <gray> 9 |</> }</>"
 `;
 
 exports[`AJV latest should output proper error for enumeration 1`] = `
-"[31m[1mENUM[22m[39m[31m must be equal to one of the allowed values[39m
-[31m(foo, bar)[39m
+"<red><bold>ENUM</></><red> must be equal to one of the allowed values</>
+<red>(foo, bar)</>
 
-[0m [90m 1 |[39m {[0m
-[0m[31m[1m>[22m[39m[90m 2 |[39m   [32m\\"id\\"[39m[33m:[39m [32m\\"baz\\"[39m[0m
-[0m [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean [95mbar[31m here?[22m[39m[0m
-[0m [90m 3 |[39m }[0m"
+</> <gray> 1 |</> {</>
+</><red><bold>></></><gray> 2 |</>   <green>\\"id\\"</><yellow>:</> <green>\\"baz\\"</></>
+</> <gray>   |</>         <red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></> <red><bold>👈🏽  Did you mean bar<red> here?</></></>
+</> <gray> 3 |</> }</>"
 `;
 
 exports[`AJV latest should output proper error for enumeration in anyOf 1`] = `
-"[31m[1mENUM[22m[39m[31m must be equal to one of the allowed values[39m
-[31m(foo, bar)[39m
+"<red><bold>ENUM</></><red> must be equal to one of the allowed values</>
+<red>(foo, bar)</>
 
-[0m [90m 1 |[39m {[0m
-[0m[31m[1m>[22m[39m[90m 2 |[39m   [32m\\"id\\"[39m[33m:[39m [32m\\"baz\\"[39m[0m
-[0m [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean [95mbar[31m here?[22m[39m[0m
-[0m [90m 3 |[39m }[0m
+</> <gray> 1 |</> {</>
+</><red><bold>></></><gray> 2 |</>   <green>\\"id\\"</><yellow>:</> <green>\\"baz\\"</></>
+</> <gray>   |</>         <red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></> <red><bold>👈🏽  Did you mean bar<red> here?</></></>
+</> <gray> 3 |</> }</>
 
-[31m[1mTYPE[22m[39m[31m must be array[39m
+<red><bold>TYPE</></><red> must be array</>
 
-[0m [90m 1 |[39m {[0m
-[0m[31m[1m>[22m[39m[90m 2 |[39m   [32m\\"id\\"[39m[33m:[39m [32m\\"baz\\"[39m[0m
-[0m [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  [95mtype[31m must be array[22m[39m[0m
-[0m [90m 3 |[39m }[0m
+</> <gray> 1 |</> {</>
+</><red><bold>></></><gray> 2 |</>   <green>\\"id\\"</><yellow>:</> <green>\\"baz\\"</></>
+</> <gray>   |</>         <red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></> <red><bold>👈🏽  type<red> must be array</></></>
+</> <gray> 3 |</> }</>
 
-[31m[1mANYOF[22m[39m[31m must match a schema in anyOf[39m
+<red><bold>ANYOF</></><red> must match a schema in anyOf</>
 
-[0m [90m 1 |[39m {[0m
-[0m[31m[1m>[22m[39m[90m 2 |[39m   [32m\\"id\\"[39m[33m:[39m [32m\\"baz\\"[39m[0m
-[0m [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  [95manyOf[31m must match a schema in anyOf[22m[39m[0m
-[0m [90m 3 |[39m }[0m"
+</> <gray> 1 |</> {</>
+</><red><bold>></></><gray> 2 |</>   <green>\\"id\\"</><yellow>:</> <green>\\"baz\\"</></>
+</> <gray>   |</>         <red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></> <red><bold>👈🏽  anyOf<red> must match a schema in anyOf</></></>
+</> <gray> 3 |</> }</>"
 `;
 
 exports[`AJV v4 should output error with codeframe 1`] = `
-"[31m[1mENUM[22m[39m[31m should be equal to one of the allowed values[39m
-[31m(paragraph, codeBlock, blockquote)[39m
+"<red><bold>ENUM</></><red> should be equal to one of the allowed values</>
+<red>(paragraph, codeBlock, blockquote)</>
 
-[0m [90m 2 |[39m   [32m\\"type\\"[39m[33m:[39m [32m\\"doc\\"[39m[33m,[39m[0m
-[0m [90m 3 |[39m   [32m\\"version\\"[39m[33m:[39m [35m1[39m[33m,[39m[0m
-[0m[31m[1m>[22m[39m[90m 4 |[39m   [32m\\"content\\"[39m[33m:[39m [{ [32m\\"type\\"[39m[33m:[39m [32m\\"paragarph\\"[39m }][0m
-[0m [90m   |[39m                         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean [95mparagraph[31m here?[22m[39m[0m
-[0m [90m 5 |[39m }[0m
-[0m [90m 6 |[39m[0m"
+</> <gray> 2 |</>   <green>\\"type\\"</><yellow>:</> <green>\\"doc\\"</><yellow>,</></>
+</> <gray> 3 |</>   <green>\\"version\\"</><yellow>:</> 1</><yellow>,</></>
+</><red><bold>></></><gray> 4 |</>   <green>\\"content\\"</><yellow>:</> [{ <green>\\"type\\"</><yellow>:</> <green>\\"paragarph\\"</> }]</>
+</> <gray>   |</>                         <red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></> <red><bold>👈🏽  Did you mean paragraph<red> here?</></></>
+</> <gray> 5 |</> }</>
+</> <gray> 6 |</></>"
 `;
 
 exports[`AJV v4 should output error with reconstructed codeframe 1`] = `
-"[31m[1mENUM[22m[39m[31m should be equal to one of the allowed values[39m
-[31m(paragraph, codeBlock, blockquote)[39m
+"<red><bold>ENUM</></><red> should be equal to one of the allowed values</>
+<red>(paragraph, codeBlock, blockquote)</>
 
-[0m [90m 4 |[39m   [32m\\"content\\"[39m[33m:[39m [[0m
-[0m [90m 5 |[39m     {[0m
-[0m[31m[1m>[22m[39m[90m 6 |[39m       [32m\\"type\\"[39m[33m:[39m [32m\\"paragarph\\"[39m[0m
-[0m [90m   |[39m               [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean [95mparagraph[31m here?[22m[39m[0m
-[0m [90m 7 |[39m     }[0m
-[0m [90m 8 |[39m   ][0m
-[0m [90m 9 |[39m }[0m"
+</> <gray> 4 |</>   <green>\\"content\\"</><yellow>:</> [</>
+</> <gray> 5 |</>     {</>
+</><red><bold>></></><gray> 6 |</>       <green>\\"type\\"</><yellow>:</> <green>\\"paragarph\\"</></>
+</> <gray>   |</>               <red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></> <red><bold>👈🏽  Did you mean paragraph<red> here?</></></>
+</> <gray> 7 |</>     }</>
+</> <gray> 8 |</>   ]</>
+</> <gray> 9 |</> }</>"
 `;
 
 exports[`AJV v4 should output proper error for enumeration 1`] = `
-"[31m[1mENUM[22m[39m[31m should be equal to one of the allowed values[39m
-[31m(foo, bar)[39m
+"<red><bold>ENUM</></><red> should be equal to one of the allowed values</>
+<red>(foo, bar)</>
 
-[0m [90m 1 |[39m {[0m
-[0m[31m[1m>[22m[39m[90m 2 |[39m   [32m\\"id\\"[39m[33m:[39m [32m\\"baz\\"[39m[0m
-[0m [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean [95mbar[31m here?[22m[39m[0m
-[0m [90m 3 |[39m }[0m"
+</> <gray> 1 |</> {</>
+</><red><bold>></></><gray> 2 |</>   <green>\\"id\\"</><yellow>:</> <green>\\"baz\\"</></>
+</> <gray>   |</>         <red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></> <red><bold>👈🏽  Did you mean bar<red> here?</></></>
+</> <gray> 3 |</> }</>"
 `;
 
 exports[`AJV v4 should output proper error for enumeration in anyOf 1`] = `
-"[31m[1mENUM[22m[39m[31m should be equal to one of the allowed values[39m
-[31m(foo, bar)[39m
+"<red><bold>ENUM</></><red> should be equal to one of the allowed values</>
+<red>(foo, bar)</>
 
-[0m [90m 1 |[39m {[0m
-[0m[31m[1m>[22m[39m[90m 2 |[39m   [32m\\"id\\"[39m[33m:[39m [32m\\"baz\\"[39m[0m
-[0m [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean [95mbar[31m here?[22m[39m[0m
-[0m [90m 3 |[39m }[0m
+</> <gray> 1 |</> {</>
+</><red><bold>></></><gray> 2 |</>   <green>\\"id\\"</><yellow>:</> <green>\\"baz\\"</></>
+</> <gray>   |</>         <red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></> <red><bold>👈🏽  Did you mean bar<red> here?</></></>
+</> <gray> 3 |</> }</>
 
-[31m[1mTYPE[22m[39m[31m should be array[39m
+<red><bold>TYPE</></><red> should be array</>
 
-[0m [90m 1 |[39m {[0m
-[0m[31m[1m>[22m[39m[90m 2 |[39m   [32m\\"id\\"[39m[33m:[39m [32m\\"baz\\"[39m[0m
-[0m [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  [95mtype[31m should be array[22m[39m[0m
-[0m [90m 3 |[39m }[0m
+</> <gray> 1 |</> {</>
+</><red><bold>></></><gray> 2 |</>   <green>\\"id\\"</><yellow>:</> <green>\\"baz\\"</></>
+</> <gray>   |</>         <red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></> <red><bold>👈🏽  type<red> should be array</></></>
+</> <gray> 3 |</> }</>
 
-[31m[1mANYOF[22m[39m[31m should match some schema in anyOf[39m
+<red><bold>ANYOF</></><red> should match some schema in anyOf</>
 
-[0m [90m 1 |[39m {[0m
-[0m[31m[1m>[22m[39m[90m 2 |[39m   [32m\\"id\\"[39m[33m:[39m [32m\\"baz\\"[39m[0m
-[0m [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  [95manyOf[31m should match some schema in anyOf[22m[39m[0m
-[0m [90m 3 |[39m }[0m"
+</> <gray> 1 |</> {</>
+</><red><bold>></></><gray> 2 |</>   <green>\\"id\\"</><yellow>:</> <green>\\"baz\\"</></>
+</> <gray>   |</>         <red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></> <red><bold>👈🏽  anyOf<red> should match some schema in anyOf</></></>
+</> <gray> 3 |</> }</>"
 `;
 
 exports[`AJV v5 should output error with codeframe 1`] = `
-"[31m[1mENUM[22m[39m[31m should be equal to one of the allowed values[39m
-[31m(paragraph, codeBlock, blockquote)[39m
+"<red><bold>ENUM</></><red> should be equal to one of the allowed values</>
+<red>(paragraph, codeBlock, blockquote)</>
 
-[0m [90m 2 |[39m   [32m\\"type\\"[39m[33m:[39m [32m\\"doc\\"[39m[33m,[39m[0m
-[0m [90m 3 |[39m   [32m\\"version\\"[39m[33m:[39m [35m1[39m[33m,[39m[0m
-[0m[31m[1m>[22m[39m[90m 4 |[39m   [32m\\"content\\"[39m[33m:[39m [{ [32m\\"type\\"[39m[33m:[39m [32m\\"paragarph\\"[39m }][0m
-[0m [90m   |[39m                         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean [95mparagraph[31m here?[22m[39m[0m
-[0m [90m 5 |[39m }[0m
-[0m [90m 6 |[39m[0m"
+</> <gray> 2 |</>   <green>\\"type\\"</><yellow>:</> <green>\\"doc\\"</><yellow>,</></>
+</> <gray> 3 |</>   <green>\\"version\\"</><yellow>:</> 1</><yellow>,</></>
+</><red><bold>></></><gray> 4 |</>   <green>\\"content\\"</><yellow>:</> [{ <green>\\"type\\"</><yellow>:</> <green>\\"paragarph\\"</> }]</>
+</> <gray>   |</>                         <red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></> <red><bold>👈🏽  Did you mean paragraph<red> here?</></></>
+</> <gray> 5 |</> }</>
+</> <gray> 6 |</></>"
 `;
 
 exports[`AJV v5 should output error with reconstructed codeframe 1`] = `
-"[31m[1mENUM[22m[39m[31m should be equal to one of the allowed values[39m
-[31m(paragraph, codeBlock, blockquote)[39m
+"<red><bold>ENUM</></><red> should be equal to one of the allowed values</>
+<red>(paragraph, codeBlock, blockquote)</>
 
-[0m [90m 4 |[39m   [32m\\"content\\"[39m[33m:[39m [[0m
-[0m [90m 5 |[39m     {[0m
-[0m[31m[1m>[22m[39m[90m 6 |[39m       [32m\\"type\\"[39m[33m:[39m [32m\\"paragarph\\"[39m[0m
-[0m [90m   |[39m               [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean [95mparagraph[31m here?[22m[39m[0m
-[0m [90m 7 |[39m     }[0m
-[0m [90m 8 |[39m   ][0m
-[0m [90m 9 |[39m }[0m"
+</> <gray> 4 |</>   <green>\\"content\\"</><yellow>:</> [</>
+</> <gray> 5 |</>     {</>
+</><red><bold>></></><gray> 6 |</>       <green>\\"type\\"</><yellow>:</> <green>\\"paragarph\\"</></>
+</> <gray>   |</>               <red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></> <red><bold>👈🏽  Did you mean paragraph<red> here?</></></>
+</> <gray> 7 |</>     }</>
+</> <gray> 8 |</>   ]</>
+</> <gray> 9 |</> }</>"
 `;
 
 exports[`AJV v5 should output proper error for enumeration 1`] = `
-"[31m[1mENUM[22m[39m[31m should be equal to one of the allowed values[39m
-[31m(foo, bar)[39m
+"<red><bold>ENUM</></><red> should be equal to one of the allowed values</>
+<red>(foo, bar)</>
 
-[0m [90m 1 |[39m {[0m
-[0m[31m[1m>[22m[39m[90m 2 |[39m   [32m\\"id\\"[39m[33m:[39m [32m\\"baz\\"[39m[0m
-[0m [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean [95mbar[31m here?[22m[39m[0m
-[0m [90m 3 |[39m }[0m"
+</> <gray> 1 |</> {</>
+</><red><bold>></></><gray> 2 |</>   <green>\\"id\\"</><yellow>:</> <green>\\"baz\\"</></>
+</> <gray>   |</>         <red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></> <red><bold>👈🏽  Did you mean bar<red> here?</></></>
+</> <gray> 3 |</> }</>"
 `;
 
 exports[`AJV v5 should output proper error for enumeration in anyOf 1`] = `
-"[31m[1mENUM[22m[39m[31m should be equal to one of the allowed values[39m
-[31m(foo, bar)[39m
+"<red><bold>ENUM</></><red> should be equal to one of the allowed values</>
+<red>(foo, bar)</>
 
-[0m [90m 1 |[39m {[0m
-[0m[31m[1m>[22m[39m[90m 2 |[39m   [32m\\"id\\"[39m[33m:[39m [32m\\"baz\\"[39m[0m
-[0m [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean [95mbar[31m here?[22m[39m[0m
-[0m [90m 3 |[39m }[0m
+</> <gray> 1 |</> {</>
+</><red><bold>></></><gray> 2 |</>   <green>\\"id\\"</><yellow>:</> <green>\\"baz\\"</></>
+</> <gray>   |</>         <red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></> <red><bold>👈🏽  Did you mean bar<red> here?</></></>
+</> <gray> 3 |</> }</>
 
-[31m[1mTYPE[22m[39m[31m should be array[39m
+<red><bold>TYPE</></><red> should be array</>
 
-[0m [90m 1 |[39m {[0m
-[0m[31m[1m>[22m[39m[90m 2 |[39m   [32m\\"id\\"[39m[33m:[39m [32m\\"baz\\"[39m[0m
-[0m [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  [95mtype[31m should be array[22m[39m[0m
-[0m [90m 3 |[39m }[0m
+</> <gray> 1 |</> {</>
+</><red><bold>></></><gray> 2 |</>   <green>\\"id\\"</><yellow>:</> <green>\\"baz\\"</></>
+</> <gray>   |</>         <red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></> <red><bold>👈🏽  type<red> should be array</></></>
+</> <gray> 3 |</> }</>
 
-[31m[1mANYOF[22m[39m[31m should match some schema in anyOf[39m
+<red><bold>ANYOF</></><red> should match some schema in anyOf</>
 
-[0m [90m 1 |[39m {[0m
-[0m[31m[1m>[22m[39m[90m 2 |[39m   [32m\\"id\\"[39m[33m:[39m [32m\\"baz\\"[39m[0m
-[0m [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  [95manyOf[31m should match some schema in anyOf[22m[39m[0m
-[0m [90m 3 |[39m }[0m"
+</> <gray> 1 |</> {</>
+</><red><bold>></></><gray> 2 |</>   <green>\\"id\\"</><yellow>:</> <green>\\"baz\\"</></>
+</> <gray>   |</>         <red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></> <red><bold>👈🏽  anyOf<red> should match some schema in anyOf</></></>
+</> <gray> 3 |</> }</>"
 `;
 
 exports[`AJV v6 should output error with codeframe 1`] = `
-"[31m[1mENUM[22m[39m[31m should be equal to one of the allowed values[39m
-[31m(paragraph, codeBlock, blockquote)[39m
+"<red><bold>ENUM</></><red> should be equal to one of the allowed values</>
+<red>(paragraph, codeBlock, blockquote)</>
 
-[0m [90m 2 |[39m   [32m\\"type\\"[39m[33m:[39m [32m\\"doc\\"[39m[33m,[39m[0m
-[0m [90m 3 |[39m   [32m\\"version\\"[39m[33m:[39m [35m1[39m[33m,[39m[0m
-[0m[31m[1m>[22m[39m[90m 4 |[39m   [32m\\"content\\"[39m[33m:[39m [{ [32m\\"type\\"[39m[33m:[39m [32m\\"paragarph\\"[39m }][0m
-[0m [90m   |[39m                         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean [95mparagraph[31m here?[22m[39m[0m
-[0m [90m 5 |[39m }[0m
-[0m [90m 6 |[39m[0m"
+</> <gray> 2 |</>   <green>\\"type\\"</><yellow>:</> <green>\\"doc\\"</><yellow>,</></>
+</> <gray> 3 |</>   <green>\\"version\\"</><yellow>:</> 1</><yellow>,</></>
+</><red><bold>></></><gray> 4 |</>   <green>\\"content\\"</><yellow>:</> [{ <green>\\"type\\"</><yellow>:</> <green>\\"paragarph\\"</> }]</>
+</> <gray>   |</>                         <red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></> <red><bold>👈🏽  Did you mean paragraph<red> here?</></></>
+</> <gray> 5 |</> }</>
+</> <gray> 6 |</></>"
 `;
 
 exports[`AJV v6 should output error with reconstructed codeframe 1`] = `
-"[31m[1mENUM[22m[39m[31m should be equal to one of the allowed values[39m
-[31m(paragraph, codeBlock, blockquote)[39m
+"<red><bold>ENUM</></><red> should be equal to one of the allowed values</>
+<red>(paragraph, codeBlock, blockquote)</>
 
-[0m [90m 4 |[39m   [32m\\"content\\"[39m[33m:[39m [[0m
-[0m [90m 5 |[39m     {[0m
-[0m[31m[1m>[22m[39m[90m 6 |[39m       [32m\\"type\\"[39m[33m:[39m [32m\\"paragarph\\"[39m[0m
-[0m [90m   |[39m               [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean [95mparagraph[31m here?[22m[39m[0m
-[0m [90m 7 |[39m     }[0m
-[0m [90m 8 |[39m   ][0m
-[0m [90m 9 |[39m }[0m"
+</> <gray> 4 |</>   <green>\\"content\\"</><yellow>:</> [</>
+</> <gray> 5 |</>     {</>
+</><red><bold>></></><gray> 6 |</>       <green>\\"type\\"</><yellow>:</> <green>\\"paragarph\\"</></>
+</> <gray>   |</>               <red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></> <red><bold>👈🏽  Did you mean paragraph<red> here?</></></>
+</> <gray> 7 |</>     }</>
+</> <gray> 8 |</>   ]</>
+</> <gray> 9 |</> }</>"
 `;
 
 exports[`AJV v6 should output proper error for enumeration 1`] = `
-"[31m[1mENUM[22m[39m[31m should be equal to one of the allowed values[39m
-[31m(foo, bar)[39m
+"<red><bold>ENUM</></><red> should be equal to one of the allowed values</>
+<red>(foo, bar)</>
 
-[0m [90m 1 |[39m {[0m
-[0m[31m[1m>[22m[39m[90m 2 |[39m   [32m\\"id\\"[39m[33m:[39m [32m\\"baz\\"[39m[0m
-[0m [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean [95mbar[31m here?[22m[39m[0m
-[0m [90m 3 |[39m }[0m"
+</> <gray> 1 |</> {</>
+</><red><bold>></></><gray> 2 |</>   <green>\\"id\\"</><yellow>:</> <green>\\"baz\\"</></>
+</> <gray>   |</>         <red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></> <red><bold>👈🏽  Did you mean bar<red> here?</></></>
+</> <gray> 3 |</> }</>"
 `;
 
 exports[`AJV v6 should output proper error for enumeration in anyOf 1`] = `
-"[31m[1mENUM[22m[39m[31m should be equal to one of the allowed values[39m
-[31m(foo, bar)[39m
+"<red><bold>ENUM</></><red> should be equal to one of the allowed values</>
+<red>(foo, bar)</>
 
-[0m [90m 1 |[39m {[0m
-[0m[31m[1m>[22m[39m[90m 2 |[39m   [32m\\"id\\"[39m[33m:[39m [32m\\"baz\\"[39m[0m
-[0m [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean [95mbar[31m here?[22m[39m[0m
-[0m [90m 3 |[39m }[0m
+</> <gray> 1 |</> {</>
+</><red><bold>></></><gray> 2 |</>   <green>\\"id\\"</><yellow>:</> <green>\\"baz\\"</></>
+</> <gray>   |</>         <red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></> <red><bold>👈🏽  Did you mean bar<red> here?</></></>
+</> <gray> 3 |</> }</>
 
-[31m[1mTYPE[22m[39m[31m should be array[39m
+<red><bold>TYPE</></><red> should be array</>
 
-[0m [90m 1 |[39m {[0m
-[0m[31m[1m>[22m[39m[90m 2 |[39m   [32m\\"id\\"[39m[33m:[39m [32m\\"baz\\"[39m[0m
-[0m [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  [95mtype[31m should be array[22m[39m[0m
-[0m [90m 3 |[39m }[0m
+</> <gray> 1 |</> {</>
+</><red><bold>></></><gray> 2 |</>   <green>\\"id\\"</><yellow>:</> <green>\\"baz\\"</></>
+</> <gray>   |</>         <red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></> <red><bold>👈🏽  type<red> should be array</></></>
+</> <gray> 3 |</> }</>
 
-[31m[1mANYOF[22m[39m[31m should match some schema in anyOf[39m
+<red><bold>ANYOF</></><red> should match some schema in anyOf</>
 
-[0m [90m 1 |[39m {[0m
-[0m[31m[1m>[22m[39m[90m 2 |[39m   [32m\\"id\\"[39m[33m:[39m [32m\\"baz\\"[39m[0m
-[0m [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  [95manyOf[31m should match some schema in anyOf[22m[39m[0m
-[0m [90m 3 |[39m }[0m"
+</> <gray> 1 |</> {</>
+</><red><bold>></></><gray> 2 |</>   <green>\\"id\\"</><yellow>:</> <green>\\"baz\\"</></>
+</> <gray>   |</>         <red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></> <red><bold>👈🏽  anyOf<red> should match some schema in anyOf</></></>
+</> <gray> 3 |</> }</>"
 `;
 
 exports[`AJV v7 should output error with codeframe 1`] = `
-"[31m[1mENUM[22m[39m[31m should be equal to one of the allowed values[39m
-[31m(paragraph, codeBlock, blockquote)[39m
+"<red><bold>ENUM</></><red> should be equal to one of the allowed values</>
+<red>(paragraph, codeBlock, blockquote)</>
 
-[0m [90m 2 |[39m   [32m\\"type\\"[39m[33m:[39m [32m\\"doc\\"[39m[33m,[39m[0m
-[0m [90m 3 |[39m   [32m\\"version\\"[39m[33m:[39m [35m1[39m[33m,[39m[0m
-[0m[31m[1m>[22m[39m[90m 4 |[39m   [32m\\"content\\"[39m[33m:[39m [{ [32m\\"type\\"[39m[33m:[39m [32m\\"paragarph\\"[39m }][0m
-[0m [90m   |[39m                         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean [95mparagraph[31m here?[22m[39m[0m
-[0m [90m 5 |[39m }[0m
-[0m [90m 6 |[39m[0m"
+</> <gray> 2 |</>   <green>\\"type\\"</><yellow>:</> <green>\\"doc\\"</><yellow>,</></>
+</> <gray> 3 |</>   <green>\\"version\\"</><yellow>:</> 1</><yellow>,</></>
+</><red><bold>></></><gray> 4 |</>   <green>\\"content\\"</><yellow>:</> [{ <green>\\"type\\"</><yellow>:</> <green>\\"paragarph\\"</> }]</>
+</> <gray>   |</>                         <red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></> <red><bold>👈🏽  Did you mean paragraph<red> here?</></></>
+</> <gray> 5 |</> }</>
+</> <gray> 6 |</></>"
 `;
 
 exports[`AJV v7 should output error with reconstructed codeframe 1`] = `
-"[31m[1mENUM[22m[39m[31m should be equal to one of the allowed values[39m
-[31m(paragraph, codeBlock, blockquote)[39m
+"<red><bold>ENUM</></><red> should be equal to one of the allowed values</>
+<red>(paragraph, codeBlock, blockquote)</>
 
-[0m [90m 4 |[39m   [32m\\"content\\"[39m[33m:[39m [[0m
-[0m [90m 5 |[39m     {[0m
-[0m[31m[1m>[22m[39m[90m 6 |[39m       [32m\\"type\\"[39m[33m:[39m [32m\\"paragarph\\"[39m[0m
-[0m [90m   |[39m               [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean [95mparagraph[31m here?[22m[39m[0m
-[0m [90m 7 |[39m     }[0m
-[0m [90m 8 |[39m   ][0m
-[0m [90m 9 |[39m }[0m"
+</> <gray> 4 |</>   <green>\\"content\\"</><yellow>:</> [</>
+</> <gray> 5 |</>     {</>
+</><red><bold>></></><gray> 6 |</>       <green>\\"type\\"</><yellow>:</> <green>\\"paragarph\\"</></>
+</> <gray>   |</>               <red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></> <red><bold>👈🏽  Did you mean paragraph<red> here?</></></>
+</> <gray> 7 |</>     }</>
+</> <gray> 8 |</>   ]</>
+</> <gray> 9 |</> }</>"
 `;
 
 exports[`AJV v7 should output proper error for enumeration 1`] = `
-"[31m[1mENUM[22m[39m[31m should be equal to one of the allowed values[39m
-[31m(foo, bar)[39m
+"<red><bold>ENUM</></><red> should be equal to one of the allowed values</>
+<red>(foo, bar)</>
 
-[0m [90m 1 |[39m {[0m
-[0m[31m[1m>[22m[39m[90m 2 |[39m   [32m\\"id\\"[39m[33m:[39m [32m\\"baz\\"[39m[0m
-[0m [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean [95mbar[31m here?[22m[39m[0m
-[0m [90m 3 |[39m }[0m"
+</> <gray> 1 |</> {</>
+</><red><bold>></></><gray> 2 |</>   <green>\\"id\\"</><yellow>:</> <green>\\"baz\\"</></>
+</> <gray>   |</>         <red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></> <red><bold>👈🏽  Did you mean bar<red> here?</></></>
+</> <gray> 3 |</> }</>"
 `;
 
 exports[`AJV v7 should output proper error for enumeration in anyOf 1`] = `
-"[31m[1mENUM[22m[39m[31m should be equal to one of the allowed values[39m
-[31m(foo, bar)[39m
+"<red><bold>ENUM</></><red> should be equal to one of the allowed values</>
+<red>(foo, bar)</>
 
-[0m [90m 1 |[39m {[0m
-[0m[31m[1m>[22m[39m[90m 2 |[39m   [32m\\"id\\"[39m[33m:[39m [32m\\"baz\\"[39m[0m
-[0m [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean [95mbar[31m here?[22m[39m[0m
-[0m [90m 3 |[39m }[0m
+</> <gray> 1 |</> {</>
+</><red><bold>></></><gray> 2 |</>   <green>\\"id\\"</><yellow>:</> <green>\\"baz\\"</></>
+</> <gray>   |</>         <red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></> <red><bold>👈🏽  Did you mean bar<red> here?</></></>
+</> <gray> 3 |</> }</>
 
-[31m[1mTYPE[22m[39m[31m should be array[39m
+<red><bold>TYPE</></><red> should be array</>
 
-[0m [90m 1 |[39m {[0m
-[0m[31m[1m>[22m[39m[90m 2 |[39m   [32m\\"id\\"[39m[33m:[39m [32m\\"baz\\"[39m[0m
-[0m [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  [95mtype[31m should be array[22m[39m[0m
-[0m [90m 3 |[39m }[0m
+</> <gray> 1 |</> {</>
+</><red><bold>></></><gray> 2 |</>   <green>\\"id\\"</><yellow>:</> <green>\\"baz\\"</></>
+</> <gray>   |</>         <red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></> <red><bold>👈🏽  type<red> should be array</></></>
+</> <gray> 3 |</> }</>
 
-[31m[1mANYOF[22m[39m[31m should match some schema in anyOf[39m
+<red><bold>ANYOF</></><red> should match some schema in anyOf</>
 
-[0m [90m 1 |[39m {[0m
-[0m[31m[1m>[22m[39m[90m 2 |[39m   [32m\\"id\\"[39m[33m:[39m [32m\\"baz\\"[39m[0m
-[0m [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  [95manyOf[31m should match some schema in anyOf[22m[39m[0m
-[0m [90m 3 |[39m }[0m"
+</> <gray> 1 |</> {</>
+</><red><bold>></></><gray> 2 |</>   <green>\\"id\\"</><yellow>:</> <green>\\"baz\\"</></>
+</> <gray>   |</>         <red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></> <red><bold>👈🏽  anyOf<red> should match some schema in anyOf</></></>
+</> <gray> 3 |</> }</>"
 `;
 
 exports[`AJV v8 should output error with codeframe 1`] = `
-"[31m[1mENUM[22m[39m[31m must be equal to one of the allowed values[39m
-[31m(paragraph, codeBlock, blockquote)[39m
+"<red><bold>ENUM</></><red> must be equal to one of the allowed values</>
+<red>(paragraph, codeBlock, blockquote)</>
 
-[0m [90m 2 |[39m   [32m\\"type\\"[39m[33m:[39m [32m\\"doc\\"[39m[33m,[39m[0m
-[0m [90m 3 |[39m   [32m\\"version\\"[39m[33m:[39m [35m1[39m[33m,[39m[0m
-[0m[31m[1m>[22m[39m[90m 4 |[39m   [32m\\"content\\"[39m[33m:[39m [{ [32m\\"type\\"[39m[33m:[39m [32m\\"paragarph\\"[39m }][0m
-[0m [90m   |[39m                         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean [95mparagraph[31m here?[22m[39m[0m
-[0m [90m 5 |[39m }[0m
-[0m [90m 6 |[39m[0m"
+</> <gray> 2 |</>   <green>\\"type\\"</><yellow>:</> <green>\\"doc\\"</><yellow>,</></>
+</> <gray> 3 |</>   <green>\\"version\\"</><yellow>:</> 1</><yellow>,</></>
+</><red><bold>></></><gray> 4 |</>   <green>\\"content\\"</><yellow>:</> [{ <green>\\"type\\"</><yellow>:</> <green>\\"paragarph\\"</> }]</>
+</> <gray>   |</>                         <red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></> <red><bold>👈🏽  Did you mean paragraph<red> here?</></></>
+</> <gray> 5 |</> }</>
+</> <gray> 6 |</></>"
 `;
 
 exports[`AJV v8 should output error with reconstructed codeframe 1`] = `
-"[31m[1mENUM[22m[39m[31m must be equal to one of the allowed values[39m
-[31m(paragraph, codeBlock, blockquote)[39m
+"<red><bold>ENUM</></><red> must be equal to one of the allowed values</>
+<red>(paragraph, codeBlock, blockquote)</>
 
-[0m [90m 4 |[39m   [32m\\"content\\"[39m[33m:[39m [[0m
-[0m [90m 5 |[39m     {[0m
-[0m[31m[1m>[22m[39m[90m 6 |[39m       [32m\\"type\\"[39m[33m:[39m [32m\\"paragarph\\"[39m[0m
-[0m [90m   |[39m               [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean [95mparagraph[31m here?[22m[39m[0m
-[0m [90m 7 |[39m     }[0m
-[0m [90m 8 |[39m   ][0m
-[0m [90m 9 |[39m }[0m"
+</> <gray> 4 |</>   <green>\\"content\\"</><yellow>:</> [</>
+</> <gray> 5 |</>     {</>
+</><red><bold>></></><gray> 6 |</>       <green>\\"type\\"</><yellow>:</> <green>\\"paragarph\\"</></>
+</> <gray>   |</>               <red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></> <red><bold>👈🏽  Did you mean paragraph<red> here?</></></>
+</> <gray> 7 |</>     }</>
+</> <gray> 8 |</>   ]</>
+</> <gray> 9 |</> }</>"
 `;
 
 exports[`AJV v8 should output proper error for enumeration 1`] = `
-"[31m[1mENUM[22m[39m[31m must be equal to one of the allowed values[39m
-[31m(foo, bar)[39m
+"<red><bold>ENUM</></><red> must be equal to one of the allowed values</>
+<red>(foo, bar)</>
 
-[0m [90m 1 |[39m {[0m
-[0m[31m[1m>[22m[39m[90m 2 |[39m   [32m\\"id\\"[39m[33m:[39m [32m\\"baz\\"[39m[0m
-[0m [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean [95mbar[31m here?[22m[39m[0m
-[0m [90m 3 |[39m }[0m"
+</> <gray> 1 |</> {</>
+</><red><bold>></></><gray> 2 |</>   <green>\\"id\\"</><yellow>:</> <green>\\"baz\\"</></>
+</> <gray>   |</>         <red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></> <red><bold>👈🏽  Did you mean bar<red> here?</></></>
+</> <gray> 3 |</> }</>"
 `;
 
 exports[`AJV v8 should output proper error for enumeration in anyOf 1`] = `
-"[31m[1mENUM[22m[39m[31m must be equal to one of the allowed values[39m
-[31m(foo, bar)[39m
+"<red><bold>ENUM</></><red> must be equal to one of the allowed values</>
+<red>(foo, bar)</>
 
-[0m [90m 1 |[39m {[0m
-[0m[31m[1m>[22m[39m[90m 2 |[39m   [32m\\"id\\"[39m[33m:[39m [32m\\"baz\\"[39m[0m
-[0m [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean [95mbar[31m here?[22m[39m[0m
-[0m [90m 3 |[39m }[0m
+</> <gray> 1 |</> {</>
+</><red><bold>></></><gray> 2 |</>   <green>\\"id\\"</><yellow>:</> <green>\\"baz\\"</></>
+</> <gray>   |</>         <red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></> <red><bold>👈🏽  Did you mean bar<red> here?</></></>
+</> <gray> 3 |</> }</>
 
-[31m[1mTYPE[22m[39m[31m must be array[39m
+<red><bold>TYPE</></><red> must be array</>
 
-[0m [90m 1 |[39m {[0m
-[0m[31m[1m>[22m[39m[90m 2 |[39m   [32m\\"id\\"[39m[33m:[39m [32m\\"baz\\"[39m[0m
-[0m [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  [95mtype[31m must be array[22m[39m[0m
-[0m [90m 3 |[39m }[0m
+</> <gray> 1 |</> {</>
+</><red><bold>></></><gray> 2 |</>   <green>\\"id\\"</><yellow>:</> <green>\\"baz\\"</></>
+</> <gray>   |</>         <red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></> <red><bold>👈🏽  type<red> must be array</></></>
+</> <gray> 3 |</> }</>
 
-[31m[1mANYOF[22m[39m[31m must match a schema in anyOf[39m
+<red><bold>ANYOF</></><red> must match a schema in anyOf</>
 
-[0m [90m 1 |[39m {[0m
-[0m[31m[1m>[22m[39m[90m 2 |[39m   [32m\\"id\\"[39m[33m:[39m [32m\\"baz\\"[39m[0m
-[0m [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  [95manyOf[31m must match a schema in anyOf[22m[39m[0m
-[0m [90m 3 |[39m }[0m"
+</> <gray> 1 |</> {</>
+</><red><bold>></></><gray> 2 |</>   <green>\\"id\\"</><yellow>:</> <green>\\"baz\\"</></>
+</> <gray>   |</>         <red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></> <red><bold>👈🏽  anyOf<red> must match a schema in anyOf</></></>
+</> <gray> 3 |</> }</>"
 `;

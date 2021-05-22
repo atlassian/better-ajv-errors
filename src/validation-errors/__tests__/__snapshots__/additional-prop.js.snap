@@ -2,12 +2,12 @@
 
 exports[`Additional properties prints correctly 1`] = `
 Array [
-  "[31m[1mADDTIONAL PROPERTY[22m[39m[31m should NOT have additional properties[39m
+  "<red><bold>ADDTIONAL PROPERTY</></><red> should NOT have additional properties</>
 ",
-  "[0m [90m 1 |[39m {[0m
-[0m [90m 2 |[39m   [32m\\"foo\\"[39m[33m:[39m [36mtrue[39m[33m,[39m[0m
-[0m[31m[1m>[22m[39m[90m 3 |[39m   [32m\\"bar\\"[39m[33m:[39m [36mfalse[39m[0m
-[0m [90m   |[39m   [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m😲  [95mbar[31m is not expected to be here![22m[39m[0m
-[0m [90m 4 |[39m }[0m",
+  "</> <gray> 1 |</> {</>
+</> <gray> 2 |</>   <green>\\"foo\\"</><yellow>:</> <cyan>true</><yellow>,</></>
+</><red><bold>></></><gray> 3 |</>   <green>\\"bar\\"</><yellow>:</> <cyan>false</></>
+</> <gray>   |</>   <red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></><red><bold>^</></> <red><bold>😲  bar<red> is not expected to be here!</></></>
+</> <gray> 4 |</> }</>",
 ]
 `;
