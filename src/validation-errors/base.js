@@ -13,7 +13,7 @@ export default class BaseValidationError {
     this.jsonRaw = jsonRaw;
   }
 
-  getLocation(dataPath = this.options.dataPath) {
+  getLocation(dataPath = this.instancePath) {
     const { isIdentifierLocation, isSkipEndLocation } = this.options;
     const { loc } = getMetaFromPath(
       this.jsonAst,
@@ -26,16 +26,25 @@ export default class BaseValidationError {
     };
   }
 
-  getDecoratedPath(dataPath = this.options.dataPath) {
+  getDecoratedPath(dataPath = this.instancePath) {
     const decoratedPath = getDecoratedDataPath(this.jsonAst, dataPath);
     return decoratedPath;
   }
 
-  getCodeFrame(message, dataPath = this.options.dataPath) {
+  getCodeFrame(message, dataPath = this.instancePath) {
     return codeFrameColumns(this.jsonRaw, this.getLocation(dataPath), {
       highlightCode: true,
       message,
     });
+  }
+
+  /**
+   * @return {string}
+   */
+  get instancePath() {
+    return typeof this.options.instancePath !== 'undefined'
+      ? this.options.instancePath
+      : this.options.dataPath;
   }
 
   print() {
