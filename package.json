@@ -53,7 +53,7 @@
     "@babel/core": "7.14.6",
     "@babel/preset-env": "7.14.5",
     "@changesets/cli": "1.3.3",
-    "ajv": "8.5.0",
+    "ajv": "8.6.0",
     "ajv4": "npm:ajv@4.11.8",
     "ajv5": "npm:ajv@5.0.0",
     "ajv6": "npm:ajv@6.0.0",
