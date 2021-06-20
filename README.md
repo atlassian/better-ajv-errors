@@ -16,8 +16,8 @@ Main goal of this library is to provide relevant error messages like the followi
 This fork removes the legacy build and thus drops dependencies such as `core-js`
 and `@babel/runtime` which is not needed on modern installations.
 
-- Node 8 and later supports the modern build and according to the release plan
-  node 8 is EOL at 2019-12-31.
+- Node 12 and later supports the modern build and according to the release plan
+  node 10 was EOL at 2021-04-30.
 - Earlier versions is already EOL and not supported. Anyone using it should
   update instead.
 
@@ -26,8 +26,7 @@ The following PRs from upstream are merged:
 - [PR-67: fix(typings): Correct TypeScript type definition](https://github.com/atlassian/better-ajv-errors/pull/67)
 - [PR-70: Drop legacy build and dependecy on polyfills](https://github.com/atlassian/better-ajv-errors/pull/70)
 - [PR-85: fix: enumeration in anyOf](https://github.com/atlassian/better-ajv-errors/pull/85)
-
-* [PR-92: feat: ajv 8 support](https://github.com/atlassian/better-ajv-errors/pull/92)
+- [PR-92: feat: ajv 8 support](https://github.com/atlassian/better-ajv-errors/pull/92)
 
 The following PRs has been merged upstream:
 
