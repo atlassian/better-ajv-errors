@@ -9,7 +9,7 @@ export default class AdditionalPropValidationError extends BaseValidationError {
     const { params, instancePath } = this.options;
 
     return {
-      error: `Property \`${params.additionalProperty}\` is not expected to be here`,
+      error: `Property "${params.additionalProperty}" is not expected to be here`,
       path: instancePath,
     };
   }

@@ -12,7 +12,7 @@ const NOT = /NOT/g;
 const FIRST_LETTER = /^[a-z]/;
 
 export function cleanAjvMessage(word) {
-  return word.replace(QUOTES, '`').replace(NOT, 'not');
+  return word.replace(QUOTES, '"').replace(NOT, 'not');
 }
 
 export function toUpperCase(word) {

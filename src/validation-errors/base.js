@@ -25,7 +25,7 @@ export default class BaseValidationError {
       return capitalize(typeof this.getPropertyValue(dataPath));
     }
 
-    return `\`${propName}\` property`;
+    return `"${propName}" property`;
   }
 
   getPropertyName(path) {

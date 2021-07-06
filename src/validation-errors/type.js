@@ -10,7 +10,7 @@ export default class TypeValidationError extends BaseValidationError {
       error:
         propertyName === null
           ? `Value type ${message}`
-          : `\`${propertyName}\` property type ${message}`,
+          : `"${propertyName}" property type ${message}`,
       path: instancePath,
     };
   }

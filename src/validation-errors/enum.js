@@ -11,14 +11,14 @@ export default class EnumValidationError extends BaseValidationError {
         instancePath,
       )} ${message}: ${params.allowedValues
         .map(value =>
-          typeof value === 'string' ? `\`${value}\`` : JSON.stringify(value),
+          typeof value === 'string' ? `"${value}"` : JSON.stringify(value),
         )
         .join(', ')}`,
       path: instancePath,
     };
 
     if (bestMatch !== null) {
-      output.suggestion = `Did you mean \`${bestMatch}\`?`;
+      output.suggestion = `Did you mean "${bestMatch}"?`;
     }
 
     return output;
