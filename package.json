@@ -65,7 +65,7 @@
     "eslint-plugin-jest": "24.3.6",
     "eslint-plugin-prettier": "3.4.0",
     "flow-bin": "0.155.0",
-    "husky": "6.0.0",
+    "husky": "7.0.1",
     "jest": "27.0.6",
     "jest-fixtures": "0.6.0",
     "prettier": "2.3.2",
@@ -93,7 +93,7 @@
     ],
     "snapshotSerializers": [
       "pretty-format/build/plugins/ConvertAnsi"
-		],
+    ],
     "testPathIgnorePatterns": [
       "/node_modules/",
       "<rootDir>/dist/"
