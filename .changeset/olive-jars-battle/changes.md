@@ -1,0 +1,1 @@
+set `sideEffects` to false

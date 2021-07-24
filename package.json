@@ -5,6 +5,7 @@
   "repository": "https://github.com/ext/better-ajv-errors.git",
   "homepage": "https://github.com/ext/better-ajv-errors",
   "bugs": "https://github.com/ext/better-ajv-errors/issues",
+  "sideEffects": false,
   "main": "index.js",
   "keywords": [
     "json-schema",
