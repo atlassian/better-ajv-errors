@@ -1,5 +1,11 @@
 # better-ajv-errors
 
+## 0.9.1
+
+### Patch Changes
+
+- 34975da: set `sideEffects` to false
+
 ## 0.9.0
 
 ### Minor Changes
