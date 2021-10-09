@@ -14,8 +14,6 @@ Main goal of this library is to provide relevant error messages like the followi
 ## Installation
 
 ```bash
-$ yarn add better-ajv-errors
-$ # Or
 $ npm i better-ajv-errors
 ```
 
@@ -77,8 +75,8 @@ Type: `Object`
 
 ##### format
 
-Type: `string`  
-Default: `cli`  
+Type: `string`
+Default: `cli`
 Values: `cli` `js`
 
 Use default `cli` output format if you want to **print** beautiful validation errors like following:
@@ -101,7 +99,7 @@ Or, use `js` if you are planning to use this with some API. Your output will loo
 
 ##### indent
 
-Type: `number` `null`  
+Type: `number` `null`
 Default: `null`
 
 If you have an unindented JSON payload and you want the error output indented.
@@ -110,7 +108,7 @@ This option have no effect when using the `json` option.
 
 ##### json
 
-Type: `string` `null`  
+Type: `string` `null`
 Default: `null`
 
 Raw JSON payload used when formatting codeframe.
