@@ -23,5 +23,8 @@ jobs:
       - name: Install deps
         run: npm ci
 
+      - name: Build the dist
+        run: npm run build
+
       - name: Run tests
         run: npm run test-ci
