@@ -23,10 +23,10 @@ const JSON_POINTERS_REGEX = /\/[\w_-]+(\/\d+)?/g;
 export function makeTree(ajvErrors = []) {
   const root = { children: {} };
   ajvErrors.forEach(ajvError => {
-    const { dataPath } = ajvError;
+    const instancePath = typeof ajvError.instancePath !== 'undefined' ? ajvError.instancePath : ajvError.dataPath;
 
     // `dataPath === ''` is root
-    const paths = dataPath === '' ? [''] : dataPath.match(JSON_POINTERS_REGEX);
+    const paths = instancePath === '' ? [''] : instancePath.match(JSON_POINTERS_REGEX);
     if (paths) {
       paths.reduce((obj, path, i) => {
         obj.children[path] = obj.children[path] || { children: {}, errors: [] };

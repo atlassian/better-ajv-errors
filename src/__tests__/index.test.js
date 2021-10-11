@@ -6,7 +6,7 @@ import betterAjvErrorsBabelExport from '../../lib';
 describe('Main', () => {
   it('should output error with reconstructed codeframe', async () => {
     const [schema, data] = await getSchemaAndData('default', __dirname);
-    const ajv = new Ajv({ jsonPointers: true });
+    const ajv = new Ajv();
     const validate = ajv.compile(schema);
     const valid = validate(data);
     expect(valid).toBe(false);
@@ -20,7 +20,7 @@ describe('Main', () => {
 
   it('should output error with codeframe', async () => {
     const [schema, data, json] = await getSchemaAndData('default', __dirname);
-    const ajv = new Ajv({ jsonPointers: true });
+    const ajv = new Ajv();
     const validate = ajv.compile(schema);
     const valid = validate(data);
     expect(valid).toBe(false);
@@ -35,7 +35,7 @@ describe('Main', () => {
   describe('Babel export', () => {
     it('should function as normal', async () => {
       const [schema, data] = await getSchemaAndData('default', __dirname);
-      const ajv = new Ajv({ jsonPointers: true });
+      const ajv = new Ajv();
       const validate = ajv.compile(schema);
       const valid = validate(data);
       expect(valid).toBe(false);

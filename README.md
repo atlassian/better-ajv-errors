@@ -29,7 +29,7 @@ import betterAjvErrors from 'better-ajv-errors';
 // const Ajv = require('ajv');
 // const betterAjvErrors = require('better-ajv-errors');
 
-// You need to pass `jsonPointers: true`
+// If you're on anything less than `ajv@7` you need to pass `jsonPointers: true`
 const ajv = new Ajv({ jsonPointers: true });
 
 // Load schema and data
@@ -90,8 +90,7 @@ Or, use `js` if you are planning to use this with some API. Your output will loo
   {
     start: { line: 6, column: 15, offset: 70 },
     end: { line: 6, column: 26, offset: 81 },
-    error:
-      '/content/0/type should be equal to one of the allowed values: panel, paragraph, ...',
+    error: '/content/0/type should be equal to one of the allowed values: panel, paragraph, ...',
     suggestion: 'Did you mean paragraph?',
   },
 ];
@@ -116,4 +115,5 @@ Gives accurate line and column listings.
 
 ## Differences from `better-ajv-errors`
 
-- Only supports current Node LTS releases.
+- Only targets current Node LTS releases
+- AJV 8 support

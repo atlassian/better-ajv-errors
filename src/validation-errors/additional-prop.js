@@ -9,24 +9,24 @@ export default class AdditionalPropValidationError extends BaseValidationError {
   }
 
   print() {
-    const { message, dataPath, params } = this.options;
+    const { message, params } = this.options;
     const output = [chalk`{red {bold ADDTIONAL PROPERTY} ${message}}\n`];
 
     return output.concat(
       this.getCodeFrame(
         chalk`😲  {magentaBright ${params.additionalProperty}} is not expected to be here!`,
-        `${dataPath}/${params.additionalProperty}`
+        `${this.instancePath}/${params.additionalProperty}`
       )
     );
   }
 
   getError() {
-    const { params, dataPath } = this.options;
+    const { params } = this.options;
 
     return {
-      ...this.getLocation(`${dataPath}/${params.additionalProperty}`),
-      error: `${this.getDecoratedPath(dataPath)} Property ${params.additionalProperty} is not expected to be here`,
-      path: dataPath,
+      ...this.getLocation(`${this.instancePath}/${params.additionalProperty}`),
+      error: `${this.getDecoratedPath()} Property ${params.additionalProperty} is not expected to be here`,
+      path: this.instancePath,
     };
   }
 }

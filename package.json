@@ -41,9 +41,9 @@
   "dependencies": {
     "@babel/code-frame": "^7.15.8",
     "@babel/runtime": "^7.15.4",
-    "chalk": "^2.4.1",
+    "chalk": "^4.1.2",
     "json-to-ast": "^2.0.3",
-    "jsonpointer": "^4.0.1",
+    "jsonpointer": "^4.1.0",
     "leven": "^3.1.0"
   },
   "devDependencies": {
@@ -52,6 +52,7 @@
     "@babel/plugin-transform-runtime": "^7.15.8",
     "@babel/preset-env": "^7.15.8",
     "@readme/eslint-config": "^7.2.2",
+    "ajv": "^8.6.3",
     "babel-jest": "^27.2.5",
     "babel-plugin-add-module-exports": "^1.0.4",
     "eslint": "^7.32.0",
@@ -59,13 +60,16 @@
     "jest": "^27.2.5",
     "jest-fixtures": "^0.6.0",
     "prettier": "^2.4.1",
-    "pretty-quick": "^1.6.0"
+    "pretty-quick": "^3.1.1"
   },
   "peerDependencies": {
-    "ajv": "4.11.8 - 6"
+    "ajv": "4.11.8 - 8"
   },
   "prettier": "@readme/eslint-config/prettier",
   "jest": {
+    "coveragePathIgnorePatterns": [
+      "lib/"
+    ],
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.test.js"
     ]

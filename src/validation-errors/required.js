@@ -7,7 +7,7 @@ export default class RequiredValidationError extends BaseValidationError {
     this.name = 'RequiredValidationError';
   }
 
-  getLocation(dataPath = this.options.dataPath) {
+  getLocation(dataPath = this.instancePath) {
     const { start } = super.getLocation(dataPath);
     return { start };
   }
@@ -20,12 +20,12 @@ export default class RequiredValidationError extends BaseValidationError {
   }
 
   getError() {
-    const { message, dataPath } = this.options;
+    const { message } = this.options;
 
     return {
       ...this.getLocation(),
-      error: `${this.getDecoratedPath(dataPath)} ${message}`,
-      path: dataPath,
+      error: `${this.getDecoratedPath()} ${message}`,
+      path: this.instancePath,
     };
   }
 }
