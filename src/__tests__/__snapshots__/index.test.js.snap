@@ -1,5 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Main Babel export should function as normal 1`] = `
+"[31m[1mENUM[22m[39m[31m should be equal to one of the allowed values[39m
+[31m(paragraph, bulletList, mediaSingle, codeBlock, orderedList, heading, panel, blockquote, rule, mediaGroup, applicationCard, decisionList, taskList, table, extension, bodiedExtension, blockCard, layoutSection)[39m
+
+[0m[31m[1m>[22m[39m[90m 1 |[39m {[32m\\"type\\"[39m[33m:[39m[32m\\"doc\\"[39m[33m,[39m[32m\\"version\\"[39m[33m:[39m[35m1[39m[33m,[39m[32m\\"content\\"[39m[33m:[39m[{[32m\\"type\\"[39m[33m:[39m[32m\\"paragarph\\"[39m}]}[0m
+[0m [90m   |[39m                                              [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean [95mparagraph[31m here?[22m[39m[0m"
+`;
+
 exports[`Main should output error with codeframe 1`] = `
 "[31m[1mENUM[22m[39m[31m should be equal to one of the allowed values[39m
 [31m(paragraph, bulletList, mediaSingle, codeBlock, orderedList, heading, panel, blockquote, rule, mediaGroup, applicationCard, decisionList, taskList, table, extension, bodiedExtension, blockCard, layoutSection)[39m
