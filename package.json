@@ -36,7 +36,8 @@
     "pretest": "npm run lint",
     "release": "changeset release",
     "screenshot": "svg-term --command='node screenshot' --out=media/screenshot.svg --padding=5 --width=80 --height=13 --at=1000 --no-cursor --term iterm2 --profile='deep' --window",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "test-ci": "jest --coverage --colors"
   },
   "dependencies": {
     "@babel/code-frame": "^7.15.8",
