@@ -11,6 +11,12 @@ Main goal of this library is to provide relevant error messages like the followi
   <img src="media/screenshot.svg">
 </p>
 
+## Differences from `better-ajv-errors`
+
+- Only targets current Node LTS releases
+- AJV 8 support
+- Up-to-date dependencies
+
 ## Installation
 
 ```bash
@@ -112,8 +118,3 @@ Default: `null`
 
 Raw JSON payload used when formatting codeframe.
 Gives accurate line and column listings.
-
-## Differences from `better-ajv-errors`
-
-- Only targets current Node LTS releases
-- AJV 8 support

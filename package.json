@@ -1,6 +1,6 @@
 {
   "name": "@readme/better-ajv-errors",
-  "version": "0.7.0",
+  "version": "1.0.0",
   "description": "JSON Schema validation for Human",
   "license": "Apache-2.0",
   "author": "Rifat Nabi <to.rifat@gmail.com>",
