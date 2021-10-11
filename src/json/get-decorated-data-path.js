@@ -1,14 +1,25 @@
 import { getPointers } from './utils';
 
+function getTypeName(obj) {
+  if (!obj || !obj.children) {
+    return '';
+  }
+  const type = obj.children.filter(child => child && child.key && child.key.value === 'type');
+
+  if (!type.length) {
+    return '';
+  }
+
+  return (type[0].value && `:${type[0].value.value}`) || '';
+}
+
 export default function getDecoratedDataPath(jsonAst, dataPath) {
   let decoratedPath = '';
   getPointers(dataPath).reduce((obj, pointer) => {
     switch (obj.type) {
       case 'Object': {
         decoratedPath += `/${pointer}`;
-        const filtered = obj.children.filter(
-          child => child.key.value === pointer
-        );
+        const filtered = obj.children.filter(child => child.key.value === pointer);
         if (filtered.length !== 1) {
           throw new Error(`Couldn't find property ${pointer} of ${dataPath}`);
         }
@@ -23,19 +34,4 @@ export default function getDecoratedDataPath(jsonAst, dataPath) {
     }
   }, jsonAst);
   return decoratedPath;
-}
-
-function getTypeName(obj) {
-  if (!obj || !obj.children) {
-    return '';
-  }
-  const type = obj.children.filter(child => {
-    child && child.key && child.key.value === 'type';
-  });
-
-  if (!type.length) {
-    return '';
-  }
-
-  return (type[0].value && `:${type[0].value.value}`) || '';
 }

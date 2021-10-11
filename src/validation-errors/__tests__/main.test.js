@@ -1,5 +1,5 @@
 import Ajv from 'ajv';
-import betterAjvErrors from '../../';
+import betterAjvErrors from '../..';
 import { getSchemaAndData } from '../../test-helpers';
 
 describe('Main', () => {
@@ -9,7 +9,7 @@ describe('Main', () => {
     const ajv = new Ajv({ jsonPointers: true });
     const validate = ajv.compile(schema);
     const valid = validate(data);
-    expect(valid).toBeFalsy();
+    expect(valid).toBe(false);
 
     const res = betterAjvErrors(schema, data, validate.errors, {
       format: 'js',
@@ -23,7 +23,7 @@ describe('Main', () => {
     const ajv = new Ajv({ jsonPointers: true });
     const validate = ajv.compile(schema);
     const valid = validate(data);
-    expect(valid).toBeFalsy();
+    expect(valid).toBe(false);
 
     const res = betterAjvErrors(schema, data, validate.errors, {
       format: 'js',
@@ -32,15 +32,12 @@ describe('Main', () => {
   });
 
   it('should support js output format for additionalProperties errors', async () => {
-    const [schema, data] = await getSchemaAndData(
-      'additionalProperties',
-      __dirname
-    );
+    const [schema, data] = await getSchemaAndData('additionalProperties', __dirname);
 
     const ajv = new Ajv({ jsonPointers: true });
     const validate = ajv.compile(schema);
     const valid = validate(data);
-    expect(valid).toBeFalsy();
+    expect(valid).toBe(false);
 
     const res = betterAjvErrors(schema, data, validate.errors, {
       format: 'js',
@@ -54,7 +51,7 @@ describe('Main', () => {
     const ajv = new Ajv({ jsonPointers: true });
     const validate = ajv.compile(schema);
     const valid = validate(data);
-    expect(valid).toBeFalsy();
+    expect(valid).toBe(false);
 
     const res = betterAjvErrors(schema, data, validate.errors, {
       format: 'js',

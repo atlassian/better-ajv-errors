@@ -1,6 +1,6 @@
 import Ajv from 'ajv';
 import { getSchemaAndData } from '../test-helpers';
-import betterAjvErrors from '../';
+import betterAjvErrors from '..';
 import betterAjvErrorsBabelExport from '../../lib';
 
 describe('Main', () => {
@@ -9,7 +9,7 @@ describe('Main', () => {
     const ajv = new Ajv({ jsonPointers: true });
     const validate = ajv.compile(schema);
     const valid = validate(data);
-    expect(valid).toBeFalsy();
+    expect(valid).toBe(false);
 
     const res = betterAjvErrors(schema, data, validate.errors, {
       format: 'cli',
@@ -23,7 +23,7 @@ describe('Main', () => {
     const ajv = new Ajv({ jsonPointers: true });
     const validate = ajv.compile(schema);
     const valid = validate(data);
-    expect(valid).toBeFalsy();
+    expect(valid).toBe(false);
 
     const res = betterAjvErrors(schema, data, validate.errors, {
       format: 'cli',
@@ -38,7 +38,7 @@ describe('Main', () => {
       const ajv = new Ajv({ jsonPointers: true });
       const validate = ajv.compile(schema);
       const valid = validate(data);
-      expect(valid).toBeFalsy();
+      expect(valid).toBe(false);
 
       const res = betterAjvErrorsBabelExport(schema, data, validate.errors);
       expect(res).toMatchSnapshot();

@@ -4,6 +4,11 @@ import pointer from 'jsonpointer';
 import BaseValidationError from './base';
 
 export default class EnumValidationError extends BaseValidationError {
+  constructor(...args) {
+    super(...args);
+    this.name = 'EnumValidationError';
+  }
+
   print() {
     const {
       message,
@@ -11,10 +16,7 @@ export default class EnumValidationError extends BaseValidationError {
     } = this.options;
     const bestMatch = this.findBestMatch();
 
-    const output = [
-      chalk`{red {bold ENUM} ${message}}`,
-      chalk`{red (${allowedValues.join(', ')})}\n`,
-    ];
+    const output = [chalk`{red {bold ENUM} ${message}}`, chalk`{red (${allowedValues.join(', ')})}\n`];
 
     return output.concat(
       this.getCodeFrame(
@@ -31,9 +33,7 @@ export default class EnumValidationError extends BaseValidationError {
 
     const output = {
       ...this.getLocation(),
-      error: `${this.getDecoratedPath(
-        dataPath
-      )} ${message}: ${params.allowedValues.join(', ')}`,
+      error: `${this.getDecoratedPath(dataPath)} ${message}: ${params.allowedValues.join(', ')}`,
       path: dataPath,
     };
 
@@ -50,8 +50,7 @@ export default class EnumValidationError extends BaseValidationError {
       params: { allowedValues },
     } = this.options;
 
-    const currentValue =
-      dataPath === '' ? this.data : pointer.get(this.data, dataPath);
+    const currentValue = dataPath === '' ? this.data : pointer.get(this.data, dataPath);
 
     if (!currentValue) {
       return null;
@@ -62,13 +61,8 @@ export default class EnumValidationError extends BaseValidationError {
         value,
         weight: leven(value, currentValue.toString()),
       }))
-      .sort((x, y) =>
-        x.weight > y.weight ? 1 : x.weight < y.weight ? -1 : 0
-      )[0];
+      .sort((x, y) => (x.weight > y.weight ? 1 : x.weight < y.weight ? -1 : 0))[0];
 
-    return allowedValues.length === 1 ||
-      bestMatch.weight < bestMatch.value.length
-      ? bestMatch.value
-      : null;
+    return allowedValues.length === 1 || bestMatch.weight < bestMatch.value.length ? bestMatch.value : null;
   }
 }

@@ -1,7 +1,7 @@
 import { makeTree } from '../../helpers';
 
 describe('makeTree', () => {
-  it('works on empty array', async () => {
+  it('works on empty array', () => {
     expect(makeTree([])).toMatchInlineSnapshot(`
       Object {
         "children": Object {},
@@ -9,7 +9,7 @@ describe('makeTree', () => {
     `);
   });
 
-  it('works on root dataPath', async () => {
+  it('works on root dataPath', () => {
     expect(makeTree([{ dataPath: '' }])).toMatchInlineSnapshot(`
       Object {
         "children": Object {
@@ -26,7 +26,7 @@ describe('makeTree', () => {
     `);
   });
 
-  it('works on nested dataPath', async () => {
+  it('works on nested dataPath', () => {
     expect(makeTree([{ dataPath: '/root/child' }])).toMatchInlineSnapshot(`
       Object {
         "children": Object {
@@ -48,10 +48,8 @@ describe('makeTree', () => {
     `);
   });
 
-  it('works on array dataPath', async () => {
-    expect(
-      makeTree([{ dataPath: '/root/child/0' }, { dataPath: '/root/child/1' }])
-    ).toMatchInlineSnapshot(`
+  it('works on array dataPath', () => {
+    expect(makeTree([{ dataPath: '/root/child/0' }, { dataPath: '/root/child/1' }])).toMatchInlineSnapshot(`
       Object {
         "children": Object {
           "/root": Object {
@@ -80,13 +78,9 @@ describe('makeTree', () => {
     `);
   });
 
-  it('works on array item dataPath', async () => {
-    expect(
-      makeTree([
-        { dataPath: '/root/child/0/grand-child' },
-        { dataPath: '/root/child/1/grand-child' },
-      ])
-    ).toMatchInlineSnapshot(`
+  it('works on array item dataPath', () => {
+    expect(makeTree([{ dataPath: '/root/child/0/grand-child' }, { dataPath: '/root/child/1/grand-child' }]))
+      .toMatchInlineSnapshot(`
       Object {
         "children": Object {
           "/root": Object {

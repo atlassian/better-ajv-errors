@@ -4,6 +4,7 @@ import BaseValidationError from './base';
 export default class AdditionalPropValidationError extends BaseValidationError {
   constructor(...args) {
     super(...args);
+    this.name = 'AdditionalPropValidationError';
     this.options.isIdentifierLocation = true;
   }
 
@@ -24,9 +25,7 @@ export default class AdditionalPropValidationError extends BaseValidationError {
 
     return {
       ...this.getLocation(`${dataPath}/${params.additionalProperty}`),
-      error: `${this.getDecoratedPath(dataPath)} Property ${
-        params.additionalProperty
-      } is not expected to be here`,
+      error: `${this.getDecoratedPath(dataPath)} Property ${params.additionalProperty} is not expected to be here`,
       path: dataPath,
     };
   }

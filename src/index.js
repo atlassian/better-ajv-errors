@@ -18,7 +18,7 @@ export default (schema, data, errors, options = {}) => {
 
   if (format === 'cli') {
     return customErrors.map(customErrorToText).join('\n\n');
-  } else {
-    return customErrors.map(customErrorToStructure);
   }
+
+  return customErrors.map(customErrorToStructure);
 };

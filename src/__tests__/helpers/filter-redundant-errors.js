@@ -1,7 +1,7 @@
 import { filterRedundantErrors } from '../../helpers';
 
 describe('filterRedundantErrors', () => {
-  it('should prioritize required', async () => {
+  it('should prioritize required', () => {
     const tree = {
       children: {
         a: {
@@ -46,7 +46,7 @@ describe('filterRedundantErrors', () => {
     `);
   });
 
-  it('should handle anyOf', async () => {
+  it('should handle anyOf', () => {
     const tree = {
       children: {
         a: {
@@ -92,7 +92,7 @@ describe('filterRedundantErrors', () => {
     `);
   });
 
-  it('should handle enum', async () => {
+  it('should handle enum', () => {
     const tree = {
       children: {
         a: {
@@ -144,7 +144,7 @@ describe('filterRedundantErrors', () => {
     `);
   });
 
-  it('should handle enum - sibling', async () => {
+  it('should handle enum - sibling', () => {
     const tree = {
       children: {
         a1: {
@@ -185,7 +185,7 @@ describe('filterRedundantErrors', () => {
     `);
   });
 
-  it('should handle enum - sibling with nested error', async () => {
+  it('should handle enum - sibling with nested error', () => {
     const tree = {
       children: {
         a1: {
@@ -236,7 +236,7 @@ describe('filterRedundantErrors', () => {
     `);
   });
 
-  it('should not remove anyOf errors if there are no children', async () => {
+  it('should not remove anyOf errors if there are no children', () => {
     const tree = {
       children: {
         '/object': {

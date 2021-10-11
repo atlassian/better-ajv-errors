@@ -4,7 +4,11 @@ import EnumValidationError from '../enum';
 
 describe('Enum', () => {
   describe('when value is an object', () => {
-    let schema, data, jsonRaw, jsonAst;
+    let schema;
+    let data;
+    let jsonRaw;
+    let jsonAst;
+
     beforeAll(async () => {
       [schema, data] = await getSchemaAndData('enum', __dirname);
       jsonRaw = JSON.stringify(data, null, 2);
@@ -58,7 +62,11 @@ describe('Enum', () => {
   });
 
   describe('when value is a primitive', () => {
-    let schema, data, jsonRaw, jsonAst;
+    let schema;
+    let data;
+    let jsonRaw;
+    let jsonAst;
+
     beforeAll(async () => {
       [schema, data] = await getSchemaAndData('enum-string', __dirname);
       jsonRaw = JSON.stringify(data, null, 2);

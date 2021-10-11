@@ -1,7 +1,7 @@
 import { readFileSync } from 'fs';
 import parse from 'json-to-ast';
 import { getFixturePath } from 'jest-fixtures';
-import { getMetaFromPath, getDecoratedDataPath } from '../';
+import { getMetaFromPath, getDecoratedDataPath } from '..';
 
 async function loadScenario(n) {
   const fixturePath = await getFixturePath(__dirname, `scenario-${n}.json`);
@@ -43,7 +43,7 @@ describe('JSON', () => {
     expect(getDecoratedDataPath(jsonAst, '/arr/4')).toMatchSnapshot();
   });
 
-  it('should not throw error when children is array', async () => {
+  it('should not throw error when children is array', () => {
     const rawJsonWithArrayItem = JSON.stringify({
       foo: 'bar',
       arr: [
@@ -62,16 +62,12 @@ describe('JSON', () => {
   it('can work with unescaped JSON pointers with ~1', async () => {
     const rawJson = await loadScenario(5);
     const jsonAst = parse(rawJson, { loc: true });
-    expect(
-      getMetaFromPath(jsonAst, '/foo/~1some~1path/value')
-    ).toMatchSnapshot();
+    expect(getMetaFromPath(jsonAst, '/foo/~1some~1path/value')).toMatchSnapshot();
   });
 
   it('can work with unescaped JSON pointers with ~0', async () => {
     const rawJson = await loadScenario(5);
     const jsonAst = parse(rawJson, { loc: true });
-    expect(
-      getMetaFromPath(jsonAst, '/foo/~0some~0path/value')
-    ).toMatchSnapshot();
+    expect(getMetaFromPath(jsonAst, '/foo/~0some~0path/value')).toMatchSnapshot();
   });
 });

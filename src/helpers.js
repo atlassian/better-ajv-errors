@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import {
   getChildren,
   getErrors,
@@ -15,6 +16,7 @@ import {
   DefaultValidationError,
 } from './validation-errors';
 
+// eslint-disable-next-line unicorn/no-unsafe-regex
 const JSON_POINTERS_REGEX = /\/[\w_-]+(\/\d+)?/g;
 
 // Make a tree of errors from ajv errors array
@@ -25,7 +27,7 @@ export function makeTree(ajvErrors = []) {
 
     // `dataPath === ''` is root
     const paths = dataPath === '' ? [''] : dataPath.match(JSON_POINTERS_REGEX);
-    paths &&
+    if (paths) {
       paths.reduce((obj, path, i) => {
         obj.children[path] = obj.children[path] || { children: {}, errors: [] };
         if (i === paths.length - 1) {
@@ -33,6 +35,7 @@ export function makeTree(ajvErrors = []) {
         }
         return obj.children[path];
       }, root);
+    }
   });
   return root;
 }
@@ -81,17 +84,13 @@ export function filterRedundantErrors(root, parent, key) {
     }
   }
 
-  Object.entries(root.children).forEach(([key, child]) =>
-    filterRedundantErrors(child, root, key)
-  );
+  Object.entries(root.children).forEach(([k, child]) => filterRedundantErrors(child, root, k));
 }
 
 export function createErrorInstances(root, options) {
   const errors = getErrors(root);
   if (errors.length && errors.every(isEnumError)) {
-    const uniqueValues = new Set(
-      concatAll([])(errors.map(e => e.params.allowedValues))
-    );
+    const uniqueValues = new Set(concatAll([])(errors.map(e => e.params.allowedValues)));
     const allowedValues = [...uniqueValues];
     const error = errors[0];
     return [
@@ -103,22 +102,20 @@ export function createErrorInstances(root, options) {
         options
       ),
     ];
-  } else {
-    return concatAll(
-      errors.reduce((ret, error) => {
-        switch (error.keyword) {
-          case 'additionalProperties':
-            return ret.concat(
-              new AdditionalPropValidationError(error, options)
-            );
-          case 'required':
-            return ret.concat(new RequiredValidationError(error, options));
-          default:
-            return ret.concat(new DefaultValidationError(error, options));
-        }
-      }, [])
-    )(getChildren(root).map(child => createErrorInstances(child, options)));
   }
+
+  return concatAll(
+    errors.reduce((ret, error) => {
+      switch (error.keyword) {
+        case 'additionalProperties':
+          return ret.concat(new AdditionalPropValidationError(error, options));
+        case 'required':
+          return ret.concat(new RequiredValidationError(error, options));
+        default:
+          return ret.concat(new DefaultValidationError(error, options));
+      }
+    }, [])
+  )(getChildren(root).map(child => createErrorInstances(child, options)));
 }
 
 export default (ajvErrors, options) => {
