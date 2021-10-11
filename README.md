@@ -113,3 +113,7 @@ Default: `null`
 
 Raw JSON payload used when formatting codeframe.
 Gives accurate line and column listings.
+
+## Differences from `better-ajv-errors`
+
+- Only supports current Node LTS releases.
