@@ -8,6 +8,18 @@ exports[`Main Babel export should function as normal 1`] = `
 [0m [90m   |[39m                                              [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean [95mparagraph[31m here?[22m[39m[0m"
 `;
 
+exports[`Main complex schema examples should output an error on an invalid openapi definition 1`] = `
+"[31m[1mUNEVALUATEDPROPERTIES[22m[39m[31m must NOT have unevaluated properties[39m
+
+[0m [90m 12 |[39m   [32m\\"paths\\"[39m[33m:[39m {[0m
+[0m [90m 13 |[39m     [32m\\"/anything\\"[39m[33m:[39m {[0m
+[0m[31m[1m>[22m[39m[90m 14 |[39m       [32m\\"get\\"[39m[33m:[39m {[0m
+[0m [90m    |[39m              [31m[1m^[22m[39m [31m[1m👈🏽  [95munevaluatedProperties[31m must NOT have unevaluated properties[22m[39m[0m
+[0m [90m 15 |[39m         [32m\\"summary\\"[39m[33m:[39m [32m\\"Example operation\\"[39m[33m,[39m[0m
+[0m [90m 16 |[39m         [32m\\"description\\"[39m[33m:[39m [32m\\"This operation has \`tags\` typod.\\"[39m[33m,[39m[0m
+[0m [90m 17 |[39m         [32m\\"tagss\\"[39m[33m:[39m [[0m"
+`;
+
 exports[`Main should output error with codeframe 1`] = `
 "[31m[1mENUM[22m[39m[31m must be equal to one of the allowed values[39m
 [31m(paragraph, codeBlock, blockquote)[39m

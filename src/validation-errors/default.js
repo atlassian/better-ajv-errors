@@ -5,6 +5,7 @@ export default class DefaultValidationError extends BaseValidationError {
   constructor(...args) {
     super(...args);
     this.name = 'DefaultValidationError';
+    this.options.isSkipEndLocation = true;
   }
 
   print() {
