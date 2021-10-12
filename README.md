@@ -13,9 +13,11 @@ Main goal of this library is to provide relevant error messages like the followi
 
 ## Differences from `better-ajv-errors`
 
-- Only targets current Node LTS releases
-- AJV 8 support
-- Up-to-date dependencies
+- Only targets current Node LTS releases.
+- AJV 8 support.
+- Default errors stack the error message at the top of the location instead of the bottom.
+  - This helps eliminate long blocks of `^^^^^^` pointers.
+- Up-to-date dependencies.
 
 ## Installation
 
