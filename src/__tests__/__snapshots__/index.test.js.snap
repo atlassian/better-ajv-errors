@@ -8,7 +8,7 @@ exports[`Main Babel export should function as normal 1`] = `
 [0m [90m   |[39m                                              [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean [95mparagraph[31m here?[22m[39m[0m"
 `;
 
-exports[`Main complex schema examples should output an error on an invalid openapi definition 1`] = `
+exports[`Main complex schema examples should output an error on an invalid OpenAPI 3.1 definition 1`] = `
 "[31m[1mUNEVALUATEDPROPERTIES[22m[39m[31m must NOT have unevaluated properties[39m
 
 [0m [90m 12 |[39m   [32m\\"paths\\"[39m[33m:[39m {[0m

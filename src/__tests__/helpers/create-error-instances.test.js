@@ -29,6 +29,7 @@ describe('createErrorInstances', () => {
           "data": undefined,
           "jsonAst": undefined,
           "jsonRaw": undefined,
+          "name": "EnumValidationError",
           "options": Object {
             "keyword": "enum",
             "params": Object {

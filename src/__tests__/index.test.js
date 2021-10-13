@@ -48,9 +48,9 @@ describe('Main', () => {
   });
 
   describe('complex schema examples', () => {
-    it('should output an error on an invalid openapi definition', async () => {
+    it('should output an error on an invalid OpenAPI 3.1 definition', async () => {
       const schema = openapi.v31;
-      const [, data] = await getSchemaAndData('openapi', __dirname);
+      const [, data] = await getSchemaAndData('openapi-3.1', __dirname);
 
       // Need to load the 2020 dist because it supports draft-7, which we'll need for an 3.1.0
       // OpenAPI definition.
