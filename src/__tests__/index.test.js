@@ -6,7 +6,10 @@ import betterAjvErrorsBabelExport from '../../lib';
 import { openapi } from '@apidevtools/openapi-schemas';
 
 describe('Main', () => {
-  it('should output error with reconstructed codeframe', async () => {
+  it.each([
+    ['should output error with reconstructed codeframe', true],
+    ['should output error with reconstructed codeframe [without colors]', false],
+  ])('%s', async (_, colorize) => {
     const [schema, data] = await getSchemaAndData('default', __dirname);
     const ajv = new Ajv();
     const validate = ajv.compile(schema);
@@ -14,6 +17,7 @@ describe('Main', () => {
     expect(valid).toBe(false);
 
     const res = betterAjvErrors(schema, data, validate.errors, {
+      colorize,
       format: 'cli',
       indent: 2,
     });

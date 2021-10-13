@@ -26,6 +26,7 @@ describe('createErrorInstances', () => {
     expect(errors).toMatchInlineSnapshot(`
       Array [
         EnumValidationError {
+          "colorize": true,
           "data": undefined,
           "jsonAst": undefined,
           "jsonRaw": undefined,

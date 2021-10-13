@@ -1,4 +1,3 @@
-import chalk from 'chalk';
 import BaseValidationError from './base';
 
 export default class AdditionalPropValidationError extends BaseValidationError {
@@ -10,6 +9,7 @@ export default class AdditionalPropValidationError extends BaseValidationError {
 
   print() {
     const { message, params } = this.options;
+    const chalk = this.getChalk();
     const output = [chalk`{red {bold ADDTIONAL PROPERTY} ${message}}\n`];
 
     return output.concat(

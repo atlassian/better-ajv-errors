@@ -17,6 +17,7 @@ Main goal of this library is to provide relevant error messages like the followi
 - AJV 8 support.
 - Default errors stack the error message at the top of the location instead of the bottom.
   - This helps eliminate long blocks of `^^^^^^` pointers.
+- Addition of a `colorize` option for disabling colorization in `format: cli` output.
 - Up-to-date dependencies.
 
 ## Installation
@@ -80,6 +81,13 @@ Array of [ajv validation errors](https://github.com/epoberezkin/ajv#validation-e
 #### options
 
 Type: `Object`
+
+##### colorize
+
+Type: `boolean`
+Default: `true`
+
+When disabled, if you are outputting `cli` formatting it will be without colorized or styled content.
 
 ##### format
 
