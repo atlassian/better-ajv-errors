@@ -37,4 +37,4 @@ declare function betterAjvErrors(
   options?: betterAjvErrors.IInputOptions
 ): string | betterAjvErrors.IOutputError[];
 
-export = betterAjvErrors;
+export default betterAjvErrors;
