@@ -1,5 +1,11 @@
 # better-ajv-errors
 
+## 0.9.2
+
+### Patch Changes
+
+- f24ba8a: Typescript: Allow usage without es modules
+
 ## 0.9.1
 
 ### Patch Changes
