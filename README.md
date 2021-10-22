@@ -35,7 +35,7 @@ The following PRs has been merged upstream:
 ## Installation
 
 ```bash
-$ npm i better-ajv-errors
+$ npm i @sidvind/better-ajv-errors
 ```
 
 Also make sure that you installed [ajv](https://www.npmjs.com/package/ajv) package to validate data against JSON schemas.
@@ -46,9 +46,9 @@ First, you need to validate your payload with `ajv`. If it's invalid then you ca
 
 ```js
 import Ajv from 'ajv';
-import betterAjvErrors from 'better-ajv-errors';
+import betterAjvErrors from '@sidvind/better-ajv-errors';
 // const Ajv = require('ajv');
-// const betterAjvErrors = require('better-ajv-errors');
+// const betterAjvErrors = require('@sidvind/better-ajv-errors');
 
 // You need to pass `jsonPointers: true`
 const ajv = new Ajv({ jsonPointers: true });
