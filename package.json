@@ -63,7 +63,7 @@
     "babel-jest": "27.3.1",
     "eslint": "7.32.0",
     "eslint-config-prettier": "8.3.0",
-    "eslint-plugin-jest": "25.2.2",
+    "eslint-plugin-jest": "25.2.3",
     "eslint-plugin-prettier": "4.0.0",
     "flow-bin": "0.163.0",
     "husky": "7.0.4",
