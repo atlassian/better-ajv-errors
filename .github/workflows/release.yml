@@ -12,26 +12,27 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-
-      - name: Use Node.js 10.x
-        uses: actions/setup-node@v1
+      - name: Checkout Repo
+        uses: actions/checkout@master
         with:
-          node-version: 10.x
+          # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
+          fetch-depth: 0
 
-      - name: Install Yarn
-        run: curl -o- -L https://yarnpkg.com/install.sh | bash
+      - name: Setup Node.js 12.x
+        uses: actions/setup-node@master
+        with:
+          node-version: 12.x
 
       - name: Install Dependencies
-        run: yarn install --frozen-lockfile
+        run: npm install
 
-      - name: Publish to npm
+      - name: Create Release Pull Request or Publish to npm
         if: github.repository == 'atlassian/better-ajv-errors'
+        id: changesets
         uses: changesets/action@master
         with:
-          # The --otp=1 is to get around a bug in changesets
-          # It will be fixed in Changesets 2
-          publish: yarn release --otp=1
+          # This expects you to have a script called release which does a build for your packages and calls changeset publish
+          publish: npm run release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

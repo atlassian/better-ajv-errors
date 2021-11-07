@@ -9,7 +9,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [8.x, 10.x, 12.x]
+        node-version: [12.x, 16.x]
 
     steps:
       - uses: actions/checkout@v1
@@ -19,14 +19,11 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Install Yarn
-        run: curl -o- -L https://yarnpkg.com/install.sh | bash
-
       - name: Install Dependencies
-        run: yarn install --frozen-lockfile
+        run: npm install
 
       - name: Run Tests
-        run: yarn test-ci
+        run: npm run test-ci
 
       - name: Upload coverage to Codecov
         run: bash <(curl -s https://codecov.io/bash) -C $GITHUB_SHA -B ${GITHUB_REF#refs/heads/} -Z
@@ -39,16 +36,13 @@ jobs:
     steps:
       - uses: actions/checkout@master
 
-      - name: Use Node.js 10.x
+      - name: Use Node.js 16.x
         uses: actions/setup-node@v1
         with:
-          node-version: 10.x
-
-      - name: Install Yarn
-        run: curl -o- -L https://yarnpkg.com/install.sh | bash
+          node-version: 16.x
 
       - name: Install Dependencies
-        run: yarn install --frozen-lockfile
+        run: npm install
 
       - name: Run ESLint
-        run: yarn eslint .
+        run: npx eslint .
