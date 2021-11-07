@@ -47,6 +47,7 @@
     "@changesets/cli": "^2.17.0",
     "ajv": "^8.6.3",
     "esbuild": "^0.13.12",
+    "esbuild-jest-transform": "^1.1.0",
     "eslint": "^8.2.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-jest": "^25.2.3",
@@ -67,6 +68,11 @@
   "jest": {
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.js"
-    ]
+    ],
+    "transform": {
+      "^.+\\.js$": [
+        "esbuild-jest-transform"
+      ]
+    }
   }
 }
