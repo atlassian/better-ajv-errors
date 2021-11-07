@@ -30,10 +30,11 @@
     "build:esm": "node build.js",
     "prerelease": "npm run build",
     "release": "changeset release",
-    "format": "prettier --write src/*.js src/**/*.js .changeset/*.js",
+    "format": "prettier --write 'src/**/*.js' '.changeset/*.js'",
     "test": "jest",
     "test-ci": "jest --coverage --colors",
-    "screenshot": "svg-term --command='node screenshot' --out=media/screenshot.svg --padding=5 --width=80 --height=13 --at=1000 --no-cursor --term iterm2 --profile='deep' --window"
+    "screenshot": "svg-term --command='node screenshot' --out=media/screenshot.svg --padding=5 --width=80 --height=13 --at=1000 --no-cursor --term iterm2 --profile='deep' --window",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@babel/code-frame": "^7.16.0",
@@ -53,12 +54,12 @@
     "eslint-plugin-prettier": "^4.0.0",
     "fast-glob": "^3.2.7",
     "flow-bin": "^0.163.0",
-    "husky": "^7.0.4",
+    "git-format-staged": "^2.1.2",
+    "husky": "^7.0.0",
     "is-ci": "^3.0.1",
     "jest": "^27.3.1",
     "jest-fixtures": "^0.6.0",
     "prettier": "^2.4.1",
-    "pretty-quick": "^3.1.1",
     "svg-term-cli": "^2.1.1"
   },
   "peerDependencies": {
