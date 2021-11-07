@@ -1,5 +1,11 @@
 # better-ajv-errors
 
+## 0.8.2
+
+### Patch Changes
+
+- 2513443: :fire_engine: Bump `jsonpointer` - CVE-2021-23807
+
 ## 0.8.1
 
 ### Patch Changes
