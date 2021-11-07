@@ -24,11 +24,11 @@ fg('src/**/*.js', {
 })
   .then(entryPoints =>
     esbuild.build({
+      ...(isEsmBuild ? config.esm : config.cjs),
       entryPoints,
       sourcemap: true,
       logLevel: isCI ? 'silent' : 'info',
       target: 'node12.13',
-      ...(isEsmBuild ? config.esm : config.cjs),
     })
   )
-  .catch(err => process.exit(1));
+  .catch(_ => process.exit(1));
