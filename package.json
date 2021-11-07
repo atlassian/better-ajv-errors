@@ -38,8 +38,7 @@
   },
   "dependencies": {
     "@babel/code-frame": "^7.16.0",
-    "chalk": "^2.4.1",
-    "core-js": "^3.19.1",
+    "chalk": "^4.1.2",
     "json-to-ast": "^2.0.3",
     "jsonpointer": "^5.0.0",
     "leven": "^3.1.0"
