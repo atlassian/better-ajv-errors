@@ -33,7 +33,7 @@ jobs:
           # Parse the dependency
           commit_message=$(git show -s --format=%B ${{ github.event.pull_request.head.sha }} | head -1)
           dependency_name=$(sed -nE 's/Bump (.*) from.*/\1/p' <(echo $commit_message))
-          changeset_file_path=$(node ../../.changeset/create-dependabot-dependabot.js $commit_message $dependency_name)
+          changeset_file_path=$(npm run dependabot:changeset $commit_message $dependency_name)
 
       - name: Commit
         run: |
