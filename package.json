@@ -42,7 +42,8 @@
     "test": "jest",
     "test-ci": "jest --coverage --colors",
     "screenshot": "svg-term --command='node screenshot' --out=./media/screenshot.svg --padding=5 --width=80 --height=13 --at=1000 --no-cursor --term iterm2 --profile='deep' --window",
-    "prepare": "is-ci || husky install"
+    "prepare": "is-ci || husky install",
+    "dependabot:changeset": "node ./.changeset/create-dependabot-dependabot.js"
   },
   "dependencies": {
     "@babel/code-frame": "^7.16.0",

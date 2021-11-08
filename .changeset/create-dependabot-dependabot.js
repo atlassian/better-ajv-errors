@@ -7,6 +7,7 @@ if (!summary || !packageName) {
   console.error(
     'node .changeset/create-dependabot-dependabot.js "<SUMMARY>" "<PACKAGE_NAME>"'
   );
+  process.exit(1);
 }
 
 const changeset = {
