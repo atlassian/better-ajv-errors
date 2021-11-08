@@ -3,8 +3,17 @@
   "version": "0.8.2",
   "description": "JSON Schema validation for Human",
   "repository": "atlassian/better-ajv-errors",
-  "main": "lib/cjs/index.js",
-  "module": "lib/esm/index.js",
+  "main": "./lib/cjs/index.js",
+  "exports": {
+    ".": {
+      "require":  "./lib/cjs/index.js",
+      "default": "./lib/esm/index.js"
+    }
+  },
+  "module": "./lib/esm/index.js",
+  "engines": {
+    "node": ">= 12.13.0"
+  },
   "keywords": [
     "json-schema",
     "ajv",
@@ -17,10 +26,9 @@
     "Tong Li"
   ],
   "license": "Apache-2.0",
-  "typings": "typings.d.ts",
+  "types": "./typings.d.ts",
   "files": [
     "lib",
-    "index.js",
     "typings.d.ts"
   ],
   "scripts": {
@@ -30,10 +38,10 @@
     "build:esm": "node build.js",
     "prerelease": "npm run build",
     "release": "changeset publish",
-    "format": "prettier --write 'src/**/*.js' '.changeset/*.json'",
+    "format": "prettier --write './src/**/*.js' './.changeset/*.json'",
     "test": "jest",
     "test-ci": "jest --coverage --colors",
-    "screenshot": "svg-term --command='node screenshot' --out=media/screenshot.svg --padding=5 --width=80 --height=13 --at=1000 --no-cursor --term iterm2 --profile='deep' --window",
+    "screenshot": "svg-term --command='node screenshot' --out=./media/screenshot.svg --padding=5 --width=80 --height=13 --at=1000 --no-cursor --term iterm2 --profile='deep' --window",
     "prepare": "husky install"
   },
   "dependencies": {

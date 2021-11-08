@@ -4,7 +4,7 @@ const Ajv = require('ajv');
 const schema = require('./src/__fixtures__/default/schema.json');
 const data = require('./src/__fixtures__/default/data.json');
 
-const betterAjvErrors = require('./lib/cjs').default;
+const betterAjvErrors = require('.').default;
 
 // options can be passed, e.g. {allErrors: true}
 // const ajv = new Ajv({ allErrors: true, async: 'es7' });
