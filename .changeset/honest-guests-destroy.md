@@ -1,5 +1,5 @@
 ---
-'better-ajv-errors': major
+'@sidvind/better-ajv-errors': major
 ---
 
 :package: better-ajv-errors v1
@@ -12,15 +12,15 @@
   **:no_entry_sign: Wrong**
 
   ```js
-  const betterAjvErrors = require('better-ajv-errors');
+  const betterAjvErrors = require('@sidvind/better-ajv-errors');
   ```
 
   **:white_check_mark: Correct**
 
   ```js
-  const betterAjvErrors = require('better-ajv-errors').default;
+  const betterAjvErrors = require('@sidvind/better-ajv-errors').default;
   // Or
-  const { default: betterAjvErrors } = require('better-ajv-errors');
+  const { default: betterAjvErrors } = require('@sidvind/better-ajv-errors');
   ```
 
 ### Other Changes
