@@ -79,6 +79,7 @@
     "is-ci": "3.0.1",
     "jest": "27.3.1",
     "jest-fixtures": "0.6.0",
+    "npm-pkg-lint": "1.5.0",
     "prettier": "2.4.1",
     "pretty-format": "27.3.1",
     "svg-term-cli": "2.1.1"
