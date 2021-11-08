@@ -29,9 +29,9 @@ function getTypeName(obj) {
   if (!obj || !obj.children) {
     return '';
   }
-  const type = obj.children.filter(child => {
-    child && child.key && child.key.value === 'type';
-  });
+  const type = obj.children.filter(
+    child => child && child.key && child.key.value === 'type'
+  );
 
   if (!type.length) {
     return '';
