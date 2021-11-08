@@ -44,7 +44,7 @@
     "prerelease": "npm run build",
     "prepare": "is-ci || husky install",
     "release": "changeset publish",
-    "format": "prettier --write './src/**/*.js' './.changeset/*.json'",
+    "format": "prettier --write .",
     "test": "jest",
     "test-ci": "jest --coverage --colors",
     "screenshot": "svg-term --command='node screenshot' --out=./media/screenshot.svg --padding=5 --width=80 --height=13 --at=1000 --no-cursor --term iterm2 --profile='deep' --window",
