@@ -46,7 +46,7 @@ export function filterRedundantErrors(root, parent, key) {
    * If there is a `required` error then we can just skip everythig else.
    * And, also `required` should have more priority than `anyOf`. @see #8
    */
-  getErrors(root).forEach((error) => {
+  getErrors(root).forEach(error => {
     if (isRequiredError(error)) {
       root.errors = [error];
       root.children = {};
@@ -94,7 +94,7 @@ export function createErrorInstances(root, options) {
   const errors = getErrors(root);
   if (errors.length && errors.every(isEnumError)) {
     const uniqueValues = new Set(
-      concatAll([])(errors.map((e) => e.params.allowedValues))
+      concatAll([])(errors.map(e => e.params.allowedValues))
     );
     const allowedValues = [...uniqueValues];
     const error = errors[0];
@@ -123,7 +123,7 @@ export function createErrorInstances(root, options) {
             return ret.concat(new DefaultValidationError(error, options));
         }
       }, [])
-    )(getChildren(root).map((child) => createErrorInstances(child, options)));
+    )(getChildren(root).map(child => createErrorInstances(child, options)));
   }
 }
 

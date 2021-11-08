@@ -11,7 +11,7 @@ export default function getMetaFromPath(
     switch (obj.type) {
       case 'Object': {
         const filtered = obj.children.filter(
-          (child) => child.key.value === pointer
+          child => child.key.value === pointer
         );
         if (filtered.length !== 1) {
           throw new Error(`Couldn't find property ${pointer} of ${dataPath}`);

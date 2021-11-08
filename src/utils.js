@@ -5,8 +5,8 @@ import type { Error, Node } from './types';
 */
 
 // Basic
-const eq = (x) => (y) => x === y;
-const not = (fn) => (x) => !fn(x);
+const eq = x => y => x === y;
+const not = fn => x => !fn(x);
 
 // https://github.com/facebook/flow/issues/2221
 const getValues = /*::<Obj: Object>*/ (
@@ -16,7 +16,7 @@ const getValues = /*::<Obj: Object>*/ (
 export const notUndefined = (x /*: mixed*/) => x !== undefined;
 
 // Error
-const isXError = (x) => (error /*: Error */) => error.keyword === x;
+const isXError = x => (error /*: Error */) => error.keyword === x;
 export const isRequiredError = isXError('required');
 export const isAnyOfError = isXError('anyOf');
 export const isEnumError = isXError('enum');

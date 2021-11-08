@@ -7,7 +7,7 @@ export default function getDecoratedDataPath(jsonAst, dataPath) {
       case 'Object': {
         decoratedPath += `/${pointer}`;
         const filtered = obj.children.filter(
-          (child) => child.key.value === pointer
+          child => child.key.value === pointer
         );
         if (filtered.length !== 1) {
           throw new Error(`Couldn't find property ${pointer} of ${dataPath}`);

@@ -58,7 +58,7 @@ export default class EnumValidationError extends BaseValidationError {
     }
 
     const bestMatch = allowedValues
-      .map((value) => ({
+      .map(value => ({
         value,
         weight: leven(value, currentValue.toString()),
       }))
