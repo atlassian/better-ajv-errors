@@ -42,7 +42,7 @@
     "test": "jest",
     "test-ci": "jest --coverage --colors",
     "screenshot": "svg-term --command='node screenshot' --out=./media/screenshot.svg --padding=5 --width=80 --height=13 --at=1000 --no-cursor --term iterm2 --profile='deep' --window",
-    "prepare": "husky install"
+    "prepare": "is-ci || husky install"
   },
   "dependencies": {
     "@babel/code-frame": "^7.16.0",
@@ -52,14 +52,14 @@
     "leven": "^3.1.0"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.17.0",
+    "@changesets/cli": "^2.18.0",
     "@changesets/write": "^0.1.5",
     "ajv": "^8.6.3",
     "esbuild": "^0.13.12",
     "esbuild-jest-transform": "^1.1.0",
     "eslint": "^8.2.0",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-jest": "^25.2.3",
+    "eslint-plugin-jest": "^25.2.4",
     "eslint-plugin-prettier": "^4.0.0",
     "fast-glob": "^3.2.7",
     "flow-bin": "^0.163.0",
