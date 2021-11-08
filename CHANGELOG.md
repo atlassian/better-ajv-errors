@@ -1,5 +1,47 @@
 # better-ajv-errors
 
+## 1.0.0-next.0
+
+### Major Changes
+
+- 146a859: :package: better-ajv-errors v1
+
+  ### Breaking Changes
+
+  - Dropped support for Node.js `< 12.13.0`
+  - Default import in CommonJS format no longer supported
+
+    **:no_entry_sign: Wrong**
+
+    ```js
+    const betterAjvErrors = require('better-ajv-errors');
+    ```
+
+    **:white_check_mark: Correct**
+
+    ```js
+    const betterAjvErrors = require('better-ajv-errors').default;
+    // Or
+    const { default: betterAjvErrors } = require('better-ajv-errors');
+    ```
+
+  ### Other Changes
+
+  - Added ESM support
+  - Moved from `babel` to `esbuild` _(99% faster build: from `2170ms` to `20ms`)_
+    - https://github.com/atlassian/better-ajv-errors/pull/101#issuecomment-963129931
+  - Bumped all `dependencies` & `devDependencies`
+
+### Patch Changes
+
+- 768ce0f: Bump ws from 5.2.2 to 5.2.3
+- dc45eb7: Bump tar from 4.4.10 to 4.4.19
+- 5ef7b1e: Bump path-parse from 1.0.6 to 1.0.7
+- 3ef2bbc: Bump tmpl from 1.0.4 to 1.0.5
+- 46b57d3: Bump color-string from 1.5.3 to 1.6.0
+- d568784: Bump lodash from 4.17.10 to 4.17.21
+- e71f114: Bump browserslist from 4.7.0 to 4.17.6
+
 ## 0.8.2
 
 ### Patch Changes

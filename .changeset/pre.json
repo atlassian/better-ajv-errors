@@ -1,0 +1,22 @@
+{
+  "mode": "pre",
+  "tag": "next",
+  "initialVersions": {
+    "better-ajv-errors": "0.8.2"
+  },
+  "changesets": [
+    "chatty-lizards-stare",
+    "cuddly-seas-walk",
+    "dirty-mugs-punch",
+    "grumpy-hats-work",
+    "honest-baboons-occur",
+    "honest-guests-destroy",
+    "nice-seals-chew",
+    "ninety-hats-pay",
+    "rude-sloths-heal",
+    "smart-jars-compete",
+    "spotty-swans-pump",
+    "ten-lemons-end",
+    "tender-schools-approve"
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "name": "better-ajv-errors",
-  "version": "0.8.2",
+  "version": "1.0.0-next.0",
   "description": "JSON Schema validation for Human",
   "repository": "atlassian/better-ajv-errors",
   "main": "./lib/cjs/index.js",
