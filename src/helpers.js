@@ -20,7 +20,7 @@ const JSON_POINTERS_REGEX = /\/[\w_-]+(\/\d+)?/g;
 // Make a tree of errors from ajv errors array
 export function makeTree(ajvErrors = []) {
   const root = { children: {} };
-  ajvErrors.forEach((ajvError) => {
+  ajvErrors.forEach(ajvError => {
     const instancePath =
       typeof ajvError.instancePath !== 'undefined'
         ? ajvError.instancePath

@@ -1,7 +1,8 @@
-/dist/
+/lib/
 /node_modules/
 /coverage/
 *.log
 *.tgz
 .vscode
 .env
+yarn.lock

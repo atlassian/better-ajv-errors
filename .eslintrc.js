@@ -15,4 +15,7 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
   },
+  rules: {
+    'no-unused-vars': [2, { args: 'all', argsIgnorePattern: '^_' }],
+  },
 };

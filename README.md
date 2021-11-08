@@ -24,13 +24,13 @@ and `@babel/runtime` which is not needed on modern installations.
 The following PRs from upstream are merged:
 
 - [PR-67: fix(typings): Correct TypeScript type definition](https://github.com/atlassian/better-ajv-errors/pull/67)
-- [PR-70: Drop legacy build and dependecy on polyfills](https://github.com/atlassian/better-ajv-errors/pull/70)
 - [PR-85: fix: enumeration in anyOf](https://github.com/atlassian/better-ajv-errors/pull/85)
-- [PR-92: feat: ajv 8 support](https://github.com/atlassian/better-ajv-errors/pull/92)
+- ~[PR-70: Drop legacy build and dependecy on polyfills](https://github.com/atlassian/better-ajv-errors/pull/70)~ (dropped in favour of esbuild)
 
 The following PRs has been merged upstream:
 
 - [PR-84: feat: support `json` option to get accurate line/column listings](https://github.com/atlassian/better-ajv-errors/pull/84)
+- [PR-92: feat: ajv 8 support](https://github.com/atlassian/better-ajv-errors/pull/92)
 
 ## Installation
 
@@ -48,10 +48,12 @@ First, you need to validate your payload with `ajv`. If it's invalid then you ca
 import Ajv from 'ajv';
 import betterAjvErrors from '@sidvind/better-ajv-errors';
 // const Ajv = require('ajv');
-// const betterAjvErrors = require('@sidvind/better-ajv-errors');
+// const betterAjvErrors = require('@sidvind/better-ajv-errors').default;
+// Or
+// const { default: betterAjvErrors } = require('@sidvid/better-ajv-errors');
 
-// You need to pass `jsonPointers: true`
-const ajv = new Ajv({ jsonPointers: true });
+// You need to pass `{ jsonPointers: true }` for older versions of ajv
+const ajv = new Ajv();
 
 // Load schema and data
 const schema = ...;
