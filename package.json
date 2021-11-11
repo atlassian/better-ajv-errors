@@ -26,7 +26,7 @@
     "Tong Li"
   ],
   "license": "Apache-2.0",
-  "typings": "./typings.d.ts",
+  "types": "./typings.d.ts",
   "engines": {
     "node": ">= 12.13.0"
   },
@@ -45,8 +45,8 @@
     "prepare": "is-ci || husky install",
     "release": "changeset publish",
     "format": "prettier --write .",
-    "test": "jest",
-    "test-ci": "jest --coverage --colors",
+    "test": "jest && tsd",
+    "test-ci": "jest --coverage --colors && tsd",
     "screenshot": "svg-term --command='node screenshot' --out=./media/screenshot.svg --padding=5 --width=80 --height=13 --at=1000 --no-cursor --term iterm2 --profile='deep' --window",
     "dependabot:changeset": "node ./.changeset/create-dependabot-dependabot.js"
   },
@@ -82,7 +82,8 @@
     "npm-pkg-lint": "1.5.0",
     "prettier": "2.4.1",
     "pretty-format": "27.3.1",
-    "svg-term-cli": "2.1.1"
+    "svg-term-cli": "2.1.1",
+    "tsd": "0.18.0"
   },
   "peerDependencies": {
     "ajv": "4.11.8 - 8"
