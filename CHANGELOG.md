@@ -1,5 +1,12 @@
 # better-ajv-errors
 
+## 1.0.1
+
+### Patch Changes
+
+- 80cf129: Improve typings and add test
+- 508d334: Make ESM module importable
+
 ## 1.0.0
 
 ### Major Changes
