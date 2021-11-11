@@ -41,6 +41,7 @@
     "build": "npm run build:cjs && npm run build:esm",
     "build:cjs": "node build.js --cjs",
     "build:esm": "node build.js",
+    "postbuild": "scripts/pkg",
     "prerelease": "npm run build",
     "prepare": "is-ci || husky install",
     "release": "changeset publish",
