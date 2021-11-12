@@ -55,8 +55,8 @@
   "devDependencies": {
     "@changesets/cli": "^2.18.0",
     "@changesets/write": "^0.1.5",
-    "ajv": "^8.6.3",
-    "esbuild": "^0.13.12",
+    "ajv": "^8.7.1",
+    "esbuild": "^0.13.13",
     "esbuild-jest-transform": "^1.1.0",
     "eslint": "^8.2.0",
     "eslint-config-prettier": "^8.3.0",
