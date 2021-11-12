@@ -1,14 +1,14 @@
 {
   "name": "@stoplight/better-ajv-errors",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "JSON Schema validation for Human",
   "repository": "stoplightio/better-ajv-errors",
   "type": "commonjs",
   "main": "dist/index.js",
-  "module": "./index.esm.js",
+  "module": "dist/index.esm.js",
   "exports": {
-    "require": "./index.js",
-    "import": "./index.mjs"
+    "require": "./dist/index.js",
+    "import": "./dist/index.mjs"
   },
   "keywords": [
     "json-schema",
