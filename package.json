@@ -1,9 +1,15 @@
 {
   "name": "@stoplight/better-ajv-errors",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "JSON Schema validation for Human",
   "repository": "stoplightio/better-ajv-errors",
+  "type": "commonjs",
   "main": "dist/index.js",
+  "module": "./index.esm.js",
+  "exports": {
+    "require": "./index.js",
+    "import": "./index.mjs"
+  },
   "keywords": [
     "json-schema",
     "ajv",
@@ -17,7 +23,7 @@
     "Tong Li"
   ],
   "engines": {
-    "node": ">=10.8"
+    "node": "^12.20 || >= 14.13"
   },
   "license": "Apache-2.0",
   "typings": "typings.d.ts",
@@ -28,14 +34,15 @@
   ],
   "scripts": {
     "prebuild": "rm -rf dist",
-    "build": "rollup --external=jsonpointer --external=level --format=cjs -d dist -- src/index.js",
+    "build": "rollup -c",
+    "postbuild": "cp dist/index.mjs dist/index.esm.js && node --input-type=commonjs -e \"require('./dist/index.js')\" && node --input-type=module -e \"import './dist/index.mjs'\"",
     "prepublish": "yarn test && yarn build",
     "format": "prettier --write src/*.js src/**/*.js",
     "test": "jest",
     "test-ci": "jest --coverage --colors"
   },
   "dependencies": {
-    "jsonpointer": "^4.0.1",
+    "jsonpointer": "^5.0.0",
     "leven": "^3.1.0"
   },
   "devDependencies": {
@@ -54,7 +61,7 @@
     "jest-fixtures": "^0.6.0",
     "prettier": "^2.0.5",
     "pretty-quick": "^1.6.0",
-    "rollup": "^2.16.1"
+    "rollup": "^2.59.0"
   },
   "peerDependencies": {
     "ajv": ">=8"
