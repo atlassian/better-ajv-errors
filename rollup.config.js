@@ -11,7 +11,7 @@ export default [
       entryFileNames: '[name].js',
       dir: 'dist',
       format: 'cjs',
-      exports: 'named',
+      exports: 'default',
     },
     external,
   },

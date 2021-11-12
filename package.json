@@ -1,6 +1,6 @@
 {
   "name": "@stoplight/better-ajv-errors",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "description": "JSON Schema validation for Human",
   "repository": "stoplightio/better-ajv-errors",
   "type": "commonjs",
