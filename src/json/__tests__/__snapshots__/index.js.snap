@@ -8,15 +8,13 @@ Object {
       "line": 6,
       "offset": 60,
     },
-    "source": null,
     "start": Object {
       "column": 14,
       "line": 6,
       "offset": 55,
     },
   },
-  "raw": "\\"bar\\"",
-  "type": "Literal",
+  "type": "String",
   "value": "bar",
 }
 `;
@@ -29,15 +27,13 @@ Object {
       "line": 6,
       "offset": 53,
     },
-    "source": null,
     "start": Object {
       "column": 7,
       "line": 6,
       "offset": 48,
     },
   },
-  "raw": "\\"foo\\"",
-  "type": "Identifier",
+  "type": "String",
   "value": "foo",
 }
 `;
@@ -52,15 +48,13 @@ Object {
       "line": 4,
       "offset": 48,
     },
-    "source": null,
     "start": Object {
       "column": 15,
       "line": 4,
       "offset": 44,
     },
   },
-  "raw": "true",
-  "type": "Literal",
+  "type": "Boolean",
   "value": true,
 }
 `;
@@ -73,15 +67,13 @@ Object {
       "line": 4,
       "offset": 42,
     },
-    "source": null,
     "start": Object {
       "column": 5,
       "line": 4,
       "offset": 34,
     },
   },
-  "raw": "\\"isMeta\\"",
-  "type": "Identifier",
+  "type": "String",
   "value": "isMeta",
 }
 `;
@@ -94,15 +86,13 @@ Object {
       "line": 3,
       "offset": 31,
     },
-    "source": null,
     "start": Object {
       "column": 12,
       "line": 3,
       "offset": 29,
     },
   },
-  "raw": "20",
-  "type": "Literal",
+  "type": "Number",
   "value": 20,
 }
 `;
@@ -115,15 +105,13 @@ Object {
       "line": 3,
       "offset": 27,
     },
-    "source": null,
     "start": Object {
       "column": 3,
       "line": 3,
       "offset": 20,
     },
   },
-  "raw": "\\"value\\"",
-  "type": "Identifier",
+  "type": "String",
   "value": "value",
 }
 `;
@@ -136,15 +124,13 @@ Object {
       "line": 2,
       "offset": 16,
     },
-    "source": null,
     "start": Object {
       "column": 10,
       "line": 2,
       "offset": 11,
     },
   },
-  "raw": "\\"bar\\"",
-  "type": "Literal",
+  "type": "String",
   "value": "bar",
 }
 `;
@@ -157,15 +143,13 @@ Object {
       "line": 2,
       "offset": 9,
     },
-    "source": null,
     "start": Object {
       "column": 3,
       "line": 2,
       "offset": 4,
     },
   },
-  "raw": "\\"foo\\"",
-  "type": "Identifier",
+  "type": "String",
   "value": "foo",
 }
 `;
@@ -178,15 +162,13 @@ Object {
       "line": 7,
       "offset": 93,
     },
-    "source": null,
     "start": Object {
       "column": 16,
       "line": 7,
       "offset": 92,
     },
   },
-  "raw": "2",
-  "type": "Literal",
+  "type": "Number",
   "value": 2,
 }
 `;
@@ -199,15 +181,13 @@ Object {
       "line": 4,
       "offset": 49,
     },
-    "source": null,
     "start": Object {
       "column": 16,
       "line": 4,
       "offset": 48,
     },
   },
-  "raw": "1",
-  "type": "Literal",
+  "type": "Number",
   "value": 1,
 }
 `;

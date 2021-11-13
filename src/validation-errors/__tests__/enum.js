@@ -1,4 +1,4 @@
-import parse from 'json-to-ast';
+const { parse } = require('@humanwhocodes/momoa');
 import { getSchemaAndData } from '../../test-helpers';
 import EnumValidationError from '../enum';
 
@@ -8,7 +8,7 @@ describe('Enum', () => {
     beforeAll(async () => {
       [schema, data] = await getSchemaAndData('enum', __dirname);
       jsonRaw = JSON.stringify(data, null, 2);
-      jsonAst = parse(jsonRaw, { loc: true });
+      jsonAst = parse(jsonRaw);
     });
 
     it('prints correctly for enum prop', () => {
@@ -62,7 +62,7 @@ describe('Enum', () => {
     beforeAll(async () => {
       [schema, data] = await getSchemaAndData('enum-string', __dirname);
       jsonRaw = JSON.stringify(data, null, 2);
-      jsonAst = parse(jsonRaw, { loc: true });
+      jsonAst = parse(jsonRaw);
     });
 
     it('prints correctly for enum prop', () => {

@@ -41,23 +41,24 @@
     "format": "prettier --write './src/**/*.js' './.changeset/*.json'",
     "test": "jest && tsd",
     "test-ci": "jest --coverage --colors && tsd",
+    "prescreenshot": "npm run build:cjs",
     "screenshot": "svg-term --command='node screenshot' --out=./media/screenshot.svg --padding=5 --width=80 --height=13 --at=1000 --no-cursor --term iterm2 --profile='deep' --window",
     "prepare": "is-ci || husky install",
     "dependabot:changeset": "node ./.changeset/create-dependabot-dependabot.js"
   },
   "dependencies": {
     "@babel/code-frame": "^7.16.0",
+    "@humanwhocodes/momoa": "^2.0.2",
     "chalk": "^4.1.2",
-    "json-to-ast": "^2.0.3",
     "jsonpointer": "^5.0.0",
-    "leven": "^3.1.0 && < 4"
+    "leven": "^3.1.0 < 4"
   },
   "devDependencies": {
     "@changesets/cli": "^2.18.0",
     "@changesets/write": "^0.1.5",
     "ajv": "^8.7.1",
     "esbuild": "^0.13.13",
-    "esbuild-jest-transform": "^1.1.0",
+    "esbuild-jest": "^0.5.0",
     "eslint": "^8.2.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-jest": "^25.2.4",
@@ -81,9 +82,7 @@
       "<rootDir>/src/**/__tests__/**/*.js"
     ],
     "transform": {
-      "^.+\\.js$": [
-        "esbuild-jest-transform"
-      ]
+      "^.+\\.js$": "esbuild-jest"
     }
   }
 }
