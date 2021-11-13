@@ -1,2 +1,2 @@
-import betterAjvErrors from './better-ajv-errors';
+import betterAjvErrors from './better-ajv-errors.js';
 export default betterAjvErrors;

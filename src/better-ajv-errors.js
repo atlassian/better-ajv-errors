@@ -1,5 +1,5 @@
 import parse from 'json-to-ast';
-import prettify from './helpers';
+import prettify from './helpers.js';
 
 export default (schema, data, errors, options = {}) => {
   const { format = 'cli', indent = null, json = null } = options;

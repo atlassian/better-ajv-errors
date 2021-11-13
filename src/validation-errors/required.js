@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import BaseValidationError from './base';
+import BaseValidationError from './base.js';
 
 export default class RequiredValidationError extends BaseValidationError {
   getLocation(dataPath = this.instancePath) {
