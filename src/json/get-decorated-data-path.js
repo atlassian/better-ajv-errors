@@ -6,31 +6,32 @@ export default function getDecoratedDataPath(jsonAst, dataPath) {
     switch (obj.type) {
       case 'Object': {
         decoratedPath += `/${pointer}`;
-        const filtered = obj.children.filter(
-          child => child.key.value === pointer
+        const filtered = obj.members.filter(
+          child => child.name.value === pointer
         );
         if (filtered.length !== 1) {
           throw new Error(`Couldn't find property ${pointer} of ${dataPath}`);
         }
         return filtered[0].value;
       }
-      case 'Array':
-        decoratedPath += `/${pointer}${getTypeName(obj.children[pointer])}`;
-        return obj.children[pointer];
+      case 'Array': {
+        decoratedPath += `/${pointer}${getTypeName(obj.elements[pointer])}`;
+        return obj.elements[pointer];
+      }
       default:
         // eslint-disable-next-line no-console
         console.log(obj);
     }
-  }, jsonAst);
+  }, jsonAst.body);
   return decoratedPath;
 }
 
 function getTypeName(obj) {
-  if (!obj || !obj.children) {
+  if (!obj || !obj.elements) {
     return '';
   }
-  const type = obj.children.filter(
-    child => child && child.key && child.key.value === 'type'
+  const type = obj.elements.filter(
+    child => child && child.name && child.name.value === 'type'
   );
 
   if (!type.length) {
