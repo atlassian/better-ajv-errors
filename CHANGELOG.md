@@ -1,5 +1,23 @@
 # better-ajv-errors
 
+## 1.1.0
+
+### Minor Changes
+
+- ade58e0: :package: Swap `json-to-ast` with `momoa`
+
+  |                        |   `json-to-ast` |         `momoa` |
+  | ---------------------- | --------------: | --------------: |
+  | **Small JSON** `23B`   | 254,556 ops/sec | 329,012 ops/sec |
+  | **Medium JSON** `55KB` |     226 ops/sec |     246 ops/sec |
+  | **Large JSON** `25MB`  |    0.19 ops/sec |    0.29 ops/sec |
+
+### Patch Changes
+
+- abee681: :package: Restrict `leven` version to < 4
+
+  `leven@4` only ships `esm` module which is not compatible with this library.
+
 ## 1.0.0
 
 ### Major Changes
