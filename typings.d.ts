@@ -21,4 +21,4 @@ export default function <S, T, Options extends IInputOptions>(
   data: T,
   errors: Array<ErrorObject>,
   options?: Options
-): Options extends { format: 'js' } ? Array<IOutputError> : void;
+): Options extends { format: 'js' } ? Array<IOutputError> : string;
