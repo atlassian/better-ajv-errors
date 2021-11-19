@@ -1,5 +1,11 @@
 # better-ajv-errors
 
+## 1.1.1
+
+### Patch Changes
+
+- 7c83bf6: :bug: Fix cli return type
+
 ## 1.1.0
 
 ### Minor Changes
