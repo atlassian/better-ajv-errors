@@ -69,7 +69,7 @@
     "ajv8": "npm:ajv@8.0.0",
     "esbuild": "0.13.12",
     "esbuild-jest-transform": "1.1.0",
-    "eslint": "8.2.0",
+    "eslint": "8.3.0",
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-jest": "25.2.4",
     "eslint-plugin-prettier": "4.0.0",
