@@ -15,7 +15,25 @@ const config = {
     outdir: './lib/cjs',
   },
   esm: {
+    format: 'esm',
     outdir: './lib/esm',
+    outExtension: {
+      '.js': '.mjs',
+    },
+    bundle: true,
+    plugins: [
+      {
+        name: 'add-mjs',
+        setup(build) {
+          build.onResolve({ filter: /.*/ }, args => {
+            if (args.kind === 'entry-point') return;
+            let path = args.path;
+            if (path.startsWith('.') && !path.endsWith('.mjs')) path += '.mjs';
+            return { path, external: true };
+          });
+        },
+      },
+    ],
   },
 };
 

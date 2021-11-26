@@ -13,7 +13,7 @@ import {
   RequiredValidationError,
   EnumValidationError,
   DefaultValidationError,
-} from './validation-errors';
+} from './validation-errors/index';
 
 const JSON_POINTERS_REGEX = /\/[\w_-]+(\/\d+)?/g;
 
