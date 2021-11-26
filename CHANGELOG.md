@@ -1,5 +1,11 @@
 # better-ajv-errors
 
+## 1.1.2
+
+### Patch Changes
+
+- a1cafc8: :wrench: Fix esm build
+
 ## 1.1.1
 
 ### Patch Changes
