@@ -78,7 +78,7 @@
     "git-format-staged": "2.1.2",
     "husky": "7.0.4",
     "is-ci": "3.0.1",
-    "jest": "27.4.3",
+    "jest": "27.4.4",
     "jest-fixtures": "0.6.0",
     "npm-pkg-lint": "1.5.0",
     "prettier": "2.5.1",
