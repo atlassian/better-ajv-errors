@@ -3,7 +3,6 @@
 const process = require('process');
 
 const isCI = require('is-ci');
-const fg = require('fast-glob');
 const esbuild = require('esbuild');
 
 const isEsmBuild = process.argv[2] !== '--cjs';
@@ -12,41 +11,21 @@ const config = {
   cjs: {
     format: 'cjs',
     platform: 'node',
-    outdir: './lib/cjs',
+    outfile: './lib/cjs/index.js',
   },
   esm: {
     format: 'esm',
-    outdir: './lib/esm',
-    outExtension: {
-      '.js': '.mjs',
-    },
-    bundle: true,
-    plugins: [
-      {
-        name: 'add-mjs',
-        setup(build) {
-          build.onResolve({ filter: /.*/ }, args => {
-            if (args.kind === 'entry-point') return;
-            let path = args.path;
-            if (path.startsWith('.') && !path.endsWith('.mjs')) path += '.mjs';
-            return { path, external: true };
-          });
-        },
-      },
-    ],
+    outfile: './lib/esm/index.mjs',
   },
 };
 
-fg('src/**/*.js', {
-  ignore: ['**/__tests__', '**/__fixtures__'],
-})
-  .then(entryPoints =>
-    esbuild.build({
-      ...(isEsmBuild ? config.esm : config.cjs),
-      entryPoints,
-      sourcemap: true,
-      logLevel: isCI ? 'silent' : 'info',
-      target: 'node12.13',
-    })
-  )
+esbuild
+  .build({
+    ...(isEsmBuild ? config.esm : config.cjs),
+    entryPoints: ['src/index.js'],
+    bundle: true,
+    sourcemap: true,
+    logLevel: isCI ? 'silent' : 'info',
+    target: 'node12.13',
+  })
   .catch(_ => process.exit(1));
