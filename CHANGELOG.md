@@ -1,5 +1,11 @@
 # better-ajv-errors
 
+## 1.0.2
+
+### Patch Changes
+
+- f6473a0: Fix file extensions for ESM imports to work
+
 ## 1.0.1
 
 ### Patch Changes
