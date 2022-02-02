@@ -1,4 +1,4 @@
-import parse from 'json-to-ast';
+import { parse } from '@humanwhocodes/momoa';
 import { getSchemaAndData } from '../../test-helpers';
 import AdditionalPropValidationError from '../additional-prop';
 
@@ -7,7 +7,7 @@ describe('Additional properties', () => {
   beforeAll(async () => {
     [schema, data] = await getSchemaAndData('additional-prop', __dirname);
     jsonRaw = JSON.stringify(data, null, 2);
-    jsonAst = parse(jsonRaw, { loc: true });
+    jsonAst = parse(jsonRaw);
   });
 
   it('prints correctly', () => {

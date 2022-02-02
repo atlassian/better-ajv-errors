@@ -23,8 +23,8 @@ and `@babel/runtime` which is not needed on modern installations.
 
 The following PRs from upstream are merged:
 
-- [PR-67: fix(typings): Correct TypeScript type definition](https://github.com/atlassian/better-ajv-errors/pull/67)
 - [PR-85: fix: enumeration in anyOf](https://github.com/atlassian/better-ajv-errors/pull/85)
+- ~[PR-67: fix(typings): Correct TypeScript type definition](https://github.com/atlassian/better-ajv-errors/pull/67)~ (superseeded by upstream fix)
 - ~[PR-70: Drop legacy build and dependecy on polyfills](https://github.com/atlassian/better-ajv-errors/pull/70)~ (dropped in favour of esbuild)
 
 The following PRs has been merged upstream:

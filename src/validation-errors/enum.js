@@ -1,7 +1,7 @@
 import chalk from 'chalk';
 import leven from 'leven';
 import pointer from 'jsonpointer';
-import BaseValidationError from './base.js';
+import BaseValidationError from './base';
 
 export default class EnumValidationError extends BaseValidationError {
   print() {

@@ -1,5 +1,5 @@
 import { codeFrameColumns } from '@babel/code-frame';
-import { getMetaFromPath, getDecoratedDataPath } from '../json/index.js';
+import { getMetaFromPath, getDecoratedDataPath } from '../json';
 
 export default class BaseValidationError {
   constructor(

@@ -1,5 +1,13 @@
 import type { ErrorObject } from 'ajv';
 
+export interface IOutputError {
+  start: { line: number; column: number; offset: number };
+  // Optional for required
+  end?: { line: number; column: number; offset: number };
+  error: string;
+  suggestion?: string;
+}
+
 export interface IInputOptions {
   format?: 'cli' | 'js';
   indent?: number | null;
@@ -8,31 +16,9 @@ export interface IInputOptions {
   json?: string | null;
 }
 
-export interface IOutputError {
-  start: { line: number; column: number; offset: number };
-  end: { line: number; column: number; offset: number } | undefined;
-  error: string;
-  dataPath: string;
-  suggestion?: string;
-}
-
-declare function betterAjvErrors(
-  schema: any,
-  data: any,
-  errors?: ErrorObject[] | null,
-  options?: IInputOptions & { format?: 'cli' }
-): string;
-declare function betterAjvErrors(
-  schema: any,
-  data: any,
-  errors: ErrorObject[] | null | undefined,
-  options: IInputOptions & { format: 'js' }
-): IOutputError[];
-declare function betterAjvErrors(
-  schema: any,
-  data: any,
-  errors?: ErrorObject[] | null,
-  options?: IInputOptions
-): string | IOutputError[];
-
-export default betterAjvErrors;
+export default function <S, T, Options extends IInputOptions>(
+  schema: S,
+  data: T,
+  errors: Array<ErrorObject>,
+  options?: Options
+): Options extends { format: 'js' } ? Array<IOutputError> : string;

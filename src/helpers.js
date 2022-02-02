@@ -7,13 +7,13 @@ import {
   isRequiredError,
   concatAll,
   notUndefined,
-} from './utils.js';
+} from './utils';
 import {
   AdditionalPropValidationError,
   RequiredValidationError,
   EnumValidationError,
   DefaultValidationError,
-} from './validation-errors/index.js';
+} from './validation-errors/index';
 
 const JSON_POINTERS_REGEX = /\/[\w_-]+(\/\d+)?/g;
 

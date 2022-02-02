@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import BaseValidationError from './base.js';
+import BaseValidationError from './base';
 
 export default class DefaultValidationError extends BaseValidationError {
   print() {
