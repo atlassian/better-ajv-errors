@@ -123,6 +123,19 @@
       "ajv6",
       "ajv7",
       "ajv8"
+    ],
+    "packageRules": [
+      {
+        "description": "Bundled runtime dependencies",
+        "matchPackageNames": [
+          "@babel/code-frame",
+          "@humanwhocodes/momoa",
+          "chalk",
+          "jsonpointer",
+          "leven"
+        ],
+        "semanticCommitType": "fix"
+      }
     ]
   }
 }
