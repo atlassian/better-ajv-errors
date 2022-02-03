@@ -53,10 +53,10 @@
     "dependabot:changeset": "node ./.changeset/create-dependabot-dependabot.js"
   },
   "dependencies": {
-    "chalk": "^4.0.0"
+    "@babel/code-frame": "^7.16.0",
+    "chalk": "^4.1.0"
   },
   "devDependencies": {
-    "@babel/code-frame": "7.16.7",
     "@changesets/cli": "2.20.0",
     "@changesets/write": "0.1.6",
     "@humanwhocodes/momoa": "2.0.2",
@@ -130,7 +130,6 @@
       {
         "description": "Bundled runtime dependencies",
         "matchPackageNames": [
-          "@babel/code-frame",
           "@humanwhocodes/momoa",
           "jsonpointer",
           "leven"
