@@ -1,5 +1,11 @@
 # better-ajv-errors
 
+## 1.1.0
+
+### Minor Changes
+
+- merge with upstream
+
 ## 1.0.2
 
 ### Patch Changes
