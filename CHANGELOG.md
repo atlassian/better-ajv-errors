@@ -1,5 +1,12 @@
 # better-ajv-errors
 
+## 1.1.1
+
+### Patch Changes
+
+- 2dec852: chalk no longer bundled
+- 1e3141a: @babel/codeframe no longer bundled
+
 ## 1.1.0
 
 ### Minor Changes
