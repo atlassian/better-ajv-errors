@@ -52,6 +52,9 @@
     "screenshot": "svg-term --command='node screenshot' --out=./media/screenshot.svg --padding=5 --width=80 --height=13 --at=1000 --no-cursor --term iterm2 --profile='deep' --window",
     "dependabot:changeset": "node ./.changeset/create-dependabot-dependabot.js"
   },
+  "dependencies": {
+    "chalk": "^4.0.0"
+  },
   "devDependencies": {
     "@babel/code-frame": "7.16.7",
     "@changesets/cli": "2.20.0",
@@ -63,7 +66,6 @@
     "ajv6": "npm:ajv@6.0.0",
     "ajv7": "npm:ajv@7.0.0",
     "ajv8": "npm:ajv@8.0.0",
-    "chalk": "4.1.2",
     "esbuild": "0.14.18",
     "esbuild-jest": "0.5.0",
     "eslint": "8.8.0",
@@ -130,7 +132,6 @@
         "matchPackageNames": [
           "@babel/code-frame",
           "@humanwhocodes/momoa",
-          "chalk",
           "jsonpointer",
           "leven"
         ],
