@@ -80,7 +80,7 @@
     "jest-fixtures": "0.6.0",
     "jsonpointer": "5.0.0",
     "leven": "3.1.0",
-    "npm-pkg-lint": "1.5.0",
+    "npm-pkg-lint": "1.6.0",
     "prettier": "2.5.1",
     "pretty-format": "27.5.1",
     "svg-term-cli": "2.1.1",
