@@ -81,7 +81,7 @@
     "jsonpointer": "5.0.0",
     "leven": "3.1.0",
     "npm-pkg-lint": "1.10.0",
-    "prettier": "2.6.1",
+    "prettier": "2.6.2",
     "pretty-format": "27.5.1",
     "svg-term-cli": "2.1.1",
     "tsd": "0.20.0"
