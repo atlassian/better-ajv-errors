@@ -1,5 +1,3 @@
-import Ajv from 'ajv';
-import betterAjvErrors from '../';
 import { getErrors } from '../utils.js';
 
 describe('utils', () => {
