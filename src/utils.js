@@ -20,7 +20,14 @@ const isXError = x => (error /*: Error */) => error.keyword === x;
 export const isRequiredError = isXError('required');
 export const isAnyOfError = isXError('anyOf');
 export const isEnumError = isXError('enum');
-export const getErrors = (node /*: Node*/) => (node && node.errors) || [];
+export const getErrors = (node /*: Node*/) =>
+  node && node.errors
+    ? node.errors.map(e =>
+        e.keyword === 'errorMessage'
+          ? { ...e.params.errors[0], message: e.message }
+          : e
+      )
+    : [];
 
 // Node
 export const getChildren = (node /*: Node*/) /*: $ReadOnlyArray<Node>*/ =>
