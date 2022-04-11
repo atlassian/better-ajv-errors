@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "config:base"
+  ],
+  "rangeStrategy": "replace",
+  "packageRules": [
+    {
+      "matchPackagePatterns": ["chalk", "leven"],
+      "enabled": false
+    }
+  ]
+}
