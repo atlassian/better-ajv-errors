@@ -39,6 +39,7 @@
     "prerelease": "npm run build",
     "release": "changeset publish",
     "format": "prettier --write './src/**/*.js' './.changeset/*.json'",
+    "lint": "eslint .",
     "test": "jest && tsd",
     "test-ci": "jest --coverage --colors && tsd",
     "prescreenshot": "npm run build:cjs",
