@@ -1,5 +1,15 @@
 # better-ajv-errors
 
+## 1.2.0
+
+### Minor Changes
+
+- 3918d58: Add integration with ajv-errors
+
+### Patch Changes
+
+- 6120105: Remove for...in loop to prevent possible enumeration errors
+
 ## 1.1.2
 
 ### Patch Changes
