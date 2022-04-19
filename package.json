@@ -59,7 +59,7 @@
   "devDependencies": {
     "@changesets/cli": "2.22.0",
     "@changesets/write": "0.1.8",
-    "@humanwhocodes/momoa": "2.0.3",
+    "@humanwhocodes/momoa": "2.0.4",
     "ajv": "8.11.0",
     "ajv4": "npm:ajv@4.11.8",
     "ajv5": "npm:ajv@5.0.0",
