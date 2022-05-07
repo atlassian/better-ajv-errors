@@ -1,5 +1,11 @@
 # better-ajv-errors
 
+## 2.0.0
+
+### Major Changes
+
+- eaa0a03: require node 14
+
 ## 1.1.1
 
 ### Patch Changes
