@@ -70,7 +70,7 @@
     "esbuild-jest": "0.5.0",
     "eslint": "8.15.0",
     "eslint-config-prettier": "8.5.0",
-    "eslint-plugin-jest": "26.1.5",
+    "eslint-plugin-jest": "26.2.2",
     "eslint-plugin-prettier": "4.0.0",
     "flow-bin": "0.178.0",
     "git-format-staged": "3.0.0",
