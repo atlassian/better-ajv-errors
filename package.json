@@ -7,6 +7,7 @@
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "exports": {
+    "types": "./typings.d.ts",
     "require": "./dist/index.js",
     "import": "./dist/index.mjs"
   },
