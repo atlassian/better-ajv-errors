@@ -1,0 +1,41 @@
+version: 2.1
+
+commands:
+  install_and_test:
+    description: >-
+      Install everything required to run the test suite, then run it.
+    steps:
+      - run: yarn --frozen-lockfile
+      - run: yarn test-ci
+
+jobs:
+  # https://nodejs.org/en/about/releases/
+  test_node:
+    docker:
+      - image: cimg/node:lts
+    steps:
+      - checkout
+      - install_and_test
+
+  release:
+    docker:
+      - image: cimg/node:lts
+    steps:
+      - checkout
+      - run: yarn
+      - run: npx semantic-release
+
+workflows:
+  version: 2
+  test_and_release:
+    jobs:
+      - test_node
+      - release:
+          filters:
+            branches:
+              only:
+                - master
+                - beta
+                - alpha
+          requires:
+            - test_node
