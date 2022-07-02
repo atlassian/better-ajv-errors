@@ -76,7 +76,7 @@
     "git-format-staged": "3.0.0",
     "husky": "8.0.1",
     "is-ci": "3.0.1",
-    "jest": "28.1.1",
+    "jest": "28.1.2",
     "jest-fixtures": "0.6.0",
     "jsonpointer": "5.0.0",
     "leven": "3.1.0",
