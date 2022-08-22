@@ -48,6 +48,28 @@ describe('makeTree', () => {
     `);
   });
 
+  it('works on nested $ref instancePath', async () => {
+    expect(makeTree([{ instancePath: '/root/$ref' }])).toMatchInlineSnapshot(`
+      Object {
+        "children": Object {
+          "/root": Object {
+            "children": Object {
+              "/$ref": Object {
+                "children": Object {},
+                "errors": Array [
+                  Object {
+                    "instancePath": "/root/$ref",
+                  },
+                ],
+              },
+            },
+            "errors": Array [],
+          },
+        },
+      }
+    `);
+  });
+
   it('works on array instancePath', async () => {
     expect(
       makeTree([

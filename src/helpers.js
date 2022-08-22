@@ -16,7 +16,7 @@ import {
 } from './validation-errors/index';
 import ErrorMessageError from './validation-errors/error-message';
 
-const JSON_POINTERS_REGEX = /\/[\w_-]+(\/\d+)?/g;
+const JSON_POINTERS_REGEX = /\/[\w$_-]+(\/\d+)?/g;
 
 // Make a tree of errors from ajv errors array
 export function makeTree(ajvErrors = []) {
