@@ -33,8 +33,9 @@ jobs:
       - name: Run tests
         run: npm run test-ci
 
-      - name: Coveralls
-        uses: coverallsapp/github-action@master
+      - name: Upload coverage to Codecov
+        if: matrix.node-version == '16.x'
+        uses: codecov/codecov-action@v3
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
