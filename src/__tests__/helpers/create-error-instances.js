@@ -41,6 +41,7 @@ describe('createErrorInstances', () => {
             },
           },
           "schema": undefined,
+          "showEmojis": true,
         },
       ]
     `);

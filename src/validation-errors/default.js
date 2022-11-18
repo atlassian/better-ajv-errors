@@ -7,7 +7,9 @@ export default class DefaultValidationError extends BaseValidationError {
     const output = [chalk`{red {bold ${keyword.toUpperCase()}} ${message}}\n`];
 
     return output.concat(
-      this.getCodeFrame(chalk`👈🏽  {magentaBright ${keyword}} ${message}`)
+      this.getCodeFrame(
+        chalk`${this.showEmoji('👈🏽')}{magentaBright ${keyword}} ${message}`
+      )
     );
   }
 
