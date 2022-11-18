@@ -30,4 +30,19 @@ describe('Main', () => {
     });
     expect(res).toMatchSnapshot();
   });
+
+  it('should output error without emojis', async () => {
+    const [schema, data, json] = await getSchemaAndData('default', __dirname);
+    const ajv = new Ajv();
+    const validate = ajv.compile(schema);
+    const valid = validate(data);
+    expect(valid).toBeFalsy();
+
+    const res = betterAjvErrors(schema, data, validate.errors, {
+      format: 'cli',
+      json,
+      showEmojis: false,
+    });
+    expect(res).toMatchSnapshot();
+  });
 });

@@ -4,13 +4,18 @@ import { getMetaFromPath, getDecoratedDataPath } from '../json/index';
 export default class BaseValidationError {
   constructor(
     options = { isIdentifierLocation: false },
-    { data, schema, jsonAst, jsonRaw }
+    { data, schema, jsonAst, jsonRaw, showEmojis = true }
   ) {
     this.options = options;
     this.data = data;
     this.schema = schema;
     this.jsonAst = jsonAst;
     this.jsonRaw = jsonRaw;
+    this.showEmojis = showEmojis;
+  }
+
+  showEmoji(emoji) {
+    return this.showEmojis ? `${emoji}  ` : '';
   }
 
   getLocation(dataPath = this.instancePath) {
