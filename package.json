@@ -117,8 +117,7 @@
   },
   "renovate": {
     "extends": [
-      "@html-validate",
-      "@html-validate:github"
+      "gitlab>html-validate/renovate-config"
     ],
     "ignoreDeps": [
       "ajv4",
