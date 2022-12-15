@@ -61,7 +61,7 @@
     "@changesets/cli": "2.25.2",
     "@changesets/write": "0.2.2",
     "@humanwhocodes/momoa": "2.0.4",
-    "ajv": "8.11.0",
+    "ajv": "8.11.2",
     "ajv4": "npm:ajv@4.11.8",
     "ajv5": "npm:ajv@5.0.0",
     "ajv6": "npm:ajv@6.0.0",
