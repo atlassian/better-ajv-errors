@@ -85,7 +85,7 @@
     "npm-pkg-lint": "1.11.2",
     "prettier": "2.8.7",
     "svg-term-cli": "2.1.1",
-    "tsd": "0.28.0"
+    "tsd": "0.28.1"
   },
   "peerDependencies": {
     "ajv": "4.11.8 - 8"
