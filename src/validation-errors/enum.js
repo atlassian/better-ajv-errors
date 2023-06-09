@@ -34,6 +34,7 @@ export default class EnumValidationError extends BaseValidationError {
       ...this.getLocation(),
       error: `${this.getDecoratedPath()} ${message}: ${allowedValues}`,
       path: this.instancePath,
+      schemaPath: this.schemaPath,
     };
 
     if (bestMatch !== null) {

@@ -47,6 +47,15 @@ export default class BaseValidationError {
       : this.options.dataPath;
   }
 
+  /**
+   * @return {string}
+   */
+  get schemaPath() {
+    return typeof this.options.schemaPath !== 'undefined'
+      ? this.options.schemaPath
+      : '';
+  }
+
   print() {
     throw new Error(
       `Implement the 'print' method inside ${this.constructor.name}!`

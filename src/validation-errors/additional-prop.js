@@ -28,6 +28,7 @@ export default class AdditionalPropValidationError extends BaseValidationError {
         params.additionalProperty
       } is not expected to be here`,
       path: this.instancePath,
+      schemaPath: this.schemaPath,
     };
   }
 }
