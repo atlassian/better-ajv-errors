@@ -27,6 +27,6 @@ esbuild
     bundle: true,
     sourcemap: true,
     logLevel: isCI ? 'silent' : 'info',
-    target: 'node12.13',
+    target: 'node16.14',
   })
   .catch(_ => process.exit(1));
