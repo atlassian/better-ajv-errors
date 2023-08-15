@@ -28,7 +28,7 @@
   "license": "Apache-2.0",
   "types": "./typings.d.ts",
   "engines": {
-    "node": ">= 14.0.0"
+    "node": ">= 16.14"
   },
   "files": [
     "lib",
