@@ -1,5 +1,5 @@
 import { readFileSync } from 'fs';
-const { parse } = require('@humanwhocodes/momoa');
+import { parse } from '@humanwhocodes/momoa';
 import { getFixturePath } from 'jest-fixtures';
 import { getMetaFromPath, getDecoratedDataPath } from '../';
 

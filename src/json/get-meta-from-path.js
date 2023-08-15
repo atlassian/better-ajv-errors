@@ -23,7 +23,7 @@ export default function getMetaFromPath(
           : value;
       }
       case 'Array':
-        return obj.elements[pointer];
+        return obj.elements[pointer].value;
       default:
         // eslint-disable-next-line no-console
         console.log(obj);
