@@ -1,4 +1,4 @@
-const { parse } = require('@humanwhocodes/momoa');
+import { parse } from '@humanwhocodes/momoa';
 import { getSchemaAndData } from '../../test-helpers';
 import RequiredValidationError from '../required';
 
