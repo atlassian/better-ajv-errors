@@ -9,16 +9,16 @@ const { copy } = require('esbuild-plugin-copy');
 
 const isEsmBuild = process.argv[2] !== '--cjs';
 
-const copyTypingsPlugin = copy({
-  assets: [{ from: ['./typings.d.ts'], to: ['./typings.d.ts'] }],
-});
-
 const config = {
   cjs: {
     format: 'cjs',
     platform: 'node',
     outdir: './lib/cjs',
-    plugins: [copyTypingsPlugin],
+    plugins: [
+      copy({
+        assets: [{ from: ['./typings.d.ts'], to: ['./typings.d.ts'] }],
+      }),
+    ],
   },
   esm: {
     format: 'esm',
@@ -39,7 +39,9 @@ const config = {
           });
         },
       },
-      copyTypingsPlugin,
+      copy({
+        assets: [{ from: ['./typings.d.ts'], to: ['./typings.d.mts'] }],
+      }),
     ],
   },
 };

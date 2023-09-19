@@ -6,8 +6,14 @@
   "main": "./lib/cjs/index.js",
   "exports": {
     ".": {
-      "require": "./lib/cjs/index.js",
+      "import": {
+        "types": "./lib/esm/typings.d.mts",
         "default": "./lib/esm/index.mjs"
+      },
+      "require": {
+        "types": "./lib/cjs/typings.d.ts",
+        "default": "./lib/cjs/index.js"
+      }
     }
   },
   "module": "./lib/esm/index.mjs",
@@ -26,10 +32,9 @@
     "Tong Li"
   ],
   "license": "Apache-2.0",
-  "types": "./typings.d.ts",
+  "types": "./lib/cjs/typings.d.ts",
   "files": [
-    "lib",
-    "typings.d.ts"
+    "lib"
   ],
   "scripts": {
     "prebuild": "rm -rf lib",
