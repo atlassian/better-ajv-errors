@@ -5,6 +5,7 @@ const process = require('process');
 const isCI = require('is-ci');
 const fg = require('fast-glob');
 const esbuild = require('esbuild');
+const { copy } = require('esbuild-plugin-copy');
 
 const isEsmBuild = process.argv[2] !== '--cjs';
 
@@ -13,6 +14,11 @@ const config = {
     format: 'cjs',
     platform: 'node',
     outdir: './lib/cjs',
+    plugins: [
+      copy({
+        assets: [{ from: ['./typings.d.ts'], to: ['./typings.d.ts'] }],
+      }),
+    ],
   },
   esm: {
     format: 'esm',
@@ -33,6 +39,9 @@ const config = {
           });
         },
       },
+      copy({
+        assets: [{ from: ['./typings.d.ts'], to: ['./typings.d.mts'] }],
+      }),
     ],
   },
 };
