@@ -14,9 +14,13 @@ Main goal of this library is to provide relevant error messages like the followi
 ## Installation
 
 ```bash
-$ npm i better-ajv-errors
-$ # Or
-$ yarn add better-ajv-errors
+npm i better-ajv-errors
+```
+
+Or
+
+```bash
+yarn add better-ajv-errors
 ```
 
 Also make sure that you installed [ajv](https://www.npmjs.com/package/ajv) package to validate data against JSON schemas.
