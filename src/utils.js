@@ -1,5 +1,3 @@
-// @flow
-
 // Basic
 const eq = x => y => x === y;
 const not = fn => x => !fn(x);
