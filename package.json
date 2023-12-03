@@ -115,7 +115,9 @@
     "transform": {
       "^.+\\.js$": "esbuild-jest"
     },
-    "transformIgnorePatterns": ["/node_modules/(?!(chalk)/)"]
+    "transformIgnorePatterns": [
+      "/node_modules/(?!(chalk)/)"
+    ]
   },
   "renovate": {
     "extends": [
