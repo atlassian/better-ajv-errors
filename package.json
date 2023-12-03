@@ -51,7 +51,6 @@
     "test": "jest && tsd",
     "test-ci": "jest --coverage --colors && tsd",
     "prescreenshot": "npm run build:cjs",
-    "screenshot": "svg-term --command='node screenshot' --out=./media/screenshot.svg --padding=5 --width=80 --height=13 --at=1000 --no-cursor --term iterm2 --profile='deep' --window",
     "dependabot:changeset": "node ./.changeset/create-dependabot-dependabot.js"
   },
   "dependencies": {
@@ -84,7 +83,6 @@
     "leven": "3.1.0",
     "npm-pkg-lint": "2.1.0",
     "prettier": "3.1.0",
-    "svg-term-cli": "2.1.1",
     "tsd": "0.29.0"
   },
   "peerDependencies": {
