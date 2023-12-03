@@ -1,5 +1,11 @@
 # better-ajv-errors
 
+## 2.1.1
+
+### Patch Changes
+
+- f46e983: Fix types export for ESM
+
 ## 2.1.0
 
 ### Minor Changes
