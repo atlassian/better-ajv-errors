@@ -9,15 +9,11 @@ export default class AdditionalPropValidationError extends BaseValidationError {
 
   print() {
     const { message, params } = this.options;
-    const output = [
-      `${chalk.red.bold('ADDTIONAL PROPERTY')}${chalk.red(` ${message}`)}\n`,
-    ];
+    const output = [chalk`{red {bold ADDTIONAL PROPERTY} ${message}}\n`];
 
     return output.concat(
       this.getCodeFrame(
-        `😲  ${chalk.magentaBright(
-          params.additionalProperty
-        )} is not expected to be here!`,
+        chalk`😲  {magentaBright ${params.additionalProperty}} is not expected to be here!`,
         `${this.instancePath}/${params.additionalProperty}`
       )
     );
