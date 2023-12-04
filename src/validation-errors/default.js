@@ -4,12 +4,10 @@ import BaseValidationError from './base';
 export default class DefaultValidationError extends BaseValidationError {
   print() {
     const { keyword, message } = this.options;
-    const output = [
-      `${chalk.red.bold(keyword.toUpperCase())}${chalk.red(` ${message}`)}\n`,
-    ];
+    const output = [chalk`{red {bold ${keyword.toUpperCase()}} ${message}}\n`];
 
     return output.concat(
-      this.getCodeFrame(`👈🏽  ${chalk.magentaBright(keyword)} ${message}`)
+      this.getCodeFrame(chalk`👈🏽  {magentaBright ${keyword}} ${message}`)
     );
   }
 
