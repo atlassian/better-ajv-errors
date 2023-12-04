@@ -1,5 +1,11 @@
 # better-ajv-errors
 
+## 2.1.2
+
+### Patch Changes
+
+- eb64af9: Revert dependency chalk to v4
+
 ## 2.1.1
 
 ### Patch Changes
