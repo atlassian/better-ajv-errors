@@ -1,5 +1,11 @@
 # better-ajv-errors
 
+## 2.1.3
+
+### Patch Changes
+
+- cb0c12f: fix issue with decorating json path for array elements
+
 ## 2.1.2
 
 ### Patch Changes
