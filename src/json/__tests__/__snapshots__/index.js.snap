@@ -38,6 +38,8 @@ exports[`JSON can work on JSON with Array 2`] = `
 }
 `;
 
+exports[`JSON can work on JSON with Array 3`] = `"/arr/1/foo"`;
+
 exports[`JSON can work on JSON with Array with empty children 1`] = `"/arr/4"`;
 
 exports[`JSON can work on JSON with a key named meta 1`] = `

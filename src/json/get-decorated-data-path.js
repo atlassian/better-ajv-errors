@@ -4,6 +4,9 @@ export default function getDecoratedDataPath(jsonAst, dataPath) {
   let decoratedPath = '';
   getPointers(dataPath).reduce((obj, pointer) => {
     switch (obj.type) {
+      case 'Element':
+        obj = obj.value;
+      /* eslint-disable-next-line no-fallthrough -- explicitly want fallthrough here */
       case 'Object': {
         decoratedPath += `/${pointer}`;
         const filtered = obj.members.filter(

@@ -31,6 +31,7 @@ describe('JSON', () => {
     const jsonAst = await loadScenario(4);
     expect(getMetaFromPath(jsonAst, '/arr/1/foo')).toMatchSnapshot();
     expect(getMetaFromPath(jsonAst, '/arr/1/foo', true)).toMatchSnapshot();
+    expect(getDecoratedDataPath(jsonAst, '/arr/1/foo')).toMatchSnapshot();
   });
 
   it('can work on JSON with Array with empty children', async () => {
