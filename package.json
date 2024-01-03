@@ -83,7 +83,7 @@
     "leven": "3.1.0",
     "npm-pkg-lint": "2.1.0",
     "prettier": "3.1.1",
-    "tsd": "0.30.1"
+    "tsd": "0.30.2"
   },
   "peerDependencies": {
     "ajv": "4.11.8 - 8"
