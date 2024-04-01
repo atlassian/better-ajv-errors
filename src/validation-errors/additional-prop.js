@@ -9,7 +9,7 @@ export default class AdditionalPropValidationError extends BaseValidationError {
 
   print() {
     const { message, params } = this.options;
-    const output = [chalk`{red {bold ADDTIONAL PROPERTY} ${message}}\n`];
+    const output = [chalk`{red {bold ADDITIONAL PROPERTY} ${message}}\n`];
 
     return output.concat(
       this.getCodeFrame(
