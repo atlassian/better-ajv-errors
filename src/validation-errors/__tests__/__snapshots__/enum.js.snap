@@ -6,7 +6,7 @@ exports[`Enum when value is a primitive prints correctly for empty value 1`] = `
   "<red>(foo, bar)</color>
 ",
   "> 1 | "baz"
-    | ^^^^^ 👈🏽  Did you mean <brightMagenta>bar</color> here?",
+    | ^^^^^ Did you mean <brightMagenta>bar</color> here?",
 ]
 `;
 
@@ -16,7 +16,7 @@ exports[`Enum when value is a primitive prints correctly for enum prop 1`] = `
   "<red>(foo, bar)</color>
 ",
   "> 1 | "baz"
-    | ^^^^^ 👈🏽  Did you mean <brightMagenta>bar</color> here?",
+    | ^^^^^ Did you mean <brightMagenta>bar</color> here?",
 ]
 `;
 
@@ -26,7 +26,7 @@ exports[`Enum when value is a primitive prints correctly for no levenshtein matc
   "<red>(one, two)</color>
 ",
   "> 1 | "baz"
-    | ^^^^^ 👈🏽  Unexpected value, should be equal to one of the allowed values",
+    | ^^^^^ Unexpected value, should be equal to one of the allowed values",
 ]
 `;
 
@@ -37,7 +37,7 @@ exports[`Enum when value is an object prints correctly for empty value 1`] = `
 ",
   "  1 | {
 > 2 |   "id": "baz"
-    |         ^^^^^ 👈🏽  Did you mean <brightMagenta>bar</color> here?
+    |         ^^^^^ Did you mean <brightMagenta>bar</color> here?
   3 | }",
 ]
 `;
@@ -49,7 +49,7 @@ exports[`Enum when value is an object prints correctly for enum prop 1`] = `
 ",
   "  1 | {
 > 2 |   "id": "baz"
-    |         ^^^^^ 👈🏽  Did you mean <brightMagenta>bar</color> here?
+    |         ^^^^^ Did you mean <brightMagenta>bar</color> here?
   3 | }",
 ]
 `;
@@ -61,7 +61,7 @@ exports[`Enum when value is an object prints correctly for no levenshtein match 
 ",
   "  1 | {
 > 2 |   "id": "baz"
-    |         ^^^^^ 👈🏽  Unexpected value, should be equal to one of the allowed values
+    |         ^^^^^ Unexpected value, should be equal to one of the allowed values
   3 | }",
 ]
 `;

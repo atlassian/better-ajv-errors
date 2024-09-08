@@ -7,7 +7,7 @@ exports[`Additional properties prints correctly 1`] = `
   "  1 | {
   2 |   "foo": true,
 > 3 |   "bar": false
-    |   ^^^^^ 😲  <brightMagenta>bar</color> is not expected to be here!
+    |   ^^^^^ <brightMagenta>bar</color> is not expected to be here!
   4 | }",
 ]
 `;

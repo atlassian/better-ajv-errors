@@ -6,7 +6,7 @@ exports[`Required prints correctly for missing required prop 1`] = `
 ",
   "  1 | {
 > 2 |   "nested": {}
-    |             ^ ☹️  <brightMagenta>id</color> is missing here!
+    |             ^ <brightMagenta>id</color> is missing here!
   3 | }",
 ]
 `;

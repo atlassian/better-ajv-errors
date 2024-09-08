@@ -13,7 +13,7 @@ export default class AdditionalPropValidationError extends BaseValidationError {
 
     return output.concat(
       this.getCodeFrame(
-        chalk`😲  {magentaBright ${params.additionalProperty}} is not expected to be here!`,
+        chalk`{magentaBright ${params.additionalProperty}} is not expected to be here!`,
         `${this.instancePath}/${params.additionalProperty}`
       )
     );

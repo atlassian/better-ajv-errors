@@ -13,7 +13,7 @@ export default class RequiredValidationError extends BaseValidationError {
 
     return output.concat(
       this.getCodeFrame(
-        chalk`☹️  {magentaBright ${params.missingProperty}} is missing here!`
+        chalk`{magentaBright ${params.missingProperty}} is missing here!`
       )
     );
   }

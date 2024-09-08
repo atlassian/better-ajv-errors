@@ -19,8 +19,8 @@ export default class EnumValidationError extends BaseValidationError {
     return output.concat(
       this.getCodeFrame(
         bestMatch !== null
-          ? chalk`👈🏽  Did you mean {magentaBright ${bestMatch}} here?`
-          : chalk`👈🏽  Unexpected value, should be equal to one of the allowed values`
+          ? chalk`Did you mean {magentaBright ${bestMatch}} here?`
+          : chalk`Unexpected value, should be equal to one of the allowed values`
       )
     );
   }
