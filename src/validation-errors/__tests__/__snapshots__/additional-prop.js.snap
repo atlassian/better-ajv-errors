@@ -4,10 +4,10 @@ exports[`Additional properties prints correctly 1`] = `
 [
   "<red><bold>ADDTIONAL PROPERTY</intensity></color><red> should NOT have additional properties</color>
 ",
-  "</> <gray> 1 |</color> {</>
-</> <gray> 2 |</color>   <green>"foo"</color><yellow>:</color> <cyan>true</color><yellow>,</color></>
-</><red><bold>></intensity></color><gray> 3 |</color>   <green>"bar"</color><yellow>:</color> <cyan>false</color></>
-</> <gray>   |</color>   <red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color> <red><bold>😲  <brightMagenta>bar<red> is not expected to be here!</intensity></color></>
-</> <gray> 4 |</color> }</>",
+  "</> <gray> 1 |</color> {
+ <gray> 2 |</color>   <green>"foo"</color><yellow>:</color> <cyan>true</color><yellow>,</color>
+<red><bold>></intensity></color><gray> 3 |</color>   <green>"bar"</color><yellow>:</color> <cyan>false</color>
+ <gray>   |</color>   <red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color> <red><bold>😲  <brightMagenta>bar<red> is not expected to be here!</intensity></color>
+ <gray> 4 |</color> }</>",
 ]
 `;

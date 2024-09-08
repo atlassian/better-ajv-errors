@@ -4,9 +4,9 @@ exports[`Required prints correctly for missing required prop 1`] = `
 [
   "<red><bold>REQUIRED</intensity></color><red> should have required property 'id'</color>
 ",
-  "</> <gray> 1 |</color> {</>
-</><red><bold>></intensity></color><gray> 2 |</color>   <green>"nested"</color><yellow>:</color> {}</>
-</> <gray>   |</color>             <red><bold>^</intensity></color> <red><bold>☹️  <brightMagenta>id<red> is missing here!</intensity></color></>
-</> <gray> 3 |</color> }</>",
+  "</> <gray> 1 |</color> {
+<red><bold>></intensity></color><gray> 2 |</color>   <green>"nested"</color><yellow>:</color> {}
+ <gray>   |</color>             <red><bold>^</intensity></color> <red><bold>☹️  <brightMagenta>id<red> is missing here!</intensity></color>
+ <gray> 3 |</color> }</>",
 ]
 `;
