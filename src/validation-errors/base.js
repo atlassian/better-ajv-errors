@@ -33,7 +33,7 @@ export default class BaseValidationError {
 
   getCodeFrame(message, dataPath = this.instancePath) {
     return codeFrameColumns(this.jsonRaw, this.getLocation(dataPath), {
-      highlightCode: true,
+      highlightCode: false,
       message,
     });
   }
