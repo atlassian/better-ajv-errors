@@ -23,7 +23,7 @@ esbuild
   .build({
     ...(isEsmBuild ? config.esm : config.cjs),
     entryPoints: ['src/index.js'],
-    external: ['@babel/code-frame', 'chalk'],
+    external: ['chalk'],
     bundle: true,
     sourcemap: true,
     logLevel: isCI ? 'silent' : 'info',

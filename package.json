@@ -58,7 +58,6 @@
     "dependabot:changeset": "node ./.changeset/create-dependabot-dependabot.js"
   },
   "dependencies": {
-    "@babel/code-frame": "^7.16.0",
     "chalk": "^4.1.0"
   },
   "devDependencies": {
@@ -94,7 +93,6 @@
     "ajv": "4.11.8 - 8"
   },
   "externalDependencies": [
-    "@babel/code-frame",
     "chalk"
   ],
   "jest": {
