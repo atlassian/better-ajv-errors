@@ -1,355 +1,237 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AJV latest should output error with codeframe 1`] = `
-"<red><bold>ENUM</intensity></color><red> must be equal to one of the allowed values</color>
+"<red><bold>ENUM</intensity> must be equal to one of the allowed values</color>
 <red>(paragraph, codeBlock, blockquote)</color>
 
-</> <gray> 2 |</color>   <green>"type"</color><yellow>:</color> <green>"doc"</color><yellow>,</color>
- <gray> 3 |</color>   <green>"version"</color><yellow>:</color> <magenta>1</color><yellow>,</color>
-<red><bold>></intensity></color><gray> 4 |</color>   <green>"content"</color><yellow>:</color> [{ <green>"type"</color><yellow>:</color> <green>"paragarph"</color> }]
- <gray>   |</color>                         <red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color> <red><bold>👈🏽  Did you mean <brightMagenta>paragraph<red> here?</intensity></color>
- <gray> 5 |</color> }
- <gray> 6 |</color></>"
+  2 |   "type": "doc",
+  3 |   "version": 1,
+> 4 |   "content": [{ "type": "paragarph" }]
+    |                         ^^^^^^^^^^^ Did you mean <magenta>paragraph</color> here?
+  5 | }
+  6 |"
 `;
 
 exports[`AJV latest should output error with reconstructed codeframe 1`] = `
-"<red><bold>ENUM</intensity></color><red> must be equal to one of the allowed values</color>
+"<red><bold>ENUM</intensity> must be equal to one of the allowed values</color>
 <red>(paragraph, codeBlock, blockquote)</color>
 
-</> <gray> 4 |</color>   <green>"content"</color><yellow>:</color> [
- <gray> 5 |</color>     {
-<red><bold>></intensity></color><gray> 6 |</color>       <green>"type"</color><yellow>:</color> <green>"paragarph"</color>
- <gray>   |</color>               <red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color> <red><bold>👈🏽  Did you mean <brightMagenta>paragraph<red> here?</intensity></color>
- <gray> 7 |</color>     }
- <gray> 8 |</color>   ]
- <gray> 9 |</color> }</>"
+  4 |   "content": [
+  5 |     {
+> 6 |       "type": "paragarph"
+    |               ^^^^^^^^^^^ Did you mean <magenta>paragraph</color> here?
+  7 |     }
+  8 |   ]
+  9 | }"
 `;
 
 exports[`AJV latest should output proper error for enumeration 1`] = `
-"<red><bold>ENUM</intensity></color><red> must be equal to one of the allowed values</color>
+"<red><bold>ENUM</intensity> must be equal to one of the allowed values</color>
 <red>(foo, bar)</color>
 
-</> <gray> 1 |</color> {
-<red><bold>></intensity></color><gray> 2 |</color>   <green>"id"</color><yellow>:</color> <green>"baz"</color>
- <gray>   |</color>         <red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color> <red><bold>👈🏽  Did you mean <brightMagenta>bar<red> here?</intensity></color>
- <gray> 3 |</color> }</>"
+  1 | {
+> 2 |   "id": "baz"
+    |         ^^^^^ Did you mean <magenta>bar</color> here?
+  3 | }"
 `;
 
 exports[`AJV latest should output proper error for enumeration in anyOf 1`] = `
-"<red><bold>ENUM</intensity></color><red> must be equal to one of the allowed values</color>
+"<red><bold>ENUM</intensity> must be equal to one of the allowed values</color>
 <red>(foo, bar)</color>
 
-</> <gray> 1 |</color> {
-<red><bold>></intensity></color><gray> 2 |</color>   <green>"id"</color><yellow>:</color> <green>"baz"</color>
- <gray>   |</color>         <red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color> <red><bold>👈🏽  Did you mean <brightMagenta>bar<red> here?</intensity></color>
- <gray> 3 |</color> }</>
+  1 | {
+> 2 |   "id": "baz"
+    |         ^^^^^ Did you mean <magenta>bar</color> here?
+  3 | }
 
-<red><bold>TYPE</intensity></color><red> must be array</color>
+<red><bold>TYPE</intensity> must be array</color>}
 
-</> <gray> 1 |</color> {
-<red><bold>></intensity></color><gray> 2 |</color>   <green>"id"</color><yellow>:</color> <green>"baz"</color>
- <gray>   |</color>         <red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color> <red><bold>👈🏽  <brightMagenta>type<red> must be array</intensity></color>
- <gray> 3 |</color> }</>
+  1 | {
+> 2 |   "id": "baz"
+    |         ^^^^^ <magenta>type</color> must be array
+  3 | }
 
-<red><bold>ANYOF</intensity></color><red> must match a schema in anyOf</color>
+<red><bold>ANYOF</intensity> must match a schema in anyOf</color>}
 
-</> <gray> 1 |</color> {
-<red><bold>></intensity></color><gray> 2 |</color>   <green>"id"</color><yellow>:</color> <green>"baz"</color>
- <gray>   |</color>         <red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color> <red><bold>👈🏽  <brightMagenta>anyOf<red> must match a schema in anyOf</intensity></color>
- <gray> 3 |</color> }</>"
-`;
-
-exports[`AJV v4 should output error with codeframe 1`] = `
-"<red><bold>ENUM</intensity></color><red> should be equal to one of the allowed values</color>
-<red>(paragraph, codeBlock, blockquote)</color>
-
-</> <gray> 2 |</color>   <green>"type"</color><yellow>:</color> <green>"doc"</color><yellow>,</color>
- <gray> 3 |</color>   <green>"version"</color><yellow>:</color> <magenta>1</color><yellow>,</color>
-<red><bold>></intensity></color><gray> 4 |</color>   <green>"content"</color><yellow>:</color> [{ <green>"type"</color><yellow>:</color> <green>"paragarph"</color> }]
- <gray>   |</color>                         <red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color> <red><bold>👈🏽  Did you mean <brightMagenta>paragraph<red> here?</intensity></color>
- <gray> 5 |</color> }
- <gray> 6 |</color></>"
-`;
-
-exports[`AJV v4 should output error with reconstructed codeframe 1`] = `
-"<red><bold>ENUM</intensity></color><red> should be equal to one of the allowed values</color>
-<red>(paragraph, codeBlock, blockquote)</color>
-
-</> <gray> 4 |</color>   <green>"content"</color><yellow>:</color> [
- <gray> 5 |</color>     {
-<red><bold>></intensity></color><gray> 6 |</color>       <green>"type"</color><yellow>:</color> <green>"paragarph"</color>
- <gray>   |</color>               <red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color> <red><bold>👈🏽  Did you mean <brightMagenta>paragraph<red> here?</intensity></color>
- <gray> 7 |</color>     }
- <gray> 8 |</color>   ]
- <gray> 9 |</color> }</>"
-`;
-
-exports[`AJV v4 should output proper error for enumeration 1`] = `
-"<red><bold>ENUM</intensity></color><red> should be equal to one of the allowed values</color>
-<red>(foo, bar)</color>
-
-</> <gray> 1 |</color> {
-<red><bold>></intensity></color><gray> 2 |</color>   <green>"id"</color><yellow>:</color> <green>"baz"</color>
- <gray>   |</color>         <red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color> <red><bold>👈🏽  Did you mean <brightMagenta>bar<red> here?</intensity></color>
- <gray> 3 |</color> }</>"
-`;
-
-exports[`AJV v4 should output proper error for enumeration in anyOf 1`] = `
-"<red><bold>ENUM</intensity></color><red> should be equal to one of the allowed values</color>
-<red>(foo, bar)</color>
-
-</> <gray> 1 |</color> {
-<red><bold>></intensity></color><gray> 2 |</color>   <green>"id"</color><yellow>:</color> <green>"baz"</color>
- <gray>   |</color>         <red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color> <red><bold>👈🏽  Did you mean <brightMagenta>bar<red> here?</intensity></color>
- <gray> 3 |</color> }</>
-
-<red><bold>TYPE</intensity></color><red> should be array</color>
-
-</> <gray> 1 |</color> {
-<red><bold>></intensity></color><gray> 2 |</color>   <green>"id"</color><yellow>:</color> <green>"baz"</color>
- <gray>   |</color>         <red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color> <red><bold>👈🏽  <brightMagenta>type<red> should be array</intensity></color>
- <gray> 3 |</color> }</>
-
-<red><bold>ANYOF</intensity></color><red> should match some schema in anyOf</color>
-
-</> <gray> 1 |</color> {
-<red><bold>></intensity></color><gray> 2 |</color>   <green>"id"</color><yellow>:</color> <green>"baz"</color>
- <gray>   |</color>         <red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color> <red><bold>👈🏽  <brightMagenta>anyOf<red> should match some schema in anyOf</intensity></color>
- <gray> 3 |</color> }</>"
-`;
-
-exports[`AJV v5 should output error with codeframe 1`] = `
-"<red><bold>ENUM</intensity></color><red> should be equal to one of the allowed values</color>
-<red>(paragraph, codeBlock, blockquote)</color>
-
-</> <gray> 2 |</color>   <green>"type"</color><yellow>:</color> <green>"doc"</color><yellow>,</color>
- <gray> 3 |</color>   <green>"version"</color><yellow>:</color> <magenta>1</color><yellow>,</color>
-<red><bold>></intensity></color><gray> 4 |</color>   <green>"content"</color><yellow>:</color> [{ <green>"type"</color><yellow>:</color> <green>"paragarph"</color> }]
- <gray>   |</color>                         <red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color> <red><bold>👈🏽  Did you mean <brightMagenta>paragraph<red> here?</intensity></color>
- <gray> 5 |</color> }
- <gray> 6 |</color></>"
-`;
-
-exports[`AJV v5 should output error with reconstructed codeframe 1`] = `
-"<red><bold>ENUM</intensity></color><red> should be equal to one of the allowed values</color>
-<red>(paragraph, codeBlock, blockquote)</color>
-
-</> <gray> 4 |</color>   <green>"content"</color><yellow>:</color> [
- <gray> 5 |</color>     {
-<red><bold>></intensity></color><gray> 6 |</color>       <green>"type"</color><yellow>:</color> <green>"paragarph"</color>
- <gray>   |</color>               <red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color> <red><bold>👈🏽  Did you mean <brightMagenta>paragraph<red> here?</intensity></color>
- <gray> 7 |</color>     }
- <gray> 8 |</color>   ]
- <gray> 9 |</color> }</>"
-`;
-
-exports[`AJV v5 should output proper error for enumeration 1`] = `
-"<red><bold>ENUM</intensity></color><red> should be equal to one of the allowed values</color>
-<red>(foo, bar)</color>
-
-</> <gray> 1 |</color> {
-<red><bold>></intensity></color><gray> 2 |</color>   <green>"id"</color><yellow>:</color> <green>"baz"</color>
- <gray>   |</color>         <red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color> <red><bold>👈🏽  Did you mean <brightMagenta>bar<red> here?</intensity></color>
- <gray> 3 |</color> }</>"
-`;
-
-exports[`AJV v5 should output proper error for enumeration in anyOf 1`] = `
-"<red><bold>ENUM</intensity></color><red> should be equal to one of the allowed values</color>
-<red>(foo, bar)</color>
-
-</> <gray> 1 |</color> {
-<red><bold>></intensity></color><gray> 2 |</color>   <green>"id"</color><yellow>:</color> <green>"baz"</color>
- <gray>   |</color>         <red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color> <red><bold>👈🏽  Did you mean <brightMagenta>bar<red> here?</intensity></color>
- <gray> 3 |</color> }</>
-
-<red><bold>TYPE</intensity></color><red> should be array</color>
-
-</> <gray> 1 |</color> {
-<red><bold>></intensity></color><gray> 2 |</color>   <green>"id"</color><yellow>:</color> <green>"baz"</color>
- <gray>   |</color>         <red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color> <red><bold>👈🏽  <brightMagenta>type<red> should be array</intensity></color>
- <gray> 3 |</color> }</>
-
-<red><bold>ANYOF</intensity></color><red> should match some schema in anyOf</color>
-
-</> <gray> 1 |</color> {
-<red><bold>></intensity></color><gray> 2 |</color>   <green>"id"</color><yellow>:</color> <green>"baz"</color>
- <gray>   |</color>         <red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color> <red><bold>👈🏽  <brightMagenta>anyOf<red> should match some schema in anyOf</intensity></color>
- <gray> 3 |</color> }</>"
+  1 | {
+> 2 |   "id": "baz"
+    |         ^^^^^ <magenta>anyOf</color> must match a schema in anyOf
+  3 | }"
 `;
 
 exports[`AJV v6 should output error with codeframe 1`] = `
-"<red><bold>ENUM</intensity></color><red> should be equal to one of the allowed values</color>
+"<red><bold>ENUM</intensity> should be equal to one of the allowed values</color>
 <red>(paragraph, codeBlock, blockquote)</color>
 
-</> <gray> 2 |</color>   <green>"type"</color><yellow>:</color> <green>"doc"</color><yellow>,</color>
- <gray> 3 |</color>   <green>"version"</color><yellow>:</color> <magenta>1</color><yellow>,</color>
-<red><bold>></intensity></color><gray> 4 |</color>   <green>"content"</color><yellow>:</color> [{ <green>"type"</color><yellow>:</color> <green>"paragarph"</color> }]
- <gray>   |</color>                         <red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color> <red><bold>👈🏽  Did you mean <brightMagenta>paragraph<red> here?</intensity></color>
- <gray> 5 |</color> }
- <gray> 6 |</color></>"
+  2 |   "type": "doc",
+  3 |   "version": 1,
+> 4 |   "content": [{ "type": "paragarph" }]
+    |                         ^^^^^^^^^^^ Did you mean <magenta>paragraph</color> here?
+  5 | }
+  6 |"
 `;
 
 exports[`AJV v6 should output error with reconstructed codeframe 1`] = `
-"<red><bold>ENUM</intensity></color><red> should be equal to one of the allowed values</color>
+"<red><bold>ENUM</intensity> should be equal to one of the allowed values</color>
 <red>(paragraph, codeBlock, blockquote)</color>
 
-</> <gray> 4 |</color>   <green>"content"</color><yellow>:</color> [
- <gray> 5 |</color>     {
-<red><bold>></intensity></color><gray> 6 |</color>       <green>"type"</color><yellow>:</color> <green>"paragarph"</color>
- <gray>   |</color>               <red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color> <red><bold>👈🏽  Did you mean <brightMagenta>paragraph<red> here?</intensity></color>
- <gray> 7 |</color>     }
- <gray> 8 |</color>   ]
- <gray> 9 |</color> }</>"
+  4 |   "content": [
+  5 |     {
+> 6 |       "type": "paragarph"
+    |               ^^^^^^^^^^^ Did you mean <magenta>paragraph</color> here?
+  7 |     }
+  8 |   ]
+  9 | }"
 `;
 
 exports[`AJV v6 should output proper error for enumeration 1`] = `
-"<red><bold>ENUM</intensity></color><red> should be equal to one of the allowed values</color>
+"<red><bold>ENUM</intensity> should be equal to one of the allowed values</color>
 <red>(foo, bar)</color>
 
-</> <gray> 1 |</color> {
-<red><bold>></intensity></color><gray> 2 |</color>   <green>"id"</color><yellow>:</color> <green>"baz"</color>
- <gray>   |</color>         <red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color> <red><bold>👈🏽  Did you mean <brightMagenta>bar<red> here?</intensity></color>
- <gray> 3 |</color> }</>"
+  1 | {
+> 2 |   "id": "baz"
+    |         ^^^^^ Did you mean <magenta>bar</color> here?
+  3 | }"
 `;
 
 exports[`AJV v6 should output proper error for enumeration in anyOf 1`] = `
-"<red><bold>ENUM</intensity></color><red> should be equal to one of the allowed values</color>
+"<red><bold>ENUM</intensity> should be equal to one of the allowed values</color>
 <red>(foo, bar)</color>
 
-</> <gray> 1 |</color> {
-<red><bold>></intensity></color><gray> 2 |</color>   <green>"id"</color><yellow>:</color> <green>"baz"</color>
- <gray>   |</color>         <red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color> <red><bold>👈🏽  Did you mean <brightMagenta>bar<red> here?</intensity></color>
- <gray> 3 |</color> }</>
+  1 | {
+> 2 |   "id": "baz"
+    |         ^^^^^ Did you mean <magenta>bar</color> here?
+  3 | }
 
-<red><bold>TYPE</intensity></color><red> should be array</color>
+<red><bold>TYPE</intensity> should be array</color>}
 
-</> <gray> 1 |</color> {
-<red><bold>></intensity></color><gray> 2 |</color>   <green>"id"</color><yellow>:</color> <green>"baz"</color>
- <gray>   |</color>         <red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color> <red><bold>👈🏽  <brightMagenta>type<red> should be array</intensity></color>
- <gray> 3 |</color> }</>
+  1 | {
+> 2 |   "id": "baz"
+    |         ^^^^^ <magenta>type</color> should be array
+  3 | }
 
-<red><bold>ANYOF</intensity></color><red> should match some schema in anyOf</color>
+<red><bold>ANYOF</intensity> should match some schema in anyOf</color>}
 
-</> <gray> 1 |</color> {
-<red><bold>></intensity></color><gray> 2 |</color>   <green>"id"</color><yellow>:</color> <green>"baz"</color>
- <gray>   |</color>         <red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color> <red><bold>👈🏽  <brightMagenta>anyOf<red> should match some schema in anyOf</intensity></color>
- <gray> 3 |</color> }</>"
+  1 | {
+> 2 |   "id": "baz"
+    |         ^^^^^ <magenta>anyOf</color> should match some schema in anyOf
+  3 | }"
 `;
 
 exports[`AJV v7 should output error with codeframe 1`] = `
-"<red><bold>ENUM</intensity></color><red> should be equal to one of the allowed values</color>
+"<red><bold>ENUM</intensity> should be equal to one of the allowed values</color>
 <red>(paragraph, codeBlock, blockquote)</color>
 
-</> <gray> 2 |</color>   <green>"type"</color><yellow>:</color> <green>"doc"</color><yellow>,</color>
- <gray> 3 |</color>   <green>"version"</color><yellow>:</color> <magenta>1</color><yellow>,</color>
-<red><bold>></intensity></color><gray> 4 |</color>   <green>"content"</color><yellow>:</color> [{ <green>"type"</color><yellow>:</color> <green>"paragarph"</color> }]
- <gray>   |</color>                         <red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color> <red><bold>👈🏽  Did you mean <brightMagenta>paragraph<red> here?</intensity></color>
- <gray> 5 |</color> }
- <gray> 6 |</color></>"
+  2 |   "type": "doc",
+  3 |   "version": 1,
+> 4 |   "content": [{ "type": "paragarph" }]
+    |                         ^^^^^^^^^^^ Did you mean <magenta>paragraph</color> here?
+  5 | }
+  6 |"
 `;
 
 exports[`AJV v7 should output error with reconstructed codeframe 1`] = `
-"<red><bold>ENUM</intensity></color><red> should be equal to one of the allowed values</color>
+"<red><bold>ENUM</intensity> should be equal to one of the allowed values</color>
 <red>(paragraph, codeBlock, blockquote)</color>
 
-</> <gray> 4 |</color>   <green>"content"</color><yellow>:</color> [
- <gray> 5 |</color>     {
-<red><bold>></intensity></color><gray> 6 |</color>       <green>"type"</color><yellow>:</color> <green>"paragarph"</color>
- <gray>   |</color>               <red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color> <red><bold>👈🏽  Did you mean <brightMagenta>paragraph<red> here?</intensity></color>
- <gray> 7 |</color>     }
- <gray> 8 |</color>   ]
- <gray> 9 |</color> }</>"
+  4 |   "content": [
+  5 |     {
+> 6 |       "type": "paragarph"
+    |               ^^^^^^^^^^^ Did you mean <magenta>paragraph</color> here?
+  7 |     }
+  8 |   ]
+  9 | }"
 `;
 
 exports[`AJV v7 should output proper error for enumeration 1`] = `
-"<red><bold>ENUM</intensity></color><red> should be equal to one of the allowed values</color>
+"<red><bold>ENUM</intensity> should be equal to one of the allowed values</color>
 <red>(foo, bar)</color>
 
-</> <gray> 1 |</color> {
-<red><bold>></intensity></color><gray> 2 |</color>   <green>"id"</color><yellow>:</color> <green>"baz"</color>
- <gray>   |</color>         <red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color> <red><bold>👈🏽  Did you mean <brightMagenta>bar<red> here?</intensity></color>
- <gray> 3 |</color> }</>"
+  1 | {
+> 2 |   "id": "baz"
+    |         ^^^^^ Did you mean <magenta>bar</color> here?
+  3 | }"
 `;
 
 exports[`AJV v7 should output proper error for enumeration in anyOf 1`] = `
-"<red><bold>ENUM</intensity></color><red> should be equal to one of the allowed values</color>
+"<red><bold>ENUM</intensity> should be equal to one of the allowed values</color>
 <red>(foo, bar)</color>
 
-</> <gray> 1 |</color> {
-<red><bold>></intensity></color><gray> 2 |</color>   <green>"id"</color><yellow>:</color> <green>"baz"</color>
- <gray>   |</color>         <red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color> <red><bold>👈🏽  Did you mean <brightMagenta>bar<red> here?</intensity></color>
- <gray> 3 |</color> }</>
+  1 | {
+> 2 |   "id": "baz"
+    |         ^^^^^ Did you mean <magenta>bar</color> here?
+  3 | }
 
-<red><bold>TYPE</intensity></color><red> should be array</color>
+<red><bold>TYPE</intensity> should be array</color>}
 
-</> <gray> 1 |</color> {
-<red><bold>></intensity></color><gray> 2 |</color>   <green>"id"</color><yellow>:</color> <green>"baz"</color>
- <gray>   |</color>         <red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color> <red><bold>👈🏽  <brightMagenta>type<red> should be array</intensity></color>
- <gray> 3 |</color> }</>
+  1 | {
+> 2 |   "id": "baz"
+    |         ^^^^^ <magenta>type</color> should be array
+  3 | }
 
-<red><bold>ANYOF</intensity></color><red> should match some schema in anyOf</color>
+<red><bold>ANYOF</intensity> should match some schema in anyOf</color>}
 
-</> <gray> 1 |</color> {
-<red><bold>></intensity></color><gray> 2 |</color>   <green>"id"</color><yellow>:</color> <green>"baz"</color>
- <gray>   |</color>         <red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color> <red><bold>👈🏽  <brightMagenta>anyOf<red> should match some schema in anyOf</intensity></color>
- <gray> 3 |</color> }</>"
+  1 | {
+> 2 |   "id": "baz"
+    |         ^^^^^ <magenta>anyOf</color> should match some schema in anyOf
+  3 | }"
 `;
 
 exports[`AJV v8 should output error with codeframe 1`] = `
-"<red><bold>ENUM</intensity></color><red> must be equal to one of the allowed values</color>
+"<red><bold>ENUM</intensity> must be equal to one of the allowed values</color>
 <red>(paragraph, codeBlock, blockquote)</color>
 
-</> <gray> 2 |</color>   <green>"type"</color><yellow>:</color> <green>"doc"</color><yellow>,</color>
- <gray> 3 |</color>   <green>"version"</color><yellow>:</color> <magenta>1</color><yellow>,</color>
-<red><bold>></intensity></color><gray> 4 |</color>   <green>"content"</color><yellow>:</color> [{ <green>"type"</color><yellow>:</color> <green>"paragarph"</color> }]
- <gray>   |</color>                         <red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color> <red><bold>👈🏽  Did you mean <brightMagenta>paragraph<red> here?</intensity></color>
- <gray> 5 |</color> }
- <gray> 6 |</color></>"
+  2 |   "type": "doc",
+  3 |   "version": 1,
+> 4 |   "content": [{ "type": "paragarph" }]
+    |                         ^^^^^^^^^^^ Did you mean <magenta>paragraph</color> here?
+  5 | }
+  6 |"
 `;
 
 exports[`AJV v8 should output error with reconstructed codeframe 1`] = `
-"<red><bold>ENUM</intensity></color><red> must be equal to one of the allowed values</color>
+"<red><bold>ENUM</intensity> must be equal to one of the allowed values</color>
 <red>(paragraph, codeBlock, blockquote)</color>
 
-</> <gray> 4 |</color>   <green>"content"</color><yellow>:</color> [
- <gray> 5 |</color>     {
-<red><bold>></intensity></color><gray> 6 |</color>       <green>"type"</color><yellow>:</color> <green>"paragarph"</color>
- <gray>   |</color>               <red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color> <red><bold>👈🏽  Did you mean <brightMagenta>paragraph<red> here?</intensity></color>
- <gray> 7 |</color>     }
- <gray> 8 |</color>   ]
- <gray> 9 |</color> }</>"
+  4 |   "content": [
+  5 |     {
+> 6 |       "type": "paragarph"
+    |               ^^^^^^^^^^^ Did you mean <magenta>paragraph</color> here?
+  7 |     }
+  8 |   ]
+  9 | }"
 `;
 
 exports[`AJV v8 should output proper error for enumeration 1`] = `
-"<red><bold>ENUM</intensity></color><red> must be equal to one of the allowed values</color>
+"<red><bold>ENUM</intensity> must be equal to one of the allowed values</color>
 <red>(foo, bar)</color>
 
-</> <gray> 1 |</color> {
-<red><bold>></intensity></color><gray> 2 |</color>   <green>"id"</color><yellow>:</color> <green>"baz"</color>
- <gray>   |</color>         <red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color> <red><bold>👈🏽  Did you mean <brightMagenta>bar<red> here?</intensity></color>
- <gray> 3 |</color> }</>"
+  1 | {
+> 2 |   "id": "baz"
+    |         ^^^^^ Did you mean <magenta>bar</color> here?
+  3 | }"
 `;
 
 exports[`AJV v8 should output proper error for enumeration in anyOf 1`] = `
-"<red><bold>ENUM</intensity></color><red> must be equal to one of the allowed values</color>
+"<red><bold>ENUM</intensity> must be equal to one of the allowed values</color>
 <red>(foo, bar)</color>
 
-</> <gray> 1 |</color> {
-<red><bold>></intensity></color><gray> 2 |</color>   <green>"id"</color><yellow>:</color> <green>"baz"</color>
- <gray>   |</color>         <red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color> <red><bold>👈🏽  Did you mean <brightMagenta>bar<red> here?</intensity></color>
- <gray> 3 |</color> }</>
+  1 | {
+> 2 |   "id": "baz"
+    |         ^^^^^ Did you mean <magenta>bar</color> here?
+  3 | }
 
-<red><bold>TYPE</intensity></color><red> must be array</color>
+<red><bold>TYPE</intensity> must be array</color>}
 
-</> <gray> 1 |</color> {
-<red><bold>></intensity></color><gray> 2 |</color>   <green>"id"</color><yellow>:</color> <green>"baz"</color>
- <gray>   |</color>         <red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color> <red><bold>👈🏽  <brightMagenta>type<red> must be array</intensity></color>
- <gray> 3 |</color> }</>
+  1 | {
+> 2 |   "id": "baz"
+    |         ^^^^^ <magenta>type</color> must be array
+  3 | }
 
-<red><bold>ANYOF</intensity></color><red> must match a schema in anyOf</color>
+<red><bold>ANYOF</intensity> must match a schema in anyOf</color>}
 
-</> <gray> 1 |</color> {
-<red><bold>></intensity></color><gray> 2 |</color>   <green>"id"</color><yellow>:</color> <green>"baz"</color>
- <gray>   |</color>         <red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color><red><bold>^</intensity></color> <red><bold>👈🏽  <brightMagenta>anyOf<red> must match a schema in anyOf</intensity></color>
- <gray> 3 |</color> }</>"
+  1 | {
+> 2 |   "id": "baz"
+    |         ^^^^^ <magenta>anyOf</color> must match a schema in anyOf
+  3 | }"
 `;

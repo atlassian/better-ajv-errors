@@ -1,4 +1,4 @@
-import { codeFrameColumns } from '@babel/code-frame';
+import { codeFrameColumns } from '../code-frame-columns';
 import { getMetaFromPath, getDecoratedDataPath } from '../json';
 
 export default class BaseValidationError {
@@ -33,7 +33,6 @@ export default class BaseValidationError {
 
   getCodeFrame(message, dataPath = this.instancePath) {
     return codeFrameColumns(this.jsonRaw, this.getLocation(dataPath), {
-      highlightCode: true,
       message,
     });
   }

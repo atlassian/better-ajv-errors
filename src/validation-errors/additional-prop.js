@@ -1,5 +1,7 @@
-import chalk from 'chalk';
+import { bold, red, magenta } from 'kleur/colors';
 import BaseValidationError from './base';
+
+const ADDITIONAL_PROPERTY = bold('ADDITIONAL PROPERTY');
 
 export default class AdditionalPropValidationError extends BaseValidationError {
   constructor(...args) {
@@ -9,11 +11,12 @@ export default class AdditionalPropValidationError extends BaseValidationError {
 
   print() {
     const { message, params } = this.options;
-    const output = [chalk`{red {bold ADDTIONAL PROPERTY} ${message}}\n`];
+    const line = red(`${ADDITIONAL_PROPERTY} ${message}`);
+    const output = [`${line}\n`];
 
     return output.concat(
       this.getCodeFrame(
-        chalk`😲  {magentaBright ${params.additionalProperty}} is not expected to be here!`,
+        `${magenta(params.additionalProperty)} is not expected to be here!`,
         `${this.instancePath}/${params.additionalProperty}`
       )
     );
