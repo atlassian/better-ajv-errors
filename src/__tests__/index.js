@@ -1,19 +1,9 @@
 import Ajv from 'ajv';
-import Ajv4 from 'ajv4';
-import Ajv5 from 'ajv5';
 import Ajv6 from 'ajv6';
 import Ajv7 from 'ajv7';
 import Ajv8 from 'ajv8';
 import { getSchemaAndData } from '../test-helpers';
 import betterAjvErrors from '../';
-
-function ajv4() {
-  return new Ajv4({ jsonPointers: true });
-}
-
-function ajv5() {
-  return new Ajv5({ jsonPointers: true });
-}
 
 function ajv6() {
   return new Ajv6({ jsonPointers: true });
@@ -32,8 +22,6 @@ function latest() {
 }
 
 describe.each([
-  ['AJV v4', ajv4],
-  ['AJV v5', ajv5],
   ['AJV v6', ajv6],
   ['AJV v7', ajv7],
   ['AJV v8', ajv8],

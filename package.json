@@ -66,9 +66,7 @@
     "@html-validate/release-scripts": "6.5.3",
     "@humanwhocodes/momoa": "3.2.1",
     "ajv": "8.17.1",
-    "ajv4": "npm:ajv@4.11.8",
-    "ajv5": "npm:ajv@5.0.0",
-    "ajv6": "npm:ajv@6.0.0",
+    "ajv6": "npm:ajv@6.12.3",
     "ajv7": "npm:ajv@7.0.0",
     "ajv8": "npm:ajv@8.0.0",
     "esbuild": "0.23.1",
@@ -90,7 +88,7 @@
     "tsd": "0.31.2"
   },
   "peerDependencies": {
-    "ajv": "4.11.8 - 8"
+    "ajv": "^6.12.3 || ^7.0.0 || ^8.0.0"
   },
   "externalDependencies": [
     "kleur"
