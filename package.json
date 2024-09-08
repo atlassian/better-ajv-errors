@@ -46,6 +46,10 @@
     "prerelease": "npm run build",
     "prepare": "is-ci || husky",
     "release": "changeset publish",
+    "prepack": "release-prepack --bundle",
+    "postpack": "release-postpack",
+    "prepublishOnly": "release-prepublish --bundle",
+    "postpublish": "release-postpublish",
     "format": "prettier --write .",
     "lint": "eslint .",
     "test": "jest && tsd",
@@ -60,6 +64,7 @@
   "devDependencies": {
     "@changesets/cli": "2.27.8",
     "@changesets/write": "0.3.2",
+    "@html-validate/release-scripts": "6.5.3",
     "@humanwhocodes/momoa": "3.2.1",
     "ajv": "8.17.1",
     "ajv4": "npm:ajv@4.11.8",
@@ -88,6 +93,10 @@
   "peerDependencies": {
     "ajv": "4.11.8 - 8"
   },
+  "externalDependencies": [
+    "@babel/code-frame",
+    "chalk"
+  ],
   "jest": {
     "collectCoverage": true,
     "collectCoverageFrom": [
