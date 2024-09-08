@@ -32,12 +32,6 @@ jobs:
       - name: Run tests
         run: npm run test-ci
 
-      - name: Upload coverage to Codecov
-        if: matrix.node-version == '16.x'
-        uses: codecov/codecov-action@v4
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-
   lint:
     name: Lint
     runs-on: ubuntu-latest
