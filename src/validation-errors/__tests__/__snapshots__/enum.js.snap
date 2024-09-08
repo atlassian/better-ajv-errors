@@ -2,27 +2,27 @@
 
 exports[`Enum when value is a primitive prints correctly for empty value 1`] = `
 [
-  "<red><bold>ENUM</intensity></color><red> should be equal to one of the allowed values</color>",
+  "<red><bold>ENUM</intensity> should be equal to one of the allowed values</color>",
   "<red>(foo, bar)</color>
 ",
   "> 1 | "baz"
-    | ^^^^^ Did you mean <brightMagenta>bar</color> here?",
+    | ^^^^^ Did you mean <magenta>bar</color> here?",
 ]
 `;
 
 exports[`Enum when value is a primitive prints correctly for enum prop 1`] = `
 [
-  "<red><bold>ENUM</intensity></color><red> should be equal to one of the allowed values</color>",
+  "<red><bold>ENUM</intensity> should be equal to one of the allowed values</color>",
   "<red>(foo, bar)</color>
 ",
   "> 1 | "baz"
-    | ^^^^^ Did you mean <brightMagenta>bar</color> here?",
+    | ^^^^^ Did you mean <magenta>bar</color> here?",
 ]
 `;
 
 exports[`Enum when value is a primitive prints correctly for no levenshtein match 1`] = `
 [
-  "<red><bold>ENUM</intensity></color><red> should be equal to one of the allowed values</color>",
+  "<red><bold>ENUM</intensity> should be equal to one of the allowed values</color>",
   "<red>(one, two)</color>
 ",
   "> 1 | "baz"
@@ -32,31 +32,31 @@ exports[`Enum when value is a primitive prints correctly for no levenshtein matc
 
 exports[`Enum when value is an object prints correctly for empty value 1`] = `
 [
-  "<red><bold>ENUM</intensity></color><red> should be equal to one of the allowed values</color>",
+  "<red><bold>ENUM</intensity> should be equal to one of the allowed values</color>",
   "<red>(foo, bar)</color>
 ",
   "  1 | {
 > 2 |   "id": "baz"
-    |         ^^^^^ Did you mean <brightMagenta>bar</color> here?
+    |         ^^^^^ Did you mean <magenta>bar</color> here?
   3 | }",
 ]
 `;
 
 exports[`Enum when value is an object prints correctly for enum prop 1`] = `
 [
-  "<red><bold>ENUM</intensity></color><red> should be equal to one of the allowed values</color>",
+  "<red><bold>ENUM</intensity> should be equal to one of the allowed values</color>",
   "<red>(foo, bar)</color>
 ",
   "  1 | {
 > 2 |   "id": "baz"
-    |         ^^^^^ Did you mean <brightMagenta>bar</color> here?
+    |         ^^^^^ Did you mean <magenta>bar</color> here?
   3 | }",
 ]
 `;
 
 exports[`Enum when value is an object prints correctly for no levenshtein match 1`] = `
 [
-  "<red><bold>ENUM</intensity></color><red> should be equal to one of the allowed values</color>",
+  "<red><bold>ENUM</intensity> should be equal to one of the allowed values</color>",
   "<red>(one, two)</color>
 ",
   "  1 | {

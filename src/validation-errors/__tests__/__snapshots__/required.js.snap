@@ -2,11 +2,11 @@
 
 exports[`Required prints correctly for missing required prop 1`] = `
 [
-  "<red><bold>REQUIRED</intensity></color><red> should have required property 'id'</color>
+  "<red><bold>REQUIRED</intensity> should have required property 'id'</color>
 ",
   "  1 | {
 > 2 |   "nested": {}
-    |             ^ <brightMagenta>id</color> is missing here!
+    |             ^ <magenta>id</color> is missing here!
   3 | }",
 ]
 `;

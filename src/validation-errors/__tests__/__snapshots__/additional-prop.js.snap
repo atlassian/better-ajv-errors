@@ -2,12 +2,12 @@
 
 exports[`Additional properties prints correctly 1`] = `
 [
-  "<red><bold>ADDTIONAL PROPERTY</intensity></color><red> should NOT have additional properties</color>
+  "<red><bold>ADDITIONAL PROPERTY</intensity> should NOT have additional properties</color>
 ",
   "  1 | {
   2 |   "foo": true,
 > 3 |   "bar": false
-    |   ^^^^^ <brightMagenta>bar</color> is not expected to be here!
+    |   ^^^^^ <magenta>bar</color> is not expected to be here!
   4 | }",
 ]
 `;
