@@ -1,5 +1,23 @@
 # better-ajv-errors
 
+## 3.0.0
+
+### Major Changes
+
+- 421d382: Ajv v6 or later is now required.
+  Support for Ajv v4 and v5 is dropped.
+
+### Minor Changes
+
+- fc2b3d0: disable highlighting of json structure
+- 0ae8173: drop @babel/code-frame dependency
+- f92c66d: replace chalk with kleur
+- fa378bc: remove emojis from output
+
+### Patch Changes
+
+- 68389b6: package.json cleanup for npm package
+
 ## 2.1.3
 
 ### Patch Changes
