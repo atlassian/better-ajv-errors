@@ -5,7 +5,7 @@ export default class DefaultValidationError extends BaseValidationError {
   print() {
     const { keyword, message } = this.options;
     const line = red(`${bold(keyword.toUpperCase())} ${message}`);
-    const output = [`${line}}\n`];
+    const output = [`${line}\n`];
 
     return output.concat(this.getCodeFrame(`${magenta(keyword)} ${message}`));
   }
