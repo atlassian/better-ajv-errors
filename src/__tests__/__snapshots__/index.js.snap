@@ -44,14 +44,14 @@ exports[`AJV latest should output proper error for enumeration in anyOf 1`] = `
     |         ^^^^^ Did you mean <magenta>bar</color> here?
   3 | }
 
-<red><bold>TYPE</intensity> must be array</color>}
+<red><bold>TYPE</intensity> must be array</color>
 
   1 | {
 > 2 |   "id": "baz"
     |         ^^^^^ <magenta>type</color> must be array
   3 | }
 
-<red><bold>ANYOF</intensity> must match a schema in anyOf</color>}
+<red><bold>ANYOF</intensity> must match a schema in anyOf</color>
 
   1 | {
 > 2 |   "id": "baz"
@@ -103,14 +103,14 @@ exports[`AJV v6 should output proper error for enumeration in anyOf 1`] = `
     |         ^^^^^ Did you mean <magenta>bar</color> here?
   3 | }
 
-<red><bold>TYPE</intensity> should be array</color>}
+<red><bold>TYPE</intensity> should be array</color>
 
   1 | {
 > 2 |   "id": "baz"
     |         ^^^^^ <magenta>type</color> should be array
   3 | }
 
-<red><bold>ANYOF</intensity> should match some schema in anyOf</color>}
+<red><bold>ANYOF</intensity> should match some schema in anyOf</color>
 
   1 | {
 > 2 |   "id": "baz"
@@ -162,14 +162,14 @@ exports[`AJV v7 should output proper error for enumeration in anyOf 1`] = `
     |         ^^^^^ Did you mean <magenta>bar</color> here?
   3 | }
 
-<red><bold>TYPE</intensity> should be array</color>}
+<red><bold>TYPE</intensity> should be array</color>
 
   1 | {
 > 2 |   "id": "baz"
     |         ^^^^^ <magenta>type</color> should be array
   3 | }
 
-<red><bold>ANYOF</intensity> should match some schema in anyOf</color>}
+<red><bold>ANYOF</intensity> should match some schema in anyOf</color>
 
   1 | {
 > 2 |   "id": "baz"
@@ -221,14 +221,14 @@ exports[`AJV v8 should output proper error for enumeration in anyOf 1`] = `
     |         ^^^^^ Did you mean <magenta>bar</color> here?
   3 | }
 
-<red><bold>TYPE</intensity> must be array</color>}
+<red><bold>TYPE</intensity> must be array</color>
 
   1 | {
 > 2 |   "id": "baz"
     |         ^^^^^ <magenta>type</color> must be array
   3 | }
 
-<red><bold>ANYOF</intensity> must match a schema in anyOf</color>}
+<red><bold>ANYOF</intensity> must match a schema in anyOf</color>
 
   1 | {
 > 2 |   "id": "baz"
