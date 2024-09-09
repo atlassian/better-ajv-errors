@@ -1,5 +1,11 @@
 # better-ajv-errors
 
+## 3.0.1
+
+### Patch Changes
+
+- 78a4821: fix typo in default error message
+
 ## 3.0.0
 
 ### Major Changes
