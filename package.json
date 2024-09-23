@@ -70,7 +70,7 @@
     "ajv6": "npm:ajv@6.12.3",
     "ajv7": "npm:ajv@7.0.0",
     "ajv8": "npm:ajv@8.0.0",
-    "esbuild": "0.23.1",
+    "esbuild": "0.24.0",
     "esbuild-jest2": "0.6.7",
     "eslint": "8.57.1",
     "eslint-config-prettier": "9.1.0",
