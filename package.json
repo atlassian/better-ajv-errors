@@ -64,6 +64,9 @@
     "pretty-quick": "^1.6.0",
     "rollup": "^2.59.0"
   },
+  "resolutions": {
+    "cross-spawn": "^7.0.5"
+  },
   "peerDependencies": {
     "ajv": ">=8"
   },
