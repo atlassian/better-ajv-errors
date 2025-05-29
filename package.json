@@ -64,7 +64,7 @@
     "ajv": "^8.17.1",
     "esbuild": "^0.25.5",
     "eslint": "^9.27.0",
-    "eslint-plugin-vitest": "^0.5.4",
+    "@vitest/eslint-plugin": "^1.0.1",
     "fast-glob": "^3.3.3",
     "flow-bin": "^0.272.1",
     "git-format-staged": "^3.1.1",
