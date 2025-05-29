@@ -2,7 +2,12 @@ import { parse } from '@humanwhocodes/momoa';
 import prettify from './helpers';
 
 export default (schema, data, errors, options = {}) => {
-  const { format = 'cli', indent = null, json = null } = options;
+  const {
+    format = 'cli',
+    indent = null,
+    json = null,
+    showEmojis = true,
+  } = options;
 
   const jsonRaw = json || JSON.stringify(data, null, indent);
   const jsonAst = parse(jsonRaw);
@@ -14,6 +19,7 @@ export default (schema, data, errors, options = {}) => {
     schema,
     jsonAst,
     jsonRaw,
+    showEmojis,
   });
 
   if (format === 'cli') {
