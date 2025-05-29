@@ -73,7 +73,7 @@
     "jest-fixtures": "^0.6.0",
     "prettier": "^2.5.0",
     "svg-term-cli": "^2.1.1",
-    "tsd": "^0.20.0"
+    "tsd": "^0.32.0"
   },
   "peerDependencies": {
     "ajv": "4.11.8 - 8"
