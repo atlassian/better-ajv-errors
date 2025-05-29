@@ -70,7 +70,7 @@
     "git-format-staged": "^3.1.1",
     "globals": "^16.2.0",
     "husky": "^7.0.0",
-    "is-ci": "^3.0.1",
+    "is-ci": "^4.1.0",
     "jest-fixtures": "^0.6.0",
     "prettier": "^3.5.3",
     "svg-term-cli": "^2.1.1",
