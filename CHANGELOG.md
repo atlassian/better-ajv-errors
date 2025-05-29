@@ -1,5 +1,11 @@
 # better-ajv-errors
 
+## 2.0.0
+
+### Major Changes
+
+- 6bd1a6e: Remove Jest and Bump dependencies
+
 ## 1.2.0
 
 ### Minor Changes
