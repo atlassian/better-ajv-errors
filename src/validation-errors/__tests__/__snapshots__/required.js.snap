@@ -4,9 +4,9 @@ exports[`Required > prints correctly for missing required prop 1`] = `
 [
   "REQUIRED should have required property 'id'
 ",
-  "  1 | {
-> 2 |   "nested": {}
-    |             ^ ☹️  id is missing here!
-  3 | }",
+  "[0m [90m 1 |[39m {
+[31m[1m>[22m[39m[90m 2 |[39m   [32m"nested"[39m[33m:[39m {}
+ [90m   |[39m             [31m[1m^[22m[39m [31m[1m☹️  id is missing here![22m[39m
+ [90m 3 |[39m }[0m",
 ]
 `;

@@ -5,8 +5,8 @@ exports[`Enum > when value is a primitive > prints correctly for empty value 1`]
   "ENUM should be equal to one of the allowed values",
   "(foo, bar)
 ",
-  "> 1 | "baz"
-    | ^^^^^ 👈🏽  Did you mean bar here?",
+  "[0m[31m[1m>[22m[39m[90m 1 |[39m [32m"baz"[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean bar here?[22m[39m[0m",
 ]
 `;
 
@@ -15,8 +15,8 @@ exports[`Enum > when value is a primitive > prints correctly for enum prop 1`] =
   "ENUM should be equal to one of the allowed values",
   "(foo, bar)
 ",
-  "> 1 | "baz"
-    | ^^^^^ 👈🏽  Did you mean bar here?",
+  "[0m[31m[1m>[22m[39m[90m 1 |[39m [32m"baz"[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean bar here?[22m[39m[0m",
 ]
 `;
 
@@ -25,8 +25,8 @@ exports[`Enum > when value is a primitive > prints correctly for no levenshtein 
   "ENUM should be equal to one of the allowed values",
   "(one, two)
 ",
-  "> 1 | "baz"
-    | ^^^^^ 👈🏽  Unexpected value, should be equal to one of the allowed values",
+  "[0m[31m[1m>[22m[39m[90m 1 |[39m [32m"baz"[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Unexpected value, should be equal to one of the allowed values[22m[39m[0m",
 ]
 `;
 
@@ -35,10 +35,10 @@ exports[`Enum > when value is an object > prints correctly for empty value 1`] =
   "ENUM should be equal to one of the allowed values",
   "(foo, bar)
 ",
-  "  1 | {
-> 2 |   "id": "baz"
-    |         ^^^^^ 👈🏽  Did you mean bar here?
-  3 | }",
+  "[0m [90m 1 |[39m {
+[31m[1m>[22m[39m[90m 2 |[39m   [32m"id"[39m[33m:[39m [32m"baz"[39m
+ [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean bar here?[22m[39m
+ [90m 3 |[39m }[0m",
 ]
 `;
 
@@ -47,10 +47,10 @@ exports[`Enum > when value is an object > prints correctly for enum prop 1`] = `
   "ENUM should be equal to one of the allowed values",
   "(foo, bar)
 ",
-  "  1 | {
-> 2 |   "id": "baz"
-    |         ^^^^^ 👈🏽  Did you mean bar here?
-  3 | }",
+  "[0m [90m 1 |[39m {
+[31m[1m>[22m[39m[90m 2 |[39m   [32m"id"[39m[33m:[39m [32m"baz"[39m
+ [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean bar here?[22m[39m
+ [90m 3 |[39m }[0m",
 ]
 `;
 
@@ -59,9 +59,9 @@ exports[`Enum > when value is an object > prints correctly for no levenshtein ma
   "ENUM should be equal to one of the allowed values",
   "(one, two)
 ",
-  "  1 | {
-> 2 |   "id": "baz"
-    |         ^^^^^ 👈🏽  Unexpected value, should be equal to one of the allowed values
-  3 | }",
+  "[0m [90m 1 |[39m {
+[31m[1m>[22m[39m[90m 2 |[39m   [32m"id"[39m[33m:[39m [32m"baz"[39m
+ [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Unexpected value, should be equal to one of the allowed values[22m[39m
+ [90m 3 |[39m }[0m",
 ]
 `;
