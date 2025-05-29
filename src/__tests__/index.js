@@ -1,4 +1,5 @@
 import Ajv from 'ajv';
+import { describe, it, expect } from 'vitest';
 import { getSchemaAndData } from '../test-helpers';
 import betterAjvErrors from '../';
 

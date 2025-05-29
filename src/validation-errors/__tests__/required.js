@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest';
 const { parse } = require('@humanwhocodes/momoa');
 import { getSchemaAndData } from '../../test-helpers';
 import RequiredValidationError from '../required';

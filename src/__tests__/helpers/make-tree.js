@@ -1,22 +1,23 @@
+import { describe, it, expect } from 'vitest';
 import { makeTree } from '../../helpers';
 
 describe('makeTree', () => {
   it('works on empty array', async () => {
     expect(makeTree([])).toMatchInlineSnapshot(`
-      Object {
-        "children": Object {},
+      {
+        "children": {},
       }
     `);
   });
 
   it('works on root dataPath', async () => {
     expect(makeTree([{ dataPath: '' }])).toMatchInlineSnapshot(`
-      Object {
-        "children": Object {
-          "": Object {
-            "children": Object {},
-            "errors": Array [
-              Object {
+      {
+        "children": {
+          "": {
+            "children": {},
+            "errors": [
+              {
                 "dataPath": "",
               },
             ],
@@ -28,20 +29,20 @@ describe('makeTree', () => {
 
   it('works on nested dataPath', async () => {
     expect(makeTree([{ dataPath: '/root/child' }])).toMatchInlineSnapshot(`
-      Object {
-        "children": Object {
-          "/root": Object {
-            "children": Object {
-              "/child": Object {
-                "children": Object {},
-                "errors": Array [
-                  Object {
+      {
+        "children": {
+          "/root": {
+            "children": {
+              "/child": {
+                "children": {},
+                "errors": [
+                  {
                     "dataPath": "/root/child",
                   },
                 ],
               },
             },
-            "errors": Array [],
+            "errors": [],
           },
         },
       }
@@ -52,28 +53,28 @@ describe('makeTree', () => {
     expect(
       makeTree([{ dataPath: '/root/child/0' }, { dataPath: '/root/child/1' }])
     ).toMatchInlineSnapshot(`
-      Object {
-        "children": Object {
-          "/root": Object {
-            "children": Object {
-              "/child/0": Object {
-                "children": Object {},
-                "errors": Array [
-                  Object {
+      {
+        "children": {
+          "/root": {
+            "children": {
+              "/child/0": {
+                "children": {},
+                "errors": [
+                  {
                     "dataPath": "/root/child/0",
                   },
                 ],
               },
-              "/child/1": Object {
-                "children": Object {},
-                "errors": Array [
-                  Object {
+              "/child/1": {
+                "children": {},
+                "errors": [
+                  {
                     "dataPath": "/root/child/1",
                   },
                 ],
               },
             },
-            "errors": Array [],
+            "errors": [],
           },
         },
       }
@@ -87,38 +88,38 @@ describe('makeTree', () => {
         { dataPath: '/root/child/1/grand-child' },
       ])
     ).toMatchInlineSnapshot(`
-      Object {
-        "children": Object {
-          "/root": Object {
-            "children": Object {
-              "/child/0": Object {
-                "children": Object {
-                  "/grand-child": Object {
-                    "children": Object {},
-                    "errors": Array [
-                      Object {
+      {
+        "children": {
+          "/root": {
+            "children": {
+              "/child/0": {
+                "children": {
+                  "/grand-child": {
+                    "children": {},
+                    "errors": [
+                      {
                         "dataPath": "/root/child/0/grand-child",
                       },
                     ],
                   },
                 },
-                "errors": Array [],
+                "errors": [],
               },
-              "/child/1": Object {
-                "children": Object {
-                  "/grand-child": Object {
-                    "children": Object {},
-                    "errors": Array [
-                      Object {
+              "/child/1": {
+                "children": {
+                  "/grand-child": {
+                    "children": {},
+                    "errors": [
+                      {
                         "dataPath": "/root/child/1/grand-child",
                       },
                     ],
                   },
                 },
-                "errors": Array [],
+                "errors": [],
               },
             },
-            "errors": Array [],
+            "errors": [],
           },
         },
       }

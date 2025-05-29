@@ -4,4 +4,5 @@
 *.log
 .vscode
 .env
+.direnv
 yarn.lock

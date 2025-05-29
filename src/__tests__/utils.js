@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest';
 import { getErrors } from '../utils.js';
 
 describe('utils', () => {
