@@ -41,7 +41,7 @@
     "format": "prettier --write './src/**/*.js' './.changeset/*.json'",
     "lint": "eslint .",
     "test": "vitest",
-    "test-ci": "vitest --coverage --colors",
+    "test-ci": "vitest --coverage",
     "prescreenshot": "npm run build:cjs",
     "screenshot": "svg-term --command='node screenshot' --out=./media/screenshot.svg --padding=5 --width=80 --height=13 --at=1000 --no-cursor --term iterm2 --profile='deep' --window",
     "prepare": "is-ci || husky install",
