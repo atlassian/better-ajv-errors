@@ -1,14 +1,14 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`JSON can work on JSON with Array 1`] = `
-Object {
-  "loc": Object {
-    "end": Object {
+exports[`JSON > can work on JSON with Array 1`] = `
+{
+  "loc": {
+    "end": {
       "column": 19,
       "line": 6,
       "offset": 60,
     },
-    "start": Object {
+    "start": {
       "column": 14,
       "line": 6,
       "offset": 55,
@@ -19,15 +19,15 @@ Object {
 }
 `;
 
-exports[`JSON can work on JSON with Array 2`] = `
-Object {
-  "loc": Object {
-    "end": Object {
+exports[`JSON > can work on JSON with Array 2`] = `
+{
+  "loc": {
+    "end": {
       "column": 12,
       "line": 6,
       "offset": 53,
     },
-    "start": Object {
+    "start": {
       "column": 7,
       "line": 6,
       "offset": 48,
@@ -38,17 +38,17 @@ Object {
 }
 `;
 
-exports[`JSON can work on JSON with Array with empty children 1`] = `"/arr/4"`;
+exports[`JSON > can work on JSON with Array with empty children 1`] = `"/arr/4"`;
 
-exports[`JSON can work on JSON with a key named meta 1`] = `
-Object {
-  "loc": Object {
-    "end": Object {
+exports[`JSON > can work on JSON with a key named meta 1`] = `
+{
+  "loc": {
+    "end": {
       "column": 19,
       "line": 4,
       "offset": 48,
     },
-    "start": Object {
+    "start": {
       "column": 15,
       "line": 4,
       "offset": 44,
@@ -59,15 +59,15 @@ Object {
 }
 `;
 
-exports[`JSON can work on JSON with a key named meta 2`] = `
-Object {
-  "loc": Object {
-    "end": Object {
+exports[`JSON > can work on JSON with a key named meta 2`] = `
+{
+  "loc": {
+    "end": {
       "column": 13,
       "line": 4,
       "offset": 42,
     },
-    "start": Object {
+    "start": {
       "column": 5,
       "line": 4,
       "offset": 34,
@@ -78,15 +78,15 @@ Object {
 }
 `;
 
-exports[`JSON can work on JSON with a key named value 1`] = `
-Object {
-  "loc": Object {
-    "end": Object {
+exports[`JSON > can work on JSON with a key named value 1`] = `
+{
+  "loc": {
+    "end": {
       "column": 14,
       "line": 3,
       "offset": 31,
     },
-    "start": Object {
+    "start": {
       "column": 12,
       "line": 3,
       "offset": 29,
@@ -97,15 +97,15 @@ Object {
 }
 `;
 
-exports[`JSON can work on JSON with a key named value 2`] = `
-Object {
-  "loc": Object {
-    "end": Object {
+exports[`JSON > can work on JSON with a key named value 2`] = `
+{
+  "loc": {
+    "end": {
       "column": 10,
       "line": 3,
       "offset": 27,
     },
-    "start": Object {
+    "start": {
       "column": 3,
       "line": 3,
       "offset": 20,
@@ -116,15 +116,15 @@ Object {
 }
 `;
 
-exports[`JSON can work on simple JSON 1`] = `
-Object {
-  "loc": Object {
-    "end": Object {
+exports[`JSON > can work on simple JSON 1`] = `
+{
+  "loc": {
+    "end": {
       "column": 15,
       "line": 2,
       "offset": 16,
     },
-    "start": Object {
+    "start": {
       "column": 10,
       "line": 2,
       "offset": 11,
@@ -135,15 +135,15 @@ Object {
 }
 `;
 
-exports[`JSON can work on simple JSON 2`] = `
-Object {
-  "loc": Object {
-    "end": Object {
+exports[`JSON > can work on simple JSON 2`] = `
+{
+  "loc": {
+    "end": {
       "column": 8,
       "line": 2,
       "offset": 9,
     },
-    "start": Object {
+    "start": {
       "column": 3,
       "line": 2,
       "offset": 4,
@@ -154,15 +154,15 @@ Object {
 }
 `;
 
-exports[`JSON can work with unescaped JSON pointers with ~0 1`] = `
-Object {
-  "loc": Object {
-    "end": Object {
+exports[`JSON > can work with unescaped JSON pointers with ~0 1`] = `
+{
+  "loc": {
+    "end": {
       "column": 17,
       "line": 7,
       "offset": 93,
     },
-    "start": Object {
+    "start": {
       "column": 16,
       "line": 7,
       "offset": 92,
@@ -173,15 +173,15 @@ Object {
 }
 `;
 
-exports[`JSON can work with unescaped JSON pointers with ~1 1`] = `
-Object {
-  "loc": Object {
-    "end": Object {
+exports[`JSON > can work with unescaped JSON pointers with ~1 1`] = `
+{
+  "loc": {
+    "end": {
       "column": 17,
       "line": 4,
       "offset": 49,
     },
-    "start": Object {
+    "start": {
       "column": 16,
       "line": 4,
       "offset": 48,
@@ -192,4 +192,4 @@ Object {
 }
 `;
 
-exports[`JSON should not throw error when children is array 1`] = `"/arr/3"`;
+exports[`JSON > should not throw error when children is array 1`] = `"/arr/3"`;

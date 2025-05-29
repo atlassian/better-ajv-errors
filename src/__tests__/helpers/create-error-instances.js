@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest';
 import { createErrorInstances } from '../../helpers';
 
 describe('createErrorInstances', () => {
@@ -24,15 +25,15 @@ describe('createErrorInstances', () => {
     );
 
     expect(errors).toMatchInlineSnapshot(`
-      Array [
+      [
         EnumValidationError {
           "data": undefined,
           "jsonAst": undefined,
           "jsonRaw": undefined,
-          "options": Object {
+          "options": {
             "keyword": "enum",
-            "params": Object {
-              "allowedValues": Array [
+            "params": {
+              "allowedValues": [
                 "one",
                 "two",
                 "three",

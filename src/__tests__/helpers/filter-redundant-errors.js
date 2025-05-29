@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest';
 import { filterRedundantErrors } from '../../helpers';
 
 describe('filterRedundantErrors', () => {
@@ -31,12 +32,12 @@ describe('filterRedundantErrors', () => {
     };
     filterRedundantErrors(tree);
     expect(tree).toMatchInlineSnapshot(`
-      Object {
-        "children": Object {
-          "a": Object {
-            "children": Object {},
-            "errors": Array [
-              Object {
+      {
+        "children": {
+          "a": {
+            "children": {},
+            "errors": [
+              {
                 "keyword": "required",
               },
             ],
@@ -73,14 +74,14 @@ describe('filterRedundantErrors', () => {
     };
     filterRedundantErrors(tree);
     expect(tree).toMatchInlineSnapshot(`
-      Object {
-        "children": Object {
-          "a": Object {
-            "children": Object {
-              "b": Object {
-                "children": Object {},
-                "errors": Array [
-                  Object {
+      {
+        "children": {
+          "a": {
+            "children": {
+              "b": {
+                "children": {},
+                "errors": [
+                  {
                     "keyword": "required",
                   },
                 ],
@@ -122,17 +123,17 @@ describe('filterRedundantErrors', () => {
     };
     filterRedundantErrors(tree);
     expect(tree).toMatchInlineSnapshot(`
-      Object {
-        "children": Object {
-          "a": Object {
-            "children": Object {
-              "b": Object {
-                "children": Object {},
-                "errors": Array [
-                  Object {
+      {
+        "children": {
+          "a": {
+            "children": {
+              "b": {
+                "children": {},
+                "errors": [
+                  {
                     "keyword": "enum",
                   },
-                  Object {
+                  {
                     "keyword": "enum",
                   },
                 ],
@@ -170,12 +171,12 @@ describe('filterRedundantErrors', () => {
     };
     filterRedundantErrors(tree);
     expect(tree).toMatchInlineSnapshot(`
-      Object {
-        "children": Object {
-          "a2": Object {
-            "children": Object {},
-            "errors": Array [
-              Object {
+      {
+        "children": {
+          "a2": {
+            "children": {},
+            "errors": [
+              {
                 "keyword": "additionalProperty",
               },
             ],
@@ -216,20 +217,20 @@ describe('filterRedundantErrors', () => {
     };
     filterRedundantErrors(tree);
     expect(tree).toMatchInlineSnapshot(`
-      Object {
-        "children": Object {
-          "a1": Object {
-            "children": Object {
-              "b1": Object {
-                "children": Object {},
-                "errors": Array [
-                  Object {
+      {
+        "children": {
+          "a1": {
+            "children": {
+              "b1": {
+                "children": {},
+                "errors": [
+                  {
                     "keyword": "additionalProperty",
                   },
                 ],
               },
             },
-            "errors": Array [],
+            "errors": [],
           },
         },
       }
@@ -263,26 +264,26 @@ describe('filterRedundantErrors', () => {
 
     filterRedundantErrors(tree);
     expect(tree).toMatchInlineSnapshot(`
-      Object {
-        "children": Object {
-          "/object": Object {
-            "children": Object {
-              "/type": Object {
-                "children": Object {},
-                "errors": Array [
-                  Object {
+      {
+        "children": {
+          "/object": {
+            "children": {
+              "/type": {
+                "children": {},
+                "errors": [
+                  {
                     "keyword": "type",
                   },
-                  Object {
+                  {
                     "keyword": "type",
                   },
-                  Object {
+                  {
                     "keyword": "anyOf",
                   },
                 ],
               },
             },
-            "errors": Array [],
+            "errors": [],
           },
         },
       }

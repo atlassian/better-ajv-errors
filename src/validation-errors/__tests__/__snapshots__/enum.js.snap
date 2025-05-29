@@ -1,67 +1,67 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Enum when value is a primitive prints correctly for empty value 1`] = `
-Array [
-  "[31m[1mENUM[22m[39m[31m should be equal to one of the allowed values[39m",
-  "[31m(foo, bar)[39m
+exports[`Enum > when value is a primitive > prints correctly for empty value 1`] = `
+[
+  "ENUM should be equal to one of the allowed values",
+  "(foo, bar)
 ",
-  "[0m[31m[1m>[22m[39m[90m 1 |[39m [32m\\"baz\\"[39m[0m
-[0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean [95mbar[31m here?[22m[39m[0m",
+  "> 1 | "baz"
+    | ^^^^^ 👈🏽  Did you mean bar here?",
 ]
 `;
 
-exports[`Enum when value is a primitive prints correctly for enum prop 1`] = `
-Array [
-  "[31m[1mENUM[22m[39m[31m should be equal to one of the allowed values[39m",
-  "[31m(foo, bar)[39m
+exports[`Enum > when value is a primitive > prints correctly for enum prop 1`] = `
+[
+  "ENUM should be equal to one of the allowed values",
+  "(foo, bar)
 ",
-  "[0m[31m[1m>[22m[39m[90m 1 |[39m [32m\\"baz\\"[39m[0m
-[0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean [95mbar[31m here?[22m[39m[0m",
+  "> 1 | "baz"
+    | ^^^^^ 👈🏽  Did you mean bar here?",
 ]
 `;
 
-exports[`Enum when value is a primitive prints correctly for no levenshtein match 1`] = `
-Array [
-  "[31m[1mENUM[22m[39m[31m should be equal to one of the allowed values[39m",
-  "[31m(one, two)[39m
+exports[`Enum > when value is a primitive > prints correctly for no levenshtein match 1`] = `
+[
+  "ENUM should be equal to one of the allowed values",
+  "(one, two)
 ",
-  "[0m[31m[1m>[22m[39m[90m 1 |[39m [32m\\"baz\\"[39m[0m
-[0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Unexpected value, should be equal to one of the allowed values[22m[39m[0m",
+  "> 1 | "baz"
+    | ^^^^^ 👈🏽  Unexpected value, should be equal to one of the allowed values",
 ]
 `;
 
-exports[`Enum when value is an object prints correctly for empty value 1`] = `
-Array [
-  "[31m[1mENUM[22m[39m[31m should be equal to one of the allowed values[39m",
-  "[31m(foo, bar)[39m
+exports[`Enum > when value is an object > prints correctly for empty value 1`] = `
+[
+  "ENUM should be equal to one of the allowed values",
+  "(foo, bar)
 ",
-  "[0m [90m 1 |[39m {[0m
-[0m[31m[1m>[22m[39m[90m 2 |[39m   [32m\\"id\\"[39m[33m:[39m [32m\\"baz\\"[39m[0m
-[0m [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean [95mbar[31m here?[22m[39m[0m
-[0m [90m 3 |[39m }[0m",
+  "  1 | {
+> 2 |   "id": "baz"
+    |         ^^^^^ 👈🏽  Did you mean bar here?
+  3 | }",
 ]
 `;
 
-exports[`Enum when value is an object prints correctly for enum prop 1`] = `
-Array [
-  "[31m[1mENUM[22m[39m[31m should be equal to one of the allowed values[39m",
-  "[31m(foo, bar)[39m
+exports[`Enum > when value is an object > prints correctly for enum prop 1`] = `
+[
+  "ENUM should be equal to one of the allowed values",
+  "(foo, bar)
 ",
-  "[0m [90m 1 |[39m {[0m
-[0m[31m[1m>[22m[39m[90m 2 |[39m   [32m\\"id\\"[39m[33m:[39m [32m\\"baz\\"[39m[0m
-[0m [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean [95mbar[31m here?[22m[39m[0m
-[0m [90m 3 |[39m }[0m",
+  "  1 | {
+> 2 |   "id": "baz"
+    |         ^^^^^ 👈🏽  Did you mean bar here?
+  3 | }",
 ]
 `;
 
-exports[`Enum when value is an object prints correctly for no levenshtein match 1`] = `
-Array [
-  "[31m[1mENUM[22m[39m[31m should be equal to one of the allowed values[39m",
-  "[31m(one, two)[39m
+exports[`Enum > when value is an object > prints correctly for no levenshtein match 1`] = `
+[
+  "ENUM should be equal to one of the allowed values",
+  "(one, two)
 ",
-  "[0m [90m 1 |[39m {[0m
-[0m[31m[1m>[22m[39m[90m 2 |[39m   [32m\\"id\\"[39m[33m:[39m [32m\\"baz\\"[39m[0m
-[0m [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Unexpected value, should be equal to one of the allowed values[22m[39m[0m
-[0m [90m 3 |[39m }[0m",
+  "  1 | {
+> 2 |   "id": "baz"
+    |         ^^^^^ 👈🏽  Unexpected value, should be equal to one of the allowed values
+  3 | }",
 ]
 `;

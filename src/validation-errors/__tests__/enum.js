@@ -1,3 +1,4 @@
+import { describe, it, expect, beforeAll } from 'vitest';
 const { parse } = require('@humanwhocodes/momoa');
 import { getSchemaAndData } from '../../test-helpers';
 import EnumValidationError from '../enum';
