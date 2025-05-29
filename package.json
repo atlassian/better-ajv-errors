@@ -69,7 +69,7 @@
     "flow-bin": "^0.272.1",
     "git-format-staged": "^3.1.1",
     "globals": "^16.2.0",
-    "husky": "^7.0.0",
+    "husky": "^9.0.0",
     "is-ci": "^4.1.0",
     "jest-fixtures": "^0.6.0",
     "prettier": "^3.5.3",
