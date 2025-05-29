@@ -19,6 +19,5 @@ const output = betterAjvErrors(schema, data, validate.errors, {
 });
 
 if (!valid) {
-  // eslint-disable-next-line no-console
   console.log(output);
 }
