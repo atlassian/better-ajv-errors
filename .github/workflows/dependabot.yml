@@ -20,10 +20,10 @@ jobs:
           git config --local user.name "Dependabot[bot]"
           git checkout ${{ github.event.pull_request.head.ref }}
 
-      - name: Use Node.js 16.x
+      - name: Use Node.js 24.x
         uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 24.x
 
       - name: Install Dependencies
         run: npm install
