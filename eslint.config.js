@@ -1,7 +1,7 @@
 const { defineConfig } = require("eslint/config");
 
 const globals = require("globals");
-const vitest = require("eslint-plugin-vitest");
+const vitest = require("@vitest/eslint-plugin");
 const js = require("@eslint/js");
 
 const { FlatCompat } = require("@eslint/eslintrc");
@@ -36,6 +36,7 @@ module.exports = defineConfig([{
       args: "all",
       argsIgnorePattern: "^_",
     }],
+    ...vitest.configs.recommended.rules,
   },
 
   ignores: [
