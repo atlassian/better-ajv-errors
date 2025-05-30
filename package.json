@@ -12,7 +12,7 @@
   },
   "module": "./lib/esm/index.mjs",
   "engines": {
-    "node": ">= 22.16.0"
+    "node": ">= 18.20.6"
   },
   "keywords": [
     "json-schema",
