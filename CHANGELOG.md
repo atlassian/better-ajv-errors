@@ -1,5 +1,11 @@
 # better-ajv-errors
 
+## 2.0.1
+
+### Patch Changes
+
+- 7915d20: Downgrade supported node version
+
 ## 2.0.0
 
 ### Major Changes
