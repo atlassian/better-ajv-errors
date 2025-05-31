@@ -1,5 +1,11 @@
 # better-ajv-errors
 
+## 2.0.2
+
+### Patch Changes
+
+- 83348c8: Add missing `lib` in the published package
+
 ## 2.0.1
 
 ### Patch Changes
