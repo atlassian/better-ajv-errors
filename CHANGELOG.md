@@ -4,13 +4,13 @@
 
 ### Patch Changes
 
-- 7915d20: Downgrade minimum supported Node version from 22 to 18
+- 7915d20: Downgrade minimum supported Node version from `>= 22.16.0` to `>= 18.20.6`
 
 ## 2.0.0
 
 ### Major Changes
 
-- Minimum supported Node version bumped from 12 to 22
+- 5ea0600: Minimum supported Node version bumped from `>= 12.13.0` to `>= 22.16.0`
 - 6bd1a6e: Remove Jest and Bump dependencies
 
 ## 1.2.0
