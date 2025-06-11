@@ -70,8 +70,8 @@ importers:
         specifier: ^3.3.3
         version: 3.3.3
       flow-bin:
-        specifier: ^0.272.1
-        version: 0.272.1
+        specifier: ^0.273.0
+        version: 0.273.1
       git-format-staged:
         specifier: ^3.1.1
         version: 3.1.1
@@ -1235,8 +1235,8 @@ packages:
   flatted@3.3.3:
     resolution: {integrity: sha512-GX+ysw4PBCz0PzosHDepZGANEuFCMLrnRTiEy9McGjmkCQYwRq4A/X786G/fjM/+OjsWSU1ZrY5qyARZmO/uwg==}
 
-  flow-bin@0.272.1:
-    resolution: {integrity: sha512-z92T2QkPszdBu65VU//qcLg4NjRmHyK9dzfe7gg2qY1yGFvQ9jiHu3S351ozFStgeIyaL01xzbapFJsFFy+VDA==}
+  flow-bin@0.273.1:
+    resolution: {integrity: sha512-OlJkNCSd+i6z5xDoyGiS+3X5xYQx+vVUY2iUw6cHJR0LK3ttyA1wkiI93OuBALhLhF91KayzGhRSzXHqA75iUw==}
     engines: {node: '>=0.10.0'}
     hasBin: true
 
@@ -3751,7 +3751,7 @@ snapshots:
 
   flatted@3.3.3: {}
 
-  flow-bin@0.272.1: {}
+  flow-bin@0.273.1: {}
 
   foreground-child@3.3.1:
     dependencies:
