@@ -74,7 +74,7 @@
     "jest-fixtures": "^0.6.0",
     "prettier": "^3.5.3",
     "svg-term-cli": "^2.1.1",
-    "tsd": "^0.32.0",
+    "tsd": "^0.33.0",
     "vitest": "^3.1.4"
   },
   "peerDependencies": {
