@@ -4,9 +4,15 @@
   "description": "JSON Schema validation for Human",
   "repository": "atlassian/better-ajv-errors",
   "main": "./lib/cjs/index.js",
+  "types": "./typings.d.cts",
+  "type": "commonjs",
   "exports": {
-    ".": {
-      "require": "./lib/cjs/index.js",
+    "require": {
+      "types": "./typings.d.cts",
+      "default": "./lib/cjs/index.js"
+    },
+    "import": {
+      "types": "./typings.d.mts",
       "default": "./lib/esm/index.mjs"
     }
   },
@@ -26,10 +32,10 @@
     "Tong Li"
   ],
   "license": "Apache-2.0",
-  "types": "./typings.d.ts",
   "files": [
     "lib",
-    "typings.d.ts"
+    "typings.d.mts",
+    "typings.d.cts"
   ],
   "scripts": {
     "prebuild": "rm -rf lib",
@@ -39,7 +45,8 @@
     "prerelease": "npm run build",
     "release": "changeset publish",
     "format": "prettier --write './src/**/*.js' './.changeset/*.json'",
-    "lint": "eslint .",
+    "prelint": "npm run build",
+    "lint": "eslint . && publint",
     "test": "vitest",
     "test-ci": "vitest --coverage",
     "prescreenshot": "npm run build:cjs",
