@@ -1,5 +1,15 @@
 # better-ajv-errors
 
+## 2.0.3
+
+### Patch Changes
+
+- 1321dfe: Fix type exports
+  - Bump packages: _only minor/patch_
+  - Installed https://publint.dev and added it to `lint` so we don't break types again
+  - Migrated `typings.test-d.ts` to use `vitest`
+  - Fixed `type` `exports`
+
 ## 2.0.2
 
 ### Patch Changes
@@ -66,7 +76,6 @@
 - 146a859: :package: better-ajv-errors v1
 
   ### Breaking Changes
-
   - Dropped support for Node.js `< 12.13.0`
   - Default import in CommonJS format no longer supported
 
@@ -85,7 +94,6 @@
     ```
 
   ### Other Changes
-
   - Added ESM support
   - Moved from `babel` to `esbuild` _(99% faster build: from `2170ms` to `20ms`)_
     - https://github.com/atlassian/better-ajv-errors/pull/101#issuecomment-963129931
@@ -94,7 +102,6 @@
 - ad60e6b: :nail_care: Improve typings and add test
 
   ### Breaking Changes
-
   - New TypeScript types are not fully backward compatible
 
 ### Patch Changes
