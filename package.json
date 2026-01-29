@@ -44,6 +44,7 @@
     "build:esm": "node build.js",
     "prerelease": "npm run build",
     "release": "changeset publish",
+    "release:atlassian": "node publish-atlassian.js",
     "format": "prettier --write './src/**/*.js' './.changeset/*.json'",
     "prelint": "npm run build",
     "lint": "eslint . && publint",

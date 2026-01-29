@@ -11,6 +11,10 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      id-token: write
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
@@ -43,3 +47,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Get Artifact Publish Token
+        if: steps.changesets.outputs.published == 'true'
+        id: publish-token
+        uses: atlassian-labs/artifact-publish-token@v1.0.1
+        with:
+          output-modes: npm
+
+      - name: Publish to Atlassian Registry
+        if: steps.changesets.outputs.published == 'true'
+        run: node publish-atlassian.js --userconfig=./.npmrc-publish
