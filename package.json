@@ -18,7 +18,7 @@
   },
   "module": "./lib/esm/index.mjs",
   "engines": {
-    "node": ">= 18.20.6"
+    "node": ">= 20.12.0"
   },
   "keywords": [
     "json-schema",
@@ -58,7 +58,6 @@
   "dependencies": {
     "@babel/code-frame": "^7.27.1",
     "@humanwhocodes/momoa": "^2.0.4",
-    "chalk": "^4.1.2",
     "jsonpointer": "^5.0.1",
     "leven": "^3.1.0 < 4"
   },
