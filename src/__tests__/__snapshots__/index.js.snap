@@ -2,7 +2,7 @@
 
 exports[`Main > should output error with codeframe 1`] = `
 "ENUM must be equal to one of the allowed values
-(paragraph, codeBlock, blockquote)
+(, blockquote)
 
 [0m [90m 2 |[39m   [32m"type"[39m[33m:[39m [32m"doc"[39m[33m,[39m
  [90m 3 |[39m   [32m"version"[39m[33m:[39m [35m1[39m[33m,[39m
@@ -14,7 +14,7 @@ exports[`Main > should output error with codeframe 1`] = `
 
 exports[`Main > should output error with reconstructed codeframe 1`] = `
 "ENUM must be equal to one of the allowed values
-(paragraph, codeBlock, blockquote)
+(, blockquote)
 
 [0m [90m 4 |[39m   [32m"content"[39m[33m:[39m [
  [90m 5 |[39m     {

@@ -11,9 +11,16 @@ export default class EnumValidationError extends BaseValidationError {
     } = this.options;
     const bestMatch = this.findBestMatch();
 
+		// Needed to handle nullable enums, as joining on null just prints ", "
+		const [firstValue, ...rest] = allowedValues;
+		const allowedValuesMessage = rest.reduce(
+			(acc, value) => `, ${value}`,
+			firstValue ?? '',
+		);
+
     const output = [
       chalk`{red {bold ENUM} ${message}}`,
-      chalk`{red (${allowedValues.join(', ')})}\n`,
+      chalk`{red (${allowedValuesMessage})}\n`,
     ];
 
     return output.concat(
@@ -60,7 +67,9 @@ export default class EnumValidationError extends BaseValidationError {
     const bestMatch = allowedValues
       .map(value => ({
         value,
-        weight: leven(value, currentValue.toString()),
+        weight: value !== null
+					? leven(value, currentValue.toString())
+					: Infinity,
       }))
       .sort((x, y) =>
         x.weight > y.weight ? 1 : x.weight < y.weight ? -1 : 0
