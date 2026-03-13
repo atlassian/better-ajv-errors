@@ -3,7 +3,7 @@
 exports[`Enum > when enum 'does not include' null > when value is a primitive > prints correctly for empty value 1`] = `
 [
   "ENUM should be equal to one of the allowed values",
-  "(, bar)
+  "(foo, bar)
 ",
   "[0m[31m[1m>[22m[39m[90m 1 |[39m [32m"baz"[39m
  [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean bar here?[22m[39m[0m",
@@ -13,7 +13,7 @@ exports[`Enum > when enum 'does not include' null > when value is a primitive > 
 exports[`Enum > when enum 'does not include' null > when value is a primitive > prints correctly for enum prop 1`] = `
 [
   "ENUM should be equal to one of the allowed values",
-  "(, bar)
+  "(foo, bar)
 ",
   "[0m[31m[1m>[22m[39m[90m 1 |[39m [32m"baz"[39m
  [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean bar here?[22m[39m[0m",
@@ -23,7 +23,7 @@ exports[`Enum > when enum 'does not include' null > when value is a primitive > 
 exports[`Enum > when enum 'does not include' null > when value is a primitive > prints correctly for no levenshtein match 1`] = `
 [
   "ENUM should be equal to one of the allowed values",
-  "(, two)
+  "(one, two)
 ",
   "[0m[31m[1m>[22m[39m[90m 1 |[39m [32m"baz"[39m
  [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Unexpected value, should be equal to one of the allowed values[22m[39m[0m",
@@ -33,7 +33,7 @@ exports[`Enum > when enum 'does not include' null > when value is a primitive > 
 exports[`Enum > when enum 'does not include' null > when value is an object > prints correctly for empty value 1`] = `
 [
   "ENUM should be equal to one of the allowed values",
-  "(, bar)
+  "(foo, bar)
 ",
   "[0m [90m 1 |[39m {
 [31m[1m>[22m[39m[90m 2 |[39m   [32m"id"[39m[33m:[39m [32m"baz"[39m
@@ -45,7 +45,7 @@ exports[`Enum > when enum 'does not include' null > when value is an object > pr
 exports[`Enum > when enum 'does not include' null > when value is an object > prints correctly for enum prop 1`] = `
 [
   "ENUM should be equal to one of the allowed values",
-  "(, bar)
+  "(foo, bar)
 ",
   "[0m [90m 1 |[39m {
 [31m[1m>[22m[39m[90m 2 |[39m   [32m"id"[39m[33m:[39m [32m"baz"[39m
@@ -57,7 +57,7 @@ exports[`Enum > when enum 'does not include' null > when value is an object > pr
 exports[`Enum > when enum 'does not include' null > when value is an object > prints correctly for no levenshtein match 1`] = `
 [
   "ENUM should be equal to one of the allowed values",
-  "(, two)
+  "(one, two)
 ",
   "[0m [90m 1 |[39m {
 [31m[1m>[22m[39m[90m 2 |[39m   [32m"id"[39m[33m:[39m [32m"baz"[39m
@@ -69,7 +69,7 @@ exports[`Enum > when enum 'does not include' null > when value is an object > pr
 exports[`Enum > when enum 'includes' null > when value is a primitive > prints correctly for empty value 1`] = `
 [
   "ENUM should be equal to one of the allowed values",
-  "(, null)
+  "(foo, bar, null)
 ",
   "[0m[31m[1m>[22m[39m[90m 1 |[39m [32m"baz"[39m
  [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean bar here?[22m[39m[0m",
@@ -79,7 +79,7 @@ exports[`Enum > when enum 'includes' null > when value is a primitive > prints c
 exports[`Enum > when enum 'includes' null > when value is a primitive > prints correctly for enum prop 1`] = `
 [
   "ENUM should be equal to one of the allowed values",
-  "(, null)
+  "(foo, bar, null)
 ",
   "[0m[31m[1m>[22m[39m[90m 1 |[39m [32m"baz"[39m
  [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean bar here?[22m[39m[0m",
@@ -89,7 +89,7 @@ exports[`Enum > when enum 'includes' null > when value is a primitive > prints c
 exports[`Enum > when enum 'includes' null > when value is a primitive > prints correctly for no levenshtein match 1`] = `
 [
   "ENUM should be equal to one of the allowed values",
-  "(, null)
+  "(one, two, null)
 ",
   "[0m[31m[1m>[22m[39m[90m 1 |[39m [32m"baz"[39m
  [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Unexpected value, should be equal to one of the allowed values[22m[39m[0m",
@@ -99,7 +99,7 @@ exports[`Enum > when enum 'includes' null > when value is a primitive > prints c
 exports[`Enum > when enum 'includes' null > when value is an object > prints correctly for empty value 1`] = `
 [
   "ENUM should be equal to one of the allowed values",
-  "(, null)
+  "(foo, bar, null)
 ",
   "[0m [90m 1 |[39m {
 [31m[1m>[22m[39m[90m 2 |[39m   [32m"id"[39m[33m:[39m [32m"baz"[39m
@@ -111,7 +111,7 @@ exports[`Enum > when enum 'includes' null > when value is an object > prints cor
 exports[`Enum > when enum 'includes' null > when value is an object > prints correctly for enum prop 1`] = `
 [
   "ENUM should be equal to one of the allowed values",
-  "(, null)
+  "(foo, bar, null)
 ",
   "[0m [90m 1 |[39m {
 [31m[1m>[22m[39m[90m 2 |[39m   [32m"id"[39m[33m:[39m [32m"baz"[39m
@@ -123,7 +123,7 @@ exports[`Enum > when enum 'includes' null > when value is an object > prints cor
 exports[`Enum > when enum 'includes' null > when value is an object > prints correctly for no levenshtein match 1`] = `
 [
   "ENUM should be equal to one of the allowed values",
-  "(, null)
+  "(one, two, null)
 ",
   "[0m [90m 1 |[39m {
 [31m[1m>[22m[39m[90m 2 |[39m   [32m"id"[39m[33m:[39m [32m"baz"[39m
