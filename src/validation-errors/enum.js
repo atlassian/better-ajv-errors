@@ -14,8 +14,8 @@ export default class EnumValidationError extends BaseValidationError {
 		// Needed to handle nullable enums, as joining on null just prints ", "
 		const [firstValue, ...rest] = allowedValues;
 		const allowedValuesMessage = rest.reduce(
-			(acc, value) => `, ${value}`,
-			firstValue ?? '',
+			(acc, value) => `${acc}, ${value}`,
+			firstValue || '',
 		);
 
     const output = [
