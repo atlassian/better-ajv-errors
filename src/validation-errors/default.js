@@ -1,14 +1,17 @@
-import chalk from 'chalk';
+import { styleText } from 'node:util';
+
 import BaseValidationError from './base';
 
 export default class DefaultValidationError extends BaseValidationError {
   print() {
     const { keyword, message } = this.options;
-    const output = [chalk`{red {bold ${keyword.toUpperCase()}} ${message}}\n`];
+		const boldUpperKeyword = styleText('bold', keyword.toUpperCase());
+		const magentaBrightKeyword = styleText('magentaBright', keyword);
 
-    return output.concat(
-      this.getCodeFrame(chalk`👈🏽  {magentaBright ${keyword}} ${message}`)
-    );
+    return [
+			styleText('red', `${boldUpperKeyword} ${message}\n`),
+      this.getCodeFrame(`👈🏽  ${magentaBrightKeyword} ${message}`)
+		];
   }
 
   getError() {
