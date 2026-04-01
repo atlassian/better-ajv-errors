@@ -773,6 +773,7 @@ packages:
   '@xmldom/xmldom@0.8.10':
     resolution: {integrity: sha512-2WALfTl4xo2SkGCYRt6rDTFfk9R1czmBvUQy12gK2KuRKIpWEhcbbzy8EZXtz/jkRqHX8bFEc6FC1HjX4TUWYw==}
     engines: {node: '>=10.0.0'}
+    deprecated: this version has critical issues, please update to the latest version
 
   abcq@1.0.2:
     resolution: {integrity: sha512-Fjk/LXe1aHL7zQcjqDoKhYuIdB3iyv1S3/YJNPe6D0QjJuKXKq+N6ei5kVZtsr0Rp6ueTmhW4yZlLQaIKptyFg==}
