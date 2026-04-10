@@ -43,15 +43,41 @@ export function makeTree(ajvErrors = []) {
 
 export function filterRedundantErrors(root, parent, key) {
   /**
-   * If there is a `required` error then we can just skip everythig else.
+    * Partition out the errors by kind for ease of proceessing
+    */
+  const { anyOfErrors, enumErrors, requiredErrors } = getErrors(root).reduce(
+    (acc, error) => {
+      if (isRequiredError(error)) {
+        acc.requiredErrors.push(error);
+
+        return acc;
+      }
+
+      if (isAnyOfError(error)) {
+        acc.anyOfErrors.push(error);
+      }
+
+      if (isEnumError(error)) {
+        acc.enumErrors.push(error);
+      }
+
+      return acc;
+    },
+    { anyOfErrors: [], enumErrors: [], requiredErrors: [] },
+  );
+
+  /**
+   * If there is are `required` errors then we can just drop every non-required error.
    * And, also `required` should have more priority than `anyOf`. @see #8
    */
-  getErrors(root).forEach(error => {
-    if (isRequiredError(error)) {
-      root.errors = [error];
-      root.children = {};
-    }
-  });
+  
+  if (requiredErrors.length > 0) {
+    root.errors = requiredErrors;
+    root.children = {};
+
+    // No need for further processing, as we've emptied out children
+    return;
+  }
 
   /**
    * If there is an `anyOf` error that means we have more meaningful errors
@@ -60,21 +86,20 @@ export function filterRedundantErrors(root, parent, key) {
    * If there are no children, then we don't delete the errors since we should
    * have at least one error to report.
    */
-  if (getErrors(root).some(isAnyOfError)) {
-    if (Object.keys(root.children).length > 0) {
-      delete root.errors;
-    }
+  if (anyOfErrors.length > 0 && Object.keys(root.children).length > 0) {
+    delete root.errors;
   }
 
   /**
    * If all errors are `enum` and siblings have any error then we can safely
-   * ignore the node.
+   * ignore the node. As we return early if there's required errors, we only
+    * need to check anyofErrors length
    *
    * **CAUTION**
    * Need explicit `root.errors` check because `[].every(fn) === true`
    * https://en.wikipedia.org/wiki/Vacuous_truth#Vacuous_truths_in_mathematics
    */
-  if (root.errors && root.errors.length && getErrors(root).every(isEnumError)) {
+  if (enumErrors.length > 0 && anyOfErrors.length === 0) {
     if (
       getSiblings(parent)(root)
         // Remove any reference which becomes `undefined` later

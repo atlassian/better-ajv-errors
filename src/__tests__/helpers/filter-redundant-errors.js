@@ -47,6 +47,65 @@ describe('filterRedundantErrors', () => {
     `);
   });
 
+  it('should show all required errors', () => {
+    const tree = {
+      children: {
+        a: {
+          children: {
+            b: {
+              children: {},
+              errors: [
+                {
+                  keyword: 'required',
+                },
+              ],
+            },
+          },
+          errors: [
+            {
+              keyword: 'required',
+              params: { missingProperty: 'c' },
+            },
+            {
+              keyword: 'required',
+              params: { missingProperty: 'd' },
+            },
+            {
+              keyword: 'anyOf',
+            },
+            {
+              keyword: 'enum',
+            },
+          ],
+        },
+      },
+    };
+    filterRedundantErrors(tree);
+    expect(tree).toMatchInlineSnapshot(`
+      {
+        "children": {
+          "a": {
+            "children": {},
+            "errors": [
+              {
+                "keyword": "required",
+                "params": {
+                  "missingProperty": "c",
+                },
+              },
+              {
+                "keyword": "required",
+                "params": {
+                  "missingProperty": "d",
+                },
+              },
+            ],
+          },
+        },
+      }
+    `);
+  });
+
   it('should handle anyOf', async () => {
     const tree = {
       children: {

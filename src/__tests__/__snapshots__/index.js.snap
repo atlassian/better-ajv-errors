@@ -24,3 +24,29 @@ exports[`Main > should output error with reconstructed codeframe 1`] = `
  [90m 8 |[39m   ]
  [90m 9 |[39m }[0m"
 `;
+
+exports[`Main > should output errors for multiple required values 1`] = `
+"REQUIRED must have required property 'id'
+
+[0m [90m 1 |[39m {
+[31m[1m>[22m[39m[90m 2 |[39m   [32m"nested"[39m[33m:[39m {}
+ [90m   |[39m             [31m[1m^[22m[39m [31m[1m☹️  id is missing here![22m[39m
+ [90m 3 |[39m }
+ [90m 4 |[39m[0m
+
+REQUIRED must have required property 'name'
+
+[0m [90m 1 |[39m {
+[31m[1m>[22m[39m[90m 2 |[39m   [32m"nested"[39m[33m:[39m {}
+ [90m   |[39m             [31m[1m^[22m[39m [31m[1m☹️  name is missing here![22m[39m
+ [90m 3 |[39m }
+ [90m 4 |[39m[0m
+
+REQUIRED must have required property 'isStale'
+
+[0m [90m 1 |[39m {
+[31m[1m>[22m[39m[90m 2 |[39m   [32m"nested"[39m[33m:[39m {}
+ [90m   |[39m             [31m[1m^[22m[39m [31m[1m☹️  isStale is missing here![22m[39m
+ [90m 3 |[39m }
+ [90m 4 |[39m[0m"
+`;
