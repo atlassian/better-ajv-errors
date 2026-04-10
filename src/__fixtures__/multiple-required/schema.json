@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "properties": {
+    "nested": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number"
+        },
+				"name": {
+					"type": "string"
+				},
+				"isStale": {
+					"type": "boolean"
+				}
+      },
+			"additionalProperties": false,
+      "required": ["id", "name", "isStale"]
+    }
+  }
+}
