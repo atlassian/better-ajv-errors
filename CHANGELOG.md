@@ -1,5 +1,14 @@
 # better-ajv-errors
 
+## 2.0.4
+
+### Patch Changes
+
+- 257daa3: Fix typo in error message
+- 10d7b68: Publish a scoped version for Atlassian
+- d9eeb38: Corrects Issue #216. Now correctly shows all passed required errors on the same path level instead of stopping at the first one found.
+- 92e502f: Fixes an issue with enum error printing that prevented parsing nullable enum errors.
+
 ## 2.0.3
 
 ### Patch Changes
