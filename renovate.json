@@ -5,7 +5,7 @@
   "rangeStrategy": "replace",
   "packageRules": [
     {
-      "matchPackagePatterns": ["chalk", "leven"],
+      "matchPackagePatterns": ["leven"],
       "enabled": false
     }
   ]

@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+import { styleText } from 'node:util';
 import BaseValidationError from './base';
 
 export default class RequiredValidationError extends BaseValidationError {
@@ -9,13 +9,19 @@ export default class RequiredValidationError extends BaseValidationError {
 
   print() {
     const { message, params } = this.options;
-    const output = [chalk`{red {bold REQUIRED} ${message}}\n`];
 
-    return output.concat(
-      this.getCodeFrame(
-        chalk`☹️  {magentaBright ${params.missingProperty}} is missing here!`
-      )
-    );
+		const boldRequiredLabel = styleText('bold', 'REQUIRED');
+		const magentaMissingProperty = styleText(
+			'magentaBright',
+			params.missingProperty,
+		);
+
+    return [
+			styleText('red', `${boldRequiredLabel} ${message}\n`),
+			this.getCodeFrame(
+				`☹️  ${magentaMissingProperty} is missing here!`,
+			),
+		];
   }
 
   getError() {
