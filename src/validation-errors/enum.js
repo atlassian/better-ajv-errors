@@ -14,19 +14,30 @@ export default class EnumValidationError extends BaseValidationError {
 			? `👈🏽  Did you mean ${styleText('magentaBright', bestMatch)} here?`
 			: '👈🏽  Unexpected value, should be equal to one of the allowed values';
 
+		// Needed to handle nullable enums, as joining on null just prints ", "
+		const [firstValue, ...rest] = allowedValues;
+		const allowedValuesMessage = rest.reduce(
+			(acc, value) => `${acc}, ${value}`,
+			firstValue || '',
+		);
+
 		const boldEnumLabel = styleText('bold', 'ENUM');
 
     return [
       styleText('red', `${boldEnumLabel} ${message}`),
-      styleText('red', `(${allowedValues.join(', ')})\n`),
+      styleText('red', `(${allowedValuesMessage})\n`),
 			this.getCodeFrame(codeFrameMessage),
-    ];
+		]
   }
 
   getError() {
     const { message, params } = this.options;
     const bestMatch = this.findBestMatch();
-    const allowedValues = params.allowedValues.join(', ');
+		const [firstValue, ...rest] = params.allowedValues;
+    const allowedValues = rest.reduce(
+			(acc, value) => `${acc}, ${value}`,
+			firstValue || '',
+		);
 
     const output = {
       ...this.getLocation(),
@@ -58,7 +69,9 @@ export default class EnumValidationError extends BaseValidationError {
     const bestMatch = allowedValues
       .map(value => ({
         value,
-        weight: leven(value, currentValue.toString()),
+        weight: value !== null
+					? leven(value, currentValue.toString())
+					: Infinity,
       }))
       .sort((x, y) =>
         x.weight > y.weight ? 1 : x.weight < y.weight ? -1 : 0
