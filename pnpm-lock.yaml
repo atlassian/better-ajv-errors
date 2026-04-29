@@ -70,8 +70,8 @@ importers:
         specifier: ^3.3.3
         version: 3.3.3
       flow-bin:
-        specifier: ^0.272.2
-        version: 0.272.2
+        specifier: ^0.312.0
+        version: 0.312.0
       git-format-staged:
         specifier: ^3.1.2
         version: 3.1.2
@@ -1252,8 +1252,8 @@ packages:
   flatted@3.3.3:
     resolution: {integrity: sha512-GX+ysw4PBCz0PzosHDepZGANEuFCMLrnRTiEy9McGjmkCQYwRq4A/X786G/fjM/+OjsWSU1ZrY5qyARZmO/uwg==}
 
-  flow-bin@0.272.2:
-    resolution: {integrity: sha512-Rf8UG1biRBUGGh6qN7Ua2Y2lJRpR8Pbzby5kfHQ5m5SgjC5eOPw3Qjbrheb9ec5oU4L1gCOXRYbkbpr02PRUBw==}
+  flow-bin@0.312.0:
+    resolution: {integrity: sha512-SVjNNbWt8d69cj6dLXy5P8pq3p6dpje8cL3PvPEqY2KoloiYdpxjOOEZTFvliZV7gxKzGB83iGLA1ct6TH/7hw==}
     engines: {node: '>=0.10.0'}
     hasBin: true
 
@@ -2304,7 +2304,7 @@ packages:
 
   uuid@3.4.0:
     resolution: {integrity: sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==}
-    deprecated: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+    deprecated: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
     hasBin: true
 
   validate-npm-package-license@3.0.4:
@@ -3641,7 +3641,7 @@ snapshots:
 
   flatted@3.3.3: {}
 
-  flow-bin@0.272.2: {}
+  flow-bin@0.312.0: {}
 
   foreground-child@3.3.1:
     dependencies:

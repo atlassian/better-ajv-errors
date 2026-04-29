@@ -74,7 +74,7 @@
     "esbuild": "^0.25.12",
     "eslint": "^9.39.2",
     "fast-glob": "^3.3.3",
-    "flow-bin": "^0.272.2",
+    "flow-bin": "^0.312.0",
     "git-format-staged": "^3.1.2",
     "globals": "^17.0.0",
     "husky": "^9.0.0",
