@@ -1,5 +1,5 @@
-import chalk from 'chalk';
 import leven from 'leven';
+import { styleText } from 'node:util';
 import pointer from 'jsonpointer';
 import BaseValidationError from './base';
 
@@ -10,6 +10,9 @@ export default class EnumValidationError extends BaseValidationError {
       params: { allowedValues },
     } = this.options;
     const bestMatch = this.findBestMatch();
+		const codeFrameMessage = bestMatch !== null
+			? `👈🏽  Did you mean ${styleText('magentaBright', bestMatch)} here?`
+			: '👈🏽  Unexpected value, should be equal to one of the allowed values';
 
 		// Needed to handle nullable enums, as joining on null just prints ", "
 		const [firstValue, ...rest] = allowedValues;
@@ -18,24 +21,23 @@ export default class EnumValidationError extends BaseValidationError {
 			firstValue || '',
 		);
 
-    const output = [
-      chalk`{red {bold ENUM} ${message}}`,
-      chalk`{red (${allowedValuesMessage})}\n`,
-    ];
+		const boldEnumLabel = styleText('bold', 'ENUM');
 
-    return output.concat(
-      this.getCodeFrame(
-        bestMatch !== null
-          ? chalk`👈🏽  Did you mean {magentaBright ${bestMatch}} here?`
-          : chalk`👈🏽  Unexpected value, should be equal to one of the allowed values`
-      )
-    );
+    return [
+      styleText('red', `${boldEnumLabel} ${message}`),
+      styleText('red', `(${allowedValuesMessage})\n`),
+			this.getCodeFrame(codeFrameMessage),
+		]
   }
 
   getError() {
     const { message, params } = this.options;
     const bestMatch = this.findBestMatch();
-    const allowedValues = params.allowedValues.join(', ');
+		const [firstValue, ...rest] = params.allowedValues;
+    const allowedValues = rest.reduce(
+			(acc, value) => `${acc}, ${value}`,
+			firstValue || '',
+		);
 
     const output = {
       ...this.getLocation(),
