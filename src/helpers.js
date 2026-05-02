@@ -10,6 +10,7 @@ import {
 } from './utils';
 import {
   AdditionalPropValidationError,
+  ArrayPropertyValidationError,
   RequiredValidationError,
   EnumValidationError,
   DefaultValidationError,
@@ -142,6 +143,10 @@ export function createErrorInstances(root, options) {
             );
           case 'required':
             return ret.concat(new RequiredValidationError(error, options));
+          case 'maxItems':
+          case 'minItems':
+          case 'uniqueItems':
+            return ret.concat(new ArrayPropertyValidationError(error, options));
           default:
             return ret.concat(new DefaultValidationError(error, options));
         }

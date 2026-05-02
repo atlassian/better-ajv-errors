@@ -62,4 +62,23 @@ describe('Main', () => {
     });
     expect(res).toMatchSnapshot();
   });
+
+  it.each([
+    ['maxItems', 'max-items'],
+    ['minItems', 'min-items'],
+    ['uniqueItem', 'unique'],
+  ])('should support js output format for $0 errors', async (_title, directory) => {
+    const [schema, data] = await getSchemaAndData(`array/${directory}/root`, __dirname);
+
+    const ajv = new Ajv();
+    const validate = ajv.compile(schema);
+    const valid = validate(data);
+    expect(valid).toBeFalsy();
+
+    const res = betterAjvErrors(schema, data, validate.errors, {
+      format: 'js',
+    });
+
+    expect(res).toMatchSnapshot();
+  });
 });

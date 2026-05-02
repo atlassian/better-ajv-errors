@@ -1,0 +1,109 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Array Properties > 'Maximum Items' > for 'at root' > prints correctly, without confusing leading keyword 1`] = `
+[
+  "/ must NOT have more than 2 items
+",
+  "[0m[31m[1m>[22m[39m[90m 1 |[39m [
+ [90m   |[39m [31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m 2 |[39m   [35m1[39m[33m,[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m 3 |[39m   [35m2[39m[33m,[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m 4 |[39m   [35m3[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m 5 |[39m ]
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  array must NOT have more than 2 items[22m[39m[0m",
+]
+`;
+
+exports[`Array Properties > 'Maximum Items' > for 'inside object' > prints correctly, without confusing leading keyword 1`] = `
+[
+  "/foo must NOT have more than 2 items
+",
+  "[0m [90m 1 |[39m {
+[31m[1m>[22m[39m[90m 2 |[39m   [32m"foo"[39m[33m:[39m [
+ [90m   |[39m          [31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m 3 |[39m     [35m1[39m[33m,[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m 4 |[39m     [35m2[39m[33m,[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m 5 |[39m     [35m3[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m 6 |[39m   ]
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  array must NOT have more than 2 items[22m[39m
+ [90m 7 |[39m }[0m",
+]
+`;
+
+exports[`Array Properties > 'Minimum Items' > for 'at root' > prints correctly, without confusing leading keyword 1`] = `
+[
+  "/ must NOT have fewer than 4 items
+",
+  "[0m[31m[1m>[22m[39m[90m 1 |[39m [
+ [90m   |[39m [31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m 2 |[39m   [35m1[39m[33m,[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m 3 |[39m   [35m2[39m[33m,[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m 4 |[39m   [35m3[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m 5 |[39m ]
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  array must NOT have fewer than 4 items[22m[39m[0m",
+]
+`;
+
+exports[`Array Properties > 'Minimum Items' > for 'inside object' > prints correctly, without confusing leading keyword 1`] = `
+[
+  "/foo must NOT have fewer than 4 items
+",
+  "[0m [90m 1 |[39m {
+[31m[1m>[22m[39m[90m 2 |[39m   [32m"foo"[39m[33m:[39m [
+ [90m   |[39m          [31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m 3 |[39m     [35m1[39m[33m,[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m 4 |[39m     [35m2[39m[33m,[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m 5 |[39m     [35m3[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m 6 |[39m   ]
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  array must NOT have fewer than 4 items[22m[39m
+ [90m 7 |[39m }[0m",
+]
+`;
+
+exports[`Array Properties > 'Unique Items' > for 'at root' > prints correctly, without confusing leading keyword 1`] = `
+[
+  "/ must NOT have duplicate items (items ## 1 and 0 are identical)
+",
+  "[0m[31m[1m>[22m[39m[90m 1 |[39m [
+ [90m   |[39m [31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m 2 |[39m   [35m1[39m[33m,[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m 3 |[39m   [35m1[39m[33m,[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m 4 |[39m   [35m3[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m 5 |[39m ]
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  array must NOT have duplicate items (items ## 1 and 0 are identical)[22m[39m[0m",
+]
+`;
+
+exports[`Array Properties > 'Unique Items' > for 'inside object' > prints correctly, without confusing leading keyword 1`] = `
+[
+  "/foo must NOT have duplicate items (items ## 1 and 0 are identical)
+",
+  "[0m [90m 1 |[39m {
+[31m[1m>[22m[39m[90m 2 |[39m   [32m"foo"[39m[33m:[39m [
+ [90m   |[39m          [31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m 3 |[39m     [35m1[39m[33m,[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m 4 |[39m     [35m1[39m[33m,[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m 5 |[39m     [35m3[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m>[22m[39m[90m 6 |[39m   ]
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  array must NOT have duplicate items (items ## 1 and 0 are identical)[22m[39m
+ [90m 7 |[39m }[0m",
+]
+`;

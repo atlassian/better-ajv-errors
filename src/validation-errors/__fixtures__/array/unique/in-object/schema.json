@@ -1,0 +1,10 @@
+{
+	"type": "object",
+	"properties": {
+		"foo": {
+			"type": "array",
+			"uniqueItems": true,
+			"items": { "type": "number" }
+		}
+	}
+}
