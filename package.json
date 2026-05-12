@@ -71,7 +71,7 @@
     "@vitest/eslint-plugin": "^1.6.4",
     "@vitest/ui": "3.2.4",
     "ajv": "^8.17.1",
-    "esbuild": "^0.25.12",
+    "esbuild": "^0.28.0",
     "eslint": "^9.39.2",
     "fast-glob": "^3.3.3",
     "flow-bin": "^0.272.2",
