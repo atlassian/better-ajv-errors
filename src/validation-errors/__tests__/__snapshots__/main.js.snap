@@ -71,3 +71,22 @@ exports[`Main > should support js output format for required errors 1`] = `
   },
 ]
 `;
+
+exports[`Main > should support js output format for unevaluatedProperties errors 1`] = `
+[
+  {
+    "end": {
+      "column": 27,
+      "line": 1,
+      "offset": 26,
+    },
+    "error": " Property baz is not expected to be here",
+    "path": "",
+    "start": {
+      "column": 22,
+      "line": 1,
+      "offset": 21,
+    },
+  },
+]
+`;

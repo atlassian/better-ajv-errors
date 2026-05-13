@@ -10,6 +10,7 @@ import {
 } from './utils';
 import {
   AdditionalPropValidationError,
+  UnevaluatedPropValidationError,
   RequiredValidationError,
   EnumValidationError,
   DefaultValidationError,
@@ -139,6 +140,10 @@ export function createErrorInstances(root, options) {
           case 'additionalProperties':
             return ret.concat(
               new AdditionalPropValidationError(error, options)
+            );
+          case 'unevaluatedProperties':
+            return ret.concat(
+              new UnevaluatedPropValidationError(error, options)
             );
           case 'required':
             return ret.concat(new RequiredValidationError(error, options));
