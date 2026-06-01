@@ -83,7 +83,7 @@
     "prettier": "^3.7.4",
     "publint": "^0.3.16",
     "svg-term-cli": "^2.1.1",
-    "vitest": "^3.2.4"
+    "vitest": "^4.1.0"
   },
   "peerDependencies": {
     "ajv": "4.11.8 - 8"
