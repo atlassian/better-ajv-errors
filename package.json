@@ -75,7 +75,7 @@
     "eslint": "^9.39.2",
     "fast-glob": "^3.3.3",
     "flow-bin": "^0.272.2",
-    "git-format-staged": "^3.1.2",
+    "git-format-staged": "^4.0.0",
     "globals": "^17.0.0",
     "husky": "^9.0.0",
     "is-ci": "^4.1.0",
