@@ -1,7 +1,7 @@
-import chalk from 'chalk';
 import leven from 'leven';
 import pointer from 'jsonpointer';
 import BaseValidationError from './base';
+import { style } from './style';
 
 export default class EnumValidationError extends BaseValidationError {
   print() {
@@ -19,15 +19,15 @@ export default class EnumValidationError extends BaseValidationError {
 		);
 
     const output = [
-      chalk`{red {bold ENUM} ${message}}`,
-      chalk`{red (${allowedValuesMessage})}\n`,
+      style('red', `${style('bold', 'ENUM')} ${message}`),
+      `${style('red', `(${allowedValuesMessage})`)}\n`,
     ];
 
     return output.concat(
       this.getCodeFrame(
         bestMatch !== null
-          ? chalk`👈🏽  Did you mean {magentaBright ${bestMatch}} here?`
-          : chalk`👈🏽  Unexpected value, should be equal to one of the allowed values`
+          ? `👈🏽  Did you mean ${style('magentaBright', bestMatch)} here?`
+          : `👈🏽  Unexpected value, should be equal to one of the allowed values`
       )
     );
   }
@@ -68,8 +68,8 @@ export default class EnumValidationError extends BaseValidationError {
       .map(value => ({
         value,
         weight: value !== null
-					? leven(value, currentValue.toString())
-					: Infinity,
+				? leven(value, currentValue.toString())
+				: Infinity,
       }))
       .sort((x, y) =>
         x.weight > y.weight ? 1 : x.weight < y.weight ? -1 : 0

@@ -1,5 +1,5 @@
-import chalk from 'chalk';
 import BaseValidationError from './base';
+import { style } from './style';
 
 export default class RequiredValidationError extends BaseValidationError {
   getLocation(dataPath = this.instancePath) {
@@ -9,11 +9,13 @@ export default class RequiredValidationError extends BaseValidationError {
 
   print() {
     const { message, params } = this.options;
-    const output = [chalk`{red {bold REQUIRED} ${message}}\n`];
+    const output = [
+      `${style('red', `${style('bold', 'REQUIRED')} ${message}`)}\n`,
+    ];
 
     return output.concat(
       this.getCodeFrame(
-        chalk`☹️  {magentaBright ${params.missingProperty}} is missing here!`
+        `☹️  ${style('magentaBright', params.missingProperty)} is missing here!`
       )
     );
   }
