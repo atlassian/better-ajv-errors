@@ -70,6 +70,49 @@ describe('Enum', () => {
 		});
 	});
 
+	describe('when enum includes null (issue #224)', () => {
+			let schema, data, jsonRaw, jsonAst;
+			beforeAll(async () => {
+				[schema, data] = await getSchemaAndData('enum-with-nulls', __dirname);
+				jsonRaw = JSON.stringify(data, null, 2);
+				jsonAst = parse(jsonRaw);
+			});
+
+			it('getError renders null in the error message instead of an empty value', () => {
+				const error = new EnumValidationError(
+					{
+						keyword: 'enum',
+						dataPath: '/id',
+						schemaPath: '#/enum',
+						params: {
+							allowedValues: ['foo', 'bar', null],
+						},
+						message: 'should be equal to one of the allowed values',
+					},
+					{ data, schema, jsonRaw, jsonAst }
+				);
+
+				expect(error.getError().error).toContain('foo, bar, null');
+			});
+
+			it('getError does not crash when null is the only allowed value', () => {
+				const error = new EnumValidationError(
+					{
+						keyword: 'enum',
+						dataPath: '/id',
+						schemaPath: '#/enum',
+						params: {
+							allowedValues: [null],
+						},
+						message: 'should be equal to one of the allowed values',
+					},
+					{ data, schema, jsonRaw, jsonAst }
+				);
+
+				expect(() => error.getError()).not.toThrow();
+			});
+		});
+
 	describe.each([
 		['does not include', 'enum-string', []],
 		['includes', 'enum-string-with-nulls', [null]],

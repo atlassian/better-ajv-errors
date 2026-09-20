@@ -35,7 +35,7 @@ export default class EnumValidationError extends BaseValidationError {
   getError() {
     const { message, params } = this.options;
     const bestMatch = this.findBestMatch();
-    const allowedValues = params.allowedValues.join(', ');
+    const allowedValues = params.allowedValues.map(String).join(', ');
 
     const output = {
       ...this.getLocation(),
@@ -76,6 +76,7 @@ export default class EnumValidationError extends BaseValidationError {
       )[0];
 
     return allowedValues.length === 1 ||
+      bestMatch.value === null ||
       bestMatch.weight < bestMatch.value.length
       ? bestMatch.value
       : null;
