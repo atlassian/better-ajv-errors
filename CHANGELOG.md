@@ -1,5 +1,37 @@
 # better-ajv-errors
 
+## 3.0.0
+
+### Major Changes
+
+- 0d8e31b: Ship the ES module and CommonJS builds as single bundles, `dist/index.mjs` and `dist/index.cjs`, replacing the per-file output under `lib/esm/` and `lib/cjs/`. The package entry points are unchanged, so only code that imported files under `lib/` directly needs to import `better-ajv-errors` instead. The bundles target Node.js 22, and the package is marked as free of side effects for bundlers.
+- 2fe7c6a: Replace `chalk` with Node.js built-in `util.styleText`. This change requires Node.js >= 22.
+  
+  Closes #219
+
+### Patch Changes
+
+- 419432c: Build the package with `vp pack` instead of esbuild.
+- 86f69d7: Update dev dependencies, including ESLint 10, esbuild 0.28 and git-format-staged 4.
+- d46ca05: Remove the unused Flow configuration and type annotations.
+- 183fa01: With the `json` option, a key that appears more than once in an object no longer throws `Couldn't find property`. The error points at the last occurrence, which is the value `JSON.parse` keeps and ajv validates.
+  
+  Closes #253
+- 69d2026: Format the source at a print width of 100.
+- 8427a1f: Read the pnpm version for mise from `packageManager`.
+- 2db467b: Run tests, linting, formatting and the commit hook through Vite+.
+- 83db9ac: Declare the development Node.js version in `.node-version`.
+- 9d019bb: An array or object among an `enum`'s allowed values no longer throws `charCodeAt is not a function`. Only strings are compared when looking for a "Did you mean" suggestion.
+  
+  Closes #180
+- fe9d6d3: Pin pnpm 10.34.6 with the `packageManager` field.
+- 5e7b636: Lint with oxlint instead of ESLint.
+- 0ee7430: Install pnpm through mise instead of a Nix flake.
+- ab3cfa4: Format the source with oxfmt instead of Prettier.
+- 1327708: Error messages for the JSON root no longer start with a space, or with `: ` for keywords such as `type`.
+- f69f096: Update `@humanwhocodes/momoa` to 3 and `@babel/code-frame` to 7.29.
+- 2cd7c64: Document the Node.js and ajv requirements, ajv's `allErrors` option, the errors that are left out of the output, and the `path` field in the README.
+
 ## 2.0.4
 
 ### Patch Changes
