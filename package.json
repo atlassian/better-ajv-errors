@@ -2,7 +2,10 @@
   "name": "better-ajv-errors",
   "version": "3.0.0",
   "description": "JSON Schema validation for Human",
-  "repository": "atlassian/better-ajv-errors",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atlassian/better-ajv-errors.git"
+  },
   "main": "./dist/index.cjs",
   "types": "./typings.d.cts",
   "type": "module",
@@ -21,7 +24,7 @@
   "engines": {
     "node": ">= 22"
   },
-  "packageManager": "pnpm@10.34.6",
+  "packageManager": "pnpm@12.10.1",
   "keywords": [
     "json-schema",
     "ajv",
