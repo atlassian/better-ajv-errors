@@ -40,7 +40,6 @@ export default defineConfig([{
   },
 
   ignores: [
-    "flow-typed/",
     "lib/",
     "node_modules/",
     "dist/",

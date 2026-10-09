@@ -60,9 +60,6 @@ importers:
       eslint:
         specifier: ^10.12.0
         version: 10.12.0
-      flow-bin:
-        specifier: ^0.335.0
-        version: 0.335.0
       git-format-staged:
         specifier: ^4.0.2
         version: 4.0.2
@@ -1135,11 +1132,6 @@ packages:
 
   flatted@3.4.4:
     resolution: {integrity: sha512-5+ybhBZANEJxaH3X5evAFatUxLfEHSr7n6kYJ+1Qd0mUqr4eu9gIf6GDbWHf8RJijHrjjO8G+la14SlL2SeS1Q==}
-
-  flow-bin@0.335.0:
-    resolution: {integrity: sha512-a5Su683/8G03Cuj0nI9BMZxgg5M3VJtOA8R3/ADw7KcCXN2OdP72jC5ZtlpzWEwZjV+l/L+Up/Nw+CVYeghWxg==}
-    engines: {node: '>=0.10.0'}
-    hasBin: true
 
   formdata-polyfill@4.0.10:
     resolution: {integrity: sha512-buewHzMvYL29jdeQTVILecSaZKnt/RJWjoZCF5OW60Z67/GmSLBkOFM7qh1PI3zFNtJbaZL5eQu1vLfazOwj4g==}
@@ -3245,8 +3237,6 @@ snapshots:
       hookified: 1.15.1
 
   flatted@3.4.4: {}
-
-  flow-bin@0.335.0: {}
 
   formdata-polyfill@4.0.10:
     dependencies:
