@@ -26,7 +26,7 @@ export function makeTree(ajvErrors = []) {
 
     // `dataPath === ''` is root
     const paths = instancePath === '' ? [''] : instancePath.match(JSON_POINTERS_REGEX);
-    paths &&
+    if (paths) {
       paths.reduce((obj, path, i) => {
         obj.children[path] = obj.children[path] || { children: {}, errors: [] };
         if (i === paths.length - 1) {
@@ -34,6 +34,7 @@ export function makeTree(ajvErrors = []) {
         }
         return obj.children[path];
       }, root);
+    }
   });
   return root;
 }
