@@ -60,6 +60,14 @@ export default defineConfig({
     arrowParens: 'avoid',
     sortPackageJson: false,
   },
+  pack: {
+    entry: 'src/index.js',
+    format: ['esm', 'cjs'],
+    sourcemap: true,
+    dts: false,
+    // Keeps `require('better-ajv-errors').default`, which `typings.d.cts` describes.
+    cjsDefault: false,
+  },
   staged: {
     'src/**/*.js': 'vp fmt',
     '.changeset/*.json': 'vp fmt',
