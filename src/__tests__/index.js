@@ -76,6 +76,29 @@ describe('Main', () => {
     expect(res).toContain('Did you mean 5 here?');
   });
 
+  it('should print the path of an additional property below the code frame', () => {
+    const schema = {
+      type: 'object',
+      properties: { nested: { type: 'object', additionalProperties: false } },
+    };
+    const data = { nested: { extra: 1 } };
+    const validate = new Ajv().compile(schema);
+    expect(validate(data)).toBeFalsy();
+
+    // An additional property's frame points at the property, so its path does too.
+    const res = stripVTControlCharacters(betterAjvErrors(schema, data, validate.errors));
+    expect(res).toBe(
+      [
+        'ADDITIONAL PROPERTY must NOT have additional properties',
+        '',
+        '> 1 | {"nested":{"extra":1}}',
+        '    |            ^^^^^^^ 😲  extra is not expected to be here!',
+        '',
+        '    @ /nested/extra',
+      ].join('\n')
+    );
+  });
+
   it('should point at the last duplicate key when using the json option', () => {
     // JSON.parse keeps the last value of a duplicate key, so that is what ajv validates.
     const json = '{\n  "a": { "b": 1 },\n  "a": { "b": "two" }\n}';
