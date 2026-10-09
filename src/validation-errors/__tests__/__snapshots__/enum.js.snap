@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Enum > when enum 'does not include' null > when value is a primitive > prints correctly for empty value 1`] = `
+exports[`Enum > when enum does not include null > when value is a primitive > prints correctly for empty value 1`] = `
 [
   "ENUM should be equal to one of the allowed values",
   "(foo, bar)
@@ -10,7 +10,7 @@ exports[`Enum > when enum 'does not include' null > when value is a primitive > 
 ]
 `;
 
-exports[`Enum > when enum 'does not include' null > when value is a primitive > prints correctly for enum prop 1`] = `
+exports[`Enum > when enum does not include null > when value is a primitive > prints correctly for enum prop 1`] = `
 [
   "ENUM should be equal to one of the allowed values",
   "(foo, bar)
@@ -20,7 +20,7 @@ exports[`Enum > when enum 'does not include' null > when value is a primitive > 
 ]
 `;
 
-exports[`Enum > when enum 'does not include' null > when value is a primitive > prints correctly for no levenshtein match 1`] = `
+exports[`Enum > when enum does not include null > when value is a primitive > prints correctly for no levenshtein match 1`] = `
 [
   "ENUM should be equal to one of the allowed values",
   "(one, two)
@@ -30,7 +30,7 @@ exports[`Enum > when enum 'does not include' null > when value is a primitive > 
 ]
 `;
 
-exports[`Enum > when enum 'does not include' null > when value is an object > prints correctly for empty value 1`] = `
+exports[`Enum > when enum does not include null > when value is an object > prints correctly for empty value 1`] = `
 [
   "ENUM should be equal to one of the allowed values",
   "(foo, bar)
@@ -42,7 +42,7 @@ exports[`Enum > when enum 'does not include' null > when value is an object > pr
 ]
 `;
 
-exports[`Enum > when enum 'does not include' null > when value is an object > prints correctly for enum prop 1`] = `
+exports[`Enum > when enum does not include null > when value is an object > prints correctly for enum prop 1`] = `
 [
   "ENUM should be equal to one of the allowed values",
   "(foo, bar)
@@ -54,7 +54,7 @@ exports[`Enum > when enum 'does not include' null > when value is an object > pr
 ]
 `;
 
-exports[`Enum > when enum 'does not include' null > when value is an object > prints correctly for no levenshtein match 1`] = `
+exports[`Enum > when enum does not include null > when value is an object > prints correctly for no levenshtein match 1`] = `
 [
   "ENUM should be equal to one of the allowed values",
   "(one, two)
@@ -66,7 +66,7 @@ exports[`Enum > when enum 'does not include' null > when value is an object > pr
 ]
 `;
 
-exports[`Enum > when enum 'includes' null > when value is a primitive > prints correctly for empty value 1`] = `
+exports[`Enum > when enum includes null > when value is a primitive > prints correctly for empty value 1`] = `
 [
   "ENUM should be equal to one of the allowed values",
   "(foo, bar, null)
@@ -76,7 +76,7 @@ exports[`Enum > when enum 'includes' null > when value is a primitive > prints c
 ]
 `;
 
-exports[`Enum > when enum 'includes' null > when value is a primitive > prints correctly for enum prop 1`] = `
+exports[`Enum > when enum includes null > when value is a primitive > prints correctly for enum prop 1`] = `
 [
   "ENUM should be equal to one of the allowed values",
   "(foo, bar, null)
@@ -86,7 +86,7 @@ exports[`Enum > when enum 'includes' null > when value is a primitive > prints c
 ]
 `;
 
-exports[`Enum > when enum 'includes' null > when value is a primitive > prints correctly for no levenshtein match 1`] = `
+exports[`Enum > when enum includes null > when value is a primitive > prints correctly for no levenshtein match 1`] = `
 [
   "ENUM should be equal to one of the allowed values",
   "(one, two, null)
@@ -96,7 +96,7 @@ exports[`Enum > when enum 'includes' null > when value is a primitive > prints c
 ]
 `;
 
-exports[`Enum > when enum 'includes' null > when value is an object > prints correctly for empty value 1`] = `
+exports[`Enum > when enum includes null > when value is an object > prints correctly for empty value 1`] = `
 [
   "ENUM should be equal to one of the allowed values",
   "(foo, bar, null)
@@ -108,7 +108,7 @@ exports[`Enum > when enum 'includes' null > when value is an object > prints cor
 ]
 `;
 
-exports[`Enum > when enum 'includes' null > when value is an object > prints correctly for enum prop 1`] = `
+exports[`Enum > when enum includes null > when value is an object > prints correctly for enum prop 1`] = `
 [
   "ENUM should be equal to one of the allowed values",
   "(foo, bar, null)
@@ -120,7 +120,7 @@ exports[`Enum > when enum 'includes' null > when value is an object > prints cor
 ]
 `;
 
-exports[`Enum > when enum 'includes' null > when value is an object > prints correctly for no levenshtein match 1`] = `
+exports[`Enum > when enum includes null > when value is an object > prints correctly for no levenshtein match 1`] = `
 [
   "ENUM should be equal to one of the allowed values",
   "(one, two, null)
