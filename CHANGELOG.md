@@ -1,11 +1,5 @@
 # better-ajv-errors
 
-## 3.0.0
-
-### Major Changes
-
-- 22177c1: Replace `chalk` with Node.js built-in `util.styleText`. This change requires Node.js >= 22.
-
 ## 2.0.4
 
 ### Patch Changes
