@@ -22,8 +22,10 @@ export default function getMetaFromPath(
           ? name
           : value;
       }
-      case 'Array':
-        return obj.elements[pointer];
+      case 'Array': {
+        const element = obj.elements[pointer];
+        return element && element.value;
+      }
       default:
         console.log(obj);
     }

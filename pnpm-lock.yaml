@@ -21,11 +21,11 @@ importers:
   .:
     dependencies:
       '@babel/code-frame':
-        specifier: ^7.27.1
-        version: 7.27.1
+        specifier: ^7.29.7
+        version: 7.29.7
       '@humanwhocodes/momoa':
-        specifier: ^2.0.4
-        version: 2.0.4
+        specifier: ^3.3.13
+        version: 3.3.13
       jsonpointer:
         specifier: ^5.0.1
         version: 5.0.1
@@ -96,16 +96,12 @@ importers:
 
 packages:
 
-  '@babel/code-frame@7.27.1':
-    resolution: {integrity: sha512-cjQ7ZlQ0Mv3b47hABuTevyTuYN4i+loJKGeV9flcCgIK37cCXRh+L1bd3iBHlynerhQ7BhCkn2BPbQUL+rGqFg==}
+  '@babel/code-frame@7.29.7':
+    resolution: {integrity: sha512-Aup7aUOfpbAUg2ROOJN6Iw5f9DMBlzu0mIkm/malLQFN/YQgO48wCj0Kxa3sEHJvPVFg7siR+qRInwXd2qhQKw==}
     engines: {node: '>=6.9.0'}
 
   '@babel/helper-string-parser@7.29.7':
     resolution: {integrity: sha512-Pb5ijPrZ89GDH8223L4UP8i6QApWxs04RbPQJTeWDV0/keR2E36MeKnyr6LYmUUvqRRI+Iv87SuF1W6ErINzYw==}
-    engines: {node: '>=6.9.0'}
-
-  '@babel/helper-validator-identifier@7.27.1':
-    resolution: {integrity: sha512-D2hP9eA+Sqx1kBZgzxZh0y1trbuU+JoDkiEwqhQ36nodYqJwyEIhPSdMNd7lOm/4io72luTPWH20Yda0xOuUow==}
     engines: {node: '>=6.9.0'}
 
   '@babel/helper-validator-identifier@7.29.7':
@@ -411,9 +407,9 @@ packages:
     resolution: {integrity: sha512-bxveV4V8v5Yb4ncFTT3rPSgZBOpCkjfK0y4oVVVJwIuDVBRMDXrPyXRL988i5ap9m9bnyEEjWfm5WkBmtffLfA==}
     engines: {node: '>=12.22'}
 
-  '@humanwhocodes/momoa@2.0.4':
-    resolution: {integrity: sha512-RE815I4arJFtt+FVeU1Tgp9/Xvecacji8w/V6XtXsWWH/wz/eNkNbhb+ny/+PlVZjV0rxQpRSQKNKE3lcktHEA==}
-    engines: {node: '>=10.10.0'}
+  '@humanwhocodes/momoa@3.3.13':
+    resolution: {integrity: sha512-AbKq3EW41+HY6pNMJgAOrz68iyiTTf0Nr1JRHHfuG5zwniJ9Dw8J3U7oa1I2ptpqYwmEf1sXKOGK6lbdZ9eqmg==}
+    engines: {node: '>=18'}
 
   '@humanwhocodes/retry@0.3.1':
     resolution: {integrity: sha512-JBxkERygn7Bv/GbN5Rv8Ul6LVknS+5Bp6RgDC/O8gEBU/yeH5Ui5C/OlWrTb6qct7LjjfT6Re2NxB0ln0yYybA==}
@@ -2197,15 +2193,13 @@ packages:
 
 snapshots:
 
-  '@babel/code-frame@7.27.1':
+  '@babel/code-frame@7.29.7':
     dependencies:
-      '@babel/helper-validator-identifier': 7.27.1
+      '@babel/helper-validator-identifier': 7.29.7
       js-tokens: 4.0.0
       picocolors: 1.1.1
 
   '@babel/helper-string-parser@7.29.7': {}
-
-  '@babel/helper-validator-identifier@7.27.1': {}
 
   '@babel/helper-validator-identifier@7.29.7': {}
 
@@ -2483,7 +2477,7 @@ snapshots:
 
   '@humanwhocodes/module-importer@1.0.1': {}
 
-  '@humanwhocodes/momoa@2.0.4': {}
+  '@humanwhocodes/momoa@3.3.13': {}
 
   '@humanwhocodes/retry@0.3.1': {}
 

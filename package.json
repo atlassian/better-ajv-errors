@@ -55,8 +55,8 @@
     "prepare": "is-ci || husky install"
   },
   "dependencies": {
-    "@babel/code-frame": "^7.27.1",
-    "@humanwhocodes/momoa": "^2.0.4",
+    "@babel/code-frame": "^7.29.7",
+    "@humanwhocodes/momoa": "^3.3.13",
     "jsonpointer": "^5.0.1",
     "leven": "^3.1.0 < 4"
   },

@@ -5,7 +5,8 @@
   "rangeStrategy": "replace",
   "packageRules": [
     {
-      "matchPackagePatterns": ["chalk", "leven"],
+      "matchPackageNames": ["@babel/code-frame", "leven"],
+      "matchUpdateTypes": ["major"],
       "enabled": false
     }
   ]

@@ -15,8 +15,10 @@ export default function getDecoratedDataPath(jsonAst, dataPath) {
         return filtered[0].value;
       }
       case 'Array': {
-        decoratedPath += `/${pointer}${getTypeName(obj.elements[pointer])}`;
-        return obj.elements[pointer];
+        const element = obj.elements[pointer];
+        const value = element && element.value;
+        decoratedPath += `/${pointer}${getTypeName(value)}`;
+        return value;
       }
       default:
         console.log(obj);
