@@ -6,11 +6,12 @@ export default function getDecoratedDataPath(jsonAst, dataPath) {
     switch (obj.type) {
       case 'Object': {
         decoratedPath += `/${pointer}`;
-        const filtered = obj.members.filter(child => child.name.value === pointer);
-        if (filtered.length !== 1) {
+        // JSON.parse keeps the last of duplicate keys, so that is the one ajv validated.
+        const member = obj.members.findLast(child => child.name.value === pointer);
+        if (!member) {
           throw new Error(`Couldn't find property ${pointer} of ${dataPath}`);
         }
-        return filtered[0].value;
+        return member.value;
       }
       case 'Array': {
         const element = obj.elements[pointer];
