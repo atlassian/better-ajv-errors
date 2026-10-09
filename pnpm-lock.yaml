@@ -36,9 +36,6 @@ importers:
       '@changesets/cli':
         specifier: ^2.29.8
         version: 2.29.8(@types/node@22.15.24)
-      '@changesets/write':
-        specifier: ^0.4.0
-        version: 0.4.0
       '@eslint/eslintrc':
         specifier: ^3.3.3
         version: 3.3.3

@@ -52,8 +52,7 @@
     "test-ci": "vitest --coverage",
     "prescreenshot": "npm run build:cjs",
     "screenshot": "svg-term --command='node screenshot' --out=./media/screenshot.svg --padding=5 --width=80 --height=13 --at=1000 --no-cursor --term iterm2 --profile='deep' --window",
-    "prepare": "is-ci || husky install",
-    "dependabot:changeset": "node ./.changeset/create-dependabot-dependabot.js"
+    "prepare": "is-ci || husky install"
   },
   "dependencies": {
     "@babel/code-frame": "^7.27.1",
@@ -63,7 +62,6 @@
   },
   "devDependencies": {
     "@changesets/cli": "^2.29.8",
-    "@changesets/write": "^0.4.0",
     "@eslint/eslintrc": "^3.3.3",
     "@eslint/js": "^9.39.2",
     "@vitest/coverage-v8": "^5.0.3",
