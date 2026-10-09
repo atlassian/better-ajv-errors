@@ -50,9 +50,8 @@ describe('makeTree', () => {
   });
 
   it('works on array dataPath', async () => {
-    expect(
-      makeTree([{ dataPath: '/root/child/0' }, { dataPath: '/root/child/1' }])
-    ).toMatchInlineSnapshot(`
+    expect(makeTree([{ dataPath: '/root/child/0' }, { dataPath: '/root/child/1' }]))
+      .toMatchInlineSnapshot(`
       {
         "children": {
           "/root": {

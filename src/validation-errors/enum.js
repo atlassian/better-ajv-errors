@@ -13,10 +13,7 @@ export default class EnumValidationError extends BaseValidationError {
 
     // Needed to handle nullable enums, as joining on null just prints ", "
     const [firstValue, ...rest] = allowedValues;
-    const allowedValuesMessage = rest.reduce(
-      (acc, value) => `${acc}, ${value}`,
-      firstValue || ''
-    );
+    const allowedValuesMessage = rest.reduce((acc, value) => `${acc}, ${value}`, firstValue || '');
 
     const output = [
       styleText('red', styleText('bold', 'ENUM') + ' ' + message),
@@ -26,9 +23,7 @@ export default class EnumValidationError extends BaseValidationError {
     return output.concat(
       this.getCodeFrame(
         bestMatch !== null
-          ? '👈🏽  Did you mean ' +
-              styleText('magentaBright', bestMatch) +
-              ' here?'
+          ? '👈🏽  Did you mean ' + styleText('magentaBright', bestMatch) + ' here?'
           : '👈🏽  Unexpected value, should be equal to one of the allowed values'
       )
     );
@@ -58,9 +53,7 @@ export default class EnumValidationError extends BaseValidationError {
     } = this.options;
 
     const currentValue =
-      this.instancePath === ''
-        ? this.data
-        : pointer.get(this.data, this.instancePath);
+      this.instancePath === '' ? this.data : pointer.get(this.data, this.instancePath);
 
     if (!currentValue) {
       return null;
@@ -69,15 +62,11 @@ export default class EnumValidationError extends BaseValidationError {
     const bestMatch = allowedValues
       .map(value => ({
         value,
-        weight:
-          value !== null ? leven(value, currentValue.toString()) : Infinity,
+        weight: value !== null ? leven(value, currentValue.toString()) : Infinity,
       }))
-      .sort((x, y) =>
-        x.weight > y.weight ? 1 : x.weight < y.weight ? -1 : 0
-      )[0];
+      .sort((x, y) => (x.weight > y.weight ? 1 : x.weight < y.weight ? -1 : 0))[0];
 
-    return allowedValues.length === 1 ||
-      bestMatch.weight < bestMatch.value.length
+    return allowedValues.length === 1 || bestMatch.weight < bestMatch.value.length
       ? bestMatch.value
       : null;
   }

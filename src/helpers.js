@@ -22,13 +22,10 @@ export function makeTree(ajvErrors = []) {
   const root = { children: {} };
   ajvErrors.forEach(ajvError => {
     const instancePath =
-      typeof ajvError.instancePath !== 'undefined'
-        ? ajvError.instancePath
-        : ajvError.dataPath;
+      typeof ajvError.instancePath !== 'undefined' ? ajvError.instancePath : ajvError.dataPath;
 
     // `dataPath === ''` is root
-    const paths =
-      instancePath === '' ? [''] : instancePath.match(JSON_POINTERS_REGEX);
+    const paths = instancePath === '' ? [''] : instancePath.match(JSON_POINTERS_REGEX);
     paths &&
       paths.reduce((obj, path, i) => {
         obj.children[path] = obj.children[path] || { children: {}, errors: [] };
@@ -110,17 +107,13 @@ export function filterRedundantErrors(root, parent, key) {
     }
   }
 
-  Object.entries(root.children).forEach(([key, child]) =>
-    filterRedundantErrors(child, root, key)
-  );
+  Object.entries(root.children).forEach(([key, child]) => filterRedundantErrors(child, root, key));
 }
 
 export function createErrorInstances(root, options) {
   const errors = getErrors(root);
   if (errors.length && errors.every(isEnumError)) {
-    const uniqueValues = new Set(
-      concatAll([])(errors.map(e => e.params.allowedValues))
-    );
+    const uniqueValues = new Set(concatAll([])(errors.map(e => e.params.allowedValues)));
     const allowedValues = [...uniqueValues];
     const error = errors[0];
     return [
@@ -137,9 +130,7 @@ export function createErrorInstances(root, options) {
       errors.reduce((ret, error) => {
         switch (error.keyword) {
           case 'additionalProperties':
-            return ret.concat(
-              new AdditionalPropValidationError(error, options)
-            );
+            return ret.concat(new AdditionalPropValidationError(error, options));
           case 'required':
             return ret.concat(new RequiredValidationError(error, options));
           default:

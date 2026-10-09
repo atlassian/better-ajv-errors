@@ -6,9 +6,7 @@ export default function getDecoratedDataPath(jsonAst, dataPath) {
     switch (obj.type) {
       case 'Object': {
         decoratedPath += `/${pointer}`;
-        const filtered = obj.members.filter(
-          child => child.name.value === pointer
-        );
+        const filtered = obj.members.filter(child => child.name.value === pointer);
         if (filtered.length !== 1) {
           throw new Error(`Couldn't find property ${pointer} of ${dataPath}`);
         }
@@ -31,9 +29,7 @@ function getTypeName(obj) {
   if (!obj || !obj.elements) {
     return '';
   }
-  const type = obj.elements.filter(
-    child => child && child.name && child.name.value === 'type'
-  );
+  const type = obj.elements.filter(child => child && child.name && child.name.value === 'type');
 
   if (!type.length) {
     return '';

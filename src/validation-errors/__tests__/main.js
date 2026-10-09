@@ -33,10 +33,7 @@ describe('Main', () => {
   });
 
   it('should support js output format for additionalProperties errors', async () => {
-    const [schema, data] = await getSchemaAndData(
-      'additionalProperties',
-      __dirname
-    );
+    const [schema, data] = await getSchemaAndData('additionalProperties', __dirname);
 
     const ajv = new Ajv();
     const validate = ajv.compile(schema);

@@ -14,16 +14,13 @@ export const isEnumError = isXError('enum');
 export const getErrors = node =>
   node && node.errors
     ? node.errors.map(e =>
-        e.keyword === 'errorMessage'
-          ? { ...e.params.errors[0], message: e.message }
-          : e
+        e.keyword === 'errorMessage' ? { ...e.params.errors[0], message: e.message } : e
       )
     : [];
 
 // Node
 export const getChildren = node => (node && getValues(node.children)) || [];
 
-export const getSiblings = parent => node =>
-  getChildren(parent).filter(not(eq(node)));
+export const getSiblings = parent => node => getChildren(parent).filter(not(eq(node)));
 
 export const concatAll = xs => ys => ys.reduce((zs, z) => zs.concat(z), xs);

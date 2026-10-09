@@ -9,15 +9,11 @@ export default class RequiredValidationError extends BaseValidationError {
 
   print() {
     const { message, params } = this.options;
-    const output = [
-      styleText('red', styleText('bold', 'REQUIRED') + ' ' + message) + '\n',
-    ];
+    const output = [styleText('red', styleText('bold', 'REQUIRED') + ' ' + message) + '\n'];
 
     return output.concat(
       this.getCodeFrame(
-        '☹️  ' +
-          styleText('magentaBright', params.missingProperty) +
-          ' is missing here!'
+        '☹️  ' + styleText('magentaBright', params.missingProperty) + ' is missing here!'
       )
     );
   }

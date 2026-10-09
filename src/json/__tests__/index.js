@@ -57,15 +57,11 @@ describe('JSON', () => {
 
   it('can work with unescaped JSON pointers with ~1', async () => {
     const jsonAst = await loadScenario(5);
-    expect(
-      getMetaFromPath(jsonAst, '/foo/~1some~1path/value')
-    ).toMatchSnapshot();
+    expect(getMetaFromPath(jsonAst, '/foo/~1some~1path/value')).toMatchSnapshot();
   });
 
   it('can work with unescaped JSON pointers with ~0', async () => {
     const jsonAst = await loadScenario(5);
-    expect(
-      getMetaFromPath(jsonAst, '/foo/~0some~0path/value')
-    ).toMatchSnapshot();
+    expect(getMetaFromPath(jsonAst, '/foo/~0some~0path/value')).toMatchSnapshot();
   });
 });

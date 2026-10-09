@@ -33,10 +33,7 @@ describe('Main', () => {
   });
 
   it('should output errors for multiple required values', async () => {
-    const [schema, data, json] = await getSchemaAndData(
-      'multiple-required',
-      __dirname
-    );
+    const [schema, data, json] = await getSchemaAndData('multiple-required', __dirname);
     const ajv = new Ajv({ allErrors: true });
     const validate = ajv.compile(schema);
     const valid = validate(data);

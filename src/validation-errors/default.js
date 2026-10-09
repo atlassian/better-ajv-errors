@@ -5,16 +5,11 @@ export default class DefaultValidationError extends BaseValidationError {
   print() {
     const { keyword, message } = this.options;
     const output = [
-      styleText(
-        'red',
-        styleText('bold', keyword.toUpperCase()) + ' ' + message
-      ) + '\n',
+      styleText('red', styleText('bold', keyword.toUpperCase()) + ' ' + message) + '\n',
     ];
 
     return output.concat(
-      this.getCodeFrame(
-        '👈🏽  ' + styleText('magentaBright', keyword) + ' ' + message
-      )
+      this.getCodeFrame('👈🏽  ' + styleText('magentaBright', keyword) + ' ' + message)
     );
   }
 
