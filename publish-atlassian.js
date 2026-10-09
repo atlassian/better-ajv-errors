@@ -12,7 +12,7 @@
  *   --userconfig  Path to npmrc file for authentication (for CI)
  */
 
-import { execSync } from 'node:child_process';
+import { execFileSync } from 'node:child_process';
 import { mkdtempSync, rmSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
@@ -42,9 +42,10 @@ function parseArgs() {
   return options;
 }
 
-function run(cmd, options = {}) {
-  console.log(`$ ${cmd}`);
-  return execSync(cmd, { stdio: 'inherit', ...options });
+// Arguments go to the process without a shell, so paths with spaces or shell metacharacters stay intact.
+function run(file, args, options = {}) {
+  console.log(`$ ${[file, ...args].join(' ')}`);
+  return execFileSync(file, args, { stdio: 'inherit', ...options });
 }
 
 function main() {
@@ -68,7 +69,7 @@ function main() {
 
     // Pack the package directly into the root directory
     // Use --ignore-scripts to avoid prepare script interfering
-    run(`npm pack --ignore-scripts --pack-destination "${rootDir}"`);
+    run('npm', ['pack', '--ignore-scripts', '--pack-destination', rootDir]);
 
     if (!existsSync(tarballPath)) {
       throw new Error(`Tarball not found at ${tarballPath}. Did npm pack succeed?`);
@@ -77,7 +78,7 @@ function main() {
     console.log(`\nCreated tarball: ${tarballName}\n`);
 
     // Extract tarball to temp dir
-    run(`tar -xzf "${tarballPath}" -C "${tempDir}"`);
+    run('tar', ['-xzf', tarballPath, '-C', tempDir]);
 
     // Modify package.json in extracted package
     const extractedPkgPath = join(tempDir, 'package', 'package.json');
@@ -94,12 +95,15 @@ function main() {
 
     // Publish from the extracted directory
     // Use --ignore-scripts to skip lifecycle scripts (prepare, etc.) since we're in a temp dir without node_modules
-    const userConfigFlag = options.userconfig ? ` --userconfig=${options.userconfig}` : '';
-    const publishCmd = options.dryRun
-      ? `npm publish --dry-run --ignore-scripts --tag ${options.tag}${userConfigFlag}`
-      : `npm publish --ignore-scripts --tag ${options.tag}${userConfigFlag}`;
+    const publishArgs = ['publish', '--ignore-scripts', '--tag', options.tag];
+    if (options.dryRun) {
+      publishArgs.push('--dry-run');
+    }
+    if (options.userconfig) {
+      publishArgs.push(`--userconfig=${options.userconfig}`);
+    }
 
-    run(publishCmd, { cwd: join(tempDir, 'package') });
+    run('npm', publishArgs, { cwd: join(tempDir, 'package') });
 
     // Clean up the original tarball
     rmSync(tarballPath);
