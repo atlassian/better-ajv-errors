@@ -1,5 +1,5 @@
 [settings]
-idiomatic_version_file_enable_tools = ["pnpm"]
+idiomatic_version_file_enable_tools = ["node", "pnpm"]
 
 [tools]
 actionlint = "1.7.12"
