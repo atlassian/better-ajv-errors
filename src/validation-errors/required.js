@@ -23,7 +23,7 @@ export default class RequiredValidationError extends BaseValidationError {
 
     return {
       ...this.getLocation(),
-      error: `${this.getDecoratedPath()} ${message}`,
+      error: this.withDecoratedPath(message),
       path: this.instancePath,
     };
   }

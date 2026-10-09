@@ -28,9 +28,9 @@ export default class AdditionalPropValidationError extends BaseValidationError {
 
     return {
       ...this.getLocation(`${this.instancePath}/${params.additionalProperty}`),
-      error: `${this.getDecoratedPath()} Property ${
-        params.additionalProperty
-      } is not expected to be here`,
+      error: this.withDecoratedPath(
+        `Property ${params.additionalProperty} is not expected to be here`
+      ),
       path: this.instancePath,
     };
   }

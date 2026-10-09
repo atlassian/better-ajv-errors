@@ -24,6 +24,12 @@ export default class BaseValidationError {
     return decoratedPath;
   }
 
+  // The decorated path is empty at the root, where the message stands alone.
+  withDecoratedPath(message, separator = ' ') {
+    const decoratedPath = this.getDecoratedPath();
+    return decoratedPath ? `${decoratedPath}${separator}${message}` : message;
+  }
+
   getCodeFrame(message, dataPath = this.instancePath) {
     return codeFrameColumns(this.jsonRaw, this.getLocation(dataPath), {
       highlightCode: true,
