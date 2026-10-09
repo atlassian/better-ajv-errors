@@ -19,7 +19,7 @@ $ # Or
 $ yarn add better-ajv-errors
 ```
 
-Also make sure that you installed [ajv](https://www.npmjs.com/package/ajv) package to validate data against JSON schemas.
+Also install [ajv](https://www.npmjs.com/package/ajv), version 4.11.8 to 8, to validate data against JSON schemas. `better-ajv-errors` requires Node.js 22 or later.
 
 ## Usage
 
@@ -33,8 +33,9 @@ import betterAjvErrors from 'better-ajv-errors';
 // Or
 // const { default: betterAjvErrors } = require('better-ajv-errors');
 
-// You need to pass `{ jsonPointers: true }` for older versions of ajv
-const ajv = new Ajv();
+// `allErrors` makes ajv report every error instead of stopping at the first one.
+// ajv 6 and older also need `jsonPointers: true`.
+const ajv = new Ajv({ allErrors: true });
 
 // Load schema and data
 const schema = ...;
@@ -48,6 +49,11 @@ if (!valid) {
   console.log(output);
 }
 ```
+
+`better-ajv-errors` leaves out errors that another error usually explains:
+
+- A missing `required` property hides the other errors reported for that object, such as `additionalProperties`.
+- An `enum` error is hidden when another error is reported at the same level.
 
 ## API
 
@@ -71,7 +77,7 @@ The JSON payload you validate against using `ajv`
 
 Type: `Array`
 
-Array of [ajv validation errors](https://github.com/epoberezkin/ajv#validation-errors)
+Array of [ajv validation errors](https://ajv.js.org/api.html#validation-errors)
 
 #### options
 
@@ -95,11 +101,14 @@ Or, use `js` if you are planning to use this with some API. Your output will loo
     start: { line: 6, column: 15, offset: 70 },
     end: { line: 6, column: 26, offset: 81 },
     error:
-      '/content/0/type should be equal to one of the allowed values: panel, paragraph, ...',
+      '/content/0/type must be equal to one of the allowed values: paragraph, codeBlock, blockquote',
+    path: '/content/0/type',
     suggestion: 'Did you mean paragraph?',
   },
 ];
 ```
+
+`path` is the `instancePath` of the ajv error. `end` is left out for `required` errors, and `suggestion` appears on some `enum` errors, naming the allowed value closest to the actual one.
 
 ##### indent
 
@@ -108,7 +117,7 @@ Default: `null`
 
 If you have an unindented JSON payload and you want the error output indented.
 
-This option have no effect when using the `json` option.
+This option has no effect when using the `json` option.
 
 ##### json
 
