@@ -1,3 +1,4 @@
+import { stripVTControlCharacters } from 'node:util';
 import Ajv from 'ajv';
 import { describe, it, expect } from 'vite-plus/test';
 import { getSchemaAndData } from '../test-helpers';
@@ -45,6 +46,34 @@ describe('Main', () => {
     });
 
     expect(res).toMatchSnapshot();
+  });
+
+  it('should not throw for non-string values in an enum', () => {
+    const schema = { type: 'object', properties: { kind: { enum: [['a', 'b'], 'c'] } } };
+    const data = { kind: 'd' };
+    const validate = new Ajv().compile(schema);
+    expect(validate(data)).toBeFalsy();
+
+    expect(() => betterAjvErrors(schema, data, validate.errors)).not.toThrow();
+    const res = betterAjvErrors(schema, data, validate.errors, { format: 'js' });
+    expect(res).toEqual([
+      {
+        start: { line: 1, column: 9, offset: 8 },
+        end: { line: 1, column: 12, offset: 11 },
+        error: '/kind must be equal to one of the allowed values: a,b, c',
+        path: '/kind',
+      },
+    ]);
+  });
+
+  it('should suggest the only allowed value of an enum when it is not a string', () => {
+    const schema = { type: 'object', properties: { count: { enum: [5] } } };
+    const data = { count: 6 };
+    const validate = new Ajv().compile(schema);
+    expect(validate(data)).toBeFalsy();
+
+    const res = stripVTControlCharacters(betterAjvErrors(schema, data, validate.errors));
+    expect(res).toContain('Did you mean 5 here?');
   });
 
   it('should point at the last duplicate key when using the json option', () => {

@@ -23,7 +23,7 @@ export default class EnumValidationError extends BaseValidationError {
     return output.concat(
       this.getCodeFrame(
         bestMatch !== null
-          ? '👈🏽  Did you mean ' + styleText('magentaBright', bestMatch) + ' here?'
+          ? '👈🏽  Did you mean ' + styleText('magentaBright', String(bestMatch)) + ' here?'
           : '👈🏽  Unexpected value, should be equal to one of the allowed values'
       )
     );
@@ -62,7 +62,8 @@ export default class EnumValidationError extends BaseValidationError {
     const bestMatch = allowedValues
       .map(value => ({
         value,
-        weight: value !== null ? leven(value, currentValue.toString()) : Infinity,
+        // leven compares strings, so other allowed values cannot be a close match.
+        weight: typeof value === 'string' ? leven(value, currentValue.toString()) : Infinity,
       }))
       .sort((x, y) => (x.weight > y.weight ? 1 : x.weight < y.weight ? -1 : 0))[0];
 
