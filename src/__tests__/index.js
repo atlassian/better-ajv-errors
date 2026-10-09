@@ -1,5 +1,5 @@
 import Ajv from 'ajv';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect } from 'vite-plus/test';
 import { getSchemaAndData } from '../test-helpers';
 import betterAjvErrors from '../';
 

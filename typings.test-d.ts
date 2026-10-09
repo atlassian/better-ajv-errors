@@ -1,4 +1,4 @@
-import { test, expectTypeOf } from 'vitest'
+import { test, expectTypeOf } from 'vite-plus/test'
 import betterAjvErrors, { type IOutputError } from 'better-ajv-errors';
 
 test('types', () => {

@@ -6,3 +6,4 @@
 .env
 .direnv
 yarn.lock
+.vitest/

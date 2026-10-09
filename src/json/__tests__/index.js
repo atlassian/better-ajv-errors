@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect } from 'vite-plus/test';
 import { readFileSync } from 'fs';
 const { parse } = require('@humanwhocodes/momoa');
 import { getFixturePath } from 'jest-fixtures';
