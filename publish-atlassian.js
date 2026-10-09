@@ -12,10 +12,10 @@
  *   --userconfig  Path to npmrc file for authentication (for CI)
  */
 
-const { execSync } = require('node:child_process');
-const { mkdtempSync, rmSync, readFileSync, writeFileSync, existsSync } = require('node:fs');
-const { tmpdir } = require('node:os');
-const { join, resolve } = require('node:path');
+import { execSync } from 'node:child_process';
+import { mkdtempSync, rmSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join, resolve } from 'node:path';
 
 const ATLASSIAN_NAME = '@atlassian/better-ajv-errors';
 const ATLASSIAN_REGISTRY = 'https://packages.atlassian.com/api/npm/npm-public/';

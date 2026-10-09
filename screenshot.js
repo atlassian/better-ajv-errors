@@ -1,10 +1,10 @@
 // iTerm2 Theme: https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/deep.itermcolors
-const Ajv = require('ajv');
+import Ajv from 'ajv';
 
-const schema = require('./src/__fixtures__/default/schema.json');
-const data = require('./src/__fixtures__/default/data.json');
+import schema from './src/__fixtures__/default/schema.json' with { type: 'json' };
+import data from './src/__fixtures__/default/data.json' with { type: 'json' };
 
-const betterAjvErrors = require('.').default;
+import betterAjvErrors from 'better-ajv-errors';
 
 // options can be passed, e.g. {allErrors: true}
 // const ajv = new Ajv({ allErrors: true, async: 'es7' });

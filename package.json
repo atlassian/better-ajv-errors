@@ -3,20 +3,21 @@
   "version": "2.0.4",
   "description": "JSON Schema validation for Human",
   "repository": "atlassian/better-ajv-errors",
-  "main": "./lib/cjs/index.js",
+  "main": "./lib/index.cjs",
   "types": "./typings.d.cts",
-  "type": "commonjs",
+  "type": "module",
   "exports": {
     "require": {
       "types": "./typings.d.cts",
-      "default": "./lib/cjs/index.js"
+      "default": "./lib/index.cjs"
     },
     "import": {
       "types": "./typings.d.mts",
-      "default": "./lib/esm/index.mjs"
+      "default": "./lib/index.js"
     }
   },
-  "module": "./lib/esm/index.mjs",
+  "module": "./lib/index.js",
+  "sideEffects": false,
   "engines": {
     "node": ">= 22"
   },
@@ -39,9 +40,7 @@
   ],
   "scripts": {
     "prebuild": "rm -rf lib",
-    "build": "npm run build:cjs && npm run build:esm",
-    "build:cjs": "node build.js --cjs",
-    "build:esm": "node build.js",
+    "build": "node build.js",
     "prerelease": "npm run build",
     "release": "changeset publish",
     "release:atlassian": "node publish-atlassian.js",
@@ -51,7 +50,7 @@
     "lint:actions": "actionlint && zizmor .github/workflows",
     "test": "vitest",
     "test-ci": "vitest --coverage",
-    "prescreenshot": "npm run build:cjs",
+    "prescreenshot": "npm run build",
     "screenshot": "svg-term --command='node screenshot' --out=./media/screenshot.svg --padding=5 --width=80 --height=13 --at=1000 --no-cursor --term iterm2 --profile='deep' --window",
     "prepare": "is-ci || husky install"
   },
@@ -71,7 +70,6 @@
     "ajv": "^8.20.0",
     "esbuild": "^0.28.2",
     "eslint": "^10.12.0",
-    "fast-glob": "^3.3.3",
     "flow-bin": "^0.335.0",
     "git-format-staged": "^4.0.2",
     "globals": "^17.13.0",

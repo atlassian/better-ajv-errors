@@ -1,18 +1,18 @@
-const { defineConfig } = require("eslint/config");
+import { defineConfig } from "eslint/config";
 
-const globals = require("globals");
-const vitest = require("@vitest/eslint-plugin");
-const js = require("@eslint/js");
+import globals from "globals";
+import vitest from "@vitest/eslint-plugin";
+import js from "@eslint/js";
 
-const { FlatCompat } = require("@eslint/eslintrc");
+import { FlatCompat } from "@eslint/eslintrc";
 
 const compat = new FlatCompat({
-  baseDirectory: __dirname,
+  baseDirectory: import.meta.dirname,
   recommendedConfig: js.configs.recommended,
   allConfig: js.configs.all
 });
 
-module.exports = defineConfig([{
+export default defineConfig([{
   files: ["src/**/*.js"],
   languageOptions: {
     globals: {
