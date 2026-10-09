@@ -15,7 +15,7 @@ import {
   DefaultValidationError,
 } from './validation-errors/index';
 
-const JSON_POINTERS_REGEX = /\/[\w_-]+(\/\d+)?/g;
+const JSON_POINTERS_REGEX = /\/[^/]*(\/\d+)?/g;
 
 // Make a tree of errors from ajv errors array
 export function makeTree(ajvErrors = []) {
@@ -43,8 +43,8 @@ export function makeTree(ajvErrors = []) {
 
 export function filterRedundantErrors(root, parent, key) {
   /**
-    * Partition out the errors by kind for ease of proceessing
-    */
+   * Partition out the errors by kind for ease of proceessing
+   */
   const { anyOfErrors, enumErrors, requiredErrors } = getErrors(root).reduce(
     (acc, error) => {
       if (isRequiredError(error)) {
@@ -63,14 +63,14 @@ export function filterRedundantErrors(root, parent, key) {
 
       return acc;
     },
-    { anyOfErrors: [], enumErrors: [], requiredErrors: [] },
+    { anyOfErrors: [], enumErrors: [], requiredErrors: [] }
   );
 
   /**
    * If there is are `required` errors then we can just drop every non-required error.
    * And, also `required` should have more priority than `anyOf`. @see #8
    */
-  
+
   if (requiredErrors.length > 0) {
     root.errors = requiredErrors;
     root.children = {};
@@ -93,7 +93,7 @@ export function filterRedundantErrors(root, parent, key) {
   /**
    * If all errors are `enum` and siblings have any error then we can safely
    * ignore the node. As we return early if there's required errors, we only
-    * need to check anyofErrors length
+   * need to check anyofErrors length
    *
    * **CAUTION**
    * Need explicit `root.errors` check because `[].every(fn) === true`

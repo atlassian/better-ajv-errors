@@ -49,6 +49,17 @@ describe('makeTree', () => {
     `);
   });
 
+  it('preserves escaped and Unicode JSON pointer segments', async () => {
+    const error = { instancePath: '/root/~0tilde/~1slash/名前' };
+    const tree = makeTree([error]);
+
+    expect(
+      tree.children['/root'].children['/~0tilde'].children['/~1slash'].children[
+        '/名前'
+      ].errors
+    ).toEqual([error]);
+  });
+
   it('works on array dataPath', async () => {
     expect(
       makeTree([{ dataPath: '/root/child/0' }, { dataPath: '/root/child/1' }])
