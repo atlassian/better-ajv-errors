@@ -15,7 +15,7 @@
 const { execSync } = require('node:child_process');
 const { mkdtempSync, rmSync, readFileSync, writeFileSync, existsSync } = require('node:fs');
 const { tmpdir } = require('node:os');
-const { join } = require('node:path');
+const { join, resolve } = require('node:path');
 
 const ATLASSIAN_NAME = '@atlassian/better-ajv-errors';
 const ATLASSIAN_REGISTRY = 'https://packages.atlassian.com/api/npm/npm-public/';
@@ -34,7 +34,8 @@ function parseArgs() {
     } else if (args[i] === '--tag' && args[i + 1]) {
       options.tag = args[++i];
     } else if (args[i] === '--userconfig' && args[i + 1]) {
-      options.userconfig = args[++i];
+      // `npm publish` runs in a temp directory, so a relative path would not find the file.
+      options.userconfig = resolve(args[++i]);
     }
   }
 
