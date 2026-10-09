@@ -15,7 +15,7 @@ export default class EnumValidationError extends BaseValidationError {
     const [firstValue, ...rest] = allowedValues;
     const allowedValuesMessage = rest.reduce(
       (acc, value) => `${acc}, ${value}`,
-      firstValue || '',
+      firstValue || ''
     );
 
     const output = [
@@ -26,7 +26,9 @@ export default class EnumValidationError extends BaseValidationError {
     return output.concat(
       this.getCodeFrame(
         bestMatch !== null
-          ? '👈🏽  Did you mean ' + styleText('magentaBright', bestMatch) + ' here?'
+          ? '👈🏽  Did you mean ' +
+              styleText('magentaBright', bestMatch) +
+              ' here?'
           : '👈🏽  Unexpected value, should be equal to one of the allowed values'
       )
     );
@@ -67,9 +69,8 @@ export default class EnumValidationError extends BaseValidationError {
     const bestMatch = allowedValues
       .map(value => ({
         value,
-        weight: value !== null
-          ? leven(value, currentValue.toString())
-          : Infinity,
+        weight:
+          value !== null ? leven(value, currentValue.toString()) : Infinity,
       }))
       .sort((x, y) =>
         x.weight > y.weight ? 1 : x.weight < y.weight ? -1 : 0

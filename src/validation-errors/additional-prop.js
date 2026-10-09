@@ -10,12 +10,17 @@ export default class AdditionalPropValidationError extends BaseValidationError {
   print() {
     const { message, params } = this.options;
     const output = [
-      styleText('red', styleText('bold', 'ADDITIONAL PROPERTY') + ' ' + message) + '\n',
+      styleText(
+        'red',
+        styleText('bold', 'ADDITIONAL PROPERTY') + ' ' + message
+      ) + '\n',
     ];
 
     return output.concat(
       this.getCodeFrame(
-        '😲  ' + styleText('magentaBright', params.additionalProperty) + ' is not expected to be here!',
+        '😲  ' +
+          styleText('magentaBright', params.additionalProperty) +
+          ' is not expected to be here!',
         `${this.instancePath}/${params.additionalProperty}`
       )
     );
@@ -26,8 +31,9 @@ export default class AdditionalPropValidationError extends BaseValidationError {
 
     return {
       ...this.getLocation(`${this.instancePath}/${params.additionalProperty}`),
-      error: `${this.getDecoratedPath()} Property ${params.additionalProperty
-        } is not expected to be here`,
+      error: `${this.getDecoratedPath()} Property ${
+        params.additionalProperty
+      } is not expected to be here`,
       path: this.instancePath,
     };
   }

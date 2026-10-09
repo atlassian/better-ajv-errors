@@ -24,7 +24,6 @@ export default defineConfig([{
     parserOptions: {},
   },
 
-  // extends: compat.extends("eslint:recommended", "plugin:prettier/recommended"),
   extends: compat.extends("eslint:recommended"),
 
   plugins: {

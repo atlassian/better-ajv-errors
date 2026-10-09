@@ -15,7 +15,9 @@ export default class RequiredValidationError extends BaseValidationError {
 
     return output.concat(
       this.getCodeFrame(
-        '☹️  ' + styleText('magentaBright', params.missingProperty) + ' is missing here!'
+        '☹️  ' +
+          styleText('magentaBright', params.missingProperty) +
+          ' is missing here!'
       )
     );
   }
