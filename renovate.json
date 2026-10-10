@@ -1,12 +1,18 @@
 {
   "extends": [
-    "config:base"
+    "config:recommended"
   ],
   "rangeStrategy": "replace",
   "packageRules": [
     {
-      "matchPackageNames": ["@babel/code-frame", "leven"],
-      "matchUpdateTypes": ["major"],
+      "matchPackageNames": [
+        "@babel/code-frame",
+        "leven",
+        "node"
+      ],
+      "matchUpdateTypes": [
+        "major"
+      ],
       "enabled": false
     }
   ]
