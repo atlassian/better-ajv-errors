@@ -45,10 +45,10 @@
   "scripts": {
     "build": "vp pack",
     "prerelease": "npm run build",
-    "release": "changeset publish",
+    "release": "pnpm publish",
     "release:atlassian": "node publish-atlassian.js",
-    "format": "vp fmt './src/**/*.js' './.changeset/*.json'",
-    "format:check": "vp fmt --check './src/**/*.js' './.changeset/*.json'",
+    "format": "vp fmt './src/**/*.js'",
+    "format:check": "vp fmt --check './src/**/*.js'",
     "prelint": "npm run build",
     "lint": "vp lint && publint",
     "lint:actions": "actionlint && zizmor .github/workflows",
@@ -65,7 +65,6 @@
     "leven": "^3.1.0 < 4"
   },
   "devDependencies": {
-    "@changesets/cli": "^3.0.3",
     "@vitest/coverage-v8": "catalog:",
     "@vitest/ui": "catalog:",
     "ajv": "^8.20.0",

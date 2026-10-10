@@ -70,6 +70,5 @@ export default defineConfig({
   },
   staged: {
     'src/**/*.js': 'vp fmt',
-    '.changeset/*.json': 'vp fmt',
   },
 });

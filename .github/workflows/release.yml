@@ -21,28 +21,39 @@ jobs:
       contents: read
     outputs:
       mode: ${{ steps.select-mode.outputs.mode }}
-      publish-plan-artifact-id: ${{ steps.select-mode.outputs.publish-plan-artifact-id }}
+      version: ${{ steps.select-mode.outputs.version }}
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
-      - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
-        name: Install pnpm
-
-      - name: Use Node.js 24.x
-        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+      - name: Install pnpm
+        uses: pnpm/setup@fbda4c85fc2e1e08721cd8763afea8f48d60f024 # v3.0.0
         with:
-          node-version: 24.x
-          package-manager-cache: false
+          install: false
 
-      - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Select Changesets mode
+      # `publish` when the current version is not on npm yet, otherwise `version` when the change intents bump it.
+      # Publish comes first: for an unpublished version, `pnpm version -r` adds the intents to that version
+      # instead of bumping it, which writes a second section with the same heading into `CHANGELOG.md`.
+      # Intents that decline a release (`pnpm change --bump none`) bump nothing, so they wait for the next release.
+      - name: Select mode
         id: select-mode
-        uses: changesets/action/select-mode@ae32849d5ba541f9ae29e40e22a623bc13562f51 # v2.1.2
+        run: |
+          version=$(jq -r .version package.json)
+          published=$(pnpm view better-ajv-errors versions --json)
+          if ! jq -e --arg version "$version" 'any(.[]; . == $version)' <<< "$published" > /dev/null; then
+            mode=publish
+          else
+            pnpm version -r
+            if [ "$(jq -r .version package.json)" != "$version" ]; then
+              mode=version
+            else
+              mode=none
+            fi
+          fi
+          echo "mode=$mode" >> "$GITHUB_OUTPUT"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
 
   version:
     name: Version
@@ -50,30 +61,24 @@ jobs:
     if: needs.select-mode.outputs.mode == 'version'
     runs-on: ubuntu-latest
     permissions:
-      contents: write # to push the version commit
+      contents: write # to push the release branch
       pull-requests: write # to open the release pull request
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          # Changesets reads the full history to link each changelog entry to its commit.
-          fetch-depth: 0
           persist-credentials: false
 
-      - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
-        name: Install pnpm
-
-      - name: Use Node.js 24.x
-        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+      - name: Install pnpm
+        uses: pnpm/setup@fbda4c85fc2e1e08721cd8763afea8f48d60f024 # v3.0.0
         with:
-          node-version: 24.x
-          package-manager-cache: false
+          install: false
 
-      - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
-
+      # With `script`, the action runs pnpm instead of the Changesets CLI and reads the intents and `CHANGELOG.md` itself.
       - name: Create or update the release pull request
         uses: changesets/action/version@ae32849d5ba541f9ae29e40e22a623bc13562f51 # v2.1.2
+        with:
+          script: pnpm version -r
 
   pack:
     name: Pack
@@ -82,77 +87,89 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-    outputs:
-      pack-dir-artifact-id: ${{ steps.pack.outputs.pack-dir-artifact-id }}
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
-      - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
-        name: Install pnpm
-
-      - name: Use Node.js 24.x
-        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+      - name: Install pnpm, Node.js and dependencies
+        uses: pnpm/setup@fbda4c85fc2e1e08721cd8763afea8f48d60f024 # v3.0.0
         with:
-          node-version: 24.x
-          package-manager-cache: false
-
-      - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
+          runtime: node@24
 
       - name: Build
         run: pnpm run build
 
-      - name: Pack packages
-        id: pack
-        uses: changesets/action/pack@ae32849d5ba541f9ae29e40e22a623bc13562f51 # v2.1.2
+      - name: Pack
+        run: pnpm pack --pack-destination "$RUNNER_TEMP/package"
+
+      - name: Upload the package
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
-          publish-plan-artifact-id: ${{ needs.select-mode.outputs.publish-plan-artifact-id }}
+          name: package
+          path: ${{ runner.temp }}/package/
+          if-no-files-found: error
 
   publish:
     name: Publish to npm
-    needs: pack
+    needs: [select-mode, pack]
     runs-on: ubuntu-latest
     # npm's trusted publisher matches this workflow's filename and environment.
     # The `npm` environment only allows deployments from `main`.
     environment: npm
     permissions:
-      contents: write # to push tags and create GitHub releases
+      contents: read
       id-token: write # for npm trusted publishing
-    outputs:
-      published: ${{ steps.publish.outputs.published }}
+    steps:
+      # pnpm/setup reads the pnpm version from `packageManager` in `package.json`.
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Install pnpm
+        uses: pnpm/setup@fbda4c85fc2e1e08721cd8763afea8f48d60f024 # v3.0.0
+        with:
+          install: false
+
+      - name: Download the package
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: package
+          path: ${{ runner.temp }}/package
+
+      # This job can mint an npm token, so it installs no dependencies and publishes the tarball built by `pack`.
+      # pnpm exchanges the OIDC token for the npm token itself.
+      # The tarball doesn't come from this checkout, so pnpm's git checks have nothing to check.
+      - name: Publish
+        env:
+          VERSION: ${{ needs.select-mode.outputs.version }}
+        run: pnpm publish "$RUNNER_TEMP/package/better-ajv-errors-$VERSION.tgz" --provenance --no-git-checks
+
+  github-release:
+    name: Create GitHub release
+    needs: [select-mode, publish]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # to create the tag and the release
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
-      - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
-        name: Install pnpm
-
-      # Changesets publishes with `pnpm publish`, and pnpm exchanges the OIDC token itself.
-      - name: Use Node.js 24.x
-        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
-        with:
-          node-version: 24.x
-          package-manager-cache: false
-
-      # This job can mint an npm token, so it runs no install scripts and publishes the tarball built by `pack`.
-      - name: Install Dependencies
-        run: pnpm install --frozen-lockfile --ignore-scripts
-
-      - name: Publish packages
-        id: publish
-        uses: changesets/action/publish@ae32849d5ba541f9ae29e40e22a623bc13562f51 # v2.1.2
-        with:
-          pack-dir-artifact-id: ${{ needs.pack.outputs.pack-dir-artifact-id }}
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ needs.select-mode.outputs.version }}
+        run: |
+          awk -v heading="## $VERSION" '$0 == heading { found = 1; next } found && /^## / { exit } found && (NF || started) { started = 1; print }' CHANGELOG.md > "$RUNNER_TEMP/notes.md"
+          gh release create "v$VERSION" --target "$GITHUB_SHA" --title "v$VERSION" --notes-file "$RUNNER_TEMP/notes.md"
 
   publish-atlassian:
     name: Publish to Atlassian registry
     needs: publish
-    if: needs.publish.outputs.published == 'true'
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -163,17 +180,18 @@ jobs:
         with:
           persist-credentials: false
 
-      - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
-        name: Install pnpm
-
+      # `publish-atlassian.js` runs npm, which comes with setup-node but not with pnpm's Node.js runtime.
       - name: Use Node.js 24.x
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 24.x
           package-manager-cache: false
 
-      - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
+      # `node-version-file: false` keeps the Node.js from setup-node instead of installing the one in `.node-version`.
+      - name: Install pnpm and dependencies
+        uses: pnpm/setup@fbda4c85fc2e1e08721cd8763afea8f48d60f024 # v3.0.0
+        with:
+          node-version-file: false
 
       - name: Build
         run: pnpm run build

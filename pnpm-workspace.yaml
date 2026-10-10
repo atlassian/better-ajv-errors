@@ -27,3 +27,7 @@ peerDependencyRules:
   allowedVersions:
     vite: '*'
     vitest: '*'
+versioning:
+  changelog:
+    # Keeps `CHANGELOG.md` in the repository, where the Release workflow reads the release notes.
+    storage: repository
