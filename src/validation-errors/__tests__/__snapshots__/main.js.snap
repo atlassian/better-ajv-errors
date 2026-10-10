@@ -80,7 +80,7 @@ exports[`Main > should support js output format for unevaluatedProperties errors
       "line": 1,
       "offset": 26,
     },
-    "error": " Property baz is not expected to be here",
+    "error": "Property baz is not expected to be here",
     "path": "",
     "start": {
       "column": 22,

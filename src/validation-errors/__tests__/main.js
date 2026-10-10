@@ -48,10 +48,7 @@ describe('Main', () => {
   });
 
   it('should support js output format for unevaluatedProperties errors', async () => {
-    const [schema, data] = await getSchemaAndData(
-      'unevaluatedProperties',
-      __dirname
-    );
+    const [schema, data] = await getSchemaAndData('unevaluatedProperties', __dirname);
 
     const ajv = new Ajv2020();
     const validate = ajv.compile(schema);

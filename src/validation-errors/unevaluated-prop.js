@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+import { styleText } from 'node:util';
 import BaseValidationError from './base';
 
 export default class UnevaluatedPropValidationError extends BaseValidationError {
@@ -9,11 +9,15 @@ export default class UnevaluatedPropValidationError extends BaseValidationError 
 
   print() {
     const { message, params } = this.options;
-    const output = [chalk`{red {bold UNEVALUATED PROPERTY} ${message}}\n`];
+    const output = [
+      styleText('red', styleText('bold', 'UNEVALUATED PROPERTY') + ' ' + message) + '\n',
+    ];
 
     return output.concat(
       this.getCodeFrame(
-        chalk`😲  {magentaBright ${params.unevaluatedProperty}} is not expected to be here!`,
+        '😲  ' +
+          styleText('magentaBright', params.unevaluatedProperty) +
+          ' is not expected to be here!',
         `${this.instancePath}/${params.unevaluatedProperty}`
       )
     );
@@ -24,9 +28,9 @@ export default class UnevaluatedPropValidationError extends BaseValidationError 
 
     return {
       ...this.getLocation(`${this.instancePath}/${params.unevaluatedProperty}`),
-      error: `${this.getDecoratedPath()} Property ${
-        params.unevaluatedProperty
-      } is not expected to be here`,
+      error: this.withDecoratedPath(
+        `Property ${params.unevaluatedProperty} is not expected to be here`
+      ),
       path: this.instancePath,
     };
   }
