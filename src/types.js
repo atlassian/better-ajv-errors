@@ -1,13 +1,10 @@
 // @flow
 
-/*::
 export interface Error {
-  keyword: string
-};
+  keyword: string;
+}
 
 export interface Node {
-  children: {| [key: string]: Node |},
-  errors: Array<Error>
-};
-
-*/
+  children: {| [key: string]: Node |};
+  errors: Array<Error>;
+}
