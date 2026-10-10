@@ -3,6 +3,13 @@ import leven from 'leven';
 import pointer from 'jsonpointer';
 import BaseValidationError from './base';
 
+/**
+ * Formats a single value for display in error messages.
+ * Converts non-string values to their string representation to avoid
+ * null/undefined becoming empty strings in join operations.
+ */
+const formatValue = value => String(value);
+
 export default class EnumValidationError extends BaseValidationError {
   print() {
     const {
@@ -11,12 +18,7 @@ export default class EnumValidationError extends BaseValidationError {
     } = this.options;
     const bestMatch = this.findBestMatch();
 
-		// Needed to handle nullable enums, as joining on null just prints ", "
-		const [firstValue, ...rest] = allowedValues;
-		const allowedValuesMessage = rest.reduce(
-			(acc, value) => `${acc}, ${value}`,
-			firstValue || '',
-		);
+    const allowedValuesMessage = allowedValues.map(formatValue).join(', ');
 
     const output = [
       chalk`{red {bold ENUM} ${message}}`,
@@ -35,7 +37,7 @@ export default class EnumValidationError extends BaseValidationError {
   getError() {
     const { message, params } = this.options;
     const bestMatch = this.findBestMatch();
-    const allowedValues = params.allowedValues.join(', ');
+    const allowedValues = params.allowedValues.map(formatValue).join(', ');
 
     const output = {
       ...this.getLocation(),
@@ -67,15 +69,16 @@ export default class EnumValidationError extends BaseValidationError {
     const bestMatch = allowedValues
       .map(value => ({
         value,
-        weight: value !== null
-					? leven(value, currentValue.toString())
-					: Infinity,
+        weight:
+          value !== null
+            ? leven(String(value), currentValue.toString())
+            : Infinity,
       }))
       .sort((x, y) =>
         x.weight > y.weight ? 1 : x.weight < y.weight ? -1 : 0
       )[0];
 
-    return allowedValues.length === 1 ||
+    return typeof bestMatch.value === 'string' &&
       bestMatch.weight < bestMatch.value.length
       ? bestMatch.value
       : null;
