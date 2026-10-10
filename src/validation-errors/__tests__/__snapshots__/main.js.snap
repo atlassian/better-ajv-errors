@@ -1,5 +1,62 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`Main > should support js output format for 'maxItems' errors 1`] = `
+[
+  {
+    "end": {
+      "column": 8,
+      "line": 1,
+      "offset": 7,
+    },
+    "error": "/: Array must NOT have more than 2 items",
+    "path": "",
+    "start": {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+]
+`;
+
+exports[`Main > should support js output format for 'minItems' errors 1`] = `
+[
+  {
+    "end": {
+      "column": 8,
+      "line": 1,
+      "offset": 7,
+    },
+    "error": "/: Array must NOT have fewer than 4 items",
+    "path": "",
+    "start": {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+]
+`;
+
+exports[`Main > should support js output format for 'uniqueItem' errors 1`] = `
+[
+  {
+    "end": {
+      "column": 8,
+      "line": 1,
+      "offset": 7,
+    },
+    "error": "/: Array must NOT have duplicate items (items ## 1 and 0 are identical)",
+    "path": "",
+    "start": {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+]
+`;
+
 exports[`Main > should support js output format for additionalProperties errors 1`] = `
 [
   {

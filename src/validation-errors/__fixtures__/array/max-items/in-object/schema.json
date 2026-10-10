@@ -1,0 +1,13 @@
+{
+	"type": "object",
+	"properties": {
+		"foo": {
+			"type": "array",
+			"maxItems": 2,
+			"items": {
+				"type": "number"
+			}
+		}
+	}
+}
+
