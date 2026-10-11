@@ -1,3 +1,4 @@
+import { styleText } from 'node:util';
 import { codeFrameColumns } from '@babel/code-frame';
 import { getMetaFromPath, getDecoratedDataPath } from '../json/index';
 
@@ -30,11 +31,16 @@ export default class BaseValidationError {
     return decoratedPath ? `${decoratedPath}${separator}${message}` : message;
   }
 
+  // The path is empty at the root, so the frame is printed without it.
   getCodeFrame(message, dataPath = this.instancePath) {
-    return codeFrameColumns(this.jsonRaw, this.getLocation(dataPath), {
+    const codeFrame = codeFrameColumns(this.jsonRaw, this.getLocation(dataPath), {
       highlightCode: true,
       message,
     });
+
+    return dataPath
+      ? `${codeFrame}\n\n    ${styleText('yellow', '@')} ${styleText('gray', dataPath)}`
+      : codeFrame;
   }
 
   /**
