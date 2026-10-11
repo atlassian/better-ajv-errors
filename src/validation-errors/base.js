@@ -1,3 +1,4 @@
+import { styleText } from 'node:util';
 import { codeFrameColumns } from '@babel/code-frame';
 import { getMetaFromPath, getDecoratedDataPath } from '../json/index';
 
@@ -31,8 +32,10 @@ export default class BaseValidationError {
   }
 
   getCodeFrame(message, dataPath = this.instancePath) {
+    const color = styleText('red', '-') !== '-';
     return codeFrameColumns(this.jsonRaw, this.getLocation(dataPath), {
-      highlightCode: true,
+      highlightCode: color,
+      forceColor: color,
       message,
     });
   }
