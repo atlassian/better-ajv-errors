@@ -29,7 +29,7 @@ jobs:
           persist-credentials: false
 
       - name: Install pnpm
-        uses: pnpm/setup@fbda4c85fc2e1e08721cd8763afea8f48d60f024 # v3.0.0
+        uses: pnpm/setup@a0881977cd8ea73b1ed212236c99ca10dcc80cf4 # v3.1.1
         with:
           install: false
 
@@ -70,7 +70,7 @@ jobs:
           persist-credentials: false
 
       - name: Install pnpm
-        uses: pnpm/setup@fbda4c85fc2e1e08721cd8763afea8f48d60f024 # v3.0.0
+        uses: pnpm/setup@a0881977cd8ea73b1ed212236c99ca10dcc80cf4 # v3.1.1
         with:
           install: false
 
@@ -94,7 +94,7 @@ jobs:
           persist-credentials: false
 
       - name: Install pnpm, Node.js and dependencies
-        uses: pnpm/setup@fbda4c85fc2e1e08721cd8763afea8f48d60f024 # v3.0.0
+        uses: pnpm/setup@a0881977cd8ea73b1ed212236c99ca10dcc80cf4 # v3.1.1
         with:
           runtime: node@24
 
@@ -129,7 +129,7 @@ jobs:
           persist-credentials: false
 
       - name: Install pnpm
-        uses: pnpm/setup@fbda4c85fc2e1e08721cd8763afea8f48d60f024 # v3.0.0
+        uses: pnpm/setup@a0881977cd8ea73b1ed212236c99ca10dcc80cf4 # v3.1.1
         with:
           install: false
 
@@ -189,7 +189,7 @@ jobs:
 
       # `node-version-file: false` keeps the Node.js from setup-node instead of installing the one in `.node-version`.
       - name: Install pnpm and dependencies
-        uses: pnpm/setup@fbda4c85fc2e1e08721cd8763afea8f48d60f024 # v3.0.0
+        uses: pnpm/setup@a0881977cd8ea73b1ed212236c99ca10dcc80cf4 # v3.1.1
         with:
           node-version-file: false
 
