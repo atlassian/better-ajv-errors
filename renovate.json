@@ -6,7 +6,6 @@
   "packageRules": [
     {
       "matchPackageNames": [
-        "@babel/code-frame",
         "leven",
         "node"
       ],

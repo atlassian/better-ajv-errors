@@ -59,7 +59,6 @@
     "prepare": "is-ci || vp config"
   },
   "dependencies": {
-    "@babel/code-frame": "^7.29.7",
     "@humanwhocodes/momoa": "^3.3.13",
     "jsonpointer": "^5.0.1",
     "leven": "^3.1.0 < 4"

@@ -198,9 +198,6 @@ importers:
 
   .:
     dependencies:
-      '@babel/code-frame':
-        specifier: ^7.29.7
-        version: 7.29.7
       '@humanwhocodes/momoa':
         specifier: ^3.3.13
         version: 3.3.13
