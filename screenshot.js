@@ -1,4 +1,4 @@
-// iTerm2 Theme: https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/deep.itermcolors
+// Prints the CLI output as an asciicast v2 recording for `npm run screenshot` to pipe into svg-term.
 import Ajv from 'ajv';
 
 import schema from './src/__fixtures__/default/schema.json' with { type: 'json' };
@@ -19,5 +19,10 @@ const output = betterAjvErrors(schema, data, validate.errors, {
 });
 
 if (!valid) {
-  console.log(output);
+  // svg-term reads the size from its flags, but the header needs one.
+  console.log(JSON.stringify({ version: 2, width: 80, height: 13 }));
+  // A terminal's driver turns each line feed into a carriage return and line feed, and svg-term
+  // renders the bytes as they are. The event comes before the frame `--at=1000` renders, and one
+  // at 0 would make svg-term add a duplicate frame.
+  console.log(JSON.stringify([0.5, 'o', `${output}\n`.replaceAll('\n', '\r\n')]));
 }

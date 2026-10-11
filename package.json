@@ -55,7 +55,7 @@
     "test": "vp test",
     "test-ci": "vp test --coverage",
     "prescreenshot": "npm run build",
-    "screenshot": "svg-term --command='node screenshot' --out=./media/screenshot.svg --padding=5 --width=80 --height=13 --at=1000 --no-cursor --term iterm2 --profile='deep' --window",
+    "screenshot": "FORCE_COLOR=1 node screenshot | svg-term --out=./media/screenshot.svg --padding=5 --width=80 --height=13 --at=1000 --no-cursor --term xresources --profile=./media/deep.Xresources --window",
     "prepare": "is-ci || vp config"
   },
   "dependencies": {
