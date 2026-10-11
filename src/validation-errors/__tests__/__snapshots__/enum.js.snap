@@ -5,8 +5,8 @@ exports[`Enum > when enum does not include null > when value is a primitive > pr
   "ENUM should be equal to one of the allowed values",
   "(foo, bar)
 ",
-  "[0m[31m[1m>[22m[39m[90m 1 |[39m [32m"baz"[39m
- [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean bar here?[22m[39m[0m",
+  "> 1 | "baz"
+    | ^^^^^ 👈🏽  Did you mean bar here?",
 ]
 `;
 
@@ -15,8 +15,8 @@ exports[`Enum > when enum does not include null > when value is a primitive > pr
   "ENUM should be equal to one of the allowed values",
   "(foo, bar)
 ",
-  "[0m[31m[1m>[22m[39m[90m 1 |[39m [32m"baz"[39m
- [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean bar here?[22m[39m[0m",
+  "> 1 | "baz"
+    | ^^^^^ 👈🏽  Did you mean bar here?",
 ]
 `;
 
@@ -25,8 +25,8 @@ exports[`Enum > when enum does not include null > when value is a primitive > pr
   "ENUM should be equal to one of the allowed values",
   "(one, two)
 ",
-  "[0m[31m[1m>[22m[39m[90m 1 |[39m [32m"baz"[39m
- [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Unexpected value, should be equal to one of the allowed values[22m[39m[0m",
+  "> 1 | "baz"
+    | ^^^^^ 👈🏽  Unexpected value, should be equal to one of the allowed values",
 ]
 `;
 
@@ -35,10 +35,10 @@ exports[`Enum > when enum does not include null > when value is an object > prin
   "ENUM should be equal to one of the allowed values",
   "(foo, bar)
 ",
-  "[0m [90m 1 |[39m {
-[31m[1m>[22m[39m[90m 2 |[39m   [32m"id"[39m[33m:[39m [32m"baz"[39m
- [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean bar here?[22m[39m
- [90m 3 |[39m }[0m",
+  "  1 | {
+> 2 |   "id": "baz"
+    |         ^^^^^ 👈🏽  Did you mean bar here?
+  3 | }",
 ]
 `;
 
@@ -47,10 +47,10 @@ exports[`Enum > when enum does not include null > when value is an object > prin
   "ENUM should be equal to one of the allowed values",
   "(foo, bar)
 ",
-  "[0m [90m 1 |[39m {
-[31m[1m>[22m[39m[90m 2 |[39m   [32m"id"[39m[33m:[39m [32m"baz"[39m
- [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean bar here?[22m[39m
- [90m 3 |[39m }[0m",
+  "  1 | {
+> 2 |   "id": "baz"
+    |         ^^^^^ 👈🏽  Did you mean bar here?
+  3 | }",
 ]
 `;
 
@@ -59,10 +59,10 @@ exports[`Enum > when enum does not include null > when value is an object > prin
   "ENUM should be equal to one of the allowed values",
   "(one, two)
 ",
-  "[0m [90m 1 |[39m {
-[31m[1m>[22m[39m[90m 2 |[39m   [32m"id"[39m[33m:[39m [32m"baz"[39m
- [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Unexpected value, should be equal to one of the allowed values[22m[39m
- [90m 3 |[39m }[0m",
+  "  1 | {
+> 2 |   "id": "baz"
+    |         ^^^^^ 👈🏽  Unexpected value, should be equal to one of the allowed values
+  3 | }",
 ]
 `;
 
@@ -71,8 +71,8 @@ exports[`Enum > when enum includes null > when value is a primitive > prints cor
   "ENUM should be equal to one of the allowed values",
   "(foo, bar, null)
 ",
-  "[0m[31m[1m>[22m[39m[90m 1 |[39m [32m"baz"[39m
- [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean bar here?[22m[39m[0m",
+  "> 1 | "baz"
+    | ^^^^^ 👈🏽  Did you mean bar here?",
 ]
 `;
 
@@ -81,8 +81,8 @@ exports[`Enum > when enum includes null > when value is a primitive > prints cor
   "ENUM should be equal to one of the allowed values",
   "(foo, bar, null)
 ",
-  "[0m[31m[1m>[22m[39m[90m 1 |[39m [32m"baz"[39m
- [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean bar here?[22m[39m[0m",
+  "> 1 | "baz"
+    | ^^^^^ 👈🏽  Did you mean bar here?",
 ]
 `;
 
@@ -91,8 +91,8 @@ exports[`Enum > when enum includes null > when value is a primitive > prints cor
   "ENUM should be equal to one of the allowed values",
   "(one, two, null)
 ",
-  "[0m[31m[1m>[22m[39m[90m 1 |[39m [32m"baz"[39m
- [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Unexpected value, should be equal to one of the allowed values[22m[39m[0m",
+  "> 1 | "baz"
+    | ^^^^^ 👈🏽  Unexpected value, should be equal to one of the allowed values",
 ]
 `;
 
@@ -101,10 +101,10 @@ exports[`Enum > when enum includes null > when value is an object > prints corre
   "ENUM should be equal to one of the allowed values",
   "(foo, bar, null)
 ",
-  "[0m [90m 1 |[39m {
-[31m[1m>[22m[39m[90m 2 |[39m   [32m"id"[39m[33m:[39m [32m"baz"[39m
- [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean bar here?[22m[39m
- [90m 3 |[39m }[0m",
+  "  1 | {
+> 2 |   "id": "baz"
+    |         ^^^^^ 👈🏽  Did you mean bar here?
+  3 | }",
 ]
 `;
 
@@ -113,10 +113,10 @@ exports[`Enum > when enum includes null > when value is an object > prints corre
   "ENUM should be equal to one of the allowed values",
   "(foo, bar, null)
 ",
-  "[0m [90m 1 |[39m {
-[31m[1m>[22m[39m[90m 2 |[39m   [32m"id"[39m[33m:[39m [32m"baz"[39m
- [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Did you mean bar here?[22m[39m
- [90m 3 |[39m }[0m",
+  "  1 | {
+> 2 |   "id": "baz"
+    |         ^^^^^ 👈🏽  Did you mean bar here?
+  3 | }",
 ]
 `;
 
@@ -125,9 +125,9 @@ exports[`Enum > when enum includes null > when value is an object > prints corre
   "ENUM should be equal to one of the allowed values",
   "(one, two, null)
 ",
-  "[0m [90m 1 |[39m {
-[31m[1m>[22m[39m[90m 2 |[39m   [32m"id"[39m[33m:[39m [32m"baz"[39m
- [90m   |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m [31m[1m👈🏽  Unexpected value, should be equal to one of the allowed values[22m[39m
- [90m 3 |[39m }[0m",
+  "  1 | {
+> 2 |   "id": "baz"
+    |         ^^^^^ 👈🏽  Unexpected value, should be equal to one of the allowed values
+  3 | }",
 ]
 `;
