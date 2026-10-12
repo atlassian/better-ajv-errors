@@ -14,27 +14,13 @@ export default function getDecoratedDataPath(jsonAst, dataPath) {
         return member.value;
       }
       case 'Array': {
+        decoratedPath += `/${pointer}`;
         const element = obj.elements[pointer];
-        const value = element && element.value;
-        decoratedPath += `/${pointer}${getTypeName(value)}`;
-        return value;
+        return element && element.value;
       }
       default:
         console.log(obj);
     }
   }, jsonAst.body);
   return decoratedPath;
-}
-
-function getTypeName(obj) {
-  if (!obj || !obj.elements) {
-    return '';
-  }
-  const type = obj.elements.filter(child => child && child.name && child.name.value === 'type');
-
-  if (!type.length) {
-    return '';
-  }
-
-  return (type[0].value && `:${type[0].value.value}`) || '';
 }
