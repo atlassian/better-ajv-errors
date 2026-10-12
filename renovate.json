@@ -12,7 +12,6 @@
     },
     {
       "matchPackageNames": [
-        "leven",
         "node"
       ],
       "matchUpdateTypes": [
