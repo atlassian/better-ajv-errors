@@ -1,5 +1,5 @@
 import { stripVTControlCharacters } from 'node:util';
-import Ajv from 'ajv';
+import Ajv, { type SchemaObject } from 'ajv';
 import { describe, it, expect } from 'vite-plus/test';
 import { getSchemaAndData } from '../test-helpers';
 import betterAjvErrors from '../';
@@ -118,6 +118,23 @@ describe('Main', () => {
     ]);
   });
 
+  it('should name the part of the path that the json option is missing', () => {
+    const schema = {
+      type: 'object',
+      properties: { a: { type: 'array', items: { type: 'number' } } },
+    };
+    const data = { a: [1, 'x'] };
+    const validate = new Ajv().compile(schema);
+    expect(validate(data)).toBeFalsy();
+
+    expect(() => betterAjvErrors(schema, data, validate.errors, { json: '{"a": [1]}' })).toThrow(
+      "Couldn't find index 1 of /a/1"
+    );
+    expect(() => betterAjvErrors(schema, data, validate.errors, { json: '{"a": 5}' })).toThrow(
+      "Couldn't find 1 of /a/1"
+    );
+  });
+
   it('should point at the last duplicate key when using the json option', () => {
     // JSON.parse keeps the last value of a duplicate key, so that is what ajv validates.
     const json = '{\n  "a": { "b": 1 },\n  "a": { "b": "two" }\n}';
@@ -141,7 +158,7 @@ describe('Main', () => {
   });
 
   describe('property names with characters outside word characters and -', () => {
-    const getErrors = (schema, data) => {
+    const getErrors = (schema: SchemaObject, data: unknown) => {
       const validate = new Ajv({ allErrors: true }).compile(schema);
       expect(validate(data)).toBeFalsy();
       return betterAjvErrors(schema, data, validate.errors, { format: 'js' });

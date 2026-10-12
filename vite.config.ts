@@ -4,19 +4,23 @@ import { defineConfig } from 'vite-plus';
 export default defineConfig({
   resolve: {
     alias: {
-      'better-ajv-errors': path.resolve(import.meta.dirname, './src/index.js'),
+      'better-ajv-errors': path.resolve(import.meta.dirname, './src/index.ts'),
     },
   },
   test: {
-    include: ['src/**/__tests__/**/*.js', 'typings.test-d.ts'],
+    include: ['src/**/__tests__/**/*.ts', 'typings.test-d.ts'],
     env: {
       CI: 'true',
     },
     coverage: {
-      include: ['src/**/*.js'],
+      include: ['src/**/*.ts'],
     },
   },
   lint: {
+    options: {
+      typeAware: true,
+      typeCheck: true,
+    },
     categories: {
       correctness: 'error',
     },
@@ -38,7 +42,7 @@ export default defineConfig({
     },
     overrides: [
       {
-        files: ['src/**/*.js'],
+        files: ['src/**/*.ts'],
         plugins: ['vitest'],
         rules: {
           'vitest/no-commented-out-tests': 'error',
@@ -61,14 +65,14 @@ export default defineConfig({
     sortPackageJson: false,
   },
   pack: {
-    entry: 'src/index.js',
+    entry: 'src/index.ts',
     format: ['esm', 'cjs'],
     sourcemap: true,
-    dts: false,
-    // Keeps `require('better-ajv-errors').default`, which `typings.d.cts` describes.
+    dts: true,
+    // Keeps `require('better-ajv-errors').default`, which `dist/index.d.cts` describes.
     cjsDefault: false,
   },
   staged: {
-    'src/**/*.js': 'vp fmt',
+    'src/**/*.ts': 'vp fmt',
   },
 });
