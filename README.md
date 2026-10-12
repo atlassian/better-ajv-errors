@@ -17,6 +17,11 @@ Main goal of this library is to provide relevant error messages like the followi
 npm i better-ajv-errors
 ```
 
+### Atlassian internal
+```bash
+npm i @atlassian/better-ajv-errors
+```
+
 Also install [ajv](https://www.npmjs.com/package/ajv), version 4.11.8 to 8, to validate data against JSON schemas. `better-ajv-errors` requires Node.js 22 or later.
 
 ## Usage
