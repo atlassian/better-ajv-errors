@@ -1,5 +1,9 @@
 import { styleText } from 'node:util';
-import { tokenize } from '@humanwhocodes/momoa';
+import { tokenize, type Location, type TokenType } from '@humanwhocodes/momoa';
+
+type Format = Parameters<typeof styleText>[0];
+type Paint = (format: Format, text: string) => string;
+type Position = Pick<Location, 'line' | 'column'>;
 
 const LINES_ABOVE = 2;
 const LINES_BELOW = 3;
@@ -7,7 +11,7 @@ const LINES_BELOW = 3;
 // The line breaks momoa counts, so that its line numbers index into the split source.
 const NEWLINE = /\r\n|[\r\n]/;
 
-const TOKEN_STYLES = {
+const TOKEN_STYLES: Partial<Record<TokenType, Format>> = {
   String: 'green',
   Number: 'magenta',
   Boolean: 'cyan',
@@ -16,10 +20,10 @@ const TOKEN_STYLES = {
   Comma: 'yellow',
 };
 
-const MARKER_STYLE = ['red', 'bold'];
+const MARKER_STYLE: Format = ['red', 'bold'];
 
 // The check `styleText` makes for the headings, so that the frame is colored along with them.
-const supportsColor = () => styleText('red', '-') !== '-';
+const supportsColor = (): boolean => styleText('red', '-') !== '-';
 
 /**
  * Renders the lines of `source` around `location`, with carets under the located text and
@@ -27,18 +31,13 @@ const supportsColor = () => styleText('red', '-') !== '-';
  *
  * Lines and columns are 1-based and `end` is exclusive, as in momoa's locations. Without
  * `end`, a single caret marks `start`.
- *
- * @param {string} source
- * @param {{ start: { line: number, column: number }, end?: { line: number, column: number } }} location
- * @param {{ message?: string, color?: boolean }} [options]
- * @return {string}
  */
 export default function codeFrame(
-  source,
-  { start, end = start },
-  { message, color = supportsColor() } = {}
-) {
-  const paint = color
+  source: string,
+  { start, end = start }: { start: Position; end?: Position },
+  { message, color = supportsColor() }: { message?: string; color?: boolean } = {}
+): string {
+  const paint: Paint = color
     ? (format, text) => styleText(format, text, { validateStream: false })
     : (_format, text) => text;
 
@@ -72,8 +71,12 @@ export default function codeFrame(
 }
 
 // Maps each marked line number to the column of its first caret and the number of carets.
-function getMarkers(lines, start, end) {
-  const markers = new Map();
+function getMarkers(
+  lines: string[],
+  start: Position,
+  end: Position
+): Map<number, [column: number, count: number]> {
+  const markers = new Map<number, [column: number, count: number]>();
   if (start.line === end.line) {
     markers.set(start.line, [start.column, Math.max(end.column - start.column, 1)]);
     return markers;
@@ -88,7 +91,7 @@ function getMarkers(lines, start, end) {
 }
 
 // JSON strings can't contain raw line breaks, so each line holds whole tokens.
-function highlight(line, paint) {
+function highlight(line: string, paint: Paint): string {
   let output = '';
   let offset = 0;
   for (const { type, loc } of tokenize(line)) {

@@ -1,12 +1,8 @@
 /**
  * The number of single-character insertions, deletions and substitutions that turn `left` into
  * `right`. Characters are UTF-16 code units, as in `String.prototype.length`.
- *
- * @param {string} left
- * @param {string} right
- * @return {number}
  */
-export default function levenshtein(left, right) {
+export default function levenshtein(left: string, right: string): number {
   if (left === right) {
     return 0;
   }
