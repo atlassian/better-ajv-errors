@@ -1,5 +1,13 @@
 # better-ajv-errors
 
+## 3.0.2
+
+### Patch Changes
+
+- An `enum` whose allowed values are all non-strings, with `null` first, such as `[null, 5]`, no longer throws `Cannot read properties of null (reading 'length')`.
+
+  Closes #224
+
 ## 3.0.1
 
 ### Patch Changes
