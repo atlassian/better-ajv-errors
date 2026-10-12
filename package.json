@@ -60,8 +60,7 @@
   },
   "dependencies": {
     "@humanwhocodes/momoa": "^3.3.13",
-    "jsonpointer": "^5.0.1",
-    "leven": "^3.1.0 < 4"
+    "jsonpointer": "^5.0.1"
   },
   "devDependencies": {
     "@vitest/coverage-v8": "catalog:",
