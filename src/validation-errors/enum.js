@@ -1,6 +1,6 @@
 import { styleText } from 'node:util';
-import leven from 'leven';
 import pointer from 'jsonpointer';
+import levenshtein from '../levenshtein';
 import BaseValidationError from './base';
 
 export default class EnumValidationError extends BaseValidationError {
@@ -62,8 +62,8 @@ export default class EnumValidationError extends BaseValidationError {
     const bestMatch = allowedValues
       .map(value => ({
         value,
-        // leven compares strings, so other allowed values cannot be a close match.
-        weight: typeof value === 'string' ? leven(value, currentValue.toString()) : Infinity,
+        // Only strings are compared, so other allowed values cannot be a close match.
+        weight: typeof value === 'string' ? levenshtein(value, currentValue.toString()) : Infinity,
       }))
       .sort((x, y) => (x.weight > y.weight ? 1 : x.weight < y.weight ? -1 : 0))[0];
 
