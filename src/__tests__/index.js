@@ -94,6 +94,30 @@ describe('Main', () => {
     expect(res).toContain('Did you mean 5 here?');
   });
 
+  it('should print array indexes in the error path without the element type', () => {
+    const schema = {
+      type: 'object',
+      properties: {
+        content: {
+          type: 'array',
+          items: {
+            type: 'object',
+            properties: { type: { enum: ['paragraph', 'codeBlock'] }, text: { type: 'string' } },
+          },
+        },
+      },
+    };
+    const data = { content: [{ type: 'paragarph' }, { type: 'codeBlock', text: 1 }] };
+    const validate = new Ajv({ allErrors: true }).compile(schema);
+    expect(validate(data)).toBeFalsy();
+
+    const res = betterAjvErrors(schema, data, validate.errors, { format: 'js' });
+    expect(res.map(({ error }) => error)).toEqual([
+      '/content/0/type must be equal to one of the allowed values: paragraph, codeBlock',
+      '/content/1/text: type must be string',
+    ]);
+  });
+
   it('should point at the last duplicate key when using the json option', () => {
     // JSON.parse keeps the last value of a duplicate key, so that is what ajv validates.
     const json = '{\n  "a": { "b": 1 },\n  "a": { "b": "two" }\n}';
