@@ -2,3 +2,7 @@ better-ajv-errors@3.0.1:
   dir: ""
   intents:
     - own-code-frame
+better-ajv-errors@3.0.2:
+  dir: ""
+  intents:
+    - null-enum-without-strings
