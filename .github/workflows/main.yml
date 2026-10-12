@@ -14,7 +14,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [22.x, 24.x]
+        node-version: [24.x, 26.x]
 
     steps:
       - name: Checkout
@@ -38,7 +38,7 @@ jobs:
         run: pnpm run test-ci
 
       - name: Upload coverage to Codecov
-        if: matrix.node-version == '22.x'
+        if: matrix.node-version == '24.x'
         uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
