@@ -67,7 +67,8 @@ export default class EnumValidationError extends BaseValidationError {
       }))
       .sort((x, y) => (x.weight > y.weight ? 1 : x.weight < y.weight ? -1 : 0))[0];
 
-    return allowedValues.length === 1 || bestMatch.weight < bestMatch.value.length
+    return allowedValues.length === 1 ||
+      (typeof bestMatch.value === 'string' && bestMatch.weight < bestMatch.value.length)
       ? bestMatch.value
       : null;
   }
