@@ -1,15 +1,15 @@
+import { parse, type DocumentNode } from '@humanwhocodes/momoa';
 import { describe, it, expect, beforeAll } from 'vite-plus/test';
-const { parse } = require('@humanwhocodes/momoa');
 import { getSchemaAndData } from '../../test-helpers';
 import EnumValidationError from '../enum';
 
 describe('Enum', () => {
-  describe.each([
+  describe.each<[title: string, name: string, additionalAllowedValues: unknown[]]>([
     ['does not include', 'enum', []],
     ['includes', 'enum-with-nulls', [null]],
   ])('when enum $0 null', (_title, name, additionalAllowedValues) => {
     describe('when value is an object', () => {
-      let schema, data, jsonRaw, jsonAst;
+      let schema: unknown, data: unknown, jsonRaw: string, jsonAst: DocumentNode;
       beforeAll(async () => {
         [schema, data] = await getSchemaAndData(name, __dirname);
         jsonRaw = JSON.stringify(data, null, 2);
@@ -23,7 +23,7 @@ describe('Enum', () => {
             dataPath: '/id',
             schemaPath: '#/enum',
             params: {
-              allowedValues: ['foo', 'bar'].concat(additionalAllowedValues),
+              allowedValues: ['foo', 'bar', ...additionalAllowedValues],
             },
             message: `should be equal to one of the allowed values`,
           },
@@ -34,7 +34,7 @@ describe('Enum', () => {
       });
 
       it('prints correctly for no levenshtein match', () => {
-        const allowedValues = ['one', 'two'].concat(additionalAllowedValues);
+        const allowedValues = ['one', 'two', ...additionalAllowedValues];
         const error = new EnumValidationError(
           {
             keyword: 'enum',
@@ -58,24 +58,24 @@ describe('Enum', () => {
             dataPath: '/id',
             schemaPath: '#/enum',
             params: {
-              allowedValues: ['foo', 'bar'].concat(additionalAllowedValues),
+              allowedValues: ['foo', 'bar', ...additionalAllowedValues],
             },
             message: `should be equal to one of the allowed values`,
           },
           { data, schema, jsonRaw, jsonAst }
         );
 
-        expect(error.print(schema, { id: '' })).toMatchSnapshot();
+        expect(error.print()).toMatchSnapshot();
       });
     });
   });
 
-  describe.each([
+  describe.each<[title: string, name: string, additionalAllowedValues: unknown[]]>([
     ['does not include', 'enum-string', []],
     ['includes', 'enum-string-with-nulls', [null]],
   ])('when enum $0 null', (_title, name, additionalAllowedValues) => {
     describe('when value is a primitive', () => {
-      let schema, data, jsonRaw, jsonAst;
+      let schema: unknown, data: unknown, jsonRaw: string, jsonAst: DocumentNode;
       beforeAll(async () => {
         [schema, data] = await getSchemaAndData(name, __dirname);
         jsonRaw = JSON.stringify(data, null, 2);
@@ -89,7 +89,7 @@ describe('Enum', () => {
             dataPath: '',
             schemaPath: '#/enum',
             params: {
-              allowedValues: ['foo', 'bar'].concat(additionalAllowedValues),
+              allowedValues: ['foo', 'bar', ...additionalAllowedValues],
             },
             message: 'should be equal to one of the allowed values',
           },
@@ -106,7 +106,7 @@ describe('Enum', () => {
             dataPath: '',
             schemaPath: '#/enum',
             params: {
-              allowedValues: ['one', 'two'].concat(additionalAllowedValues),
+              allowedValues: ['one', 'two', ...additionalAllowedValues],
             },
             message: 'should be equal to one of the allowed values',
           },
@@ -123,14 +123,14 @@ describe('Enum', () => {
             dataPath: '',
             schemaPath: '#/enum',
             params: {
-              allowedValues: ['foo', 'bar'].concat(additionalAllowedValues),
+              allowedValues: ['foo', 'bar', ...additionalAllowedValues],
             },
             message: 'should be equal to one of the allowed values',
           },
           { data, schema, jsonRaw, jsonAst }
         );
 
-        expect(error.print(schema, '')).toMatchSnapshot();
+        expect(error.print()).toMatchSnapshot();
       });
     });
   });

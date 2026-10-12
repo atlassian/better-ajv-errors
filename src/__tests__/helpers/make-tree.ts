@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vite-plus/test';
 import { makeTree } from '../../helpers';
+import type { AjvError } from '../../types';
 
 describe('makeTree', () => {
   it('works on empty array', async () => {
@@ -11,7 +12,7 @@ describe('makeTree', () => {
   });
 
   it('works on root dataPath', async () => {
-    expect(makeTree([{ dataPath: '' }])).toMatchInlineSnapshot(`
+    expect(makeTree([{ dataPath: '' }] as AjvError[])).toMatchInlineSnapshot(`
       {
         "children": {
           "": {
@@ -28,7 +29,7 @@ describe('makeTree', () => {
   });
 
   it('works on nested dataPath', async () => {
-    expect(makeTree([{ dataPath: '/root/child' }])).toMatchInlineSnapshot(`
+    expect(makeTree([{ dataPath: '/root/child' }] as AjvError[])).toMatchInlineSnapshot(`
       {
         "children": {
           "/root": {
@@ -50,7 +51,7 @@ describe('makeTree', () => {
   });
 
   it('keeps escaped, Unicode, $ and empty segments as their own keys', () => {
-    const error = { instancePath: '/root/~0tilde/~1slash/名前/$ref/' };
+    const error = { instancePath: '/root/~0tilde/~1slash/名前/$ref/' } as AjvError;
     const tree = makeTree([error]);
     const leaf = ['/root', '/~0tilde', '/~1slash', '/名前', '/$ref', '/'].reduce(
       (node, key) => node.children[key],
@@ -64,18 +65,20 @@ describe('makeTree', () => {
       { instancePath: '/data/1' },
       { instancePath: '/data/1st' },
       { instancePath: '/m/0/1' },
-    ]);
+    ] as AjvError[]);
     expect(Object.keys(tree.children)).toEqual(['/data/1', '/data', '/m/0']);
     expect(Object.keys(tree.children['/data'].children)).toEqual(['/1st']);
     expect(Object.keys(tree.children['/m/0'].children)).toEqual(['/1']);
   });
 
   it('ignores paths that are not JSON pointers', () => {
-    expect(makeTree([{ dataPath: "['a/ b']" }, { dataPath: '.a.b' }])).toEqual({ children: {} });
+    expect(makeTree([{ dataPath: "['a/ b']" }, { dataPath: '.a.b' }] as AjvError[])).toEqual({
+      children: {},
+    });
   });
 
   it('works on array dataPath', async () => {
-    expect(makeTree([{ dataPath: '/root/child/0' }, { dataPath: '/root/child/1' }]))
+    expect(makeTree([{ dataPath: '/root/child/0' }, { dataPath: '/root/child/1' }] as AjvError[]))
       .toMatchInlineSnapshot(`
       {
         "children": {
@@ -110,7 +113,7 @@ describe('makeTree', () => {
       makeTree([
         { dataPath: '/root/child/0/grand-child' },
         { dataPath: '/root/child/1/grand-child' },
-      ])
+      ] as AjvError[])
     ).toMatchInlineSnapshot(`
       {
         "children": {

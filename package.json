@@ -7,15 +7,15 @@
     "url": "git+https://github.com/atlassian/better-ajv-errors.git"
   },
   "main": "./dist/index.cjs",
-  "types": "./typings.d.cts",
+  "types": "./dist/index.d.cts",
   "type": "module",
   "exports": {
     "require": {
-      "types": "./typings.d.cts",
+      "types": "./dist/index.d.cts",
       "default": "./dist/index.cjs"
     },
     "import": {
-      "types": "./typings.d.mts",
+      "types": "./dist/index.d.mts",
       "default": "./dist/index.mjs"
     }
   },
@@ -38,17 +38,15 @@
   ],
   "license": "Apache-2.0",
   "files": [
-    "dist",
-    "typings.d.mts",
-    "typings.d.cts"
+    "dist"
   ],
   "scripts": {
     "build": "vp pack",
     "prerelease": "npm run build",
     "release": "pnpm publish",
     "release:atlassian": "node publish-atlassian.js",
-    "format": "vp fmt './src/**/*.js'",
-    "format:check": "vp fmt --check './src/**/*.js'",
+    "format": "vp fmt './src/**/*.ts'",
+    "format:check": "vp fmt --check './src/**/*.ts'",
     "prelint": "npm run build",
     "lint": "vp lint && publint",
     "lint:actions": "actionlint && zizmor .github/workflows",
@@ -63,11 +61,11 @@
     "jsonpointer": "^5.0.1"
   },
   "devDependencies": {
+    "@types/node": "^24.19.2",
     "@vitest/coverage-v8": "catalog:",
     "@vitest/ui": "catalog:",
     "ajv": "^8.20.0",
     "is-ci": "^4.1.0",
-    "jest-fixtures": "^0.6.0",
     "publint": "^0.3.25",
     "svg-term-cli": "^2.1.1",
     "vite-plus": "catalog:"

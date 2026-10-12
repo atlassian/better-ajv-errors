@@ -1,5 +1,5 @@
+import { parse } from '@humanwhocodes/momoa';
 import { describe, it, expect } from 'vite-plus/test';
-const { parse } = require('@humanwhocodes/momoa');
 import { getSchemaAndData } from '../../test-helpers';
 import RequiredValidationError from '../required';
 

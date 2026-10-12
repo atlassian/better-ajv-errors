@@ -1,5 +1,9 @@
 import { describe, it, expect } from 'vite-plus/test';
 import { filterRedundantErrors } from '../../helpers';
+import type { ErrorNode } from '../../types';
+
+// The trees hold only the error fields that `filterRedundantErrors` reads.
+const filter = (tree: object): void => filterRedundantErrors(tree as ErrorNode);
 
 describe('filterRedundantErrors', () => {
   it('should prioritize required', async () => {
@@ -30,7 +34,7 @@ describe('filterRedundantErrors', () => {
         },
       },
     };
-    filterRedundantErrors(tree);
+    filter(tree);
     expect(tree).toMatchInlineSnapshot(`
       {
         "children": {
@@ -80,7 +84,7 @@ describe('filterRedundantErrors', () => {
         },
       },
     };
-    filterRedundantErrors(tree);
+    filter(tree);
     expect(tree).toMatchInlineSnapshot(`
       {
         "children": {
@@ -131,7 +135,7 @@ describe('filterRedundantErrors', () => {
         },
       },
     };
-    filterRedundantErrors(tree);
+    filter(tree);
     expect(tree).toMatchInlineSnapshot(`
       {
         "children": {
@@ -180,7 +184,7 @@ describe('filterRedundantErrors', () => {
         },
       },
     };
-    filterRedundantErrors(tree);
+    filter(tree);
     expect(tree).toMatchInlineSnapshot(`
       {
         "children": {
@@ -228,7 +232,7 @@ describe('filterRedundantErrors', () => {
         },
       },
     };
-    filterRedundantErrors(tree);
+    filter(tree);
     expect(tree).toMatchInlineSnapshot(`
       {
         "children": {
@@ -274,7 +278,7 @@ describe('filterRedundantErrors', () => {
         },
       },
     };
-    filterRedundantErrors(tree);
+    filter(tree);
     expect(tree).toMatchInlineSnapshot(`
       {
         "children": {
@@ -321,7 +325,7 @@ describe('filterRedundantErrors', () => {
       },
     };
 
-    filterRedundantErrors(tree);
+    filter(tree);
     expect(tree).toMatchInlineSnapshot(`
       {
         "children": {

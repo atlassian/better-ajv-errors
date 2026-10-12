@@ -1,12 +1,11 @@
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { parse, type DocumentNode } from '@humanwhocodes/momoa';
 import { describe, it, expect } from 'vite-plus/test';
-import { readFileSync } from 'fs';
-const { parse } = require('@humanwhocodes/momoa');
-import { getFixturePath } from 'jest-fixtures';
 import { getMetaFromPath, getDecoratedDataPath } from '../';
 
-async function loadScenario(n) {
-  const fixturePath = await getFixturePath(__dirname, `scenario-${n}.json`);
-  return parse(readFileSync(fixturePath, 'utf8'));
+async function loadScenario(n: number): Promise<DocumentNode> {
+  return parse(readFileSync(join(__dirname, '..', '__fixtures__', `scenario-${n}.json`), 'utf8'));
 }
 
 describe('JSON', () => {
