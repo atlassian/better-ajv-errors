@@ -22,7 +22,7 @@
   "module": "./dist/index.mjs",
   "sideEffects": false,
   "engines": {
-    "node": ">= 22"
+    "node": ">= 24"
   },
   "packageManager": "pnpm@12.15.0",
   "keywords": [
