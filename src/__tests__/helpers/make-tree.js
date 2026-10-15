@@ -49,6 +49,27 @@ describe('makeTree', () => {
     `);
   });
 
+  it('keeps escaped, Unicode, $ and empty segments as their own keys', () => {
+    const error = { instancePath: '/root/~0tilde/~1slash/名前/$ref/' };
+    const tree = makeTree([error]);
+    const leaf = ['/root', '/~0tilde', '/~1slash', '/名前', '/$ref', '/'].reduce(
+      (node, key) => node.children[key],
+      tree
+    );
+    expect(leaf.errors).toEqual([error]);
+  });
+
+  it('only merges whole numeric segments into the key before them', () => {
+    const tree = makeTree([
+      { instancePath: '/data/1' },
+      { instancePath: '/data/1st' },
+      { instancePath: '/m/0/1' },
+    ]);
+    expect(Object.keys(tree.children)).toEqual(['/data/1', '/data', '/m/0']);
+    expect(Object.keys(tree.children['/data'].children)).toEqual(['/1st']);
+    expect(Object.keys(tree.children['/m/0'].children)).toEqual(['/1']);
+  });
+
   it('works on array dataPath', async () => {
     expect(makeTree([{ dataPath: '/root/child/0' }, { dataPath: '/root/child/1' }]))
       .toMatchInlineSnapshot(`
