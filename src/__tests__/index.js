@@ -115,4 +115,143 @@ describe('Main', () => {
       },
     ]);
   });
+
+  describe('property names with characters outside word characters and -', () => {
+    const getErrors = (schema, data) => {
+      const validate = new Ajv({ allErrors: true }).compile(schema);
+      expect(validate(data)).toBeFalsy();
+      return betterAjvErrors(schema, data, validate.errors, { format: 'js' });
+    };
+
+    it('reports errors under Unicode keys', () => {
+      const schema = { type: 'object', properties: { 名前: { type: 'string', minLength: 2 } } };
+      expect(getErrors(schema, { 名前: '' })).toEqual([
+        {
+          start: { line: 1, column: 7, offset: 6 },
+          end: { line: 1, column: 9, offset: 8 },
+          error: '/名前: minLength must NOT have fewer than 2 characters',
+          path: '/名前',
+        },
+      ]);
+    });
+
+    it('reports errors under keys that contain ~ and /', () => {
+      const schema = {
+        type: 'object',
+        properties: { 'a~b': { type: 'string' }, 'c/d': { type: 'string' } },
+      };
+      expect(getErrors(schema, { 'a~b': 1, 'c/d': 2 })).toEqual([
+        {
+          start: { line: 1, column: 8, offset: 7 },
+          end: { line: 1, column: 9, offset: 8 },
+          error: '/a~b: type must be string',
+          path: '/a~0b',
+        },
+        {
+          start: { line: 1, column: 16, offset: 15 },
+          end: { line: 1, column: 17, offset: 16 },
+          error: '/c/d: type must be string',
+          path: '/c~1d',
+        },
+      ]);
+    });
+
+    it('reports errors under $ and empty keys', () => {
+      const schema = {
+        type: 'object',
+        properties: { '': { type: 'string' }, $ref: { type: 'string' } },
+      };
+      expect(getErrors(schema, { '': 1, $ref: 2 })).toEqual([
+        {
+          start: { line: 1, column: 5, offset: 4 },
+          end: { line: 1, column: 6, offset: 5 },
+          error: '/: type must be string',
+          path: '/',
+        },
+        {
+          start: { line: 1, column: 14, offset: 13 },
+          end: { line: 1, column: 15, offset: 14 },
+          error: '/$ref: type must be string',
+          path: '/$ref',
+        },
+      ]);
+    });
+
+    it('does not merge a key with a dot into its prefix', () => {
+      const schema = {
+        type: 'object',
+        properties: { a: { type: 'object', required: ['z'] }, 'a.b': { type: 'string' } },
+      };
+      expect(getErrors(schema, { a: {}, 'a.b': 1 }).map(e => e.path)).toEqual(['/a', '/a.b']);
+    });
+
+    it('points at additional properties whose names contain ~ and /', () => {
+      const schema = {
+        type: 'object',
+        properties: { 名前: { type: 'object', additionalProperties: false } },
+      };
+      const data = { 名前: { 'a/b': 1, 'c~d': 2 } };
+      expect(getErrors(schema, data)).toEqual([
+        {
+          start: { line: 1, column: 8, offset: 7 },
+          end: { line: 1, column: 13, offset: 12 },
+          error: '/名前 Property a/b is not expected to be here',
+          path: '/名前',
+        },
+        {
+          start: { line: 1, column: 16, offset: 15 },
+          end: { line: 1, column: 21, offset: 20 },
+          error: '/名前 Property c~d is not expected to be here',
+          path: '/名前',
+        },
+      ]);
+
+      const validate = new Ajv({ allErrors: true }).compile(schema);
+      validate(data);
+      const res = stripVTControlCharacters(betterAjvErrors(schema, data, validate.errors));
+      expect(res).toContain('a/b is not expected to be here!');
+      expect(res).toContain('c~d is not expected to be here!');
+    });
+
+    it('suggests an enum value under a Unicode key', () => {
+      const schema = { type: 'object', properties: { 種類: { enum: ['alpha', 'beta'] } } };
+      expect(getErrors(schema, { 種類: 'alpah' })).toEqual([
+        {
+          start: { line: 1, column: 7, offset: 6 },
+          end: { line: 1, column: 14, offset: 13 },
+          error: '/種類 must be equal to one of the allowed values: alpha, beta',
+          path: '/種類',
+          suggestion: 'Did you mean alpha?',
+        },
+      ]);
+    });
+
+    it('keeps a key that starts with digits apart from the array index', () => {
+      const schema = {
+        type: 'object',
+        properties: {
+          data: {
+            type: 'object',
+            properties: {
+              1: { type: 'object', required: ['id'] },
+              '1st': { type: 'string' },
+            },
+          },
+        },
+      };
+      expect(getErrors(schema, { data: { 1: {}, '1st': 5 } })).toEqual([
+        {
+          start: { line: 1, column: 14, offset: 13 },
+          error: "/data/1 must have required property 'id'",
+          path: '/data/1',
+        },
+        {
+          start: { line: 1, column: 23, offset: 22 },
+          end: { line: 1, column: 24, offset: 23 },
+          error: '/data/1st: type must be string',
+          path: '/data/1st',
+        },
+      ]);
+    });
+  });
 });
