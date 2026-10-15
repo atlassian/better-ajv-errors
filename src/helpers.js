@@ -15,7 +15,23 @@ import {
   DefaultValidationError,
 } from './validation-errors/index';
 
-const JSON_POINTERS_REGEX = /\/[\w_-]+(\/\d+)?/g;
+const ARRAY_INDEX_REGEX = /^\d+$/;
+
+// Split a JSON pointer into tree keys. Segments are kept in their escaped form, so a key
+// that contains `/` stays one segment. An array index is merged into the segment before it,
+// so `/list/0` is one key.
+function getTreeKeys(instancePath) {
+  const segments = instancePath.split('/').slice(1);
+  const keys = [];
+  for (let i = 0; i < segments.length; i++) {
+    let key = `/${segments[i]}`;
+    if (i + 1 < segments.length && ARRAY_INDEX_REGEX.test(segments[i + 1])) {
+      key += `/${segments[++i]}`;
+    }
+    keys.push(key);
+  }
+  return keys;
+}
 
 // Make a tree of errors from ajv errors array
 export function makeTree(ajvErrors = []) {
@@ -25,8 +41,8 @@ export function makeTree(ajvErrors = []) {
       typeof ajvError.instancePath !== 'undefined' ? ajvError.instancePath : ajvError.dataPath;
 
     // `dataPath === ''` is root
-    const paths = instancePath === '' ? [''] : instancePath.match(JSON_POINTERS_REGEX);
-    if (paths) {
+    const paths = instancePath === '' ? [''] : getTreeKeys(instancePath);
+    if (paths.length) {
       paths.reduce((obj, path, i) => {
         obj.children[path] = obj.children[path] || { children: {}, errors: [] };
         if (i === paths.length - 1) {

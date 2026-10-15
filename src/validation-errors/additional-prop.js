@@ -18,16 +18,24 @@ export default class AdditionalPropValidationError extends BaseValidationError {
         '😲  ' +
           styleText('magentaBright', params.additionalProperty) +
           ' is not expected to be here!',
-        `${this.instancePath}/${params.additionalProperty}`
+        this.additionalPropertyPath
       )
     );
+  }
+
+  // The property name has to be escaped before it is appended to the JSON pointer.
+  get additionalPropertyPath() {
+    const property = this.options.params.additionalProperty
+      .replace(/~/g, '~0')
+      .replace(/\//g, '~1');
+    return `${this.instancePath}/${property}`;
   }
 
   getError() {
     const { params } = this.options;
 
     return {
-      ...this.getLocation(`${this.instancePath}/${params.additionalProperty}`),
+      ...this.getLocation(this.additionalPropertyPath),
       error: this.withDecoratedPath(
         `Property ${params.additionalProperty} is not expected to be here`
       ),
