@@ -70,6 +70,10 @@ describe('makeTree', () => {
     expect(Object.keys(tree.children['/m/0'].children)).toEqual(['/1']);
   });
 
+  it('ignores paths that are not JSON pointers', () => {
+    expect(makeTree([{ dataPath: "['a/ b']" }, { dataPath: '.a.b' }])).toEqual({ children: {} });
+  });
+
   it('works on array dataPath', async () => {
     expect(makeTree([{ dataPath: '/root/child/0' }, { dataPath: '/root/child/1' }]))
       .toMatchInlineSnapshot(`

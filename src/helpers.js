@@ -21,6 +21,11 @@ const ARRAY_INDEX_REGEX = /^\d+$/;
 // that contains `/` stays one segment. An array index is merged into the segment before it,
 // so `/list/0` is one key.
 function getTreeKeys(instancePath) {
+  // AJV before v8 reports JavaScript-style paths such as `['a/ b']` unless `jsonPointers` is set.
+  // Those are not JSON pointers, so splitting them on `/` would produce keys that don't exist.
+  if (!instancePath.startsWith('/')) {
+    return [];
+  }
   const segments = instancePath.split('/').slice(1);
   const keys = [];
   for (let i = 0; i < segments.length; i++) {

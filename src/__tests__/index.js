@@ -182,7 +182,34 @@ describe('Main', () => {
         type: 'object',
         properties: { a: { type: 'object', required: ['z'] }, 'a.b': { type: 'string' } },
       };
-      expect(getErrors(schema, { a: {}, 'a.b': 1 }).map(e => e.path)).toEqual(['/a', '/a.b']);
+      expect(getErrors(schema, { a: {}, 'a.b': 1 })).toEqual([
+        {
+          start: { line: 1, column: 6, offset: 5 },
+          error: "/a must have required property 'z'",
+          path: '/a',
+        },
+        {
+          start: { line: 1, column: 15, offset: 14 },
+          end: { line: 1, column: 16, offset: 15 },
+          error: '/a.b: type must be string',
+          path: '/a.b',
+        },
+      ]);
+    });
+
+    it('drops an enum error when a sibling key such as $schema has an error', () => {
+      const schema = {
+        type: 'object',
+        properties: { kind: { enum: ['alpha', 'beta'] }, $schema: { type: 'string' } },
+      };
+      expect(getErrors(schema, { kind: 'alpah', $schema: 1 })).toEqual([
+        {
+          start: { line: 1, column: 27, offset: 26 },
+          end: { line: 1, column: 28, offset: 27 },
+          error: '/$schema: type must be string',
+          path: '/$schema',
+        },
+      ]);
     });
 
     it('points at additional properties whose names contain ~ and /', () => {
