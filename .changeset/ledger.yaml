@@ -10,3 +10,10 @@ better-ajv-errors@3.0.3:
   dir: ""
   intents:
     - unicode-instance-paths
+better-ajv-errors@4.0.0-next.0:
+  dir: ""
+  intents:
+    - own-levenshtein
+    - remove-type-suffix-code
+    - require-node-24
+    - typescript
