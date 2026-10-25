@@ -1,6 +1,6 @@
 {
   "name": "better-ajv-errors",
-  "version": "3.0.3",
+  "version": "4.0.0-next.0",
   "description": "JSON Schema validation for Human",
   "repository": {
     "type": "git",
