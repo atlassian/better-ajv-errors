@@ -5,6 +5,12 @@
   "rangeStrategy": "replace",
   "packageRules": [
     {
+      "matchDatasources": [
+        "npm"
+      ],
+      "minimumReleaseAge": "1 day"
+    },
+    {
       "matchPackageNames": [
         "leven",
         "node"
