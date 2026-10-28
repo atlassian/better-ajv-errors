@@ -31,7 +31,3 @@ versioning:
   changelog:
     # Keeps `CHANGELOG.md` in the repository, where the Release workflow reads the release notes.
     storage: repository
-  # Releases from `next` are 4.0.0 prereleases. End the lane with `pnpm lane main --filter better-ajv-errors`
-  # only once the last prerelease is on npm, or `pnpm version -r` folds the intents into it and deletes them.
-  lanes:
-    better-ajv-errors: next

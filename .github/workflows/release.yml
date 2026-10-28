@@ -88,7 +88,7 @@ jobs:
           install: false
 
       # With `script`, the action runs pnpm instead of the Changesets CLI and reads the intents and `CHANGELOG.md` itself.
-      # On `next`, the lane in `pnpm-workspace.yaml` makes `pnpm version -r` cut prereleases.
+      # While `next` is on a lane in `pnpm-workspace.yaml`, `pnpm version -r` there cuts prereleases.
       - name: Create or update the release pull request
         uses: changesets/action/version@ae32849d5ba541f9ae29e40e22a623bc13562f51 # v2.1.2
         with:
