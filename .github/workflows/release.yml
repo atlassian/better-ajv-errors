@@ -184,7 +184,7 @@ jobs:
       - name: Use Node.js 24.x
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          node-version: 24.x
+          node-version: 26.x
           package-manager-cache: false
 
       # `node-version-file: false` keeps the Node.js from setup-node instead of installing the one in `.node-version`.
