@@ -1,0 +1,5 @@
+{
+	"type": "array",
+	"maxItems": 2,
+	"items": { "type": "number" }
+}
