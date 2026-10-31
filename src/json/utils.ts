@@ -1,5 +1,5 @@
 // TODO: Better error handling
-export const getPointers = dataPath => {
+export const getPointers = (dataPath: string): string[] => {
   return dataPath
     .split('/')
     .slice(1)

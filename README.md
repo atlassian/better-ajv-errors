@@ -22,7 +22,7 @@ npm i better-ajv-errors
 npm i @atlassian/better-ajv-errors
 ```
 
-Also install [ajv](https://www.npmjs.com/package/ajv), version 4.11.8 to 8, to validate data against JSON schemas. `better-ajv-errors` requires Node.js 22 or later.
+Also install [ajv](https://www.npmjs.com/package/ajv), version 4.11.8 to 8, to validate data against JSON schemas. `better-ajv-errors` requires Node.js 24 or later.
 
 ## Usage
 

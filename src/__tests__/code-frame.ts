@@ -1,12 +1,14 @@
 import { styleText } from 'node:util';
 import { afterEach, describe, it, expect, vi } from 'vite-plus/test';
-import { parse } from '@humanwhocodes/momoa';
+import { parse, type ObjectNode, type StringNode } from '@humanwhocodes/momoa';
 import codeFrame from '../code-frame';
 
-const locationOf = (source, key) =>
-  parse(source).body.members.find(member => member.name.value === key).value.loc;
+const locationOf = (source: string, key: string) =>
+  (parse(source).body as ObjectNode).members.find(
+    member => (member.name as StringNode).value === key
+  )!.value.loc;
 
-const plainFrame = (source, location) =>
+const plainFrame = (source: string, location: Parameters<typeof codeFrame>[1]) =>
   codeFrame(source, location, { message: 'here', color: false });
 
 describe('codeFrame', () => {
@@ -96,7 +98,7 @@ describe('codeFrame', () => {
 
   it('pads line numbers to the widest one shown', () => {
     const source = JSON.stringify(
-      Object.fromEntries([...'abcdefghij'].map((key, index) => [key, index])),
+      Object.fromEntries('abcdefghij'.split('').map((key, index) => [key, index])),
       null,
       2
     );

@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vite-plus/test';
 import { createErrorInstances } from '../../helpers';
+import type { ErrorContext } from '../../types';
 
 describe('createErrorInstances', () => {
   it('should not show duplicate values under allowed values', () => {
@@ -21,7 +22,7 @@ describe('createErrorInstances', () => {
           },
         ],
       },
-      {}
+      {} as ErrorContext
     );
 
     expect(errors).toMatchInlineSnapshot(`

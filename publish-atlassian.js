@@ -22,6 +22,7 @@ const ATLASSIAN_REGISTRY = 'https://packages.atlassian.com/api/npm/npm-public/';
 
 function parseArgs() {
   const args = process.argv.slice(2);
+  /** @type {{ dryRun: boolean, tag: string, userconfig: string | null }} */
   const options = {
     dryRun: false,
     tag: 'latest',

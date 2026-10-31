@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - next
     paths:
       - '.changeset/**'
 
@@ -22,6 +23,7 @@ jobs:
     outputs:
       mode: ${{ steps.select-mode.outputs.mode }}
       version: ${{ steps.select-mode.outputs.version }}
+      tag: ${{ steps.select-mode.outputs.tag }}
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -37,6 +39,7 @@ jobs:
       # Publish comes first: for an unpublished version, `pnpm version -r` adds the intents to that version
       # instead of bumping it, which writes a second section with the same heading into `CHANGELOG.md`.
       # Intents that decline a release (`pnpm change --bump none`) bump nothing, so they wait for the next release.
+      # A prerelease such as `4.0.0-next.1` goes out under the dist-tag `next`, named after its identifier.
       - name: Select mode
         id: select-mode
         run: |
@@ -52,8 +55,18 @@ jobs:
               mode=none
             fi
           fi
-          echo "mode=$mode" >> "$GITHUB_OUTPUT"
-          echo "version=$version" >> "$GITHUB_OUTPUT"
+          case "$version" in
+            *-*)
+              tag=${version#*-}
+              tag=${tag%%.*}
+              ;;
+            *) tag=latest ;;
+          esac
+          {
+            echo "mode=$mode"
+            echo "version=$version"
+            echo "tag=$tag"
+          } >> "$GITHUB_OUTPUT"
 
   version:
     name: Version
@@ -75,10 +88,13 @@ jobs:
           install: false
 
       # With `script`, the action runs pnpm instead of the Changesets CLI and reads the intents and `CHANGELOG.md` itself.
+      # While `next` is on a lane in `pnpm-workspace.yaml`, `pnpm version -r` there cuts prereleases.
       - name: Create or update the release pull request
         uses: changesets/action/version@ae32849d5ba541f9ae29e40e22a623bc13562f51 # v2.1.2
         with:
           script: pnpm version -r
+          commit-message: ${{ github.ref_name == 'next' && 'Version Packages (next)' || 'Version Packages' }}
+          pr-title: ${{ github.ref_name == 'next' && 'Version Packages (next)' || 'Version Packages' }}
 
   pack:
     name: Pack
@@ -116,7 +132,7 @@ jobs:
     needs: [select-mode, pack]
     runs-on: ubuntu-latest
     # npm's trusted publisher matches this workflow's filename and environment.
-    # The `npm` environment only allows deployments from `main`.
+    # The `npm` environment allows deployments only from `main` and `next`.
     environment: npm
     permissions:
       contents: read
@@ -142,10 +158,12 @@ jobs:
       # This job can mint an npm token, so it installs no dependencies and publishes the tarball built by `pack`.
       # pnpm exchanges the OIDC token for the npm token itself.
       # The tarball doesn't come from this checkout, so pnpm's git checks have nothing to check.
+      # pnpm publishes under `latest` unless given a tag, prereleases included.
       - name: Publish
         env:
           VERSION: ${{ needs.select-mode.outputs.version }}
-        run: pnpm publish "$RUNNER_TEMP/package/better-ajv-errors-$VERSION.tgz" --provenance --no-git-checks
+          TAG: ${{ needs.select-mode.outputs.tag }}
+        run: pnpm publish "$RUNNER_TEMP/package/better-ajv-errors-$VERSION.tgz" --provenance --no-git-checks --tag "$TAG"
 
   github-release:
     name: Create GitHub release
@@ -163,13 +181,18 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           VERSION: ${{ needs.select-mode.outputs.version }}
+          TAG: ${{ needs.select-mode.outputs.tag }}
         run: |
           awk -v heading="## $VERSION" '$0 == heading { found = 1; next } found && /^## / { exit } found && (NF || started) { started = 1; print }' CHANGELOG.md > "$RUNNER_TEMP/notes.md"
-          gh release create "v$VERSION" --target "$GITHUB_SHA" --title "v$VERSION" --notes-file "$RUNNER_TEMP/notes.md"
+          prerelease=false
+          if [ "$TAG" != latest ]; then
+            prerelease=true
+          fi
+          gh release create "v$VERSION" --target "$GITHUB_SHA" --title "v$VERSION" --notes-file "$RUNNER_TEMP/notes.md" --prerelease="$prerelease"
 
   publish-atlassian:
     name: Publish to Atlassian registry
-    needs: publish
+    needs: [select-mode, publish]
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -203,4 +226,6 @@ jobs:
           output-modes: npm
 
       - name: Publish to Atlassian Registry
-        run: node publish-atlassian.js --userconfig .npmrc-public
+        env:
+          TAG: ${{ needs.select-mode.outputs.tag }}
+        run: node publish-atlassian.js --userconfig .npmrc-public --tag "$TAG"
