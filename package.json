@@ -61,7 +61,7 @@
     "jsonpointer": "^5.0.1"
   },
   "devDependencies": {
-    "@types/node": "^24.19.2",
+    "@types/node": "^26.0.0",
     "@vitest/coverage-v8": "catalog:",
     "@vitest/ui": "catalog:",
     "ajv": "^8.20.0",
