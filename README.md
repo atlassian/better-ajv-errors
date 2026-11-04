@@ -76,6 +76,10 @@ Type: `Object`
 
 The JSON payload you validate against using `ajv`
 
+It has to be JSON-serializable, because it is serialized to build the codeframe.
+If it is not (for example `undefined`), pass the original document as the
+[`json`](#json) option instead.
+
 #### errors
 
 Type: `Array`
