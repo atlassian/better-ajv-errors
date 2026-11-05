@@ -16,6 +16,7 @@ export interface AjvError<Params = Record<string, unknown>> {
 export type EnumParams = { allowedValues: unknown[] };
 export type RequiredParams = { missingProperty: string };
 export type AdditionalPropertiesParams = { additionalProperty: string };
+export type UnevaluatedPropertiesParams = { unevaluatedProperty: string };
 // ajv-errors replaces the errors it customizes with one `errorMessage` error.
 export type ErrorMessageParams = { errors: AjvError[] };
 
