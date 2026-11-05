@@ -28,7 +28,10 @@ export default function betterAjvErrors<S, T, Options extends IInputOptions>(
 ): Options extends { format: 'js' } ? Array<IOutputError> : string {
   const { format = 'cli', indent = null, json = null }: IInputOptions = options ?? {};
 
-  const jsonRaw = json || JSON.stringify(data, null, indent ?? undefined);
+  const jsonRaw =
+    json ||
+    (data === undefined ? 'null' : JSON.stringify(data, null, indent ?? undefined)) ||
+    'null';
   const jsonAst = parse(jsonRaw);
 
   const customErrorToText = (error: BaseValidationError) => error.print().join('\n');
