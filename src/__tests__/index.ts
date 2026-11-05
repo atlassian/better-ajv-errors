@@ -157,6 +157,37 @@ describe('Main', () => {
     ]);
   });
 
+  it('should explain that data could not be serialized instead of failing in the parser', () => {
+    const schema = { type: 'object' };
+    const validate = new Ajv().compile(schema);
+    expect(validate(undefined)).toBeFalsy();
+
+    for (const data of [undefined, () => {}, Symbol('s')]) {
+      expect(() => betterAjvErrors(schema, data, validate.errors, { indent: 2 })).toThrow(
+        '`data` could not be serialized to JSON'
+      );
+    }
+  });
+
+  it('should use the json option when data cannot be serialized', () => {
+    const schema = {
+      type: 'object',
+      properties: { a: { type: 'string' } },
+    };
+    const json = '{\n  "a": 1\n}';
+    const validate = new Ajv().compile(schema);
+    expect(validate(JSON.parse(json))).toBeFalsy();
+
+    expect(betterAjvErrors(schema, undefined, validate.errors, { format: 'js', json })).toEqual([
+      {
+        start: { line: 2, column: 8, offset: 9 },
+        end: { line: 2, column: 9, offset: 10 },
+        error: '/a: type must be string',
+        path: '/a',
+      },
+    ]);
+  });
+
   describe('property names with characters outside word characters and -', () => {
     const getErrors = (schema: SchemaObject, data: unknown) => {
       const validate = new Ajv({ allErrors: true }).compile(schema);
