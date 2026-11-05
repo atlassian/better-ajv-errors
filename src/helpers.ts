@@ -1,6 +1,7 @@
 import type {
   AdditionalPropertiesParams,
   AjvError,
+  ConstParams,
   ErrorContext,
   ErrorNode,
   RequiredParams,
@@ -20,6 +21,7 @@ import {
   AdditionalPropValidationError,
   RequiredValidationError,
   EnumValidationError,
+  ConstValidationError,
   DefaultValidationError,
 } from './validation-errors/index';
 import type BaseValidationError from './validation-errors/base';
@@ -179,6 +181,8 @@ export function createErrorInstances(
             return ret.concat(
               new RequiredValidationError(error as AjvError<RequiredParams>, options)
             );
+          case 'const':
+            return ret.concat(new ConstValidationError(error as AjvError<ConstParams>, options));
           default:
             return ret.concat(new DefaultValidationError(error, options));
         }

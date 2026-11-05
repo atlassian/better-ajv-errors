@@ -157,6 +157,63 @@ describe('Main', () => {
     ]);
   });
 
+  describe('const', () => {
+    const getErrors = (schema: SchemaObject, data: unknown) => {
+      const validate = new Ajv({ allErrors: true }).compile(schema);
+      expect(validate(data)).toBeFalsy();
+      return betterAjvErrors(schema, data, validate.errors, { format: 'js', indent: 2 });
+    };
+
+    it('names the expected value instead of only saying "constant"', () => {
+      const schema = {
+        type: 'object',
+        properties: { node: { const: '>=18.12.0' } },
+      };
+      expect(getErrors(schema, { node: '>=18.12.1' })).toEqual([
+        {
+          start: { line: 2, column: 11, offset: 12 },
+          end: { line: 2, column: 22, offset: 23 },
+          error: '/node must be equal to constant: ">=18.12.0"',
+          path: '/node',
+        },
+      ]);
+    });
+
+    it('prints non-string constants as JSON', () => {
+      const schema = {
+        type: 'object',
+        properties: {
+          port: { const: 8080 },
+          nothing: { const: null },
+          flag: { const: false },
+        },
+      };
+      const errors = getErrors(schema, { port: 80, nothing: 'x', flag: true });
+      expect(errors.map(error => error.error)).toEqual([
+        '/port must be equal to constant: 8080',
+        '/nothing must be equal to constant: null',
+        '/flag must be equal to constant: false',
+      ]);
+    });
+
+    it('includes the expected value in the cli output', () => {
+      const schema = {
+        type: 'object',
+        properties: { node: { const: '>=18.12.0' } },
+      };
+      const data = { node: '>=18.12.1' };
+      const validate = new Ajv().compile(schema);
+      expect(validate(data)).toBeFalsy();
+
+      const output = stripVTControlCharacters(
+        betterAjvErrors(schema, data, validate.errors, { indent: 2 })
+      );
+      expect(output).toContain('CONST must be equal to constant');
+      expect(output).toContain('(">=18.12.0")');
+      expect(output).toContain('Should be equal to ">=18.12.0"');
+    });
+  });
+
   describe('property names with characters outside word characters and -', () => {
     const getErrors = (schema: SchemaObject, data: unknown) => {
       const validate = new Ajv({ allErrors: true }).compile(schema);
