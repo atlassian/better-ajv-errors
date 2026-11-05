@@ -321,5 +321,72 @@ describe('Main', () => {
         },
       ]);
     });
+
+    it('handles unevaluatedProperties errors like additionalProperties', () => {
+      const schema = {
+        type: 'object',
+        properties: { foo: { type: 'string' } },
+        unevaluatedProperties: false,
+      };
+      const data = { foo: 'bar', unexpected: 123 };
+      const ajvErrors = [
+        {
+          keyword: 'unevaluatedProperties',
+          instancePath: '',
+          schemaPath: '#/unevaluatedProperties',
+          params: { unevaluatedProperty: 'unexpected' },
+          message: 'must NOT have unevaluated properties',
+        },
+      ];
+
+      const jsErrors = betterAjvErrors(schema, data, ajvErrors, { format: 'js' });
+      expect(jsErrors).toEqual([
+        {
+          start: { line: 1, column: 14, offset: 13 },
+          end: { line: 1, column: 26, offset: 25 },
+          error: 'Property unexpected is not expected to be here',
+          path: '',
+        },
+      ]);
+
+      const cliOutput = stripVTControlCharacters(
+        betterAjvErrors(schema, data, ajvErrors, { format: 'cli' })
+      );
+      expect(cliOutput).toContain('UNEVALUATED PROPERTY must NOT have unevaluated properties');
+      expect(cliOutput).toContain('unexpected is not expected to be here!');
+    });
+
+    it('handles nested unevaluatedProperties errors', () => {
+      const schema = {
+        type: 'object',
+        properties: {
+          sub: {
+            type: 'object',
+            properties: { a: { type: 'string' } },
+            unevaluatedProperties: false,
+          },
+        },
+      };
+      const data = { sub: { a: 'ok', extra: true } };
+      const ajvErrors = [
+        {
+          keyword: 'unevaluatedProperties',
+          instancePath: '/sub',
+          schemaPath: '#/properties/sub/unevaluatedProperties',
+          params: { unevaluatedProperty: 'extra' },
+          message: 'must NOT have unevaluated properties',
+        },
+      ];
+
+      const jsErrors = betterAjvErrors(schema, data, ajvErrors, { format: 'js' });
+      expect(jsErrors).toEqual([
+        {
+          start: { line: 1, column: 18, offset: 17 },
+          end: { line: 1, column: 25, offset: 24 },
+          error: '/sub Property extra is not expected to be here',
+          path: '/sub',
+        },
+      ]);
+    });
   });
 });

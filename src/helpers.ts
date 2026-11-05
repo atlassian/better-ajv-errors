@@ -4,6 +4,7 @@ import type {
   ErrorContext,
   ErrorNode,
   RequiredParams,
+  UnevaluatedPropertiesParams,
 } from './types';
 import {
   getChildren,
@@ -169,9 +170,10 @@ export function createErrorInstances(
         // The keyword determines the params.
         switch (error.keyword) {
           case 'additionalProperties':
+          case 'unevaluatedProperties':
             return ret.concat(
               new AdditionalPropValidationError(
-                error as AjvError<AdditionalPropertiesParams>,
+                error as AjvError<AdditionalPropertiesParams | UnevaluatedPropertiesParams>,
                 options
               )
             );
