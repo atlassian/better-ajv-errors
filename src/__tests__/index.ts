@@ -94,6 +94,31 @@ describe('Main', () => {
     expect(res).toContain('Did you mean 5 here?');
   });
 
+  it('should not throw when data is undefined (issue #154)', () => {
+    const schema = { type: 'object' };
+    const data = undefined;
+    const ajv = new Ajv();
+    const validate = ajv.compile(schema);
+    const valid = validate(data);
+    expect(valid).toBeFalsy();
+
+    expect(() => betterAjvErrors(schema, data, validate.errors)).not.toThrow();
+
+    const jsErrors = betterAjvErrors(schema, data, validate.errors, { format: 'js' });
+    expect(jsErrors).toEqual([
+      {
+        start: { line: 1, column: 1, offset: 0 },
+        end: { line: 1, column: 5, offset: 4 },
+        error: 'type must be object',
+        path: '',
+      },
+    ]);
+
+    const cliError = stripVTControlCharacters(betterAjvErrors(schema, data, validate.errors));
+    expect(cliError).toContain('type must be object');
+    expect(cliError).toContain('null');
+  });
+
   it('should print array indexes in the error path without the element type', () => {
     const schema = {
       type: 'object',
