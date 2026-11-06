@@ -24,7 +24,7 @@
   "engines": {
     "node": ">= 24"
   },
-  "packageManager": "pnpm@12.16.1",
+  "packageManager": "pnpm@12.18.0",
   "keywords": [
     "json-schema",
     "ajv",
