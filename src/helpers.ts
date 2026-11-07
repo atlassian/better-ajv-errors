@@ -1,6 +1,7 @@
 import type {
   AdditionalPropertiesParams,
   AjvError,
+  ConstParams,
   ErrorContext,
   ErrorNode,
   RequiredParams,
@@ -11,6 +12,7 @@ import {
   getInstancePath,
   getSiblings,
   isAnyOfError,
+  isConstError,
   isEnumError,
   isRequiredError,
   concatAll,
@@ -87,7 +89,7 @@ export function filterRedundantErrors(root: ErrorNode, parent?: ErrorNode, key?:
         acc.anyOfErrors.push(error);
       }
 
-      if (isEnumError(error)) {
+      if (isEnumError(error) || isConstError(error)) {
         acc.enumErrors.push(error);
       }
 
@@ -150,8 +152,16 @@ export function createErrorInstances(
   options: ErrorContext
 ): BaseValidationError[] {
   const errors = getErrors(root);
-  if (errors.length && errors.every(isEnumError)) {
-    const uniqueValues = new Set(concatAll<unknown>([])(errors.map(e => e.params.allowedValues)));
+  if (errors.length && errors.every(e => isEnumError(e) || isConstError(e))) {
+    const uniqueValues = new Set(
+      concatAll<unknown>([])(
+        errors.map(e =>
+          isEnumError(e)
+            ? e.params.allowedValues
+            : [(e as AjvError<ConstParams>).params.allowedValue]
+        )
+      )
+    );
     const allowedValues = [...uniqueValues];
     const error = errors[0];
     return [
