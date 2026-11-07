@@ -12,9 +12,11 @@ const toText = (value: unknown): string => String(value);
 export default class EnumValidationError extends BaseValidationError<EnumParams> {
   print(): string[] {
     const {
+      keyword,
       message,
       params: { allowedValues },
     } = this.options;
+    const isConst = keyword === 'const';
     const bestMatch = this.findBestMatch();
 
     // Needed to handle nullable enums, as joining on null just prints ", "
@@ -24,16 +26,22 @@ export default class EnumValidationError extends BaseValidationError<EnumParams>
       toText(firstValue || '')
     );
 
+    const header = isConst ? 'CONST' : 'ENUM';
     const output = [
-      styleText('red', styleText('bold', 'ENUM') + ' ' + message),
+      styleText('red', styleText('bold', header) + ' ' + message),
       styleText('red', `(${allowedValuesMessage})\n`),
     ];
+
+    const fallbackMessage = isConst
+      ? '👈🏽  Unexpected value, should be equal to constant ' +
+        styleText('magentaBright', toText(firstValue))
+      : '👈🏽  Unexpected value, should be equal to one of the allowed values';
 
     return output.concat(
       this.getCodeFrame(
         bestMatch !== null
           ? '👈🏽  Did you mean ' + styleText('magentaBright', toText(bestMatch)) + ' here?'
-          : '👈🏽  Unexpected value, should be equal to one of the allowed values'
+          : fallbackMessage
       )
     );
   }
