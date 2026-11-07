@@ -321,5 +321,27 @@ describe('Main', () => {
         },
       ]);
     });
+
+    it('handles undefined data gracefully without throwing TypeError (fixes #154)', () => {
+      const schema = { type: 'object' };
+      const validate = new Ajv().compile(schema);
+      expect(validate(undefined)).toBeFalsy();
+
+      expect(() => betterAjvErrors(schema, undefined, validate.errors)).not.toThrow();
+
+      const cliRes = stripVTControlCharacters(betterAjvErrors(schema, undefined, validate.errors));
+      expect(cliRes).toContain('TYPE must be object');
+      expect(cliRes).toContain('type must be object');
+
+      const jsRes = betterAjvErrors(schema, undefined, validate.errors, { format: 'js' });
+      expect(jsRes).toEqual([
+        {
+          start: { line: 1, column: 1, offset: 0 },
+          end: { line: 1, column: 5, offset: 4 },
+          error: 'type must be object',
+          path: '',
+        },
+      ]);
+    });
   });
 });
