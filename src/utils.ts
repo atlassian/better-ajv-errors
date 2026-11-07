@@ -1,4 +1,11 @@
-import type { AjvError, EnumParams, ErrorMessageParams, ErrorNode, RequiredParams } from './types';
+import type {
+  AjvError,
+  ConstParams,
+  EnumParams,
+  ErrorMessageParams,
+  ErrorNode,
+  RequiredParams,
+} from './types';
 
 // Basic
 const eq =
@@ -23,6 +30,7 @@ export const isRequiredError: (error: AjvError) => error is AjvError<RequiredPar
   isXError('required');
 export const isAnyOfError: (error: AjvError) => boolean = isXError('anyOf');
 export const isEnumError: (error: AjvError) => error is AjvError<EnumParams> = isXError('enum');
+export const isConstError: (error: AjvError) => error is AjvError<ConstParams> = isXError('const');
 export const getErrors = (node: ErrorNode | undefined): AjvError[] =>
   node && node.errors
     ? node.errors.map(e =>
