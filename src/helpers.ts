@@ -2,6 +2,7 @@ import type {
   AdditionalPropertiesParams,
   AjvError,
   ConstParams,
+  EnumParams,
   ErrorContext,
   ErrorNode,
   RequiredParams,
@@ -21,7 +22,6 @@ import {
   AdditionalPropValidationError,
   RequiredValidationError,
   EnumValidationError,
-  ConstValidationError,
   DefaultValidationError,
 } from './validation-errors/index';
 import type BaseValidationError from './validation-errors/base';
@@ -181,8 +181,6 @@ export function createErrorInstances(
             return ret.concat(
               new RequiredValidationError(error as AjvError<RequiredParams>, options)
             );
-          case 'const':
-            return ret.concat(new ConstValidationError(error as AjvError<ConstParams>, options));
           default:
             return ret.concat(new DefaultValidationError(error, options));
         }
@@ -191,11 +189,26 @@ export function createErrorInstances(
   }
 }
 
+/**
+ * ajv reports `const` as its own keyword, but a `const` is just an `enum` with a
+ * single allowed value. Rewriting it as one lets the existing `enum` handling
+ * apply: redundant branches of a `oneOf` get filtered out, sibling branches
+ * merge into a single error, and the reader gets a "Did you mean" suggestion.
+ */
+const constToEnum = (error: AjvError): AjvError =>
+  error.keyword === 'const'
+    ? ({
+        ...error,
+        keyword: 'enum',
+        params: { allowedValues: [(error.params as ConstParams).allowedValue] },
+      } as AjvError<EnumParams>)
+    : error;
+
 export default (
   ajvErrors: AjvError[] | null | undefined,
   options: ErrorContext
 ): BaseValidationError[] => {
-  const tree = makeTree(ajvErrors || []);
+  const tree = makeTree((ajvErrors || []).map(constToEnum));
   filterRedundantErrors(tree);
   return createErrorInstances(tree, options);
 };

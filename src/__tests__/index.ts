@@ -173,27 +173,88 @@ describe('Main', () => {
         {
           start: { line: 2, column: 11, offset: 12 },
           end: { line: 2, column: 22, offset: 23 },
-          error: '/node must be equal to constant: ">=18.12.0"',
+          error: '/node must be equal to constant: >=18.12.0',
           path: '/node',
+          suggestion: 'Did you mean >=18.12.0?',
         },
       ]);
     });
 
-    it('prints non-string constants as JSON', () => {
+    it('names non-string constants', () => {
+      const only = (constant: unknown, value: unknown) => {
+        const schema = { type: 'object', properties: { field: { const: constant } } };
+        return getErrors(schema, { field: value }).map(error => error.error);
+      };
+
+      expect(only(8080, 80)).toEqual(['/field must be equal to constant: 8080']);
+      expect(only(false, true)).toEqual(['/field must be equal to constant: false']);
+      // A null constant renders the way `enum: [null]` already renders.
+      expect(only(null, 'x')).toEqual(['/field must be equal to constant: ']);
+    });
+
+    it('does not blame the discriminator of a branch that did not match', () => {
+      // `kind` is already 'a', so the reader should be told about `x`, not
+      // told to change the one value that is right.
       const schema = {
         type: 'object',
-        properties: {
-          port: { const: 8080 },
-          nothing: { const: null },
-          flag: { const: false },
-        },
+        oneOf: [
+          { properties: { kind: { const: 'a' }, x: { type: 'number' } } },
+          { properties: { kind: { const: 'b' }, y: { type: 'string' } } },
+        ],
       };
-      const errors = getErrors(schema, { port: 80, nothing: 'x', flag: true });
-      expect(errors.map(error => error.error)).toEqual([
-        '/port must be equal to constant: 8080',
-        '/nothing must be equal to constant: null',
-        '/flag must be equal to constant: false',
-      ]);
+      const errors = getErrors(schema, { kind: 'a', x: 'nope' }).map(error => error.error);
+      expect(errors).toContain('/x: type must be number');
+      expect(errors.some(error => error.startsWith('/kind'))).toBe(false);
+    });
+
+    it('reports the same errors as the equivalent single-value enum', () => {
+      // A `const` is an `enum` of one, so the two should be filtered and
+      // merged identically. Only ajv's own wording differs.
+      const build = (keyword: 'const' | 'enum', value: string) =>
+        keyword === 'const' ? { const: value } : { enum: [value] };
+
+      for (const [name, makeSchema, data] of [
+        [
+          'oneOf',
+          (keyword: 'const' | 'enum') => ({
+            type: 'object',
+            oneOf: [
+              { properties: { kind: build(keyword, 'a'), x: { type: 'number' } } },
+              { properties: { kind: build(keyword, 'b'), y: { type: 'string' } } },
+            ],
+          }),
+          { kind: 'a', x: 'nope' },
+        ],
+        [
+          'anyOf',
+          (keyword: 'const' | 'enum') => ({
+            type: 'object',
+            anyOf: [
+              { properties: { kind: build(keyword, 'a') } },
+              { properties: { kind: build(keyword, 'b') } },
+            ],
+          }),
+          { kind: 'c' },
+        ],
+      ] as const) {
+        const fromConst = getErrors(makeSchema('const'), data);
+        const fromEnum = getErrors(makeSchema('enum'), data);
+        expect(
+          fromConst.map(error => error.path),
+          name
+        ).toEqual(fromEnum.map(error => error.path));
+        expect(fromConst.length, name).toBe(fromEnum.length);
+      }
+    });
+
+    it('does not throw on a constant that cannot be serialised', () => {
+      const circular: Record<string, unknown> = { name: 'loop' };
+      circular.self = circular;
+      const schema = {
+        type: 'object',
+        properties: { node: { const: circular } },
+      };
+      expect(() => getErrors(schema, { node: 'nope' })).not.toThrow();
     });
 
     it('includes the expected value in the cli output', () => {
@@ -208,9 +269,9 @@ describe('Main', () => {
       const output = stripVTControlCharacters(
         betterAjvErrors(schema, data, validate.errors, { indent: 2 })
       );
-      expect(output).toContain('CONST must be equal to constant');
-      expect(output).toContain('(">=18.12.0")');
-      expect(output).toContain('Should be equal to ">=18.12.0"');
+      expect(output).toContain('must be equal to constant');
+      expect(output).toContain('(>=18.12.0)');
+      expect(output).toContain('Did you mean >=18.12.0 here?');
     });
   });
 
