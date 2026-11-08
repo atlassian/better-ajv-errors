@@ -322,4 +322,60 @@ describe('Main', () => {
       ]);
     });
   });
+
+  describe('oneOf schemas (#72)', () => {
+    const schema: SchemaObject = {
+      type: 'object',
+      oneOf: [
+        {
+          properties: {
+            target: { type: 'string' },
+          },
+          required: ['target'],
+        },
+        {
+          properties: {
+            sql: { type: 'string' },
+          },
+          required: ['sql'],
+        },
+      ],
+    };
+
+    it('reports specific child errors without redundant oneOf error when branch property is present', () => {
+      const validate = new Ajv({ allErrors: true }).compile(schema);
+      const valid = validate({ target: 123 });
+      expect(valid).toBeFalsy();
+
+      const errors = betterAjvErrors(schema, { target: 123 }, validate.errors, { format: 'js' });
+      expect(errors).toEqual([
+        {
+          start: { line: 1, column: 11, offset: 10 },
+          end: { line: 1, column: 14, offset: 13 },
+          error: '/target: type must be string',
+          path: '/target',
+        },
+      ]);
+    });
+
+    it('reports required errors when neither branch properties are provided', () => {
+      const validate = new Ajv({ allErrors: true }).compile(schema);
+      const valid = validate({ other: 'value' });
+      expect(valid).toBeFalsy();
+
+      const errors = betterAjvErrors(schema, { other: 'value' }, validate.errors, { format: 'js' });
+      expect(errors).toEqual([
+        {
+          start: { line: 1, column: 1, offset: 0 },
+          error: "must have required property 'target'",
+          path: '',
+        },
+        {
+          start: { line: 1, column: 1, offset: 0 },
+          error: "must have required property 'sql'",
+          path: '',
+        },
+      ]);
+    });
+  });
 });

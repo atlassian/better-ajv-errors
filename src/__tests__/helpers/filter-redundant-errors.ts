@@ -352,4 +352,94 @@ describe('filterRedundantErrors', () => {
       }
     `);
   });
+
+  it('should handle oneOf with children', async () => {
+    const tree = {
+      children: {
+        a: {
+          children: {
+            b: {
+              children: {},
+              errors: [
+                {
+                  keyword: 'type',
+                },
+              ],
+            },
+          },
+          errors: [
+            {
+              keyword: 'oneOf',
+            },
+          ],
+        },
+      },
+    };
+    filter(tree);
+    expect(tree).toMatchInlineSnapshot(`
+      {
+        "children": {
+          "a": {
+            "children": {
+              "b": {
+                "children": {},
+                "errors": [
+                  {
+                    "keyword": "type",
+                  },
+                ],
+              },
+            },
+          },
+        },
+      }
+    `);
+  });
+
+  it('should not remove oneOf errors if there are no children', async () => {
+    const tree = {
+      children: {
+        '/object': {
+          children: {
+            '/type': {
+              children: {},
+              errors: [
+                {
+                  keyword: 'type',
+                },
+                {
+                  keyword: 'oneOf',
+                },
+              ],
+            },
+          },
+          errors: [],
+        },
+      },
+    };
+
+    filter(tree);
+    expect(tree).toMatchInlineSnapshot(`
+      {
+        "children": {
+          "/object": {
+            "children": {
+              "/type": {
+                "children": {},
+                "errors": [
+                  {
+                    "keyword": "type",
+                  },
+                  {
+                    "keyword": "oneOf",
+                  },
+                ],
+              },
+            },
+            "errors": [],
+          },
+        },
+      }
+    `);
+  });
 });
