@@ -29,6 +29,13 @@ export default function betterAjvErrors<S, T, Options extends IInputOptions>(
   const { format = 'cli', indent = null, json = null }: IInputOptions = options ?? {};
 
   const jsonRaw = json || JSON.stringify(data, null, indent ?? undefined);
+  if (typeof jsonRaw !== 'string') {
+    // `JSON.stringify` returns `undefined` for `undefined`, functions and symbols,
+    // which would otherwise reach the parser and fail inside it.
+    throw new TypeError(
+      '`data` could not be serialized to JSON. Pass a JSON-serializable value, or pass the original document as the `json` option.'
+    );
+  }
   const jsonAst = parse(jsonRaw);
 
   const customErrorToText = (error: BaseValidationError) => error.print().join('\n');
