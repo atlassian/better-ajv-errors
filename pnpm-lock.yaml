@@ -194,7 +194,7 @@ overrides:
   lodash@>=4.0.0 <=4.17.23: ^4.18.1
   minimatch@<3.1.4: ^3.1.4
   svgo@>=1.0.0 <2.8.4: ^2.8.4
-  uuid@<11.1.1: ^11.1.1
+  uuid@<11.1.1: ^14.0.0
 
 importers:
 
@@ -1920,8 +1920,8 @@ packages:
     resolution: {integrity: sha512-ODgiYu03y5g76A1I9Gt0/chLCzQjvzDy7DsZGsLOE/1MrF6wriEskSncj1+/C58Xk/kPZDppSctDybCwOSaGAg==}
     engines: {node: '>=4'}
 
-  uuid@11.1.1:
-    resolution: {integrity: sha512-vIYxrBCC/N/K+Js3qSN88go7kIfNPssr/hHCesKCQNAjmgvYS2oqr69kIufEG+O4+PfezOH4EbIeHCfFov8ZgQ==}
+  uuid@14.0.3:
+    resolution: {integrity: sha512-Sc5u1VVln93y1Xnz4R+CunOZc7R9LUcTmhj7Rc7Eg3HVcf7rVn2FOoa812fe0W8p3jD7xeoGSYbfqCGGH2B6xw==}
     hasBin: true
 
   validate-npm-package-license@3.0.4:
@@ -3397,7 +3397,7 @@ snapshots:
   tempfile@2.0.0:
     dependencies:
       temp-dir: 1.0.0
-      uuid: 11.1.1
+      uuid: 14.0.3
 
   tempy@0.2.1:
     dependencies:
@@ -3450,7 +3450,7 @@ snapshots:
     dependencies:
       crypto-random-string: 1.0.0
 
-  uuid@11.1.1: {}
+  uuid@14.0.3: {}
 
   validate-npm-package-license@3.0.4:
     dependencies:
