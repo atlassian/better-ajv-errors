@@ -23,9 +23,9 @@ overrides:
   svgo@>=1.0.0 <2.8.4: ^2.8.4
   uuid@<11.1.1: ^11.1.1
 catalog:
-  vite: npm:@voidzero-dev/vite-plus-core@1.5.0
+  vite: npm:@voidzero-dev/vite-plus-core@1.6.0
   vitest: 5.1.0
-  vite-plus: 1.5.0
+  vite-plus: 1.6.0
   '@vitest/coverage-v8': 5.1.0
   '@vitest/ui': 5.1.0
 peerDependencyRules:
