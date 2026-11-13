@@ -321,5 +321,27 @@ describe('Main', () => {
         },
       ]);
     });
+    it('indicates dependent property when a schema dependency required property is missing (#181)', () => {
+      const schema = {
+        type: 'object',
+        properties: {
+          raw: { type: 'string' },
+          contentFile: { type: 'string' },
+        },
+        dependencies: {
+          raw: {
+            required: ['contentFile'],
+          },
+        },
+      };
+
+      expect(getErrors(schema, { raw: 'example' })).toEqual([
+        {
+          start: { line: 1, column: 1, offset: 0 },
+          error: "must have required property 'contentFile' (required by 'raw')",
+          path: '',
+        },
+      ]);
+    });
   });
 });
