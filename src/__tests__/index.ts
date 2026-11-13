@@ -321,5 +321,45 @@ describe('Main', () => {
         },
       ]);
     });
+    it('formats array keyword errors (minItems, maxItems, uniqueItems) without awkward keyword repetition (#171)', () => {
+      const schema = {
+        type: 'object',
+        properties: {
+          operators: {
+            type: 'array',
+            minItems: 1,
+            maxItems: 3,
+            uniqueItems: true,
+          },
+        },
+      };
+
+      expect(getErrors(schema, { operators: [] })).toEqual([
+        {
+          start: { line: 1, column: 14, offset: 13 },
+          end: { line: 1, column: 16, offset: 15 },
+          error: '/operators: must NOT have fewer than 1 items',
+          path: '/operators',
+        },
+      ]);
+
+      expect(getErrors(schema, { operators: [1, 2, 3, 4] })).toEqual([
+        {
+          start: { line: 1, column: 14, offset: 13 },
+          end: { line: 1, column: 23, offset: 22 },
+          error: '/operators: must NOT have more than 3 items',
+          path: '/operators',
+        },
+      ]);
+
+      expect(getErrors(schema, { operators: [1, 1] })).toEqual([
+        {
+          start: { line: 1, column: 14, offset: 13 },
+          end: { line: 1, column: 19, offset: 18 },
+          error: '/operators: must NOT have duplicate items (items ## 0 and 1 are identical)',
+          path: '/operators',
+        },
+      ]);
+    });
   });
 });
