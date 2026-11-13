@@ -22,6 +22,7 @@ const isXError =
 export const isRequiredError: (error: AjvError) => error is AjvError<RequiredParams> =
   isXError('required');
 export const isAnyOfError: (error: AjvError) => boolean = isXError('anyOf');
+export const isOneOfError: (error: AjvError) => boolean = isXError('oneOf');
 export const isEnumError: (error: AjvError) => error is AjvError<EnumParams> = isXError('enum');
 export const getErrors = (node: ErrorNode | undefined): AjvError[] =>
   node && node.errors

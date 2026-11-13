@@ -11,6 +11,7 @@ import {
   getInstancePath,
   getSiblings,
   isAnyOfError,
+  isOneOfError,
   isEnumError,
   isRequiredError,
   concatAll,
@@ -73,8 +74,8 @@ export function filterRedundantErrors(root: ErrorNode, parent?: ErrorNode, key?:
   /**
    * Partition out the errors by kind for ease of proceessing
    */
-  const { anyOfErrors, enumErrors, requiredErrors } = getErrors(root).reduce<
-    Record<'anyOfErrors' | 'enumErrors' | 'requiredErrors', AjvError[]>
+  const { unionErrors, enumErrors, requiredErrors } = getErrors(root).reduce<
+    Record<'unionErrors' | 'enumErrors' | 'requiredErrors', AjvError[]>
   >(
     (acc, error) => {
       if (isRequiredError(error)) {
@@ -83,8 +84,8 @@ export function filterRedundantErrors(root: ErrorNode, parent?: ErrorNode, key?:
         return acc;
       }
 
-      if (isAnyOfError(error)) {
-        acc.anyOfErrors.push(error);
+      if (isAnyOfError(error) || isOneOfError(error)) {
+        acc.unionErrors.push(error);
       }
 
       if (isEnumError(error)) {
@@ -93,37 +94,74 @@ export function filterRedundantErrors(root: ErrorNode, parent?: ErrorNode, key?:
 
       return acc;
     },
-    { anyOfErrors: [], enumErrors: [], requiredErrors: [] }
+    { unionErrors: [], enumErrors: [], requiredErrors: [] }
   );
 
   /**
-   * If there is are `required` errors then we can just drop every non-required error.
-   * And, also `required` should have more priority than `anyOf`. @see #8
+   * If there are `required` errors then we drop non-required errors.
+   * However, if a `required` error comes from an `anyOf`/`oneOf` branch
+   * and there are child errors (meaning the user provided properties matching
+   * an alternative branch), we should not let that branch required error
+   * hide the child errors. @see #8, #81, #153, #72
    */
+  const isBranchRequiredError = (error: AjvError): boolean => {
+    return Boolean(
+      isRequiredError(error) &&
+      error.schemaPath &&
+      (error.schemaPath.includes('/anyOf/') || error.schemaPath.includes('/oneOf/'))
+    );
+  };
 
-  if (requiredErrors.length > 0) {
-    root.errors = requiredErrors;
+  const directRequiredErrors = requiredErrors.filter(e => !isBranchRequiredError(e));
+  const branchRequiredErrors = requiredErrors.filter(isBranchRequiredError);
+
+  if (directRequiredErrors.length > 0) {
+    root.errors = directRequiredErrors;
     root.children = {};
 
     // No need for further processing, as we've emptied out children
     return;
   }
 
+  if (branchRequiredErrors.length > 0 && Object.keys(root.children).length === 0) {
+    if (parent && key !== undefined) {
+      const hasSiblingWithSpecificErrors = getSiblings(parent)(root)
+        .filter(notUndefined)
+        .some(sibling => {
+          const siblingErrors = getErrors(sibling);
+          return (
+            Object.keys(sibling.children).length > 0 ||
+            (siblingErrors.length > 0 && !siblingErrors.every(isBranchRequiredError))
+          );
+        });
+
+      if (hasSiblingWithSpecificErrors) {
+        delete parent.children[key];
+        return;
+      }
+    }
+
+    root.errors = branchRequiredErrors;
+    root.children = {};
+
+    return;
+  }
+
   /**
-   * If there is an `anyOf` error that means we have more meaningful errors
+   * If there is an `anyOf` or `oneOf` error that means we have more meaningful errors
    * inside children. So we will just remove all errors from this level.
    *
    * If there are no children, then we don't delete the errors since we should
    * have at least one error to report.
    */
-  if (anyOfErrors.length > 0 && Object.keys(root.children).length > 0) {
+  if (unionErrors.length > 0 && Object.keys(root.children).length > 0) {
     delete root.errors;
   }
 
   /**
    * If all errors are `enum` and siblings have any error then we can safely
    * ignore the node. As we return early if there's required errors, we only
-   * need to check anyofErrors length
+   * need to check unionErrors length
    *
    * The root has no parent, and so no siblings.
    *
@@ -131,7 +169,7 @@ export function filterRedundantErrors(root: ErrorNode, parent?: ErrorNode, key?:
    * Need explicit `root.errors` check because `[].every(fn) === true`
    * https://en.wikipedia.org/wiki/Vacuous_truth#Vacuous_truths_in_mathematics
    */
-  if (enumErrors.length > 0 && anyOfErrors.length === 0 && parent && key !== undefined) {
+  if (enumErrors.length > 0 && unionErrors.length === 0 && parent && key !== undefined) {
     if (
       getSiblings(parent)(root)
         // Remove any reference which becomes `undefined` later
