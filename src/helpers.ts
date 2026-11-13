@@ -97,15 +97,34 @@ export function filterRedundantErrors(root: ErrorNode, parent?: ErrorNode, key?:
   );
 
   /**
-   * If there is are `required` errors then we can just drop every non-required error.
-   * And, also `required` should have more priority than `anyOf`. @see #8
+   * If there are `required` errors then we drop non-required errors.
+   * However, if a `required` error comes from an `anyOf`/`oneOf` branch
+   * and there are child errors (meaning the user provided properties matching
+   * an alternative branch), we should not let that branch required error
+   * hide the child errors. @see #8, #81, #153
    */
+  const isBranchRequiredError = (error: AjvError): boolean => {
+    return Boolean(
+      error.schemaPath &&
+      (error.schemaPath.includes('/anyOf/') || error.schemaPath.includes('/oneOf/'))
+    );
+  };
 
-  if (requiredErrors.length > 0) {
-    root.errors = requiredErrors;
+  const directRequiredErrors = requiredErrors.filter(e => !isBranchRequiredError(e));
+  const branchRequiredErrors = requiredErrors.filter(isBranchRequiredError);
+
+  if (directRequiredErrors.length > 0) {
+    root.errors = directRequiredErrors;
     root.children = {};
 
     // No need for further processing, as we've emptied out children
+    return;
+  }
+
+  if (branchRequiredErrors.length > 0 && Object.keys(root.children).length === 0) {
+    root.errors = branchRequiredErrors;
+    root.children = {};
+
     return;
   }
 

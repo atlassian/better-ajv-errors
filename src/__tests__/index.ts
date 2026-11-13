@@ -321,5 +321,43 @@ describe('Main', () => {
         },
       ]);
     });
+    it('prioritizes specific child errors over required errors from unselected anyOf branches (#153)', () => {
+      const schema = {
+        type: 'object',
+        properties: {
+          processor: {
+            anyOf: [
+              {
+                type: 'object',
+                properties: {
+                  defaultConfigPath: { type: 'string' },
+                },
+                required: ['defaultConfigPath'],
+              },
+              {
+                type: 'object',
+                properties: {
+                  defaultConfigPackageKey: { type: 'string' },
+                },
+                required: ['defaultConfigPackageKey'],
+              },
+            ],
+          },
+        },
+      };
+      const data = {
+        processor: {
+          defaultConfigPath: true,
+        },
+      };
+      expect(getErrors(schema, data)).toEqual([
+        {
+          start: { line: 1, column: 35, offset: 34 },
+          end: { line: 1, column: 39, offset: 38 },
+          error: '/processor/defaultConfigPath: type must be string',
+          path: '/processor/defaultConfigPath',
+        },
+      ]);
+    });
   });
 });
