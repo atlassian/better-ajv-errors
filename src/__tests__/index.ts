@@ -321,5 +321,32 @@ describe('Main', () => {
         },
       ]);
     });
+
+    it('formats const validation errors including the expected constant value (fixes #162)', () => {
+      const schema = {
+        type: 'object',
+        properties: {
+          node: { const: '>=18.12.0' },
+        },
+      };
+      const data = { node: '>=18.12.1' };
+      const validate = new Ajv().compile(schema);
+      expect(validate(data)).toBeFalsy();
+
+      const cliRes = stripVTControlCharacters(betterAjvErrors(schema, data, validate.errors));
+      expect(cliRes).toContain('CONST must be equal to constant\n(>=18.12.0)');
+      expect(cliRes).toContain('Did you mean >=18.12.0 here?');
+
+      const jsRes = betterAjvErrors(schema, data, validate.errors, { format: 'js' });
+      expect(jsRes).toEqual([
+        {
+          start: { line: 1, column: 9, offset: 8 },
+          end: { line: 1, column: 20, offset: 19 },
+          error: '/node must be equal to constant: >=18.12.0',
+          path: '/node',
+          suggestion: 'Did you mean >=18.12.0?',
+        },
+      ]);
+    });
   });
 });
