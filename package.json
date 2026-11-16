@@ -24,7 +24,7 @@
   "engines": {
     "node": ">= 24"
   },
-  "packageManager": "pnpm@12.16.1",
+  "packageManager": "pnpm@12.18.0",
   "keywords": [
     "json-schema",
     "ajv",
@@ -61,7 +61,7 @@
     "jsonpointer": "^5.0.1"
   },
   "devDependencies": {
-    "@types/node": "^24.19.2",
+    "@types/node": "^26.6.6",
     "@vitest/coverage-v8": "catalog:",
     "@vitest/ui": "catalog:",
     "ajv": "^8.20.0",
