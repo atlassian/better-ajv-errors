@@ -221,7 +221,7 @@ jobs:
 
       # Writes the registry credentials to `$GITHUB_WORKSPACE/.npmrc-public`.
       - name: Get Artifact Publish Token
-        uses: atlassian-labs/artifact-publish-token@f105af73cf2dd9f1b934602845f9f9ca84b73346 # v1.0.1
+        uses: atlassian-labs/artifact-publish-token@4c9f3ade95e07fae7930a20331671f64f98a397a # v1.0.1
         with:
           output-modes: npm
 
